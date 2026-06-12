@@ -370,21 +370,8 @@ if ( $blog_layout == 'blog_category' && ! $is_category_page ) {
                     echo '<h5 class="card-title mb-2">' . $cat_name . '</h5>';
                     echo '<p class="card-text text-muted mb-3">' . $cat_desc . '</p>';
                     echo '<div class="category-card__meta small text-muted">';
-                    $author_icon_relatives = [
-                        '/assets/img/author-icon.png',
-                        '/assets/images/author-icon.png',
-                        '/assets/extra/user.png',
-                    ];
-                    $author_icon_path = '';
-                    $author_icon_url  = '';
-                    foreach ( $author_icon_relatives as $rel ) {
-                        $path = get_template_directory() . $rel;
-                        if ( file_exists( $path ) ) {
-                            $author_icon_path = $path;
-                            $author_icon_url  = get_template_directory_uri() . $rel;
-                            break;
-                        }
-                    }
+                    $author_icon_path = 'fallback';
+                    $author_icon_url  = 'https://docs.cmgalaxy.com/wp-content/uploads/2026/06/cropped-Group-1000004539-300x300-1.png';
                     $author_markup = '';
 					if ( $author_icon_path ) {
 						$author_markup .= '<span class="category-card__author-icon">'

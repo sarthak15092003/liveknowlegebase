@@ -1027,14 +1027,7 @@ function docy_prepare_category_header_data( $cat_id ) {
         $byline = sprintf( __( 'By %1$s and %2$s others', 'docy' ), esc_html( $author_names[0] ), number_format_i18n( $author_count_total - 1 ) );
     }
 
-    $author_icon_url = '';
-    $author_icon_relatives = [ '/assets/img/author-icon.png', '/assets/images/author-icon.png', '/assets/extra/user.png' ];
-    foreach ( $author_icon_relatives as $rel ) {
-        if ( file_exists( get_template_directory() . $rel ) ) {
-            $author_icon_url = get_template_directory_uri() . $rel;
-            break;
-        }
-    }
+    $author_icon_url = 'https://docs.cmgalaxy.com/wp-content/uploads/2026/06/cropped-Group-1000004539-300x300-1.png';
 
     $category_icon_url = '';
     if ( file_exists( get_template_directory() . '/assets/img/knowledge.png' ) ) {
