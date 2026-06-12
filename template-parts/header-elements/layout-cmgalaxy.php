@@ -50,11 +50,19 @@ $s_value = get_search_query() ? get_search_query() : '';
         <!-- Right Actions -->
         <div class="cmgalaxy-actions d-flex align-items-center">
 
-            <!-- Sign In Link -->
-            <a href="#" class="cmgalaxy-nav-link">
-                <img src="<?php echo esc_url( get_template_directory_uri() . '/assets/img/signin.svg' ); ?>" alt="Sign In" class="cmgalaxy-signin-icon me-2">
-                Sign In
-            </a>
+            <?php if ( is_user_logged_in() ) : ?>
+                <!-- Sign Out Link -->
+                <a href="<?php echo esc_url( wp_logout_url( home_url() ) ); ?>" class="cmgalaxy-nav-link">
+                    <img src="<?php echo esc_url( get_template_directory_uri() . '/assets/img/signin.svg' ); ?>" alt="Sign Out" class="cmgalaxy-signin-icon me-2">
+                    Sign Out
+                </a>
+            <?php else : ?>
+                <!-- Sign In Link -->
+                <a href="<?php echo esc_url( wp_login_url( admin_url() ) ); ?>" class="cmgalaxy-nav-link">
+                    <img src="<?php echo esc_url( get_template_directory_uri() . '/assets/img/signin.svg' ); ?>" alt="Sign In" class="cmgalaxy-signin-icon me-2">
+                    Sign In
+                </a>
+            <?php endif; ?>
         </div>
     </div>
 
