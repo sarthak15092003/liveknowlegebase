@@ -1,5 +1,8 @@
 name: Build and Release Theme
 
+env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+
 on:
   push:
     branches:
@@ -37,4 +40,4 @@ jobs:
         username: ${{ secrets.FTP_USERNAME }}
         password: ${{ secrets.FTP_PASSWORD }}
         local-dir: ./dist/docy/
-        server-dir: /wp-content/themes/docy/
+        server-dir: wp-content/themes/docy/
