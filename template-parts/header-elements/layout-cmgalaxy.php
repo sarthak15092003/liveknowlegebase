@@ -49,11 +49,6 @@ $s_value = get_search_query() ? get_search_query() : '';
 
         <!-- Right Actions -->
         <div class="cmgalaxy-actions d-flex align-items-center">
-            <!-- Community Link -->
-            <a href="#" class="cmgalaxy-nav-link me-3">
-                <img src="<?php echo esc_url( get_template_directory_uri() . '/assets/img/community.svg' ); ?>" alt="Community" class="cmgalaxy-community-icon me-2">
-                Community
-            </a>
 
             <!-- Sign In Link -->
             <a href="#" class="cmgalaxy-nav-link">
