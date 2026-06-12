@@ -1,0 +1,4 @@
+[22-Jan-2026 15:00:34 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function get_search_query() in /home/e89fpft/public_html/e89fp3uohq-staging.onrocket.site/wp-content/themes/docy/template-parts/header-elements/layout-cmgalaxy.php:5
+Stack trace:
+#0 {main}
+  thrown in /home/e89fpft/public_html/e89fp3uohq-staging.onrocket.site/wp-content/themes/docy/template-parts/header-elements/layout-cmgalaxy.php on line 5

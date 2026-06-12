@@ -1,0 +1,4507 @@
+{
+    "description": "DO NOT DELETE THIS FILE. This file is used to keep track of which files have been synced in the most recent deployment. If you delete this file a resync will need to be done (which can take a while) - read more: https://github.com/SamKirkland/FTP-Deploy-Action",
+    "version": "1.0.0",
+    "generatedTime": 1774354405586,
+    "data": [
+        {
+            "type": "file",
+            "name": ".env.example",
+            "size": 807,
+            "hash": "2c62631b91a32e55bdb2430a0e12ce9a8acb182588dad7f76392fd04d4d29c7a"
+        },
+        {
+            "type": "file",
+            "name": "404.php",
+            "size": 3344,
+            "hash": "ef2483aa53538cbbf21d8f350ca49884640dc5ad39b99ae20a36af32ca90fae7"
+        },
+        {
+            "type": "file",
+            "name": "DEPLOYMENT-GUIDE.md",
+            "size": 6889,
+            "hash": "c7f8bfb4d9b255687e4ecc63852700fff71161bdcf2520467addd595aeb3221f"
+        },
+        {
+            "type": "file",
+            "name": "DEPLOYMENT-TEST.md",
+            "size": 507,
+            "hash": "816279cc663dd6f42506094c269e901d2dd1d0187bfcaae2e6146cc18aa37d97"
+        },
+        {
+            "type": "file",
+            "name": "IMPLEMENTATION-COMPLETE.md",
+            "size": 4305,
+            "hash": "f39883a19e1a12f8d6185245772d22bf75ee9fbc5d7fa366c136d545d5f7233b"
+        },
+        {
+            "type": "file",
+            "name": "QUICK-DEPLOY.md",
+            "size": 877,
+            "hash": "27b2c19086a25ca0fb4334c788b85727887ace4a18c35a5a15165ba6425830d4"
+        },
+        {
+            "type": "file",
+            "name": "QUICK-START-DEPLOYMENT.md",
+            "size": 5445,
+            "hash": "a56d2570c20c9413969a65bc092582b93bf35e15511fc63ca11362aac1bf3061"
+        },
+        {
+            "type": "file",
+            "name": "TYPOGRAPHY-SCHEMA.md",
+            "size": 3983,
+            "hash": "1e6dfa009186b0c5f51fb22d47d7ebefe0990d1b94f58c0cd3be1c3589f8a3c3"
+        },
+        {
+            "type": "file",
+            "name": "article_55_content.txt",
+            "size": 22462,
+            "hash": "6efc400876a6fa89ef4a9a74a96251f62f68fa75f3d652d01b7bd775ab66cd6b"
+        },
+        {
+            "type": "file",
+            "name": "article_content.txt",
+            "size": 22462,
+            "hash": "6efc400876a6fa89ef4a9a74a96251f62f68fa75f3d652d01b7bd775ab66cd6b"
+        },
+        {
+            "type": "folder",
+            "name": "assets"
+        },
+        {
+            "type": "folder",
+            "name": "bbpress"
+        },
+        {
+            "type": "file",
+            "name": "changes.txt",
+            "size": 45358,
+            "hash": "5d6f08f183264b8424f18cd948c5401e10e380de713b6b1e4318a91b472f94c1"
+        },
+        {
+            "type": "file",
+            "name": "check_git_size.bat",
+            "size": 66,
+            "hash": "9368dc68046e10bbe49e6acefe7f79c6ca83d594a3d2ef971936bd11d5197964"
+        },
+        {
+            "type": "file",
+            "name": "comments.php",
+            "size": 3415,
+            "hash": "19a9f504d641451345d7273e1ad829a558ea798d3341ea611bcac69b79692e8f"
+        },
+        {
+            "type": "file",
+            "name": "debug-output-v4.txt",
+            "size": 194,
+            "hash": "db67c9f51adb1de6369fcffc6d935b1fc79ff0bc04bd6e3cbd2d65433a5b058d"
+        },
+        {
+            "type": "file",
+            "name": "debug-output.txt",
+            "size": 510,
+            "hash": "9239f9afe3b15cdba2c66c44ceddd429f22fa31ff0053b915b6d62ff796c26d3"
+        },
+        {
+            "type": "file",
+            "name": "debug-pts.txt",
+            "size": 247,
+            "hash": "15b24f1fb04de374891edb17b7aff3ab736fe9ff24db34a57c23d122ceab8873"
+        },
+        {
+            "type": "file",
+            "name": "debug-tax-output-v2.txt",
+            "size": 290,
+            "hash": "ec218c8de3dc3c531262341fbc0d8ab851d231348a7508080cc59979a16d489c"
+        },
+        {
+            "type": "file",
+            "name": "debug-tax-output.txt",
+            "size": 942,
+            "hash": "4b2386471f5e9553bcde7ff5127a92647889bbc32047044a8590c03484c15878"
+        },
+        {
+            "type": "file",
+            "name": "debug_any_post_type.php",
+            "size": 636,
+            "hash": "f94f7d90e7d842dfbaa326190a53fdd0b66b45383c4b14b3a07314ce680bc79c"
+        },
+        {
+            "type": "file",
+            "name": "debug_check_content_55.php",
+            "size": 221,
+            "hash": "04a1307d6fb9c7b60bd5965c6942d9cc7a0f80e7283f2d2affbd5be261e3a2ca"
+        },
+        {
+            "type": "file",
+            "name": "debug_find_article.php",
+            "size": 1285,
+            "hash": "6d09da5cfd2f9262f1284c7aec257788ee3dcf0d7b03231ea5704ccd0823df0e"
+        },
+        {
+            "type": "file",
+            "name": "debug_find_specific_article.php",
+            "size": 820,
+            "hash": "bcf660e82f7732d53569b650f0776e2f242de142b73d48202bd1a577fd4c1317"
+        },
+        {
+            "type": "file",
+            "name": "debug_list_docs.php",
+            "size": 501,
+            "hash": "8f48a033f55824d96cf8ce1d966356308f133c7ff14d3a46aca64d7e76e33fd1"
+        },
+        {
+            "type": "file",
+            "name": "debug_list_post_types.php",
+            "size": 84,
+            "hash": "6fba2806d44ae829fa17d26b475314f9f472123dea53cd63c6fce82a678ec5f4"
+        },
+        {
+            "type": "file",
+            "name": "debug_onepage.php",
+            "size": 328,
+            "hash": "0d7aba0df173f02d8e12cd1c0a846f112656715c34d6e9bf54239ffaaa389181"
+        },
+        {
+            "type": "file",
+            "name": "debug_read_55.php",
+            "size": 225,
+            "hash": "351d370eb3f6ff7776542f0ab38607e9ccdecc7c6176c745515941caa4cd6381"
+        },
+        {
+            "type": "file",
+            "name": "debug_save_55.php",
+            "size": 172,
+            "hash": "94284c8b226618b69defd14fd3486c51a69ae4c9bcda11761665f7b40493f9d1"
+        },
+        {
+            "type": "file",
+            "name": "debug_save_article.php",
+            "size": 207,
+            "hash": "303afa5bb3763e17d15103656d9b229b6ae04043cb469dff3247449f1a699eb1"
+        },
+        {
+            "type": "file",
+            "name": "debug_share_search.php",
+            "size": 530,
+            "hash": "9140026332d21950082b6f4f4d9dde28c2a0648792d416590df923b295a0a511"
+        },
+        {
+            "type": "file",
+            "name": "debug_sharing_broad.php",
+            "size": 394,
+            "hash": "64506e46e5cb821a843d99d77b13639b6aa8975291956eba2f3e583149f711d1"
+        },
+        {
+            "type": "file",
+            "name": "debug_sharing_content.php",
+            "size": 497,
+            "hash": "519c5d08ff1dd9af57e77b702faa957119780c7b15a2bf31918c5e521526063e"
+        },
+        {
+            "type": "file",
+            "name": "debug_sql_share.php",
+            "size": 361,
+            "hash": "9f1b8bb2f25c52c51314b8567f57c0ab30d103e2f78c221bb3eeb29758e2d5e2"
+        },
+        {
+            "type": "file",
+            "name": "debug_sql_whatsapp.php",
+            "size": 371,
+            "hash": "50222a47b943440bd6f07cde1e273b2843a8a0e6c1b507fc57fc84992fa05d6c"
+        },
+        {
+            "type": "file",
+            "name": "debug_whatsapp_any.php",
+            "size": 427,
+            "hash": "e5694ff0c366f81d8a19f3ac993fa3a93f75b2ae8f6d224973d96499ff479d92"
+        },
+        {
+            "type": "file",
+            "name": "debug_whatsapp_db.php",
+            "size": 456,
+            "hash": "a1963e461376934c91e6644dced36b37e355b668951dcacf368f81cf1ee59484"
+        },
+        {
+            "type": "file",
+            "name": "debug_whatsapp_search.php",
+            "size": 657,
+            "hash": "d19eac7bd77ae4a67871f51f9f9cd10422735079f63c1a8e4fe2946a1602cb72"
+        },
+        {
+            "type": "file",
+            "name": "deploy-to-live.bat",
+            "size": 1497,
+            "hash": "eee34c11c4cfdf65f39c924ce94267e68e52a840b6d973db1e380755fb9c0d9b"
+        },
+        {
+            "type": "file",
+            "name": "deploy-to-live.sh",
+            "size": 1480,
+            "hash": "fe56da9132a06bd7a2a467772e6752ec4026f628d3c6afa28039e692a3c621ef"
+        },
+        {
+            "type": "file",
+            "name": "deploy.sh",
+            "size": 2146,
+            "hash": "53ef107887b528f55544a4ff3128809957ffc0c5b8dabed299ecbabecb491d13"
+        },
+        {
+            "type": "folder",
+            "name": "eazydocs"
+        },
+        {
+            "type": "file",
+            "name": "extract.ps1",
+            "size": 820,
+            "hash": "c78031c61b17d05c754f9baee7c726e24dee31ce8fc970c3b707ff9bc42e798d"
+        },
+        {
+            "type": "file",
+            "name": "extract2.ps1",
+            "size": 794,
+            "hash": "c634c8bdf93f8b2a765b85e98df6a38057901a632624238f637e23e9858c59e6"
+        },
+        {
+            "type": "file",
+            "name": "footer-empty.php",
+            "size": 66,
+            "hash": "6bb85c7b0efdc606f2945b78c6af2c151388c636210dfa940cd331d700a585cc"
+        },
+        {
+            "type": "file",
+            "name": "footer.php",
+            "size": 1206,
+            "hash": "77e2aa8a520cf03c722a7770849961a2de6a1ac96e424717b79f8be7e1572230"
+        },
+        {
+            "type": "file",
+            "name": "force_push_root.bat",
+            "size": 54,
+            "hash": "906f2ac7525214789e588733b799954187d1f0be1261b02a473627be41fb0210"
+        },
+        {
+            "type": "file",
+            "name": "forum-sidebar.php",
+            "size": 365,
+            "hash": "0af1670e6c66b027ed3ac11f6e0e25e5d5c3a3c492146122ed32f4837fc530fd"
+        },
+        {
+            "type": "file",
+            "name": "functions.php",
+            "size": 6788,
+            "hash": "26340b3346e429f401d98c4c34c3b3804b492a12aa6260ff261f2bf6106507a1"
+        },
+        {
+            "type": "file",
+            "name": "header-empty.php",
+            "size": 633,
+            "hash": "1b472576c0bdd8269c507071ae5b2332c75f9f5980db7a31abdc94602cdbc9e1"
+        },
+        {
+            "type": "file",
+            "name": "header.php",
+            "size": 5472,
+            "hash": "a646a8b1f275710ea7b4f2ec00616f80f930285dd2ee3e908e749e2d20861a4e"
+        },
+        {
+            "type": "folder",
+            "name": "inc"
+        },
+        {
+            "type": "file",
+            "name": "index.php",
+            "size": 36551,
+            "hash": "fd838901baa75d9998eae828d3b47a0bcaa1137980caa002bbfc3d1992d7a16e"
+        },
+        {
+            "type": "folder",
+            "name": "languages"
+        },
+        {
+            "type": "folder",
+            "name": "options"
+        },
+        {
+            "type": "file",
+            "name": "page-signin.php",
+            "size": 4423,
+            "hash": "585c7d9c4131e81a49bac2c896945c3408df07b0808ada25e8fb6b584cb5470b"
+        },
+        {
+            "type": "file",
+            "name": "page-signup.php",
+            "size": 2534,
+            "hash": "fc37129f1eb503a0e160cf31609344291fae265ce6a331b6b2b9896b00b53790"
+        },
+        {
+            "type": "file",
+            "name": "screenshot.jpg",
+            "size": 61314,
+            "hash": "fd5b2782d48af4c1724a01422bfd2c64e6867e30e2e1e2dd50dcee34d1be189e"
+        },
+        {
+            "type": "file",
+            "name": "page.php",
+            "size": 8152,
+            "hash": "348d2bbfdaf06ad7c97fc94ffdce4a9cda05f9a4adbbbd91f591f52870000e82"
+        },
+        {
+            "type": "file",
+            "name": "search.php",
+            "size": 3552,
+            "hash": "e4da8a5cd8c347bf713c40804958cd1593539531aa42afe22a8f8aa30d336d1b"
+        },
+        {
+            "type": "file",
+            "name": "searchform.php",
+            "size": 1903,
+            "hash": "46ffc5c8ddbcb794ea07446173d9bf9cd56f4c5228df5894ef395d8d93924a9a"
+        },
+        {
+            "type": "file",
+            "name": "setup_root_git.bat",
+            "size": 378,
+            "hash": "fec00cd39f1ff05f7a7d57b7bc2dce67c978d9a60484a88413c7f2b4e7c63a9f"
+        },
+        {
+            "type": "file",
+            "name": "setup_status_check.txt",
+            "size": 16,
+            "hash": "44c9c8e1a8ceb9de68ad5c67839caf2062ff74641beb80ca5e751959a1d7a0d6"
+        },
+        {
+            "type": "file",
+            "name": "sidebar-forum.php",
+            "size": 374,
+            "hash": "bcdaaf80bc55056439c8eeb2a3774320d1ea07188c7899164e87e07f9a692401"
+        },
+        {
+            "type": "file",
+            "name": "sidebar-shop.php",
+            "size": 219,
+            "hash": "8d95b6cca992f889d0b7000169f104817ccecc2f91941b1d190cf8adabf13bc4"
+        },
+        {
+            "type": "file",
+            "name": "sidebar.php",
+            "size": 2264,
+            "hash": "c1ce9460ef76e751ee9d99affe2e06a2c04fb3f42dbb2fa8f2e56cc3a66778db"
+        },
+        {
+            "type": "file",
+            "name": "single-elementor_library.php",
+            "size": 1088,
+            "hash": "5f71c7fb371bd1717bb1604054c4809c9cc6467139d599055c03f8e2ea028be2"
+        },
+        {
+            "type": "file",
+            "name": "single.php",
+            "size": 47371,
+            "hash": "214865ee7053c656f51ef474508b244cf87b872f5fe04f62794dbea34cb22dd7"
+        },
+        {
+            "type": "file",
+            "name": "style-editor.css",
+            "size": 9702,
+            "hash": "03993392aa32eaa7eb3cf360f773dd7d7481c7d804af428eac3b4b536ba12331"
+        },
+        {
+            "type": "file",
+            "name": "style.css",
+            "size": 4667,
+            "hash": "0782ca833d5742349b0ceeddadff412c77aa1293e4a2d82d799e965ba2378062"
+        },
+        {
+            "type": "folder",
+            "name": "template-parts"
+        },
+        {
+            "type": "file",
+            "name": "test_ai_fallback.php",
+            "size": 693,
+            "hash": "6cefe73ecbb168921105ca29c92dda81aa003ed04b4ddfda1d3c02d5aa36c946"
+        },
+        {
+            "type": "file",
+            "name": "tmp_check_whatsapp.php",
+            "size": 412,
+            "hash": "beca10215c43aebf85db58981f0b82b1552328b73b43f51135c184c845820610"
+        },
+        {
+            "type": "file",
+            "name": "tmp_list_all_titles.php",
+            "size": 421,
+            "hash": "f8a2f9a15c7f143529ac4814b45a3a2ba00933fb3d7d10730f8c9c1385d4092f"
+        },
+        {
+            "type": "file",
+            "name": "typography-preview.html",
+            "size": 9024,
+            "hash": "922a910d4e6257824b9208a2e7fe9c610b56d1940194e11a27fc692563399bcc"
+        },
+        {
+            "type": "folder",
+            "name": "woocommerce"
+        },
+        {
+            "type": "file",
+            "name": "wpml-config.xml",
+            "size": 1028,
+            "hash": "6e93b3b97fe86a42013dd490bc1c98ffb7132eaef62d59cfcf82c46d5f3308f0"
+        },
+        {
+            "type": "folder",
+            "name": "assets/css"
+        },
+        {
+            "type": "folder",
+            "name": "assets/extra"
+        },
+        {
+            "type": "folder",
+            "name": "assets/html"
+        },
+        {
+            "type": "folder",
+            "name": "assets/img"
+        },
+        {
+            "type": "folder",
+            "name": "assets/js"
+        },
+        {
+            "type": "folder",
+            "name": "assets/scss"
+        },
+        {
+            "type": "folder",
+            "name": "assets/vendors"
+        },
+        {
+            "type": "file",
+            "name": "bbpress/alert-topic-lock.php",
+            "size": 727,
+            "hash": "22149893d61f53291bb01874dcdeaa41e9e4e47d1c5fa77d3599919e8c430e34"
+        },
+        {
+            "type": "file",
+            "name": "bbpress/content-archive-forum.php",
+            "size": 1171,
+            "hash": "4fe8dbaea07ff8792807941f543981517383c64a57a795b930c633dc686d748a"
+        },
+        {
+            "type": "file",
+            "name": "bbpress/content-archive-topic.php",
+            "size": 997,
+            "hash": "bd1acad598dbc517fcc0ccb397687761db58c001362d4de38d58fb37fb22b74b"
+        },
+        {
+            "type": "file",
+            "name": "bbpress/content-search.php",
+            "size": 1180,
+            "hash": "5876a44a14d6b30839ecd1c9017ee27d9aebdb079d16da41ea06405421103b56"
+        },
+        {
+            "type": "file",
+            "name": "bbpress/content-single-forum.php",
+            "size": 1503,
+            "hash": "06a004c5df6fa74477f3c5f0a2c1adcc4838304d0c2fb64e57b866a1f4b89da5"
+        },
+        {
+            "type": "file",
+            "name": "bbpress/content-single-reply.php",
+            "size": 842,
+            "hash": "a543431fa05d7f1fd6d5c27899510d47942a543762dbff65a23bda97f897cf27"
+        },
+        {
+            "type": "file",
+            "name": "bbpress/content-single-topic-lead.php",
+            "size": 6327,
+            "hash": "f9af70c1bffdc3872404baf6cb5b5f1a4de95cd9f20e04e59c91468fe1b6de13"
+        },
+        {
+            "type": "file",
+            "name": "bbpress/content-single-topic.php",
+            "size": 2181,
+            "hash": "7dece3cc54e67157cf0d13c368017ca714945d568560ec8bd23b77e2829f5e87"
+        },
+        {
+            "type": "file",
+            "name": "bbpress/content-single-user.php",
+            "size": 1433,
+            "hash": "8934c25b3aab33139eb21a17d2d8a5fd3e590fa183bdd6e3aad90f8081516b0c"
+        },
+        {
+            "type": "file",
+            "name": "bbpress/content-single-view.php",
+            "size": 634,
+            "hash": "833338fc4fbcae88008e387e0a314aa1a8e481ca6319771edefbea98aa601271"
+        },
+        {
+            "type": "file",
+            "name": "bbpress/content-statistics.php",
+            "size": 2003,
+            "hash": "cdfd42e476c36d60f8c6b5e0d3f86b388ee2680c28d85202cc646a4a93951277"
+        },
+        {
+            "type": "file",
+            "name": "bbpress/content-topic-tag-edit.php",
+            "size": 672,
+            "hash": "39eeda75be3ab89b15751060dfa80a08a703e0e6e5504538c8ce0e5a80d1105c"
+        },
+        {
+            "type": "file",
+            "name": "bbpress/feedback-logged-in.php",
+            "size": 282,
+            "hash": "c672db043d86ae353baf744f5d26817ae0a6df7309c3730a552a1621dee0d08c"
+        },
+        {
+            "type": "file",
+            "name": "bbpress/feedback-no-access.php",
+            "size": 502,
+            "hash": "85e11adbd2c72f41d8e694c86c1eab3e0499228345f4f6b7514ea51d27411008"
+        },
+        {
+            "type": "file",
+            "name": "bbpress/feedback-no-forums.php",
+            "size": 289,
+            "hash": "44a2a2af727d2ecd4f8fbd85a5bd02c5c56188d8b95ab1b95c132d6929d018a5"
+        },
+        {
+            "type": "file",
+            "name": "bbpress/feedback-no-replies.php",
+            "size": 291,
+            "hash": "55ce8c046cdda6e01f190874e9601f831bb457cc69589726a7304fdbefe4c754"
+        },
+        {
+            "type": "file",
+            "name": "bbpress/feedback-no-search.php",
+            "size": 305,
+            "hash": "7624da295c0905c8e4cda64617d89e3b0f13a5023453a29a376e5ab8cbdd62c9"
+        },
+        {
+            "type": "file",
+            "name": "bbpress/feedback-no-topics.php",
+            "size": 289,
+            "hash": "82b2d82c586c9be8cf00943a0c617feb4309c3f90acfabeef7130da5e277f972"
+        },
+        {
+            "type": "file",
+            "name": "bbpress/form-anonymous.php",
+            "size": 1486,
+            "hash": "bc1546f632bbd62d559e2f243cbe0d8ca7f86b518fee1e58730d950977ecb964"
+        },
+        {
+            "type": "file",
+            "name": "bbpress/form-forum.php",
+            "size": 7785,
+            "hash": "28a03a2a5b8bf3b1f4f9eeb3b486abdae04a21e9f47ba4a178b27f5677988449"
+        },
+        {
+            "type": "file",
+            "name": "bbpress/form-protected.php",
+            "size": 369,
+            "hash": "745a70527063692b6a3f9f318145833beccc59ff9d0b80cdaa410fc7cb0b4d46"
+        },
+        {
+            "type": "file",
+            "name": "bbpress/form-reply-move.php",
+            "size": 3419,
+            "hash": "3d121a9ae74b4a06f54f2ba3934da1f91335fc9f1b951d64a6d72041fef71105"
+        },
+        {
+            "type": "file",
+            "name": "bbpress/form-reply-search.php",
+            "size": 786,
+            "hash": "84adec68cb872c0f898c1dc301f094b934df2229b7eed53602d3ef550ab65565"
+        },
+        {
+            "type": "file",
+            "name": "bbpress/form-reply.php",
+            "size": 7487,
+            "hash": "3222e99e4e53c8d75923ceb32e5170918c9762c3d2dcfd458bbc38adef27d7a7"
+        },
+        {
+            "type": "file",
+            "name": "bbpress/form-search.php",
+            "size": 698,
+            "hash": "7fbd62dfb5b531ed45b85c9d4d154763722710f93c3179068d6573bd13aeb6be"
+        },
+        {
+            "type": "file",
+            "name": "bbpress/form-topic-merge.php",
+            "size": 4171,
+            "hash": "542ebf282c50b78226f24eb8a8eb97e99f76cc79aa17ec8bac1c5953cf276680"
+        },
+        {
+            "type": "file",
+            "name": "bbpress/form-topic-search.php",
+            "size": 785,
+            "hash": "ef221baf4fc308dd6c9c2ee5cb3721f3d14d7eaae2fdc7b242cbfab8a4ccb3ca"
+        },
+        {
+            "type": "file",
+            "name": "bbpress/form-topic-split.php",
+            "size": 4648,
+            "hash": "2dd2f22b827e595c90660f1ce7d8a41b5ec6c8f77b1f43e21b00e4c92a935747"
+        },
+        {
+            "type": "file",
+            "name": "bbpress/form-topic-tag.php",
+            "size": 4724,
+            "hash": "492f9e9f9e5a9da10daafb051f7062c3bbd97ff0811207c68f4190b57b09dfc6"
+        },
+        {
+            "type": "file",
+            "name": "bbpress/form-topic.php",
+            "size": 11866,
+            "hash": "2898a7280f057c01801f916053aa2a6a57158db19f1b1e179234298f17c249d0"
+        },
+        {
+            "type": "file",
+            "name": "bbpress/form-user-edit.php",
+            "size": 5618,
+            "hash": "540fd029faef4b7964d4be125f038fa0f8277800388eaebe7524a2cc0c4b621d"
+        },
+        {
+            "type": "file",
+            "name": "bbpress/form-user-login.php",
+            "size": 1868,
+            "hash": "a34fb80937464d8e15f20198314bfb476b5f44658b17d7f66b4552f390998311"
+        },
+        {
+            "type": "file",
+            "name": "bbpress/form-user-lost-pass.php",
+            "size": 1008,
+            "hash": "234f5e23d0adfd0dac707cfb877dccd8c1694782ef1c6bd35a89fbc7d5efac68"
+        },
+        {
+            "type": "file",
+            "name": "bbpress/form-user-passwords.php",
+            "size": 2256,
+            "hash": "c2d654276a19e5640872942bd2bf12c2567d1d9d2f1521125ab6de4b0ba19371"
+        },
+        {
+            "type": "file",
+            "name": "bbpress/form-user-register.php",
+            "size": 1652,
+            "hash": "66ff023ba92e4bba84670ae9e96e01f3f11f55887991e9bd3dd948a663fc189e"
+        },
+        {
+            "type": "file",
+            "name": "bbpress/form-user-roles.php",
+            "size": 352,
+            "hash": "49e913655556a2632606ff723cdd6402b0ee9dcca4eab26aba6de10d8ececed5"
+        },
+        {
+            "type": "file",
+            "name": "bbpress/loop-forums.php",
+            "size": 1235,
+            "hash": "329b233a18890ba7b0e9941825b8171643e869db1e4d06975de98b89158954a8"
+        },
+        {
+            "type": "file",
+            "name": "bbpress/loop-replies.php",
+            "size": 542,
+            "hash": "e6c01442c3cb013804b243dd0bac9d8e5247b3c599f75ff7ebbefd2eb346f1db"
+        },
+        {
+            "type": "file",
+            "name": "bbpress/loop-search-forum.php",
+            "size": 1150,
+            "hash": "270c23dc031b99a1675ad98fda276ba00c9b457fed214c141d1807a500fde3ed"
+        },
+        {
+            "type": "file",
+            "name": "bbpress/loop-search-reply.php",
+            "size": 1612,
+            "hash": "5b224bc4e4253a41e587c7a2f034d33f9507f97b9a49c2e5a771a05ebae5129b"
+        },
+        {
+            "type": "file",
+            "name": "bbpress/loop-search-topic.php",
+            "size": 2144,
+            "hash": "00d940c59fe5e7d7342c81b200f4aa2f7de63c4f9d0d469705d935f47f6ee136"
+        },
+        {
+            "type": "file",
+            "name": "bbpress/loop-search.php",
+            "size": 1122,
+            "hash": "253eef0ac910075bb2b6a83db78ed69e28e9a758a132918ac44bc05f6bee0186"
+        },
+        {
+            "type": "file",
+            "name": "bbpress/loop-single-forum.php",
+            "size": 2564,
+            "hash": "2e84e4c22774ecd75f6d3530dee38203213648f5bab80c114a23762bc75c0a21"
+        },
+        {
+            "type": "file",
+            "name": "bbpress/loop-single-reply.php",
+            "size": 1733,
+            "hash": "c5be315f3f1ac3682d290fd66bede91dc95f6846ff01534478ae4c9a9864a839"
+        },
+        {
+            "type": "file",
+            "name": "bbpress/loop-single-topic.php",
+            "size": 1663,
+            "hash": "0338258b117f6cb933c06c98f3eb861f9d0bf44679de9f3172d3968c9a78183d"
+        },
+        {
+            "type": "file",
+            "name": "bbpress/loop-topics-head.php",
+            "size": 4453,
+            "hash": "ca8050370d7187a8e2d28d1dab0477f0ec79148669bd1c832b5542f72f600d72"
+        },
+        {
+            "type": "file",
+            "name": "bbpress/loop-topics.php",
+            "size": 5356,
+            "hash": "d5b5b3fe96c5447b087e67c43c01fac480c15df9c26f267052f9e04de2d88912"
+        },
+        {
+            "type": "file",
+            "name": "bbpress/pagination-replies.php",
+            "size": 545,
+            "hash": "3df7116f0fc0d9552bd7f38c2c833e867ca70053bfdbe13e0eacf59c83167919"
+        },
+        {
+            "type": "file",
+            "name": "bbpress/pagination-search.php",
+            "size": 475,
+            "hash": "3baf3735b2da6595619c61e49f422579618727052e615f4553cd0657bf2ed966"
+        },
+        {
+            "type": "file",
+            "name": "bbpress/pagination-topics.php",
+            "size": 174,
+            "hash": "37940b5d8523e514bc5dff8e7bfee7561ef36c3315db00f9989331bd7ce8b439"
+        },
+        {
+            "type": "file",
+            "name": "bbpress/user-details.php",
+            "size": 4892,
+            "hash": "f07786b1f018e4897cc7e2df7606728fe813e752e592fcaac16239cccd79f31a"
+        },
+        {
+            "type": "file",
+            "name": "bbpress/user-engagements.php",
+            "size": 873,
+            "hash": "d2df8a8a9c920e12524f0b5ebe8d6875e21a5767dc7f6876893f9f4ab7bcc573"
+        },
+        {
+            "type": "file",
+            "name": "bbpress/user-favorites.php",
+            "size": 863,
+            "hash": "892b5588b25c05bcf0ed7fd742c563b08f9d8c01691207aabf121473fc3744e7"
+        },
+        {
+            "type": "file",
+            "name": "bbpress/user-profile.php",
+            "size": 1828,
+            "hash": "7c2ecec3deeed672c309a7030b04b671e84ffa145ec83eec5099afe9acf789a9"
+        },
+        {
+            "type": "file",
+            "name": "bbpress/user-replies-created.php",
+            "size": 895,
+            "hash": "2777cbfdd1de8452ca96f427b94baca6bbdf996b91643891607603362713b044"
+        },
+        {
+            "type": "file",
+            "name": "bbpress/user-subscriptions.php",
+            "size": 1459,
+            "hash": "9ff42eb1aca9f2569fd10ad3c47b805a701c22b720dd5b208740f218401e3f53"
+        },
+        {
+            "type": "file",
+            "name": "bbpress/user-topics-created.php",
+            "size": 897,
+            "hash": "6d69280bdb83e5922b9149accf20287ff70c386356bca39eac1be91137886bcb"
+        },
+        {
+            "type": "file",
+            "name": "eazydocs/search-banner.php",
+            "size": 27,
+            "hash": "7aa373bd001f0bc70bfdfe37454bdc3c6796c567c3ace11930c474ed8a78e0a2"
+        },
+        {
+            "type": "file",
+            "name": "inc/Admin.php",
+            "size": 8589,
+            "hash": "fa4f74515f6843dac45fd67996ce73aafae1cdc268ace7524a5a098f138661ac"
+        },
+        {
+            "type": "folder",
+            "name": "inc/acf"
+        },
+        {
+            "type": "folder",
+            "name": "inc/admin"
+        },
+        {
+            "type": "file",
+            "name": "inc/ajax_actions.php",
+            "size": 42375,
+            "hash": "2c921f33fcd481e991fea84efdfadfdc9fb44c9ad68349ed081327a42a4d904a"
+        },
+        {
+            "type": "file",
+            "name": "inc/bbpress-config.php",
+            "size": 2607,
+            "hash": "8a6fa2601fe2c20aca609c7713de0ea3279d02eeb346ef01cb05c3dc59971a3d"
+        },
+        {
+            "type": "folder",
+            "name": "inc/classes"
+        },
+        {
+            "type": "folder",
+            "name": "inc/csf"
+        },
+        {
+            "type": "folder",
+            "name": "inc/demo"
+        },
+        {
+            "type": "file",
+            "name": "inc/demo_config.php",
+            "size": 10954,
+            "hash": "432c2161607386ca7d2896bbe4e04ab7a4a3e10c4604415229f8de252c8b1b08"
+        },
+        {
+            "type": "file",
+            "name": "inc/enqueue.php",
+            "size": 13157,
+            "hash": "5a5fdc2988fe299380947c419196f06b54fb68dc0904d4c493a5a96462d92b4b"
+        },
+        {
+            "type": "file",
+            "name": "inc/filter_actions.php",
+            "size": 6399,
+            "hash": "8a42c9bce40d69a72fd02e6f1f35b2ca01a849c798b52db78082be88e8311e54"
+        },
+        {
+            "type": "folder",
+            "name": "inc/meta"
+        },
+        {
+            "type": "file",
+            "name": "inc/reg_process.php",
+            "size": 5355,
+            "hash": "4207a2d3e16992f99e14cbfa30bcea094189e7c3ad5f168cad8963daae988114"
+        },
+        {
+            "type": "file",
+            "name": "inc/sidebars.php",
+            "size": 2003,
+            "hash": "cafc01e8a43db21e5acb72b26b5fdc150652354bbdef99466b074ba428b46dfe"
+        },
+        {
+            "type": "file",
+            "name": "inc/template-functions.php",
+            "size": 32239,
+            "hash": "f2c42a3fc7b64a84c3197757626efcd457202a9645af757880f0b4d9af63b878"
+        },
+        {
+            "type": "folder",
+            "name": "inc/tgm"
+        },
+        {
+            "type": "folder",
+            "name": "inc/verify"
+        },
+        {
+            "type": "file",
+            "name": "inc/woo_config.php",
+            "size": 3762,
+            "hash": "be2045bd157e4e73c63fe23b1d9b7a9fe4b08e965a5c3a40c3c89590d19c2b2e"
+        },
+        {
+            "type": "file",
+            "name": "languages/ar.mo",
+            "size": 801,
+            "hash": "19be2ee1be48687efe4348202284ab1425a279f4cb6abe345d9257fa66377684"
+        },
+        {
+            "type": "file",
+            "name": "languages/ar.po",
+            "size": 105053,
+            "hash": "546769bc5aed14fefb748fca3432a8c9b512a532937ec53d3932c0a640a2b7f5"
+        },
+        {
+            "type": "file",
+            "name": "languages/bn_BD.mo",
+            "size": 140235,
+            "hash": "3ae3a73c49fe5dcd8dafebfac1541a825233e4041df71259ad35167422f84c22"
+        },
+        {
+            "type": "file",
+            "name": "languages/bn_BD.po",
+            "size": 193142,
+            "hash": "2ac8c70d943c8562e0f4488d7e9574d78f28c277718971b795c969a3eb2a0f2d"
+        },
+        {
+            "type": "file",
+            "name": "languages/docy.pot",
+            "size": 120810,
+            "hash": "8e6240af62aabc8558dced0d57c29aadd1c3da632e0e500a65495437f861b234"
+        },
+        {
+            "type": "file",
+            "name": "languages/es_ES.mo",
+            "size": 88849,
+            "hash": "abfd7d4befaa7e09af1612e1f549939d462d35e9f57d10b1c1fcfb19fc4d2a1e"
+        },
+        {
+            "type": "file",
+            "name": "languages/es_ES.po",
+            "size": 139967,
+            "hash": "b09ba8697f50b3e0900c672b4d648055725dec3ef59ed895b7c5f5d3cee9de7c"
+        },
+        {
+            "type": "file",
+            "name": "options/opt_404.php",
+            "size": 3649,
+            "hash": "6672c4a240a5507219322503aa710f27a88085593eba2054840da6cd7b9776f7"
+        },
+        {
+            "type": "file",
+            "name": "options/opt_backup.php",
+            "size": 566,
+            "hash": "87f9b9a98154d9be1739e92d20e94a16d21de9e65a58244794bb75ed92fccae5"
+        },
+        {
+            "type": "file",
+            "name": "options/opt_blog.php",
+            "size": 11733,
+            "hash": "816df075f21f3c9c14991fb9c117ee1379a762d970102b57bdb0ad687f7f27af"
+        },
+        {
+            "type": "file",
+            "name": "options/opt_color_scheme.php",
+            "size": 2352,
+            "hash": "6080280744c1396212904191a8ff7ea58b78a618f2ff57dfd654a0d22acc0c30"
+        },
+        {
+            "type": "file",
+            "name": "options/opt_custom_code.php",
+            "size": 992,
+            "hash": "6f681c34967a09c4628b00480403122313a685a7e094ab1dedb64e6bc9251f4b"
+        },
+        {
+            "type": "file",
+            "name": "options/opt_customizer.php",
+            "size": 887,
+            "hash": "4ff902b1b988d953f69ae8f55d6bcd18ec0cd5cfc9630c44ef9edbcba9c1af28"
+        },
+        {
+            "type": "file",
+            "name": "options/opt_dark.php",
+            "size": 1664,
+            "hash": "7714b65b64b63035a0f80361267a442c2f214c75e7c46a8587f6f4c62cd3f8df"
+        },
+        {
+            "type": "file",
+            "name": "options/opt_footer.php",
+            "size": 8181,
+            "hash": "94c166e01a96e7dc003badaa30015209756829159ccc42391ec8875d799bd76d"
+        },
+        {
+            "type": "file",
+            "name": "options/opt_forum.php",
+            "size": 13291,
+            "hash": "5782494264d01e134bbdf9eaa5d4709cb751203ca11a826d910ac1b8342fc70c"
+        },
+        {
+            "type": "file",
+            "name": "options/opt_general.php",
+            "size": 12065,
+            "hash": "3f40d56c30dfd7f667bfec3c4f47f50b43e90825a9e4a1e97806e8b814413147"
+        },
+        {
+            "type": "file",
+            "name": "options/opt_header.php",
+            "size": 41969,
+            "hash": "0975f386ef1ad9cbe631293215c233c65f806fac206fbb2ae9ed8a08f75ae242"
+        },
+        {
+            "type": "file",
+            "name": "options/opt_menu.php",
+            "size": 8914,
+            "hash": "06a7588424cd3282d3e78ca7bc62d7a32559f85809876da10e2517745248e114"
+        },
+        {
+            "type": "file",
+            "name": "options/opt_privacy.php",
+            "size": 2623,
+            "hash": "384364884c549fcb4768a8c898de45424b6f982c39e23414a0d619224026e7b9"
+        },
+        {
+            "type": "file",
+            "name": "options/opt_shop.php",
+            "size": 2954,
+            "hash": "30bbad3081c114e93e41b52d7f04e5518ca0eb9daf71319873a54a743988869d"
+        },
+        {
+            "type": "file",
+            "name": "options/opt_social_links.php",
+            "size": 1558,
+            "hash": "712e99bd1db2405c92f6264a1473691aaedd395556c4bf56f9bf39b8c5e6e7c1"
+        },
+        {
+            "type": "file",
+            "name": "options/opt_typo.php",
+            "size": 6840,
+            "hash": "c3ccb5a5cb1915e3d208c3c46ccabba314575bdc81fffb99f88258756772232d"
+        },
+        {
+            "type": "file",
+            "name": "options/opt_update.php",
+            "size": 15736,
+            "hash": "13a3e508db8d5b65c7014b83a81768078c1da9b0549dae22f79ce20d9b854d44"
+        },
+        {
+            "type": "folder",
+            "name": "template-parts/contents"
+        },
+        {
+            "type": "folder",
+            "name": "template-parts/footers"
+        },
+        {
+            "type": "folder",
+            "name": "template-parts/forum"
+        },
+        {
+            "type": "folder",
+            "name": "template-parts/header-elements"
+        },
+        {
+            "type": "file",
+            "name": "template-parts/sidebar-modern.php",
+            "size": 19429,
+            "hash": "ae8fd66d34282243c73bff62aaccc9de204a23f40b621559f9ef4d2283f50de7"
+        },
+        {
+            "type": "folder",
+            "name": "template-parts/single-post"
+        },
+        {
+            "type": "file",
+            "name": "woocommerce/archive-product.php",
+            "size": 4822,
+            "hash": "92ee547cbbdaeb0ffc8ce53e14c54c7dd5fcef19e9d49d9e59cd659b0a423ec7"
+        },
+        {
+            "type": "folder",
+            "name": "woocommerce/cart"
+        },
+        {
+            "type": "folder",
+            "name": "woocommerce/checkout"
+        },
+        {
+            "type": "file",
+            "name": "woocommerce/content-product.php",
+            "size": 1661,
+            "hash": "021cc2276fc27473b8d0fb3b0828d0c9ca1042634402833da48d2c34f9d2107e"
+        },
+        {
+            "type": "file",
+            "name": "woocommerce/content-product_cat.php",
+            "size": 1654,
+            "hash": "b71f9b1c8cedde89c185737a77fa1272daeef5d6a06d252257f4d224c8ff19e4"
+        },
+        {
+            "type": "file",
+            "name": "woocommerce/content-single-product.php",
+            "size": 2940,
+            "hash": "e388c02a320f9401db604e146cf9d22a296721b5db10c4dbd991e6d125f585e0"
+        },
+        {
+            "type": "file",
+            "name": "woocommerce/content-widget-product.php",
+            "size": 1360,
+            "hash": "a36fd46f1368fdc2338e99f39b28f718c79a5f51c9402b5dffe0a6680cc39d8f"
+        },
+        {
+            "type": "folder",
+            "name": "woocommerce/global"
+        },
+        {
+            "type": "folder",
+            "name": "woocommerce/loop"
+        },
+        {
+            "type": "file",
+            "name": "woocommerce/product-searchform.php",
+            "size": 1179,
+            "hash": "6ef6b5c608edcd582280eeaf0da9eca722c9834ebb72bc6af3964314b573398c"
+        },
+        {
+            "type": "folder",
+            "name": "woocommerce/single-product"
+        },
+        {
+            "type": "file",
+            "name": "woocommerce/single-product-reviews.php",
+            "size": 5209,
+            "hash": "59899f14f4031905b7a6b29fda8bfd3a296f0d4feeb0b27c8708b3c406c9329a"
+        },
+        {
+            "type": "file",
+            "name": "woocommerce/single-product.php",
+            "size": 1589,
+            "hash": "355806dcad0a7c04e407268e0f886b2c4fa2b9a5f2fc8ff0928f7addc6ceb3c4"
+        },
+        {
+            "type": "file",
+            "name": "woocommerce/taxonomy-product_cat.php",
+            "size": 825,
+            "hash": "5cb20718a4fbb6643ed0f419372ba070ecfb65337c60c0dc025f87777f5d4587"
+        },
+        {
+            "type": "file",
+            "name": "woocommerce/taxonomy-product_tag.php",
+            "size": 820,
+            "hash": "f788a9c0e009eb265e2b2c05ccc42ccf03e66ada63cffb6c8dbc50d18e61c55c"
+        },
+        {
+            "type": "folder",
+            "name": "woocommerce/wc-template-parts"
+        },
+        {
+            "type": "file",
+            "name": "assets/css/admin.css",
+            "size": 15055,
+            "hash": "6dae2c865921d73e31aa17f745b8e9b65e90857b8087eac784a949011152355b"
+        },
+        {
+            "type": "file",
+            "name": "assets/css/blog-single.css",
+            "size": 8749,
+            "hash": "c73845d03c562689804329e4b60b238e4ee4cd5cb3ac9beaa2df6d41212d97c7"
+        },
+        {
+            "type": "file",
+            "name": "assets/css/checkout.css",
+            "size": 20969,
+            "hash": "da372ff243d5fb8217372510246f4bce54bfcc8aaaec5d351872049a3c0b14ef"
+        },
+        {
+            "type": "file",
+            "name": "assets/css/cmgalaxy-header.css",
+            "size": 28937,
+            "hash": "78a1c37db531a0d80a68c431defc28906af0289f68373f486f71eb1ca5cc8353"
+        },
+        {
+            "type": "file",
+            "name": "assets/css/dark-mode.css",
+            "size": 13452,
+            "hash": "a7cf4664ba7d673f6cebeef5196aaa4414fafad85f139682957bded478e56877"
+        },
+        {
+            "type": "file",
+            "name": "assets/css/elementor-style.css",
+            "size": 203,
+            "hash": "bce761e716030d81aebaea202d1fc1443cf6ffe94f12189f07a4c0cef9f90e10"
+        },
+        {
+            "type": "file",
+            "name": "assets/css/forum.css",
+            "size": 53572,
+            "hash": "b0e2995fef9680195ebdcd318ed686152438bcb0765f0ade3b6dd205e5b548aa"
+        },
+        {
+            "type": "file",
+            "name": "assets/css/modern-sidebar.css",
+            "size": 15927,
+            "hash": "91aab354b019efd087edbab74359e234b4af556aa4c6ec07c989eb654245a77e"
+        },
+        {
+            "type": "file",
+            "name": "assets/css/print.css",
+            "size": 75,
+            "hash": "064a429100f58639a096d11eac7e6554449dc442c25f1dbcdeafe339489f15fa"
+        },
+        {
+            "type": "file",
+            "name": "assets/css/responsive.css",
+            "size": 57656,
+            "hash": "0ce5d78177cdc08e290538cecf8208c3f915ced4de27c07bebed9048f271472b"
+        },
+        {
+            "type": "file",
+            "name": "assets/css/rtl.css",
+            "size": 38608,
+            "hash": "6995022b1b0d20d78c4f2b1f38d4a414b890f8df78e221b8cde2ce18f2864542"
+        },
+        {
+            "type": "file",
+            "name": "assets/css/shop-my_account.css",
+            "size": 3320,
+            "hash": "c6cd3f47bb82fe5ae780d6c75653a8945d416dd32e112459d13e346968f551e2"
+        },
+        {
+            "type": "file",
+            "name": "assets/css/shop.css",
+            "size": 40405,
+            "hash": "46b9b1a18c2cfd350ba2a066a7e9d95d80bc8a627963c986a2693e78f095a087"
+        },
+        {
+            "type": "file",
+            "name": "assets/css/mobile-menu-custom.css",
+            "size": 3298,
+            "hash": "d4df55bb78f8bd6077ba854b224ec5caec01f785200b8f77522ddaf977f0353f"
+        },
+        {
+            "type": "file",
+            "name": "assets/css/simple-post-card.css",
+            "size": 3047,
+            "hash": "8dfbc8341210e9333432f320a236091f76825809dade18ff66295d1070336e96"
+        },
+        {
+            "type": "file",
+            "name": "assets/css/social-icons.css",
+            "size": 3948,
+            "hash": "d0532b6c3bca9f593c14e3b204463f493319ddb096959c756bc39fe05805347d"
+        },
+        {
+            "type": "file",
+            "name": "assets/css/style-main.css",
+            "size": 392879,
+            "hash": "48905afd3cc85da9fbddbfb6becc6cfaec7abdac2522ad8e743bee55aed20bf1"
+        },
+        {
+            "type": "file",
+            "name": "assets/css/tutor-lms.css",
+            "size": 410,
+            "hash": "30161da29a1f29b287a1ef7b472494e46ac465e06c9a599d13df542e2d364c72"
+        },
+        {
+            "type": "file",
+            "name": "assets/css/typography-schema.css",
+            "size": 10387,
+            "hash": "6099162cfd49a533e17670db842ea41cff84ea931a72fc07495055d63f0656fe"
+        },
+        {
+            "type": "file",
+            "name": "assets/extra/user.png",
+            "size": 4841,
+            "hash": "5c941ed53460bc0932905e69e27a43c4350c6eab80969c521eb4582cda467c17"
+        },
+        {
+            "type": "file",
+            "name": "assets/extra/forum_bg.png",
+            "size": 120016,
+            "hash": "c025aa7a1dacc620ff61e7b4a0583f9e5fc8baa3661fe2255e063a8468be760f"
+        },
+        {
+            "type": "file",
+            "name": "assets/html/lex-assistant.html",
+            "size": 47446,
+            "hash": "3ef232e940e489285f845cd88bf6406b7b775d634381bc7eb6f8e4af539783b5"
+        },
+        {
+            "type": "file",
+            "name": "assets/img/Group 1000004806.png",
+            "size": 1412,
+            "hash": "d16727fe393211e5a71f1d703f28a24bd9aa1d1288ff8f722c83257831475033"
+        },
+        {
+            "type": "file",
+            "name": "assets/img/act.png",
+            "size": 4153,
+            "hash": "d0c12e8acd2872158f2fb54ac60c4d8b72a5a6f3603554635cb53e47be0d45fb"
+        },
+        {
+            "type": "folder",
+            "name": "assets/img/404"
+        },
+        {
+            "type": "file",
+            "name": "assets/img/author-icon.png",
+            "size": 915,
+            "hash": "51c31b4b8a1bcbc575a5ca51541fb49a74761d6e5949a84eeb03f0607adbd8c0"
+        },
+        {
+            "type": "file",
+            "name": "assets/img/banner-bg.png",
+            "size": 42392,
+            "hash": "91b193900d4de9f21d47a136a884877d3f03d825dd7a8ec82dae1a006e100af9"
+        },
+        {
+            "type": "folder",
+            "name": "assets/img/banner-blog"
+        },
+        {
+            "type": "folder",
+            "name": "assets/img/blog-classic"
+        },
+        {
+            "type": "file",
+            "name": "assets/img/chat.svg",
+            "size": 1753,
+            "hash": "a21c57b154c1d8a9cc74c5e02ccbd20be143c3ebc56d7e37b04d850f681411bc"
+        },
+        {
+            "type": "file",
+            "name": "assets/img/clone.svg",
+            "size": 949,
+            "hash": "64fea97bb3d6baea1978cab35da937a5d34d53827a166b843c4428b3aca5ade2"
+        },
+        {
+            "type": "file",
+            "name": "assets/img/community.png",
+            "size": 611,
+            "hash": "f980bcd541ce1781f64be9a5964586512176d26fbb121b261d5f8974d9d7d798"
+        },
+        {
+            "type": "file",
+            "name": "assets/img/community.svg",
+            "size": 1265,
+            "hash": "b592422f20e074151fa01efdb9249e180c7a939fd6beb66169acabb3ec3abcca"
+        },
+        {
+            "type": "folder",
+            "name": "assets/img/dashboard"
+        },
+        {
+            "type": "file",
+            "name": "assets/img/dashboard-cion.png",
+            "size": 1105,
+            "hash": "ca0b2965a522ce89bccc4b502aa22865b169166f032bc8addbfccd3b011cb32d"
+        },
+        {
+            "type": "file",
+            "name": "assets/img/dashboard.svg",
+            "size": 2295,
+            "hash": "53d4cdacaa17329598107a695a9dfc1166bab9a1097f3d6f844e32aed71a0dfa"
+        },
+        {
+            "type": "file",
+            "name": "assets/img/docy-cong.jpg",
+            "size": 55163,
+            "hash": "ac2c51e241927d2147d6ebbc8a940de498852f965c2fe94d0676bdfd8055d042"
+        },
+        {
+            "type": "file",
+            "name": "assets/img/faq.svg",
+            "size": 2016,
+            "hash": "e91a440a27f88825ca58fdacb794030cdf667b7710b9461f11676b0547057c8a"
+        },
+        {
+            "type": "file",
+            "name": "assets/img/folder-open.png",
+            "size": 6726,
+            "hash": "4af2adb01bc3c03027475cf2e9de4131b961f77b1ace1989063e3f99fa2c396f"
+        },
+        {
+            "type": "folder",
+            "name": "assets/img/footer"
+        },
+        {
+            "type": "file",
+            "name": "assets/img/folder-closed.png",
+            "size": 5143,
+            "hash": "63fe7708c0c6903efb05ab992b11c869c5f76dea50607dce812a62f6e08f35de"
+        },
+        {
+            "type": "folder",
+            "name": "assets/img/forum"
+        },
+        {
+            "type": "file",
+            "name": "assets/img/get.png",
+            "size": 3927,
+            "hash": "e43c27911e536f2e339158fb32110dd83f5d255f28692221f95d06ae4bf0f1cf"
+        },
+        {
+            "type": "file",
+            "name": "assets/img/getting start.svg",
+            "size": 2112,
+            "hash": "cc29d0465f271506da64ef6e9994dfa33040a9892a66d79143b44ba27b4db27f"
+        },
+        {
+            "type": "file",
+            "name": "assets/img/global.svg",
+            "size": 3356,
+            "hash": "71e8985244bb3566646c7ddb84dbe8d35c4b2717a6568cba666b99516871d79e"
+        },
+        {
+            "type": "folder",
+            "name": "assets/img/headers"
+        },
+        {
+            "type": "folder",
+            "name": "assets/img/home_one"
+        },
+        {
+            "type": "folder",
+            "name": "assets/img/icons"
+        },
+        {
+            "type": "file",
+            "name": "assets/img/indexbg.png",
+            "size": 871708,
+            "hash": "cf7ff6bc7bac5200ef12c3a3fb4a0a70653443d96f6d4dd71d667502c2999bf9"
+        },
+        {
+            "type": "file",
+            "name": "assets/img/indexbg.svg",
+            "size": 3144,
+            "hash": "f885af5da86319e5fbda3e236d9366175603404f6d2eedb89886821e66a54f74"
+        },
+        {
+            "type": "file",
+            "name": "assets/img/kblogo.png",
+            "size": 8004,
+            "hash": "e9ea73e1d1160db5a1037e269f3f7688f6c47ad813205b6b046712f142a26a2a"
+        },
+        {
+            "type": "file",
+            "name": "assets/img/kblogo.svg",
+            "size": 23092,
+            "hash": "02ec30a860c70955778bde5b4412a24f5aa998eb6e80a114e109be5ec87c3ace"
+        },
+        {
+            "type": "file",
+            "name": "assets/img/kblogophone.svg",
+            "size": 24085,
+            "hash": "334113e7689458abb21f7726bc96efa288cfb36b036c89d183c02ee6dca745b5"
+        },
+        {
+            "type": "file",
+            "name": "assets/img/knowledge.png",
+            "size": 419,
+            "hash": "c5138e2b6ccc72756e402fd1140896eb167c6d48cf75b743e9172dda2aee11db"
+        },
+        {
+            "type": "folder",
+            "name": "assets/img/layouts"
+        },
+        {
+            "type": "file",
+            "name": "assets/img/leaf_left.png",
+            "size": 13582,
+            "hash": "7d8ada69e540b4478c48a774aaae4a0279e57b468f96ff4f044c1093ae08c43b"
+        },
+        {
+            "type": "file",
+            "name": "assets/img/leaf_right.png",
+            "size": 11071,
+            "hash": "35c6285dde4b21b7832bb1ade7b4c055838f122d02efd1415c4a41f9fc0214a5"
+        },
+        {
+            "type": "file",
+            "name": "assets/img/lex expand.png",
+            "size": 185219,
+            "hash": "8edf5e9fd195d6fafd8e75c78a778da7cc57dfd75c505fbaf779cc4eb25b323f"
+        },
+        {
+            "type": "file",
+            "name": "assets/img/lex modul.svg",
+            "size": 127681,
+            "hash": "f351ff2c961691963a781daf97aedf5d7081c6d81940bba5bdd41286e2f5a418"
+        },
+        {
+            "type": "file",
+            "name": "assets/img/lexlogo.png",
+            "size": 604,
+            "hash": "f4002ed0bac742558df7ca65047b2a4b7be1470bec15edc9b4b5a2fc8ccf2a86"
+        },
+        {
+            "type": "file",
+            "name": "assets/img/link.svg",
+            "size": 1303,
+            "hash": "ff4d4939e1337efddcb05006182601b7805964ec3db08daf9fae2b4b6f09fa9d"
+        },
+        {
+            "type": "file",
+            "name": "assets/img/logo-2x.png",
+            "size": 3404,
+            "hash": "4470cca181d25702877dc093679b043bc90f6792fb5801bfb0bb7eb15a847189"
+        },
+        {
+            "type": "file",
+            "name": "assets/img/logo-w.png",
+            "size": 1454,
+            "hash": "f0be245b8c534c0ef97f757b4fdbc3596c8f54e07f09255a3b8a1a6c8cd1d37e"
+        },
+        {
+            "type": "file",
+            "name": "assets/img/lexlogo.svg",
+            "size": 3393,
+            "hash": "9ff60c512bece1cca06e88c51f63f9594a9b0a8efe3d0fa0d8984d700bb4416d"
+        },
+        {
+            "type": "file",
+            "name": "assets/img/logo-w2x.png",
+            "size": 3034,
+            "hash": "944c345c073cf28377779a9d98b792fa67344463b71054782b4c8ec47101e345"
+        },
+        {
+            "type": "file",
+            "name": "assets/img/logo.png",
+            "size": 7381,
+            "hash": "68f77dc975eeba4a250d1f23dc1c1b3b150bb1666d931616f3375ab32bafd2b1"
+        },
+        {
+            "type": "file",
+            "name": "assets/img/message.svg",
+            "size": 1314,
+            "hash": "26e95dc021fc14c41b612247a08bd24838f52b11e57223d0c7d142f372ebb025"
+        },
+        {
+            "type": "file",
+            "name": "assets/img/navigation.svg",
+            "size": 1093,
+            "hash": "ce6092e952652d02b1d5a25e6495616ac9c483de481b841a4b3adf49cb0cc2f7"
+        },
+        {
+            "type": "folder",
+            "name": "assets/img/options"
+        },
+        {
+            "type": "file",
+            "name": "assets/img/play.svg",
+            "size": 735,
+            "hash": "13266c3ac8901be1971f4d5b221761a9a63083f395a9537a06ecfef97e2ebc53"
+        },
+        {
+            "type": "folder",
+            "name": "assets/img/search-banners"
+        },
+        {
+            "type": "file",
+            "name": "assets/img/shap_01.png",
+            "size": 175105,
+            "hash": "eee28a827efbccbeb587cb1b314a29e88a09cf5741d7487cefadc4c1c0c6c082"
+        },
+        {
+            "type": "file",
+            "name": "assets/img/shap_02.png",
+            "size": 146003,
+            "hash": "e94715ea5b1fd76d7e8d807e2417c7650dcc314789677491b28d97c57fc86826"
+        },
+        {
+            "type": "file",
+            "name": "assets/img/sidebarimg.png",
+            "size": 99638,
+            "hash": "137f33789ac7a65114a0b4aaf5184a34e8157d80d8f769ac91e3cb5aee661dfe"
+        },
+        {
+            "type": "folder",
+            "name": "assets/img/sign-up"
+        },
+        {
+            "type": "file",
+            "name": "assets/img/signin.svg",
+            "size": 829,
+            "hash": "0c4d9b3c20db60aed5e2ef942c7bbb90632d2a94b7d875dd3e25a539e8edaf49"
+        },
+        {
+            "type": "file",
+            "name": "assets/img/sonar.svg",
+            "size": 3886,
+            "hash": "3a568a10931b0f31940b8b3d6002a78c13af3ddcc5b6683bfe563d0fbfbaa13d"
+        },
+        {
+            "type": "file",
+            "name": "assets/img/spinner_logo.png",
+            "size": 984,
+            "hash": "d5d33fabaa031371de985e8ea79224e1dc278aa67c68ad94e144a946f00d2569"
+        },
+        {
+            "type": "file",
+            "name": "assets/img/v.svg",
+            "size": 4410,
+            "hash": "3a98048cc6e9c3b7504e51bf02cd211a350ba6ce061c97da34ba5a3a799cefe0"
+        },
+        {
+            "type": "file",
+            "name": "assets/img/vizulize.png",
+            "size": 3121,
+            "hash": "70cb3aaf78905314733b2e8d629169811cb8a601cfa375e90971e0a7682be2e7"
+        },
+        {
+            "type": "file",
+            "name": "assets/img/signin.png",
+            "size": 587,
+            "hash": "84f56efce319ce0d74bfb3b15e24845e6c894ce48978f4da8e1bf3cf0251ff5f"
+        },
+        {
+            "type": "file",
+            "name": "assets/js/TweenMax.min.js",
+            "size": 115726,
+            "hash": "ba74b64b5ecdface8cb3666535be97b2ec37b1b20a3ebb508a8a11801eb76ac0"
+        },
+        {
+            "type": "file",
+            "name": "assets/js/admin.js",
+            "size": 220,
+            "hash": "1a705b32f93213687463555607702f22ec4ef44e0c1ca786f3bfea90cc51f488"
+        },
+        {
+            "type": "file",
+            "name": "assets/js/ajax-search-form.js",
+            "size": 3901,
+            "hash": "7998ddb8080bac4fe1de50741335acbc08e2aa4047b308faa18350b7f6a8ed3d"
+        },
+        {
+            "type": "file",
+            "name": "assets/js/cmgalaxy-header-v2.js",
+            "size": 12374,
+            "hash": "df04a99e8b2f96770c8dae16362f504ed43489cc65361332522c1dc5355d4f72"
+        },
+        {
+            "type": "file",
+            "name": "assets/js/cmgalaxy-header.js",
+            "size": 7083,
+            "hash": "7a0994120708da869455b28d4b4b831c7ee033f2f9925f62d4edd3639124510f"
+        },
+        {
+            "type": "file",
+            "name": "assets/js/dark-mode.js",
+            "size": 2480,
+            "hash": "8d417ef2a4aa59eb8230565604ff8f4b17a3fe61a01528cb6fcda47937f75a52"
+        },
+        {
+            "type": "file",
+            "name": "assets/js/forum.js",
+            "size": 9920,
+            "hash": "d5a82a89efa9bb13dd2db32317f5f114ef365a721fd9d0ce217599f9273b22c6"
+        },
+        {
+            "type": "file",
+            "name": "assets/js/infinite-scroll-v2.js",
+            "size": 7618,
+            "hash": "213d12249fb7e7e9b04ebf3b705354da83b5b7f7d68bc268b7937f97b7293804"
+        },
+        {
+            "type": "file",
+            "name": "assets/js/jquery.wavify.js",
+            "size": 4334,
+            "hash": "d2fd214f4af58cc2b08ca6465a6b93f70ce14df0423f56a8bf4406629b7739ff"
+        },
+        {
+            "type": "file",
+            "name": "assets/js/main.js",
+            "size": 28302,
+            "hash": "2d6bd51aaf8f502c1a888c63c6e154095e56b644e0c1ad5b43b974f4030b75f3"
+        },
+        {
+            "type": "file",
+            "name": "assets/js/pre-loader.js",
+            "size": 312,
+            "hash": "1cc9a6f4e8b3660029549aa6dbcbbc3c29108dc3738140551b79762a02a5eb30"
+        },
+        {
+            "type": "file",
+            "name": "assets/js/printThis.js",
+            "size": 13951,
+            "hash": "60fe374019e8ea4e30e6de75e2345e42d0f44c0a8c8c602279ce1da79f0b6996"
+        },
+        {
+            "type": "file",
+            "name": "assets/js/remove-arrows.js",
+            "size": 5350,
+            "hash": "38a17a19508acbd93367cef193a8fe10a0a17d5dc86e794524d01d4d8efdf88e"
+        },
+        {
+            "type": "file",
+            "name": "assets/js/toc-click-fix.js",
+            "size": 5902,
+            "hash": "43e212ce68bac21ffa30e924753af7c1d8ea668788e8de010600c7e42ab6be74"
+        },
+        {
+            "type": "file",
+            "name": "assets/js/sticky-navbar-fix.js",
+            "size": 872,
+            "hash": "08540819b882baa89c6794ac1774668ee8b6fd3aa2920764baccef3ee0098b8a"
+        },
+        {
+            "type": "file",
+            "name": "assets/scss/_animation.scss",
+            "size": 776,
+            "hash": "3662e29772446ed4d1724f11a55ce26bf5a648f2faa768b7922468f4d89b9e26"
+        },
+        {
+            "type": "file",
+            "name": "assets/scss/_blog.scss",
+            "size": 21807,
+            "hash": "a8ea103f07a40bd6a49c3ef9dda7b34282b35c41dd96618dfa19265942478f22"
+        },
+        {
+            "type": "file",
+            "name": "assets/scss/_comments.scss",
+            "size": 3988,
+            "hash": "f1c2d9840343e5f761baf261ff72eb746da03424ca38a55e60e1549639952839"
+        },
+        {
+            "type": "file",
+            "name": "assets/scss/_community.scss",
+            "size": 4084,
+            "hash": "80c2cd61858800765d5a926d35f26db3cd4e5d25ad2d9431963de4bef7306c80"
+        },
+        {
+            "type": "file",
+            "name": "assets/scss/_docs.scss",
+            "size": 362,
+            "hash": "00912330f2b2a7987b9f27970bc24b3d81b775ed0f85b3e127d5bfdd30558bbd"
+        },
+        {
+            "type": "file",
+            "name": "assets/scss/_dark_mode.scss",
+            "size": 10386,
+            "hash": "1c94c96ebfa65d096bac95b9998ca3377c09000ccb47c194c3ca90ca2779dfa5"
+        },
+        {
+            "type": "file",
+            "name": "assets/scss/_elementor_style.scss",
+            "size": 192,
+            "hash": "ac9acfa048e11bd9617b51a5a25f5c8c2f461fc21a996397696df5279d20a355"
+        },
+        {
+            "type": "file",
+            "name": "assets/scss/_features.scss",
+            "size": 11726,
+            "hash": "f350eb58fc775b279ed8de811f29c7365820974d0ee648a3d1e4e0b0c75ff676"
+        },
+        {
+            "type": "file",
+            "name": "assets/scss/_error.scss",
+            "size": 2261,
+            "hash": "f255cb37d716749781326ea5af88b728397e361eb471f5122059c72f4c655fd7"
+        },
+        {
+            "type": "file",
+            "name": "assets/scss/_footer.scss",
+            "size": 11434,
+            "hash": "ce36f8e7b16cc47c447a7974dbbb80cd3788f139dc53ea3c011c3bc19bbbc882"
+        },
+        {
+            "type": "file",
+            "name": "assets/scss/_forum-single.scss",
+            "size": 13020,
+            "hash": "53dcee0a972ad6bfd941233a3315542c096059393a6af58dcf1c0110a4d84b68"
+        },
+        {
+            "type": "file",
+            "name": "assets/scss/_header.scss",
+            "size": 24391,
+            "hash": "291ee5e09b524410554d1e1d70d14cf5e05feb3cda7bc8d925d8ef1ca3b94385"
+        },
+        {
+            "type": "file",
+            "name": "assets/scss/_home-creative.scss",
+            "size": 18112,
+            "hash": "ed31e1b5de0f8daea2594230562cde9d64d8938acbc8ffa6ba63a70dcd7972cd"
+        },
+        {
+            "type": "file",
+            "name": "assets/scss/_home_forum.scss",
+            "size": 3899,
+            "hash": "5449afc971854e7061ac4e2c32a63b38bd5a763d9c77430c8819e3235a5b1895"
+        },
+        {
+            "type": "file",
+            "name": "assets/scss/_keyframe.scss",
+            "size": 7594,
+            "hash": "f4d255800aa2bbf5714aaf33f4bfa103a5230389575c7ab395a1577b3b7302f2"
+        },
+        {
+            "type": "file",
+            "name": "assets/scss/_predefine.scss",
+            "size": 8593,
+            "hash": "510b3cfc179c302c4290827d5c3dd155e7be08cd39fcad742c57a6b86ef09ce9"
+        },
+        {
+            "type": "file",
+            "name": "assets/scss/_search_banner.scss",
+            "size": 40979,
+            "hash": "6b91684578f604db6d94aba8e5dceb88bd5bc4110ce732021ae98f172a38446c"
+        },
+        {
+            "type": "file",
+            "name": "assets/scss/_shortcode.scss",
+            "size": 19315,
+            "hash": "fba7fd375c38b7704e7ddee9fe30002350ce9d4b4b1a91cda3a0529f27af175e"
+        },
+        {
+            "type": "file",
+            "name": "assets/scss/_signup.scss",
+            "size": 5670,
+            "hash": "9918e4614cfcb558a519eb53dfe66d443ead28227deedf9d15da1ec10ebd73d2"
+        },
+        {
+            "type": "file",
+            "name": "assets/scss/_toc-sidebar.scss",
+            "size": 6656,
+            "hash": "65a5b8700e8886309cc21c5180db3ce27e4c7b7451bc34307e23afdc797f5e29"
+        },
+        {
+            "type": "file",
+            "name": "assets/scss/_top_header.scss",
+            "size": 1747,
+            "hash": "75d60ad2b585294d1d16633fc0e0762a8edf6c747f75999acec0148b3758d34a"
+        },
+        {
+            "type": "file",
+            "name": "assets/scss/_typography-schema.scss",
+            "size": 9062,
+            "hash": "615d167cc645d9e7c50d4fc5933f33ee7764128b4c6368854a22e2fdf56337a2"
+        },
+        {
+            "type": "file",
+            "name": "assets/scss/_typography.scss",
+            "size": 6727,
+            "hash": "d0c62088deb6e9ea148461fea603537ac9a5feb33d46e6299a803ebe1dd3b744"
+        },
+        {
+            "type": "file",
+            "name": "assets/scss/_variables.scss",
+            "size": 994,
+            "hash": "cccd4b299bde715f084377e4de8e9761037d75e83436cc2057a2c93bdb7e8065"
+        },
+        {
+            "type": "file",
+            "name": "assets/scss/_wp-custom.scss",
+            "size": 24098,
+            "hash": "5cd6e8d94ccad191c8b8c73ae79b9d24aa5cc367da5c9cd2a510fdb9ec51e2a4"
+        },
+        {
+            "type": "file",
+            "name": "assets/scss/_wp-elements.scss",
+            "size": 21155,
+            "hash": "32bdf98deb7f233d89ac2b41b190dde8a83e9ac3682b650d4d769c7f0bd43ed5"
+        },
+        {
+            "type": "folder",
+            "name": "assets/scss/admin"
+        },
+        {
+            "type": "file",
+            "name": "assets/scss/_tutor-lms.scss",
+            "size": 3227,
+            "hash": "88daebfea6ef1f5b5df06abf5f0fae5d2ce45675f25c5a19c9fea5ee8af40dfb"
+        },
+        {
+            "type": "file",
+            "name": "assets/scss/blog-single.scss",
+            "size": 8130,
+            "hash": "d2f2795398daceea008507c13f8e717b4a57da412b0beeb8dedcc5571f24c43c"
+        },
+        {
+            "type": "file",
+            "name": "assets/scss/checkout.scss",
+            "size": 19302,
+            "hash": "37d11961b3cfa7ca64b3ce89736708410377c0879eac77d32366120e6cd5d440"
+        },
+        {
+            "type": "file",
+            "name": "assets/scss/dark-mode.scss",
+            "size": 135,
+            "hash": "dcb5370aae0f690688f3f01280aa85597fd46435a8bdd54a2f861ea291cc6025"
+        },
+        {
+            "type": "file",
+            "name": "assets/scss/admin.scss",
+            "size": 599,
+            "hash": "32a042fec893d6625eb93a7315618d0277a382015814a7526aacaadb85ed458e"
+        },
+        {
+            "type": "folder",
+            "name": "assets/scss/elements"
+        },
+        {
+            "type": "file",
+            "name": "assets/scss/forum.scss",
+            "size": 51846,
+            "hash": "e532a4bf4f62b5758b7a12feda341f21ef7a0e76624a19aca696158d684ce43c"
+        },
+        {
+            "type": "file",
+            "name": "assets/scss/rtl.scss",
+            "size": 37354,
+            "hash": "7729bd97828df5597f1e9a2e8bad416b7e4463aeafba118f120d5a1bfb22b1a1"
+        },
+        {
+            "type": "file",
+            "name": "assets/scss/shop-my_account.scss",
+            "size": 3420,
+            "hash": "25ed94acb2a5dbdd6bf78d2ee9c76a5078387b291dc9d183f466c38044d09550"
+        },
+        {
+            "type": "file",
+            "name": "assets/scss/shop.scss",
+            "size": 37941,
+            "hash": "467786902efd730b692afdcfca913ebdd9be8fd2e8b7c5724c0a943f6672edf4"
+        },
+        {
+            "type": "file",
+            "name": "assets/scss/style-main.scss",
+            "size": 1102,
+            "hash": "b75d52a9ac9e801ad74bba0920a01426be6117e926810cacb9959e5dec0dc6b1"
+        },
+        {
+            "type": "folder",
+            "name": "assets/scss/widgets"
+        },
+        {
+            "type": "folder",
+            "name": "assets/vendors/PureCookie"
+        },
+        {
+            "type": "folder",
+            "name": "assets/vendors/animation"
+        },
+        {
+            "type": "folder",
+            "name": "assets/vendors/bootstrap"
+        },
+        {
+            "type": "folder",
+            "name": "assets/vendors/dark"
+        },
+        {
+            "type": "folder",
+            "name": "assets/vendors/elegant-icon"
+        },
+        {
+            "type": "folder",
+            "name": "assets/vendors/font-awesome"
+        },
+        {
+            "type": "folder",
+            "name": "assets/vendors/font-size"
+        },
+        {
+            "type": "folder",
+            "name": "assets/vendors/magnify-pop"
+        },
+        {
+            "type": "folder",
+            "name": "assets/vendors/niceselectpicker"
+        },
+        {
+            "type": "folder",
+            "name": "assets/vendors/mcustomscrollbar"
+        },
+        {
+            "type": "folder",
+            "name": "assets/vendors/slick"
+        },
+        {
+            "type": "folder",
+            "name": "assets/vendors/tippy"
+        },
+        {
+            "type": "folder",
+            "name": "assets/vendors/video"
+        },
+        {
+            "type": "folder",
+            "name": "assets/vendors/wow"
+        },
+        {
+            "type": "file",
+            "name": "inc/acf/acf-export-2022-04-09.json",
+            "size": 15971,
+            "hash": "02440ea45b6bec8359aa407c22952b381da15b4e1e8e3b58e2c4dad0ca8b922b"
+        },
+        {
+            "type": "file",
+            "name": "inc/acf/widgets-blocks.php",
+            "size": 24301,
+            "hash": "85a8d01ae1c94953e8f9cb4fff8764c31189c97ef74a0559d68ea0a2750aa357"
+        },
+        {
+            "type": "folder",
+            "name": "inc/admin/dashboard"
+        },
+        {
+            "type": "file",
+            "name": "inc/admin/features.php",
+            "size": 1881,
+            "hash": "700e4aff5b50db473dc6f39e6920287618d2f999ce2b185ee7f8632295bb15c7"
+        },
+        {
+            "type": "folder",
+            "name": "inc/admin/notices"
+        },
+        {
+            "type": "file",
+            "name": "inc/admin/registration.php",
+            "size": 864,
+            "hash": "e370003f450b990a66a45abba5fb2f810fd648715532e23b4aa4247a36c5a22c"
+        },
+        {
+            "type": "file",
+            "name": "inc/admin/settings-options.php",
+            "size": 1559,
+            "hash": "db45300e77ed4f32b8d5874b710bd8eb05c10198eab0a22e27b436429e2a6a72"
+        },
+        {
+            "type": "folder",
+            "name": "inc/admin/support"
+        },
+        {
+            "type": "file",
+            "name": "inc/classes/Docy_Forum_Class.php",
+            "size": 8969,
+            "hash": "2fe09669b672ce4ce825c3f4fe608aa91b5b54bf1d8b31ef9efd910a0ae00e72"
+        },
+        {
+            "type": "file",
+            "name": "inc/classes/Docy_Mobile_Nav_Walker.php",
+            "size": 6039,
+            "hash": "0d31746825954c73efee166cca6921807d3ce2b015ef6a5f8b62c3e53ae91f94"
+        },
+        {
+            "type": "file",
+            "name": "inc/classes/Docy_Nav_Walker.php",
+            "size": 7377,
+            "hash": "73cc53dfb5119757099fecce40a1281bbbb7a8bbfecb8097276ac6e67aeb0e37"
+        },
+        {
+            "type": "file",
+            "name": "inc/classes/Docy_Walker_Comment.php",
+            "size": 2688,
+            "hash": "6408d26250984a679c75376d0f893fbdb845b733efe0cc1764c82c42ff8a39be"
+        },
+        {
+            "type": "file",
+            "name": "inc/classes/Docy_Walker_Docs.php",
+            "size": 11722,
+            "hash": "8e8d35bebb0280ef38d401dd385f5ade2715bf2038e84d26fe248cdb3dd3a37e"
+        },
+        {
+            "type": "file",
+            "name": "inc/classes/Docy_admin_page.php",
+            "size": 1872,
+            "hash": "6fbbcb75bb216970ac1fe6ce17cb872e4dab8074ecfe5593143a5eac02acf4b8"
+        },
+        {
+            "type": "file",
+            "name": "inc/classes/Docy_base.php",
+            "size": 1645,
+            "hash": "5eae684c1f7077fde987c000d37f5774c7859ac21fe96a908cc01111ba9d10fc"
+        },
+        {
+            "type": "file",
+            "name": "inc/classes/Docy_helper.php",
+            "size": 17157,
+            "hash": "cca378801c04a037729de8301eca424f1765ab42eb22839a1da1896a4e673815"
+        },
+        {
+            "type": "file",
+            "name": "inc/classes/Docy_register_theme.php",
+            "size": 6643,
+            "hash": "61a1b5fe141cbac843dec6058b3dd61353bdc0706b50a52e6c397be9deb351b0"
+        },
+        {
+            "type": "file",
+            "name": "inc/classes/Docy_update_checker.php",
+            "size": 11448,
+            "hash": "bf3d18f468f6909aad0ca2f919dfc1e40447ec5ff24afd7d288605dd8dba9531"
+        },
+        {
+            "type": "folder",
+            "name": "inc/csf/assets"
+        },
+        {
+            "type": "file",
+            "name": "inc/csf/codestar-framework.php",
+            "size": 647,
+            "hash": "73430903a5c677f725f9eecb0358808c118913f85f702d69b2fbb94da8bdd1b2"
+        },
+        {
+            "type": "folder",
+            "name": "inc/csf/fields"
+        },
+        {
+            "type": "folder",
+            "name": "inc/csf/classes"
+        },
+        {
+            "type": "folder",
+            "name": "inc/csf/functions"
+        },
+        {
+            "type": "file",
+            "name": "inc/csf/index.php",
+            "size": 28,
+            "hash": "c48fe6b757ddc30cc6d27924bbbdd8ec8a46bba76754c4ce8adb99ea32046fbe"
+        },
+        {
+            "type": "folder",
+            "name": "inc/demo/images"
+        },
+        {
+            "type": "file",
+            "name": "inc/demo/widgets.wie",
+            "size": 1260,
+            "hash": "bb597740553efc8f5ae116429106b7673076eb40a2ef7dbbd41c5ff4efb7d20a"
+        },
+        {
+            "type": "file",
+            "name": "inc/demo/settings.json",
+            "size": 12705,
+            "hash": "8573a9459c443d09e80253c687bece033e79074df75a508459b8feda15d83e97"
+        },
+        {
+            "type": "file",
+            "name": "inc/demo/lms-settings.json",
+            "size": 11172,
+            "hash": "d4fbe0dfa37323077b0a8f3398dd2f97f8d794282eedc4e574543d410528219a"
+        },
+        {
+            "type": "file",
+            "name": "inc/meta/all-meta-boxes.php",
+            "size": 1270,
+            "hash": "b913443198aecba34bf2144f7c37f396564ffb9822d101b2757c59c069893243"
+        },
+        {
+            "type": "file",
+            "name": "inc/meta/meta-post-format.php",
+            "size": 766,
+            "hash": "c496ea32f42c35fde5a7e75364d1f9368adc3de01ea8055af7a915a1272a6f14"
+        },
+        {
+            "type": "file",
+            "name": "inc/meta/meta-register-login.php",
+            "size": 3667,
+            "hash": "fe6132a9061fc746ac454995b4d9828a7b9c34684687cadd9de6ff14e1cd1755"
+        },
+        {
+            "type": "file",
+            "name": "inc/meta/meta_action_button.php",
+            "size": 3539,
+            "hash": "5f72d56362b4964ae054aa24e99b9255d76d31de18e3d6ea0ed6efb8a3e3a36c"
+        },
+        {
+            "type": "file",
+            "name": "inc/meta/meta_banner.php",
+            "size": 2652,
+            "hash": "60dc2320d884f2fd49006ca332cbe2ec83f8645db36b8ff3727cd0895e95ca76"
+        },
+        {
+            "type": "file",
+            "name": "inc/meta/meta_footer.php",
+            "size": 1205,
+            "hash": "5a3c228284a8989a0d4853c785a03d62539531b2b6df379aa12b270f5bf162d8"
+        },
+        {
+            "type": "file",
+            "name": "inc/meta/meta_header.php",
+            "size": 2064,
+            "hash": "cfeb36163f1812f67a9bd540087bdd326f1f7a061536563918c7356818751259"
+        },
+        {
+            "type": "file",
+            "name": "inc/meta/meta_header_doc.php",
+            "size": 1933,
+            "hash": "897451c0f48fd6fccec24860b229ae600c719d91774ecf74ee75685ee441a982"
+        },
+        {
+            "type": "file",
+            "name": "inc/meta/meta_page.php",
+            "size": 443,
+            "hash": "a5748f7b27d4be693a0eadb12532ca10cd9957c0c431ece649e40ce9207e1b32"
+        },
+        {
+            "type": "file",
+            "name": "inc/meta/meta_post_banner.php",
+            "size": 2520,
+            "hash": "dbf6050a9338e76827f3df73af222285a846d41ed3016f16bc8c9024e1c81939"
+        },
+        {
+            "type": "file",
+            "name": "inc/meta/meta_sidebar.php",
+            "size": 702,
+            "hash": "1dc608a7ce33cb8f71d77f39858267ce1db548de87a3c0ff83b2fad7f9caa3d9"
+        },
+        {
+            "type": "file",
+            "name": "inc/meta/meta_video.php",
+            "size": 416,
+            "hash": "5e27234a3940692e2d62f3a1231a0a436609be0d827d029e107a7c96225bea50"
+        },
+        {
+            "type": "file",
+            "name": "inc/meta/remove-meta.php",
+            "size": 1646,
+            "hash": "d085956ca77edb3a1afe2726e0cc10662ce06167531a7b6ee2e55a0095f98d73"
+        },
+        {
+            "type": "file",
+            "name": "inc/tgm/class-tgm-plugin-activation.php",
+            "size": 159201,
+            "hash": "76bc78bcfa660ee6cddda7e669de417808a8196e452df138bbbbf055a7436ea5"
+        },
+        {
+            "type": "file",
+            "name": "inc/tgm/plugin_activation.php",
+            "size": 9798,
+            "hash": "44d1d9d89e9ad3774ec56b77240466a1ea789df8b193c6490be0f1dd43366c4e"
+        },
+        {
+            "type": "file",
+            "name": "inc/verify/class.verify-purchase.php",
+            "size": 1891,
+            "hash": "fe57b0258111f2eb2e969f3b1134b272ac0204a9833db5cbb681e1fc884c783f"
+        },
+        {
+            "type": "file",
+            "name": "inc/verify/verify.php",
+            "size": 304,
+            "hash": "dfd814bf5c3184926c81c1f232529a7df0bc450fb8f4fd133046c96f5a47fab4"
+        },
+        {
+            "type": "file",
+            "name": "template-parts/contents/content-grid-video.php",
+            "size": 3189,
+            "hash": "64501be6b67d51c6bb7ac22929af53239b24bff277ab2c008cee6c493b2aea7f"
+        },
+        {
+            "type": "file",
+            "name": "template-parts/contents/content-grid.php",
+            "size": 6160,
+            "hash": "d20d63642b7ed673d5d72f4d0c4263c97a5b59778ef2aca778529789918c9eba"
+        },
+        {
+            "type": "file",
+            "name": "template-parts/contents/content-none.php",
+            "size": 1199,
+            "hash": "acec261abf358575e21b141314ae2e4e786bec1e8ec8e8db60b71aebcbf78503"
+        },
+        {
+            "type": "file",
+            "name": "template-parts/contents/content-quote.php",
+            "size": 455,
+            "hash": "461220f25e5eccec6751a2d587d2a3deed9856f2f807fc75b97e1fb207e8845d"
+        },
+        {
+            "type": "file",
+            "name": "template-parts/contents/content-search.php",
+            "size": 515,
+            "hash": "3df3c290796525f8856501d7819850c1f1666662fe392f13877270a4986c8d66"
+        },
+        {
+            "type": "file",
+            "name": "template-parts/contents/content-sticky.php",
+            "size": 4209,
+            "hash": "3735e02d4de6e96ce60a97b73550e54a4900e641469a643a81d0e09a3dabd4f3"
+        },
+        {
+            "type": "file",
+            "name": "template-parts/contents/content-video.php",
+            "size": 2524,
+            "hash": "fe2a13d5436e1bdaddcfb96b1288bf91918c35322c4b59c256616b6be5979e82"
+        },
+        {
+            "type": "file",
+            "name": "template-parts/contents/content-link.php",
+            "size": 391,
+            "hash": "ae54ac9313a0050fd8ad5cfc98dff717938ecbddd89400b3c57186ab4f5365a9"
+        },
+        {
+            "type": "file",
+            "name": "template-parts/contents/content.php",
+            "size": 2156,
+            "hash": "4deab86f0f1089a7b28e01fda91cc487a9b37824eda5b113ca7a5b1345d50ecf"
+        },
+        {
+            "type": "file",
+            "name": "template-parts/contents/post-tag.php",
+            "size": 708,
+            "hash": "e89c9cc9f57edd79881682bc75968ce80d47bc43aa6a155667b1a43fecfb4caf"
+        },
+        {
+            "type": "file",
+            "name": "template-parts/footers/footer-elementor.php",
+            "size": 403,
+            "hash": "1575a2c9edaaf8746be08bc31db1676350573f8a387d53fc8ddc4383d2fcde05"
+        },
+        {
+            "type": "file",
+            "name": "template-parts/footers/footer-normal.php",
+            "size": 4024,
+            "hash": "4e1d5732ed951375f7db78317eb9850dbea1a9262782241239a2f435c4295267"
+        },
+        {
+            "type": "file",
+            "name": "template-parts/forum/c2a-bottom.php",
+            "size": 1279,
+            "hash": "751fbe8975b2a5162a5b7042c13f83fa908c11cca2a5c95569d44b7c34a832f0"
+        },
+        {
+            "type": "file",
+            "name": "template-parts/forum/c2a-top.php",
+            "size": 1134,
+            "hash": "73d4684ae64bd7aa37fd4304052e299f373940f548b4588ff3a850b902f4489f"
+        },
+        {
+            "type": "file",
+            "name": "template-parts/footers/footer-simple.php",
+            "size": 760,
+            "hash": "dda79e20a77285bd07b81b8ac080f2ed4f57a858dd0f5511c4c30389c193d083"
+        },
+        {
+            "type": "file",
+            "name": "template-parts/header-elements/action-button.php",
+            "size": 2276,
+            "hash": "1a314fca343e6481617e58b75bc77231158ca6239bd136d794d9469e61fc5cd5"
+        },
+        {
+            "type": "file",
+            "name": "template-parts/header-elements/dark-switcher.php",
+            "size": 564,
+            "hash": "332b9173c6c3f59b565f76894f3e548702c2d870fc5ece7d7cb59b4baaf5dc55"
+        },
+        {
+            "type": "file",
+            "name": "template-parts/header-elements/layout-cmgalaxy.php",
+            "size": 25776,
+            "hash": "9e0d659635f635bb53e0367bcb7ad0d4bbb1583d88b262f0641859702dc38f35"
+        },
+        {
+            "type": "file",
+            "name": "template-parts/header-elements/layout-default.php",
+            "size": 1316,
+            "hash": "748b07dc835a09a14cc63fda9a3aa3a21717464268351546b49583609bb2a634"
+        },
+        {
+            "type": "file",
+            "name": "template-parts/header-elements/layout-search.php",
+            "size": 1723,
+            "hash": "8bd45efa4209ef12cfaada346f635d9160192e398db8c05982482542b231bf71"
+        },
+        {
+            "type": "file",
+            "name": "template-parts/header-elements/mobile-menu.php",
+            "size": 11501,
+            "hash": "8ab7aaa4f1f773de4d9c08a37e1b0ceddd8e0f97467dc406223e247edf3e50bf"
+        },
+        {
+            "type": "file",
+            "name": "template-parts/header-elements/preloader.php",
+            "size": 1775,
+            "hash": "4dcff3bdcb1e78eeafbd486a5a517cf410b61902cf1778c0ba975a3010d12394"
+        },
+        {
+            "type": "folder",
+            "name": "template-parts/header-elements/search-banner"
+        },
+        {
+            "type": "file",
+            "name": "template-parts/header-elements/top-header.php",
+            "size": 1477,
+            "hash": "5073c9d0ba8a145ef96a12339bf5f6971b4115b44e7ca3feac94e012e47c0d29"
+        },
+        {
+            "type": "file",
+            "name": "template-parts/single-post/banner-classic.php",
+            "size": 626,
+            "hash": "6f3cec3b9b7b1ebe8f2e8fc5fb29bcc055fb8686494c78ba1815dd309a00b311"
+        },
+        {
+            "type": "file",
+            "name": "template-parts/header-elements/titlebar.php",
+            "size": 1335,
+            "hash": "64b3b5df2a56a0d136078c8aaa782912f9fd4e5cacca13918259a344f78c5a31"
+        },
+        {
+            "type": "file",
+            "name": "template-parts/single-post/banner-curved.php",
+            "size": 2419,
+            "hash": "093da6ba2fef21415ea51df1f4d16bb3a1aa0e2b8e2ed791bafd7b19d1f926e0"
+        },
+        {
+            "type": "file",
+            "name": "template-parts/single-post/post-meta.php",
+            "size": 2116,
+            "hash": "0dce163d37cf1a21e30899792319fddaa62ce83d73d4beccfda9526e9cdffc3d"
+        },
+        {
+            "type": "file",
+            "name": "template-parts/single-post/related-posts.php",
+            "size": 2488,
+            "hash": "d44924ba68ad06efa903963158b84e0b098c8b37a2ba42c063845925ec50a4a2"
+        },
+        {
+            "type": "file",
+            "name": "template-parts/single-post/toc-summary.php",
+            "size": 526,
+            "hash": "d9cabf653618ff578c8f654a38a78defc344d768ba3ad7c41b4c0e14465dbfca"
+        },
+        {
+            "type": "file",
+            "name": "template-parts/single-post/banner-colorful.php",
+            "size": 350,
+            "hash": "ef3247216107740b48ab0c90341defe9e04195d2dbbc482d28928bf9b628383b"
+        },
+        {
+            "type": "file",
+            "name": "woocommerce/cart/cart-item-data.php",
+            "size": 1088,
+            "hash": "9e8dd8b91c0ab23f3a5e688dbeb398eea984116969ece921824595a1a51df5b4"
+        },
+        {
+            "type": "file",
+            "name": "woocommerce/cart/cart-totals.php",
+            "size": 3880,
+            "hash": "dbe23c32bed1f432c848e078d591edb1a8b88f8b3d7ffec58384302b01dc49ce"
+        },
+        {
+            "type": "file",
+            "name": "woocommerce/cart/cart.php",
+            "size": 11074,
+            "hash": "32a8686dbe4131335460b3fc30dbe33731022939b23a6299d8aea2c3ccc30681"
+        },
+        {
+            "type": "file",
+            "name": "woocommerce/cart/cross-sells.php",
+            "size": 1202,
+            "hash": "6c79afc7c5aa02899b8257af6a9c9a81fc5cda509d701655bb04eced72367a2b"
+        },
+        {
+            "type": "file",
+            "name": "woocommerce/cart/mini-cart.php",
+            "size": 6789,
+            "hash": "7a7edacd289de4ab53321bfcfef1853d49d8c7decd635b52510140fb6684e7ee"
+        },
+        {
+            "type": "file",
+            "name": "woocommerce/cart/proceed-to-checkout-button.php",
+            "size": 951,
+            "hash": "90aa586ce01970d263b381e5174f9ad4577f148efb39eef3da8ef7819d888f30"
+        },
+        {
+            "type": "file",
+            "name": "woocommerce/checkout/form-billing.php",
+            "size": 3176,
+            "hash": "0b97f1ce51eb45d59b44d459edc562c70c9a7b4096c6aea2b5060c39dea25d33"
+        },
+        {
+            "type": "file",
+            "name": "woocommerce/checkout/form-checkout.php",
+            "size": 2477,
+            "hash": "0a17fc65796fc28b4252986eee036a301628c54281ca1afc735263bc68398773"
+        },
+        {
+            "type": "file",
+            "name": "woocommerce/checkout/form-coupon.php",
+            "size": 4309,
+            "hash": "67f8f3edb3059d17b57f2783823300e840d5f886b27d7dfaf4847cdfe22a66bf"
+        },
+        {
+            "type": "file",
+            "name": "woocommerce/checkout/payment.php",
+            "size": 3565,
+            "hash": "9378e09b5785e9033d7d2d980be105dd0818957e6be610373ed7eea937e2f1d9"
+        },
+        {
+            "type": "file",
+            "name": "woocommerce/checkout/terms.php",
+            "size": 1524,
+            "hash": "470eef0196012a8d5cb491787031f9641890ab9a9a21bf7629a4c50b6b442027"
+        },
+        {
+            "type": "file",
+            "name": "woocommerce/global/breadcrumb.php",
+            "size": 733,
+            "hash": "ce016fbca4655e8bc200570ebf62131028b870620a392220a2474d88928455fb"
+        },
+        {
+            "type": "file",
+            "name": "woocommerce/checkout/form-shipping.php",
+            "size": 2858,
+            "hash": "8b068db73553466864a7f568c61941d42a45e51c06c0ddede4fd3a1bfb63e2c7"
+        },
+        {
+            "type": "file",
+            "name": "woocommerce/global/quantity-input.php",
+            "size": 1982,
+            "hash": "d9545750ba1ddbdd482902044f30630625488ea4428f47a9e616450e0d76659e"
+        },
+        {
+            "type": "file",
+            "name": "woocommerce/global/sidebar.php",
+            "size": 826,
+            "hash": "a7c773c6d7ab908c5d36d7ff9bce205ef8e22280688f4d5c706b03427d6e3838"
+        },
+        {
+            "type": "file",
+            "name": "woocommerce/global/wrapper-end.php",
+            "size": 806,
+            "hash": "45e153f00a943990e5c06ea05e353a1e57f9adfcda8b00007ca8a1b01860368a"
+        },
+        {
+            "type": "file",
+            "name": "woocommerce/global/wrapper-start.php",
+            "size": 1181,
+            "hash": "8faf87a493524daf2c9c99075a48e7ffb5eb30abfb81727afcac97529a36818f"
+        },
+        {
+            "type": "file",
+            "name": "woocommerce/loop/add-to-cart.php",
+            "size": 1128,
+            "hash": "9fd0194a39df34ce2e21a514127324038b0578643318d7754bb959f13adf6374"
+        },
+        {
+            "type": "file",
+            "name": "woocommerce/loop/loop-end.php",
+            "size": 699,
+            "hash": "7c6db4b8026f15c389d29bc34a22948d9d9edf53acee4bf327d0ada6335f234d"
+        },
+        {
+            "type": "file",
+            "name": "woocommerce/loop/loop-start.php",
+            "size": 915,
+            "hash": "cac8f57aa3ae3d830d38de318e69f87dc5e90c1720053a0eca55f0be39cd7c33"
+        },
+        {
+            "type": "file",
+            "name": "woocommerce/loop/no-products-found.php",
+            "size": 884,
+            "hash": "acac8f30366a281829ecb3873dad2c8092ac96202e4f71e421de94487593c9e2"
+        },
+        {
+            "type": "file",
+            "name": "woocommerce/loop/orderby.php",
+            "size": 2675,
+            "hash": "4fe0e5a5069a452955d06fdade8ced71444f3e8289fc6dee393e579072497533"
+        },
+        {
+            "type": "file",
+            "name": "woocommerce/loop/pagination.php",
+            "size": 1162,
+            "hash": "b98b00dd0011fc8ae3f5392fba7a35d31fbcacb573ab9be37897c63d81d62d8a"
+        },
+        {
+            "type": "file",
+            "name": "woocommerce/loop/result-count.php",
+            "size": 1511,
+            "hash": "dc0fdda10f84357246c3e8a30dedccbab435919df16c053959715bdf25653fc8"
+        },
+        {
+            "type": "file",
+            "name": "woocommerce/loop/sale-flash.php",
+            "size": 1048,
+            "hash": "a194f5af4e9dc58ade15afd867fed7360c3a310d0c7424b64d7572156c924e1b"
+        },
+        {
+            "type": "file",
+            "name": "woocommerce/loop/rating.php",
+            "size": 808,
+            "hash": "824a2f521f3f16083b254ca4e9095d79f5bf04e79d31a4bf7551cdc982823a82"
+        },
+        {
+            "type": "file",
+            "name": "woocommerce/loop/price.php",
+            "size": 890,
+            "hash": "cf3955bfa5a1083364e7e4748c749311c31ab7a51a7ccf59ab28ab75f3b48f60"
+        },
+        {
+            "type": "folder",
+            "name": "woocommerce/single-product/add-to-cart"
+        },
+        {
+            "type": "file",
+            "name": "woocommerce/single-product/meta.php",
+            "size": 2760,
+            "hash": "73e08056ab3f56c2377a08026a7e3fdf143e814cfb7169812350021c8eb3ef61"
+        },
+        {
+            "type": "file",
+            "name": "woocommerce/single-product/photoswipe.php",
+            "size": 2322,
+            "hash": "43b77179c1864e2b6062ce6a0ad3949d58090ebafb45d280f41c3e829251e326"
+        },
+        {
+            "type": "file",
+            "name": "woocommerce/single-product/price.php",
+            "size": 831,
+            "hash": "1d7b53528c3f970fc2e3b1e5904d75c889d777da300f988e38db473ee23d1844"
+        },
+        {
+            "type": "file",
+            "name": "woocommerce/single-product/product-attributes.php",
+            "size": 2429,
+            "hash": "ff01daa81440e05e006c50225a77064817ed4b930ee5022e12c287e1134d23fc"
+        },
+        {
+            "type": "file",
+            "name": "woocommerce/single-product/product-image.php",
+            "size": 2205,
+            "hash": "d0ff2baa6f5c6ede1d6b4e4cffef5d33bdc3a315d1ab0dcd5c17e284ea81ef20"
+        },
+        {
+            "type": "file",
+            "name": "woocommerce/single-product/rating.php",
+            "size": 1595,
+            "hash": "20ccb8068175a07a9b2bbe2ac0d64c1229f60d0cb01b6bf8a6f5343e741f1125"
+        },
+        {
+            "type": "file",
+            "name": "woocommerce/single-product/related.php",
+            "size": 2167,
+            "hash": "12af7d8db51939ddea52f4ce7cd1c82c2c95f04cf7fb7b870c2afb4df4de4191"
+        },
+        {
+            "type": "file",
+            "name": "woocommerce/single-product/review-meta.php",
+            "size": 1625,
+            "hash": "cb6c33a07a4604d030a4f5b506f86e69e04b7b35bd0c23e71167173813a1b5e8"
+        },
+        {
+            "type": "file",
+            "name": "woocommerce/single-product/sale-flash.php",
+            "size": 1060,
+            "hash": "792ef8d053f994a4afe8036566b89cf14d1fd2deb6fb060911dffd4e3f5b89c7"
+        },
+        {
+            "type": "file",
+            "name": "woocommerce/single-product/short-description.php",
+            "size": 1016,
+            "hash": "ed302c5cc09e3adb4abc442cfe2482ed0d0b667378393a1a0dfc31401aaac2f1"
+        },
+        {
+            "type": "file",
+            "name": "woocommerce/single-product/stock.php",
+            "size": 914,
+            "hash": "f4170f2d9c03bdd6c85e542ddb7b6f4abed4c2a663592bd6a34b39a42a9568f5"
+        },
+        {
+            "type": "folder",
+            "name": "woocommerce/single-product/tabs"
+        },
+        {
+            "type": "file",
+            "name": "woocommerce/single-product/title.php",
+            "size": 777,
+            "hash": "a1bcd502619f71ea8fb5c5db96242377f34119871a997a179e3bbf3a174d4f45"
+        },
+        {
+            "type": "file",
+            "name": "woocommerce/single-product/review.php",
+            "size": 1896,
+            "hash": "444093d33531381bf1db05696fc691c482ab8ca7abfc3264e64f444181667301"
+        },
+        {
+            "type": "file",
+            "name": "woocommerce/wc-template-parts/content-grid.php",
+            "size": 904,
+            "hash": "e3543c40fd821b59cf36e367911f9e6f01c0fdd9fa2c14f3bbc6eccb2c98ac6e"
+        },
+        {
+            "type": "file",
+            "name": "woocommerce/wc-template-parts/content-list.php",
+            "size": 1637,
+            "hash": "fd46292a7c47d1245c3231006dc1c873a7088e1ab2d38765a23d8eefe8bf2cf7"
+        },
+        {
+            "type": "file",
+            "name": "woocommerce/single-product/up-sells.php",
+            "size": 1430,
+            "hash": "4c48e3dd85f0d8b47db64ef69d3cb2bd518640b65eb513d8bd629770a70cde8f"
+        },
+        {
+            "type": "file",
+            "name": "assets/img/404/404_bg.png",
+            "size": 33244,
+            "hash": "5870eb92c5809c7471d02757e471b813c253496cac4a343578d3ea1a5cfd6cee"
+        },
+        {
+            "type": "file",
+            "name": "assets/img/404/shape_1.png",
+            "size": 11486,
+            "hash": "1e915bdd5650bde9dd24c0acdd07ddb8da7c6ef674e6098e1bd59b64d69a2295"
+        },
+        {
+            "type": "file",
+            "name": "assets/img/404/shape_2.png",
+            "size": 13264,
+            "hash": "112e5e32a89d6dc8c80c81e01326512da9ce839392984154e00ee1f17c813c86"
+        },
+        {
+            "type": "file",
+            "name": "assets/img/404/shape_3.png",
+            "size": 12787,
+            "hash": "e314015547ae9146098b065815c629b957b8dcf09078e53cf0521488027df766"
+        },
+        {
+            "type": "file",
+            "name": "assets/img/banner-blog/banner_shape_1.png",
+            "size": 336269,
+            "hash": "b02ed7aae7060d2ce63121fce1059a8b02566dcd770eedf0abacf20ce84ec3a7"
+        },
+        {
+            "type": "file",
+            "name": "assets/img/banner-blog/banner_shape_2.png",
+            "size": 4573,
+            "hash": "343066dbd7f2e829ce351dee3fcbaaa5ad60257584daf1ffd172ab22761465e9"
+        },
+        {
+            "type": "file",
+            "name": "assets/img/banner-blog/banner_shape_4.png",
+            "size": 3558,
+            "hash": "001d424d683541519781111223fd74d451f23570586eb300fa7ac0f903a33980"
+        },
+        {
+            "type": "file",
+            "name": "assets/img/banner-blog/plus1.png",
+            "size": 402,
+            "hash": "4a57bd9ed65240cd709cf3440aeb1a6d523e8b7dbb647ae6c01b877b765e180c"
+        },
+        {
+            "type": "file",
+            "name": "assets/img/banner-blog/plus2.png",
+            "size": 386,
+            "hash": "5d15438cf0574876c35a88441cf4c4950669ae8eef2aef9e96e582b1cba01e6c"
+        },
+        {
+            "type": "file",
+            "name": "assets/img/banner-blog/toc-overlay-dark.svg",
+            "size": 581,
+            "hash": "741dd5c3b2a09794c418fea7a1aa258793b1f5a80e9408be55de89987b9ad2cb"
+        },
+        {
+            "type": "file",
+            "name": "assets/img/banner-blog/toc-overlay.svg",
+            "size": 551,
+            "hash": "499b0ec1b5c284baceb31a6b47422c69104e5d7fe96fdfcf48de889776fb953a"
+        },
+        {
+            "type": "file",
+            "name": "assets/img/banner-blog/banner_shape_3.png",
+            "size": 3705,
+            "hash": "f75346f6b42a06d4cea92a9d786ccd0f942e4c6de106ed800b4779dc599d513c"
+        },
+        {
+            "type": "file",
+            "name": "assets/img/blog-classic/icon_01.png",
+            "size": 670,
+            "hash": "577247c9bbba74a8e8a97ee4e91e5979711eeef53f1612c61fc76e465d8d779a"
+        },
+        {
+            "type": "file",
+            "name": "assets/img/blog-classic/icon_02.png",
+            "size": 1517,
+            "hash": "bc4cba691be27dbc81a7c86836a0e5414a81fa6dfde5bd98cd9ffbcea8db3774"
+        },
+        {
+            "type": "file",
+            "name": "assets/img/blog-classic/quote_bottom.png",
+            "size": 855,
+            "hash": "f00ac1b54ced67e3bf5804730112ba91b7ab6a371cb8aba38a938b13da667765"
+        },
+        {
+            "type": "file",
+            "name": "assets/img/blog-classic/quote_top.png",
+            "size": 1932,
+            "hash": "b9589bd4c9e1164d6353408f9fe39a366cbeebb20649fbbc26d1a6309bfad163"
+        },
+        {
+            "type": "file",
+            "name": "assets/img/dashboard/support-changelog.png",
+            "size": 7407,
+            "hash": "cec16390aa270061086981a91ea203bfb42b9cc3a67606ff994ca3e6bcaedc99"
+        },
+        {
+            "type": "file",
+            "name": "assets/img/footer/cloud.png",
+            "size": 565,
+            "hash": "d4fad99e191b3eec27c2eada5525f1a85685b2f62891c013a85263097f1c1cfe"
+        },
+        {
+            "type": "file",
+            "name": "assets/img/footer/email-icon.png",
+            "size": 1334,
+            "hash": "473aab55651d4982116e870e418e99fc922589ee42911bb18b0826f1615d6dee"
+        },
+        {
+            "type": "file",
+            "name": "assets/img/footer/email-icon_two.png",
+            "size": 1057,
+            "hash": "cf044c3ab392f115f57824917f1ef0163be6a6038d8810ac4c29c7c115e039bf"
+        },
+        {
+            "type": "file",
+            "name": "assets/img/footer/f_man.png",
+            "size": 4874,
+            "hash": "4afaef90a3793dcca02a6c88162b0900b46bc494e7e758e570684ac025bfb4d3"
+        },
+        {
+            "type": "file",
+            "name": "assets/img/footer/footer-left-man.png",
+            "size": 5334,
+            "hash": "5d464e4d4d4eb266f88f02a15f8d18b3bcac575098d5a88fab3ee170d91f0d20"
+        },
+        {
+            "type": "file",
+            "name": "assets/img/footer/leaf_footter.png",
+            "size": 3619,
+            "hash": "a53ecf336e0e7c4b0e17819253ea65d625da58adf35889e4f58c87362919ac8e"
+        },
+        {
+            "type": "file",
+            "name": "assets/img/footer/v.svg",
+            "size": 4410,
+            "hash": "3a98048cc6e9c3b7504e51bf02cd211a350ba6ce061c97da34ba5a3a799cefe0"
+        },
+        {
+            "type": "file",
+            "name": "assets/img/forum/answer.png",
+            "size": 3525,
+            "hash": "f8f586aea3760824dc816143f548ffb5278a249e77ac58ea47c69c3279dfbbb5"
+        },
+        {
+            "type": "file",
+            "name": "assets/img/forum/chat-smile.png",
+            "size": 31689,
+            "hash": "3cf3b466f30bcb5a45e1bb6872067760a9c61b4e5f75b333b5a8654e197112e7"
+        },
+        {
+            "type": "file",
+            "name": "assets/img/forum/forum.svg",
+            "size": 517,
+            "hash": "92ad51e3d9c5717ed0d33397073b6962c8503d2cddd1d2473731a5b45cf74d52"
+        },
+        {
+            "type": "file",
+            "name": "assets/img/forum/overlay_bg.png",
+            "size": 384922,
+            "hash": "a7716b41e0cad930291a0eaafca6cf30351ecede72af8f6934a88c920ed2ac9a"
+        },
+        {
+            "type": "file",
+            "name": "assets/img/headers/default.jpg",
+            "size": 13950,
+            "hash": "b608bfba80ec56e7d6aeb3601791a8789a5301b9036569084b1ed50c322e2552"
+        },
+        {
+            "type": "file",
+            "name": "assets/img/headers/search-form.jpg",
+            "size": 15244,
+            "hash": "6bafff8b12c70899bd1e06d6480e23a3b72942195dabc0867962a4bdf87fa834"
+        },
+        {
+            "type": "file",
+            "name": "assets/img/home_one/b_leaf.svg",
+            "size": 4929,
+            "hash": "e62782fcd1161c22f2fee0b03466e0d5a4056aeedc36297dd3327bd1c6be40fb"
+        },
+        {
+            "type": "file",
+            "name": "assets/img/home_one/b_man_two.png",
+            "size": 7399,
+            "hash": "92f97fa594dd0ca71cd095c06d80deec10861735af0ed3819721c514b8f7aab6"
+        },
+        {
+            "type": "file",
+            "name": "assets/img/home_one/banner_bg.png",
+            "size": 11628,
+            "hash": "5ee3c33012b29992edbc8be7cb485a0e673e033beffea2244458848aa2749481"
+        },
+        {
+            "type": "file",
+            "name": "assets/img/home_one/flower.png",
+            "size": 1203,
+            "hash": "159b763995ba205b51ef9793a0b1c12d16f53468eb6429aa53484cbb6c186805"
+        },
+        {
+            "type": "file",
+            "name": "assets/img/icons/block-user.svg",
+            "size": 1225,
+            "hash": "9e3607b77a762999c83791c5046106edc14b485e66b225d35cf7a26980eac335"
+        },
+        {
+            "type": "file",
+            "name": "assets/img/icons/close.png",
+            "size": 1266,
+            "hash": "8ba460526b7d58d399ab89a41f3bebc7dabbc1401746600f47c3101cfe0625a6"
+        },
+        {
+            "type": "file",
+            "name": "assets/img/icons/folder.png",
+            "size": 651,
+            "hash": "cc8cb0939ca95e6adb0a093c6790c17e2fa13e808473cdfb9c4f0e982c365efe"
+        },
+        {
+            "type": "file",
+            "name": "assets/img/icons/keymaster.svg",
+            "size": 1670,
+            "hash": "593e3764c003487c94496011c80b78a6090c720154a478189a73aa8a96a1bebb"
+        },
+        {
+            "type": "file",
+            "name": "assets/img/icons/loading.svg",
+            "size": 3973,
+            "hash": "a42bded3f4e225cf5a8f80748ad19b46fd5245186e6022182ad0c61d00958c45"
+        },
+        {
+            "type": "file",
+            "name": "assets/img/icons/moderator.svg",
+            "size": 717,
+            "hash": "a411c47c093c299ce82a357d22547a8daac645f4e428a9de878fc8f3df8c4ab3"
+        },
+        {
+            "type": "file",
+            "name": "assets/img/icons/participants.svg",
+            "size": 2082,
+            "hash": "e0d1a896e1b7200f1b9c867b78c94bd080c8c4ff93314a8683d434bcbbd2eedd"
+        },
+        {
+            "type": "file",
+            "name": "assets/img/icons/shield (1)_colored.svg",
+            "size": 912,
+            "hash": "0eee54888b1cb982f795144c0566299676eb4af398f42db3a17a276caf0b3342"
+        },
+        {
+            "type": "file",
+            "name": "assets/img/layouts/banner_single_classic.jpg",
+            "size": 17627,
+            "hash": "eed6dfb2b422381b37b8c0557f72e9f1b506dd8d2ee7200088c6a7c1b7a6cb01"
+        },
+        {
+            "type": "file",
+            "name": "assets/img/layouts/banner_single_colorful.jpg",
+            "size": 18413,
+            "hash": "6955fc73e4589e9870f779ddf25b98502f878f5dc345dc40c8c9a9125b37f9a4"
+        },
+        {
+            "type": "file",
+            "name": "assets/img/layouts/banner_single_curved.jpg",
+            "size": 26694,
+            "hash": "195e4176dffdd083813366e435a8aa347cb637ca5adcecc978c358a42ffe24c4"
+        },
+        {
+            "type": "file",
+            "name": "assets/img/layouts/blog_grid.jpg",
+            "size": 26605,
+            "hash": "ad6471b00054105752d13dcde9eaac7f90fd1c555a99dd9aec7444cd6c29df1d"
+        },
+        {
+            "type": "file",
+            "name": "assets/img/layouts/blog_grid_category_tab.jpg",
+            "size": 25756,
+            "hash": "e87d94bd0fbb5b62ef2d8f1320a18add90cb26ffd139ce8514ba13ce5e84c30f"
+        },
+        {
+            "type": "file",
+            "name": "assets/img/layouts/both_sidebar.jpg",
+            "size": 21756,
+            "hash": "688649c217cbf1eb608dce36419fd837c4f0da7857d02d65867dcd48b9463df3"
+        },
+        {
+            "type": "file",
+            "name": "assets/img/layouts/fullwidth.jpg",
+            "size": 10887,
+            "hash": "a27c344baea1dc799e55e11eeebc7cc56e6c7c0dcb6afb586d731142420007ef"
+        },
+        {
+            "type": "file",
+            "name": "assets/img/layouts/grid.jpg",
+            "size": 13998,
+            "hash": "c9a46d11b2a7ed98d6ddb9ba87976577f9c8cad1ba6a8aa985f9f5eeae5df50a"
+        },
+        {
+            "type": "file",
+            "name": "assets/img/layouts/list.jpg",
+            "size": 13552,
+            "hash": "6816453995423cc0fbadf4808070bbe9dfcb3e8da97d02ee4ff591434478e607"
+        },
+        {
+            "type": "file",
+            "name": "assets/img/layouts/sidebar_left.jpg",
+            "size": 12410,
+            "hash": "79b6790ac1080806178e1957e1d1868463a0e99e59a77b7f304c94c4ffcd8a71"
+        },
+        {
+            "type": "file",
+            "name": "assets/img/layouts/sidebar_right.jpg",
+            "size": 12576,
+            "hash": "65edaeed467bae6828121d17d827388b19bef0c678ee65eb78169cd4697c19d0"
+        },
+        {
+            "type": "file",
+            "name": "assets/img/options/color.png",
+            "size": 1475,
+            "hash": "838363e6d81e6cb546db05081ffa9d1cb05c31e72a4feb3a80420191b66bb383"
+        },
+        {
+            "type": "file",
+            "name": "assets/img/options/faded-sun.jpg",
+            "size": 6903,
+            "hash": "1171ead718064f551ada3e818f318dbec838815b4c159748476b49ccafff1ae8"
+        },
+        {
+            "type": "file",
+            "name": "assets/img/options/happy-journey.jpg",
+            "size": 4982,
+            "hash": "18079157c2e0a0e06728eb3faa33fca38a6d876097294f2898f7b00c31b7f57f"
+        },
+        {
+            "type": "file",
+            "name": "assets/img/options/romantic-sun.jpg",
+            "size": 8166,
+            "hash": "f2b1807ca253db348428d21331ed7c27f4d42ac6e1341a6b5b0baaea773b5453"
+        },
+        {
+            "type": "file",
+            "name": "assets/img/options/soft-weather.jpg",
+            "size": 6756,
+            "hash": "25754ebb07a1528e17082140759ce97c9b53da451274a759ea02920bd6504fbc"
+        },
+        {
+            "type": "file",
+            "name": "assets/img/options/soil-burst.jpg",
+            "size": 8270,
+            "hash": "d07e6573b09545df509af3c2b62ac7cb5c0d82e3eb81df6f8fbeb21bba75f32a"
+        },
+        {
+            "type": "file",
+            "name": "assets/img/options/teal-eclipse.jpg",
+            "size": 9933,
+            "hash": "58aab903c590f05ee679d0eb1b872767eb1ae86bd4b589b4fe9fdc9806418254"
+        },
+        {
+            "type": "file",
+            "name": "assets/img/options/apparent-circle.jpg",
+            "size": 10988,
+            "hash": "8cd1006f0d16e8c8fecf9ec3530452df944e27b3a506d9a4b80bed0255b79f81"
+        },
+        {
+            "type": "file",
+            "name": "assets/img/search-banners/banner-bg.jpeg",
+            "size": 112662,
+            "hash": "794657253d8fcd8da6307f9421d76f9c98375cb1ceda5035eefb3f1cab45d53b"
+        },
+        {
+            "type": "file",
+            "name": "assets/img/search-banners/gradient.jpg",
+            "size": 45854,
+            "hash": "33abeb91562f39e86bee309892121d1d6a5ef6c80773cd29403a8ed6a28cdf56"
+        },
+        {
+            "type": "file",
+            "name": "assets/img/search-banners/simple-light.jpg",
+            "size": 23694,
+            "hash": "d31f69ab9d31f4ea25022bf3966a013c52ec0dbd95ae20407e211c9050731b85"
+        },
+        {
+            "type": "file",
+            "name": "assets/img/sign-up/bottom_ornamate.png",
+            "size": 5017,
+            "hash": "ddcfd60fbca25cf72283440aed8f01512ad8dda371a276ae3911cc1abed14e0d"
+        },
+        {
+            "type": "file",
+            "name": "assets/img/sign-up/door.png",
+            "size": 47811,
+            "hash": "402620a771e01dbc566e69a5ec9198a9b3c1e1e39318ed329adecb79fd87e0a0"
+        },
+        {
+            "type": "file",
+            "name": "assets/img/sign-up/man_image.png",
+            "size": 28079,
+            "hash": "c073fc0f51c76cfd4ecdd1f796e5189e1ea48e04c2a2622d4d21ee1faa70201e"
+        },
+        {
+            "type": "file",
+            "name": "assets/img/sign-up/top_ornamate.png",
+            "size": 4037,
+            "hash": "81bf1dcc1544ad83563ce393437019a6c853877fb5258d42af36d14bf902f997"
+        },
+        {
+            "type": "file",
+            "name": "assets/scss/admin/_editor.scss",
+            "size": 4106,
+            "hash": "b519361f2db929866d490ef46c644134a071af3d9ddc1f1677ff18ddb09a34db"
+        },
+        {
+            "type": "file",
+            "name": "assets/scss/admin/_verify_dashboard.scss",
+            "size": 3586,
+            "hash": "9adacdcc3f0714387f672905b2764b2606909154a6bcdf2a4624e7228f6ffa7c"
+        },
+        {
+            "type": "file",
+            "name": "assets/scss/admin/_welcome.scss",
+            "size": 6567,
+            "hash": "753775ebdb36937a1dece39e947a750c97f8464ffb03b934e85130c2b4a8f381"
+        },
+        {
+            "type": "file",
+            "name": "assets/scss/elements/_badges.scss",
+            "size": 253,
+            "hash": "82c977393ceb533cacfbbf3c35f996aaa25de77ded49b23efcadc6317ea0a7f0"
+        },
+        {
+            "type": "file",
+            "name": "assets/scss/elements/_button.scss",
+            "size": 4558,
+            "hash": "c83646223de420c0523193985c660446a2ad5a41b1643b664d9f413367d235d1"
+        },
+        {
+            "type": "file",
+            "name": "assets/scss/elements/_index.scss",
+            "size": 55,
+            "hash": "c8c030209d27da3c7dd2b2a7754fea0cc0d63f72962c208b0ae141aca8bc8be5"
+        },
+        {
+            "type": "file",
+            "name": "assets/scss/elements/_titlebar.scss",
+            "size": 3472,
+            "hash": "074c4cc415a756fd10e369b84eccfc94a98585645fd3395187a591aad869146e"
+        },
+        {
+            "type": "file",
+            "name": "assets/scss/widgets/_index.scss",
+            "size": 205,
+            "hash": "959ae7173d7aa38202c68248d4652081236da5109fc856125d3055b2ce1d2590"
+        },
+        {
+            "type": "file",
+            "name": "assets/scss/widgets/_widget-Accordion.scss",
+            "size": 2447,
+            "hash": "d94912a35abeda1a032423b61ab3b5afd4d795dcced22451a68b6e99e32189ff"
+        },
+        {
+            "type": "file",
+            "name": "assets/scss/widgets/_widget-Docs.scss",
+            "size": 7123,
+            "hash": "1845bbaf298f90846d8477fd431db80fc5e3b511eae7187779b272c06461053d"
+        },
+        {
+            "type": "file",
+            "name": "assets/scss/widgets/_widget-Faq.scss",
+            "size": 2529,
+            "hash": "b58e86f53cf621e7b75cacaaacea13d42a7db3a63b1c8a2ce5d040d1299cc9d1"
+        },
+        {
+            "type": "file",
+            "name": "assets/scss/widgets/_widget-Notice.scss",
+            "size": 8399,
+            "hash": "48d34d8087052551da6e8d8211c6817f7a1e568df18ebefdec315c7b21f5cf20"
+        },
+        {
+            "type": "file",
+            "name": "assets/scss/widgets/_widget-Search_Form.scss",
+            "size": 1783,
+            "hash": "9a989da42c5ee5539bfe0b65a86d5095b8830422ca32d57c026b99ce99da6d7a"
+        },
+        {
+            "type": "file",
+            "name": "assets/scss/widgets/_widget-Tabs.scss",
+            "size": 7086,
+            "hash": "b6e7e9ab05682d8af3a14ca1b4b93ecf5db872a83a01a740034b6b4638a424d6"
+        },
+        {
+            "type": "file",
+            "name": "assets/scss/widgets/_widget-Testimonial.scss",
+            "size": 3506,
+            "hash": "b4d37f1dbbc6ed885f3b6e1ced29542fb9db26482903c7c3627b0a77fb97fc47"
+        },
+        {
+            "type": "file",
+            "name": "assets/scss/widgets/_widget-Video.scss",
+            "size": 46572,
+            "hash": "0eee9c7eac0ad97c1088d2d20c02cc69df558a7ef94a5fec7ae7f5c0b6acb48f"
+        },
+        {
+            "type": "file",
+            "name": "assets/vendors/PureCookie/purecookie.css",
+            "size": 1271,
+            "hash": "36ed6f2396cbef4eb3353dff0e45a640315590906380b259708129a791769635"
+        },
+        {
+            "type": "file",
+            "name": "assets/vendors/PureCookie/purecookie.js",
+            "size": 2148,
+            "hash": "74d43bd3b4452f0cd39e4c1d398b4c9df67cc3a9a1d2c1e63cf2433b2a803177"
+        },
+        {
+            "type": "file",
+            "name": "assets/vendors/animation/animate.css",
+            "size": 79595,
+            "hash": "437f3c166d9136aef6908dafc05cd3afa1f2f4e86c1bd21330a4c78951fa6405"
+        },
+        {
+            "type": "folder",
+            "name": "assets/vendors/bootstrap/css"
+        },
+        {
+            "type": "folder",
+            "name": "assets/vendors/bootstrap/js"
+        },
+        {
+            "type": "file",
+            "name": "assets/vendors/dark/darkmode-js.js",
+            "size": 32944,
+            "hash": "98360d922a3e7dcad28cbddafc1d01472d295b1b69779403b2af56451ab951c7"
+        },
+        {
+            "type": "folder",
+            "name": "assets/vendors/elegant-icon/fonts"
+        },
+        {
+            "type": "file",
+            "name": "assets/vendors/elegant-icon/style.css",
+            "size": 25237,
+            "hash": "ef20e6454d107e698e67fc13a44c9ecb7d76d4ea84900371682502f75c99c8b2"
+        },
+        {
+            "type": "folder",
+            "name": "assets/vendors/font-awesome/css"
+        },
+        {
+            "type": "folder",
+            "name": "assets/vendors/font-awesome/fonts"
+        },
+        {
+            "type": "folder",
+            "name": "assets/vendors/font-size/css"
+        },
+        {
+            "type": "folder",
+            "name": "assets/vendors/font-size/js"
+        },
+        {
+            "type": "file",
+            "name": "assets/vendors/magnify-pop/jquery.magnific-popup.min.js",
+            "size": 20216,
+            "hash": "3fddc6d28aba3c13d64cfd4847c333ff48c71d4a5a58bd1a0494ca6ae8ac1bb4"
+        },
+        {
+            "type": "file",
+            "name": "assets/vendors/magnify-pop/magnific-popup.css",
+            "size": 7481,
+            "hash": "f569b0899e47e1ec6e3b46126afec06bce3560305a6e54ba2e24e24269badfda"
+        },
+        {
+            "type": "file",
+            "name": "assets/vendors/niceselectpicker/jquery.nice-select.min.js",
+            "size": 2942,
+            "hash": "66bdef0724e5306421bcc7e0910e41b5645228119ad9096ca4a6099e48d94e6a"
+        },
+        {
+            "type": "file",
+            "name": "assets/vendors/niceselectpicker/nice-select.css",
+            "size": 4007,
+            "hash": "c13280e79f74109c5e3854822c0f0c972d0a57245c95b0b3762f9788bd918f8d"
+        },
+        {
+            "type": "file",
+            "name": "assets/vendors/mcustomscrollbar/jquery.mCustomScrollbar.min.css",
+            "size": 42839,
+            "hash": "247184981eb6f698a94e431a83d68c6b0df623cce57b6e29dc5a6c11e23aa195"
+        },
+        {
+            "type": "file",
+            "name": "assets/vendors/mcustomscrollbar/jquery.mCustomScrollbar.concat.min.js",
+            "size": 45479,
+            "hash": "fd8027b53a97cbd5782e85c5908e563c39776703ff9279f50658e630927b4167"
+        },
+        {
+            "type": "file",
+            "name": "assets/vendors/slick/ajax-loader.gif",
+            "size": 4178,
+            "hash": "e7b44c86b050fca766a96ddac2d0932af0126da6f2305280342d909168dcce6b"
+        },
+        {
+            "type": "folder",
+            "name": "assets/vendors/slick/fonts"
+        },
+        {
+            "type": "file",
+            "name": "assets/vendors/slick/slick-theme.css",
+            "size": 3145,
+            "hash": "7adaf08052c6a6a0f8a0d0055b4f191fd07389fe41c972b69573472b2ecb406a"
+        },
+        {
+            "type": "file",
+            "name": "assets/vendors/slick/slick.css",
+            "size": 1776,
+            "hash": "de1e399b07289f3b0a8d35142e363e128124a1185770e214e25e58030dad48e5"
+        },
+        {
+            "type": "file",
+            "name": "assets/vendors/slick/slick.js",
+            "size": 88955,
+            "hash": "0aaa4cf927b0e3631cffbe62f6786810aa65348483cd950e49f634a0881b16b4"
+        },
+        {
+            "type": "file",
+            "name": "assets/vendors/slick/slick.min.js",
+            "size": 42863,
+            "hash": "0c7178cc6ca34fb18e30f070a5e7a1c287b2d7ccfcba2cfdf06e0f46eda55740"
+        },
+        {
+            "type": "file",
+            "name": "assets/vendors/tippy/tippy.css",
+            "size": 9491,
+            "hash": "b36385498bc12e173a3593162c1a449a3092f5b236ecea0dd5c918d73ed9ff7c"
+        },
+        {
+            "type": "file",
+            "name": "assets/vendors/tippy/tippy.js",
+            "size": 31768,
+            "hash": "796d5306f364aeea80af9be5b7c030a430c79a8092abcc9fc48a6f799f8b3bda"
+        },
+        {
+            "type": "file",
+            "name": "assets/vendors/video/video-js.css",
+            "size": 46462,
+            "hash": "f11480ce22d4efff00f635ef809ab1a0ac77ae23b5340c2a18722c2ec9c1dfec"
+        },
+        {
+            "type": "file",
+            "name": "assets/vendors/video/video-js.min.css",
+            "size": 39306,
+            "hash": "995691dfe3c10664cd71db45ced481e9015e0bb7a24f51846260919d6001b788"
+        },
+        {
+            "type": "file",
+            "name": "assets/vendors/video/video.min.js",
+            "size": 255281,
+            "hash": "e5bd20d9db698a5bc082c750816ca9a22f49fcf3960759b61420494848420d13"
+        },
+        {
+            "type": "file",
+            "name": "assets/vendors/video/wistia.js",
+            "size": 13184,
+            "hash": "2b179478c5ab1a73fcf0ec011cde5c0d0f773579075a9176d66c6ce93a377229"
+        },
+        {
+            "type": "file",
+            "name": "assets/vendors/wow/wow.min.js",
+            "size": 8415,
+            "hash": "0ec632e6ab02d4fdd514da7f5edc74aa28c9d4c71af76f1c8b93a1fba85bcc69"
+        },
+        {
+            "type": "file",
+            "name": "inc/admin/dashboard/Docy_admin_dashboard.php",
+            "size": 939,
+            "hash": "4089e90c69a29791e262cf1997a8ac790eea406c2c7959598891e2b67cc03706"
+        },
+        {
+            "type": "file",
+            "name": "inc/admin/dashboard/dashboard.php",
+            "size": 726,
+            "hash": "5130024e5003d4a89af56031e28f1fbd7b21bc3b3b9da91c680bc5102ecb26bf"
+        },
+        {
+            "type": "file",
+            "name": "inc/admin/notices/deactivate-plugins.php",
+            "size": 1381,
+            "hash": "e9538fd638180c57def6ec2d67fce46ed47b848e765547eb1666fa8d1139b8f2"
+        },
+        {
+            "type": "file",
+            "name": "inc/admin/notices/welcome-notice.php",
+            "size": 6480,
+            "hash": "5af91f9a316cfb3be3699b61885647bd154485a706648122d40d69ac2234fc7b"
+        },
+        {
+            "type": "file",
+            "name": "inc/admin/support/knowledge.php",
+            "size": 674,
+            "hash": "5132bebb7ec14e791a02abc50bce411fd2deff446754122d7170a154e373380c"
+        },
+        {
+            "type": "file",
+            "name": "inc/admin/support/support.php",
+            "size": 880,
+            "hash": "86f82ace1a01db55b160488b55497e1a4b00f2c3c84347ad95c398db27eaa313"
+        },
+        {
+            "type": "file",
+            "name": "inc/admin/support/ticket.php",
+            "size": 528,
+            "hash": "5ba78dd96e7f6d191f0f868ea311d3711ce5d5f8cfe334ba321fa556b0c228ea"
+        },
+        {
+            "type": "file",
+            "name": "inc/admin/support/changelog.php",
+            "size": 693,
+            "hash": "51f56fe53f53e90c983012e011a7451d220e8f4f6339e2a76ec4a3c75c23c916"
+        },
+        {
+            "type": "folder",
+            "name": "inc/csf/assets/css"
+        },
+        {
+            "type": "folder",
+            "name": "inc/csf/assets/images"
+        },
+        {
+            "type": "folder",
+            "name": "inc/csf/assets/js"
+        },
+        {
+            "type": "folder",
+            "name": "inc/csf/assets/scss"
+        },
+        {
+            "type": "folder",
+            "name": "inc/csf/fields/accordion"
+        },
+        {
+            "type": "folder",
+            "name": "inc/csf/fields/background"
+        },
+        {
+            "type": "folder",
+            "name": "inc/csf/fields/backup"
+        },
+        {
+            "type": "folder",
+            "name": "inc/csf/fields/border"
+        },
+        {
+            "type": "folder",
+            "name": "inc/csf/fields/button_set"
+        },
+        {
+            "type": "folder",
+            "name": "inc/csf/fields/callback"
+        },
+        {
+            "type": "folder",
+            "name": "inc/csf/fields/checkbox"
+        },
+        {
+            "type": "folder",
+            "name": "inc/csf/fields/code_editor"
+        },
+        {
+            "type": "folder",
+            "name": "inc/csf/fields/color"
+        },
+        {
+            "type": "folder",
+            "name": "inc/csf/fields/color_group"
+        },
+        {
+            "type": "folder",
+            "name": "inc/csf/fields/content"
+        },
+        {
+            "type": "folder",
+            "name": "inc/csf/fields/date"
+        },
+        {
+            "type": "folder",
+            "name": "inc/csf/fields/datetime"
+        },
+        {
+            "type": "folder",
+            "name": "inc/csf/fields/dimensions"
+        },
+        {
+            "type": "folder",
+            "name": "inc/csf/fields/fieldset"
+        },
+        {
+            "type": "folder",
+            "name": "inc/csf/fields/gallery"
+        },
+        {
+            "type": "folder",
+            "name": "inc/csf/fields/group"
+        },
+        {
+            "type": "folder",
+            "name": "inc/csf/fields/heading"
+        },
+        {
+            "type": "folder",
+            "name": "inc/csf/fields/icon"
+        },
+        {
+            "type": "folder",
+            "name": "inc/csf/fields/image_select"
+        },
+        {
+            "type": "file",
+            "name": "inc/csf/fields/index.php",
+            "size": 28,
+            "hash": "c48fe6b757ddc30cc6d27924bbbdd8ec8a46bba76754c4ce8adb99ea32046fbe"
+        },
+        {
+            "type": "folder",
+            "name": "inc/csf/fields/link"
+        },
+        {
+            "type": "folder",
+            "name": "inc/csf/fields/link_color"
+        },
+        {
+            "type": "folder",
+            "name": "inc/csf/fields/map"
+        },
+        {
+            "type": "folder",
+            "name": "inc/csf/fields/media"
+        },
+        {
+            "type": "folder",
+            "name": "inc/csf/fields/notice"
+        },
+        {
+            "type": "folder",
+            "name": "inc/csf/fields/number"
+        },
+        {
+            "type": "folder",
+            "name": "inc/csf/fields/palette"
+        },
+        {
+            "type": "folder",
+            "name": "inc/csf/fields/radio"
+        },
+        {
+            "type": "folder",
+            "name": "inc/csf/fields/repeater"
+        },
+        {
+            "type": "folder",
+            "name": "inc/csf/fields/select"
+        },
+        {
+            "type": "folder",
+            "name": "inc/csf/fields/slider"
+        },
+        {
+            "type": "folder",
+            "name": "inc/csf/fields/sortable"
+        },
+        {
+            "type": "folder",
+            "name": "inc/csf/fields/sorter"
+        },
+        {
+            "type": "folder",
+            "name": "inc/csf/fields/spacing"
+        },
+        {
+            "type": "folder",
+            "name": "inc/csf/fields/spinner"
+        },
+        {
+            "type": "folder",
+            "name": "inc/csf/fields/subheading"
+        },
+        {
+            "type": "folder",
+            "name": "inc/csf/fields/submessage"
+        },
+        {
+            "type": "folder",
+            "name": "inc/csf/fields/switcher"
+        },
+        {
+            "type": "folder",
+            "name": "inc/csf/fields/tabbed"
+        },
+        {
+            "type": "folder",
+            "name": "inc/csf/fields/text"
+        },
+        {
+            "type": "folder",
+            "name": "inc/csf/fields/textarea"
+        },
+        {
+            "type": "folder",
+            "name": "inc/csf/fields/typography"
+        },
+        {
+            "type": "folder",
+            "name": "inc/csf/fields/upload"
+        },
+        {
+            "type": "folder",
+            "name": "inc/csf/fields/wp_editor"
+        },
+        {
+            "type": "file",
+            "name": "inc/csf/classes/abstract.class.php",
+            "size": 5729,
+            "hash": "f56490d17b8d2f4a92ced8cb578c95f023c630366668fcabe4e4445bb6c4c457"
+        },
+        {
+            "type": "file",
+            "name": "inc/csf/classes/admin-options.class.php",
+            "size": 24695,
+            "hash": "dbd5e03c70a79cf2730a78fd5f2ddb7a2dda714404b25df96d5ecfca56b45d03"
+        },
+        {
+            "type": "file",
+            "name": "inc/csf/classes/comment-options.class.php",
+            "size": 11012,
+            "hash": "d0cb5fb09bd98b4e3863baf6e0857084b8d6119839c49d3c66435cdbbd8de519"
+        },
+        {
+            "type": "file",
+            "name": "inc/csf/classes/customize-options.class.php",
+            "size": 8892,
+            "hash": "f9318e7e5a32f936ef15c35b99c1af426d26335495275e1c9386dda684e1a951"
+        },
+        {
+            "type": "file",
+            "name": "inc/csf/classes/fields.class.php",
+            "size": 11107,
+            "hash": "e8eaad9954b9b31da83cad1d631441d868ffc9c3e9858d354933a8b74f793474"
+        },
+        {
+            "type": "file",
+            "name": "inc/csf/classes/metabox-options.class.php",
+            "size": 13852,
+            "hash": "00073f543eb747da9301ae1389504ae7b6599a34a01ddc64576bc4d12f05816a"
+        },
+        {
+            "type": "file",
+            "name": "inc/csf/classes/nav-menu-options.class.php",
+            "size": 8092,
+            "hash": "51379dd3c27741ee1b79ed98304207a0a7eac60c454ec0ed728be40b2329c554"
+        },
+        {
+            "type": "file",
+            "name": "inc/csf/classes/profile-options.class.php",
+            "size": 7856,
+            "hash": "95e31dc9d94f19b4a24e2512b1f21d16ce51222adfa091dc634741027c606c29"
+        },
+        {
+            "type": "file",
+            "name": "inc/csf/classes/setup.class.php",
+            "size": 26832,
+            "hash": "390c02dbc9c3771944a5e86b7bdd92bb08fccb2d583636508a78d7dbbb108e9c"
+        },
+        {
+            "type": "file",
+            "name": "inc/csf/classes/shortcode-options.class.php",
+            "size": 11553,
+            "hash": "24859de735eecbe3ac777102ae6b28b359fc3bef29dc919bfc23d36dc1b2aefa"
+        },
+        {
+            "type": "file",
+            "name": "inc/csf/classes/taxonomy-options.class.php",
+            "size": 9038,
+            "hash": "98efcc9bbb34b9901a4123b52da793375730ca50f71b0e4db78cc57dae2ff6a1"
+        },
+        {
+            "type": "file",
+            "name": "inc/csf/classes/widget-options.class.php",
+            "size": 3922,
+            "hash": "4f1b0cbf7b18c675f3555cc182a068abc8719324734dfd90bb236b62f356e9c1"
+        },
+        {
+            "type": "file",
+            "name": "inc/csf/functions/actions.php",
+            "size": 5539,
+            "hash": "c49b6f2700e588879e8fad6d4f74e6d23b1ea3b14c9c75c520e3f078ab0fd56b"
+        },
+        {
+            "type": "file",
+            "name": "inc/csf/functions/customize.php",
+            "size": 4431,
+            "hash": "daf33701580aed23a0a58117b336857d8f71a8c1c70dc89ac8601297dc5a68e9"
+        },
+        {
+            "type": "file",
+            "name": "inc/csf/functions/helpers.php",
+            "size": 1091,
+            "hash": "9e7c8d39cae10dce11c5ca5e8d3315ec871772195cca30119acfb6f23e28726f"
+        },
+        {
+            "type": "file",
+            "name": "inc/csf/functions/sanitize.php",
+            "size": 534,
+            "hash": "5d9fcb3398d9ea000f9150bbe74c0ebf52f3d24b773ec68e6e3adf281f9b24e0"
+        },
+        {
+            "type": "file",
+            "name": "inc/csf/functions/validate.php",
+            "size": 2810,
+            "hash": "8c4637fc4e8f44da12da40bb59e910c96aeb839fef5bdf2b3990805a5897ea3f"
+        },
+        {
+            "type": "file",
+            "name": "inc/csf/functions/walker.php",
+            "size": 752,
+            "hash": "83e37c15c11beb58cd79dc1fde2df350c36a8e7d70607e726c9138091723b64d"
+        },
+        {
+            "type": "file",
+            "name": "inc/demo/images/book-chapters.jpeg",
+            "size": 38795,
+            "hash": "57edad8d54d375c8b314ada68577b44066de05db559b715dfd8a45179c5ec6eb"
+        },
+        {
+            "type": "file",
+            "name": "inc/demo/images/classic.jpg",
+            "size": 21871,
+            "hash": "5959e9f52a0ec62ed40ee8ba03fb05397ad1c413d6661287bb93af55679c90cb"
+        },
+        {
+            "type": "file",
+            "name": "inc/demo/images/cool.jpg",
+            "size": 34765,
+            "hash": "19bd32740adb4286fccfff146a9bce9e8f5493392625cc00c5b674da705c2b3d"
+        },
+        {
+            "type": "file",
+            "name": "inc/demo/images/creative.jpg",
+            "size": 24507,
+            "hash": "c3404f51a4e6cd04c2bd6a1e2a72ce4d7302e6331b78d9b6ac5e0bd55f2e631d"
+        },
+        {
+            "type": "file",
+            "name": "inc/demo/images/focused-helpdesk.jpg",
+            "size": 28247,
+            "hash": "4fda82ef4d8ad828e3d633c716b51d55cfb4de623796f5475ce5395d571f7579"
+        },
+        {
+            "type": "file",
+            "name": "inc/demo/images/forum.jpeg",
+            "size": 20093,
+            "hash": "655c4177de054a72f468221797be1a7f73126bbc69ff78d47662bac94baa2c86"
+        },
+        {
+            "type": "file",
+            "name": "inc/demo/images/light.jpeg",
+            "size": 21570,
+            "hash": "e91058fd7d6c749d0b24e82540caa827f9f9205869d1571ebdb156072df9fee6"
+        },
+        {
+            "type": "file",
+            "name": "inc/demo/images/lms.jpg",
+            "size": 20794,
+            "hash": "aab96289f21ce4526498a67f45a4349e4b1b0ac957c65e64de9fd74bf8a51750"
+        },
+        {
+            "type": "file",
+            "name": "inc/demo/images/multi.jpeg",
+            "size": 22176,
+            "hash": "fee8f36b2195691580d433d9fa194ad3ca94846cdf4bb6ed6336012e8876487d"
+        },
+        {
+            "type": "file",
+            "name": "inc/demo/images/user-manuals.jpg",
+            "size": 22595,
+            "hash": "b9e9216dd7ef82b84f715d38166e4699a1a212f8fb1f1fb411b18d088dac0799"
+        },
+        {
+            "type": "file",
+            "name": "template-parts/header-elements/search-banner/ajax-search-results.php",
+            "size": 444,
+            "hash": "5f0f3a1f66aee847b7c5511f1e1a27971a014b474f71f57998db572fa5f20430"
+        },
+        {
+            "type": "file",
+            "name": "template-parts/header-elements/search-banner/breadcrumb.php",
+            "size": 2711,
+            "hash": "f32276867d31b8ea03d19ab06f092599c05b45b5a169663f7fe87f2797f7679b"
+        },
+        {
+            "type": "file",
+            "name": "template-parts/header-elements/search-banner/featured-video.php",
+            "size": 1555,
+            "hash": "5e0f051ad068ab81d57ca9f888975a6d6a18fc8c698d013ec75107a6cbf80a62"
+        },
+        {
+            "type": "file",
+            "name": "template-parts/header-elements/search-banner/keywords.php",
+            "size": 1335,
+            "hash": "2455353428e66aee26fd5573129ea831cba1482983d64b02f2e4fa3ba606a1c2"
+        },
+        {
+            "type": "file",
+            "name": "template-parts/header-elements/search-banner/sbnr-aesthetic.php",
+            "size": 3775,
+            "hash": "ff6072b40b14e2ad4eae935e4931af6ecb039ba2386bac3f257cd5a1fa9f0efc"
+        },
+        {
+            "type": "file",
+            "name": "template-parts/header-elements/search-banner/sbnr-el-template.php",
+            "size": 607,
+            "hash": "3437a0a20e0cce79fd0b780149cb696e3d392a1dc951c3dd3743abf2b1ebe66a"
+        },
+        {
+            "type": "file",
+            "name": "template-parts/header-elements/search-banner/sbnr-light.php",
+            "size": 5227,
+            "hash": "8367f59dfae7973c4b87e55db4e0a353459db87ee4c067e4ea82428eeea7d291"
+        },
+        {
+            "type": "file",
+            "name": "template-parts/header-elements/search-banner/search-spinner.php",
+            "size": 136,
+            "hash": "2e8ac234e5a443cba35fbecf98dc28a4946e519aaca15d06e8babfbfdb1a9b0c"
+        },
+        {
+            "type": "file",
+            "name": "template-parts/header-elements/search-banner/title.php",
+            "size": 1024,
+            "hash": "cbcc79aed276c79739fa79762c2cd494276130cbe36ef9ec146e57d76ba48b6e"
+        },
+        {
+            "type": "file",
+            "name": "woocommerce/single-product/add-to-cart/external.php",
+            "size": 1376,
+            "hash": "707d5d24f71c8afce431bf29fff99bc3a980edc01d4d1bb9aa5f0ad98e50d265"
+        },
+        {
+            "type": "file",
+            "name": "woocommerce/single-product/add-to-cart/grouped.php",
+            "size": 5174,
+            "hash": "065fc3d70e648d444d3d09e1d85240dee5747a1e511bcdf0c9c29fde94d81173"
+        },
+        {
+            "type": "file",
+            "name": "woocommerce/single-product/add-to-cart/simple.php",
+            "size": 2315,
+            "hash": "5cbe9ccb1293b0b49200d00c39f6c15fe9d99cd4dbac7ac055f5cb953dcdb7d1"
+        },
+        {
+            "type": "file",
+            "name": "woocommerce/single-product/add-to-cart/variable.php",
+            "size": 3914,
+            "hash": "87e93dc2bdedff43066a26fe111cf5dab23ecc80d7e2803810f608217449854e"
+        },
+        {
+            "type": "file",
+            "name": "woocommerce/single-product/add-to-cart/variation-add-to-cart-button.php",
+            "size": 1520,
+            "hash": "e31728f39729364f32f3cf854278fdc4f9e40461f48fbfb500b059d9d0cd50e1"
+        },
+        {
+            "type": "file",
+            "name": "woocommerce/single-product/add-to-cart/variation.php",
+            "size": 960,
+            "hash": "2693d0c7f9f122ed2b9a8cc9c8a3fd5d1e668dc20b1682390eaa0dcf78b7cad2"
+        },
+        {
+            "type": "file",
+            "name": "woocommerce/single-product/tabs/additional-information.php",
+            "size": 1134,
+            "hash": "cf37c8f56e2281b1730b16b756c26128239b6d523622aaf8823cd7f5b1ac542a"
+        },
+        {
+            "type": "file",
+            "name": "woocommerce/single-product/tabs/description.php",
+            "size": 901,
+            "hash": "58b45b3bee0135fae0aa16611268a4ac718c5f8a2590edd2f9c834c887b65ed1"
+        },
+        {
+            "type": "file",
+            "name": "woocommerce/single-product/tabs/tabs.php",
+            "size": 2345,
+            "hash": "ddfdd6ac41af7c0ad27244eb652d1a206745b9731339ba7288bb896bf4ff6394"
+        },
+        {
+            "type": "file",
+            "name": "assets/vendors/bootstrap/css/bootstrap-select.min.css",
+            "size": 9803,
+            "hash": "8d258ef655f4252830ba526d969bea0df0123b6392d7c8cbd81b4160b5ac7204"
+        },
+        {
+            "type": "file",
+            "name": "assets/vendors/bootstrap/css/bootstrap.min.css",
+            "size": 218783,
+            "hash": "bd93f6a470a4c69c7d55e517fe35fde644d6a4633b44b25f0974cd3c8170a09a"
+        },
+        {
+            "type": "file",
+            "name": "assets/vendors/bootstrap/js/bootstrap-select.min.js",
+            "size": 45163,
+            "hash": "c01e80a7b4b34c56f0f3fe6b40105a027e24545ae68514227156fc694f6c6cd5"
+        },
+        {
+            "type": "file",
+            "name": "assets/vendors/bootstrap/js/bootstrap-toc.min.js",
+            "size": 2116,
+            "hash": "63ada9619ae88fce26d3400815bb5c7741e73d0db09344240bd167c0e9fa5b4e"
+        },
+        {
+            "type": "file",
+            "name": "assets/vendors/bootstrap/js/bootstrap.bundle.min.js",
+            "size": 78129,
+            "hash": "f5210fa3e7f0245a4c51eb7f280092c0ef99fdd28c45e17dab8cc5854fdf4fd3"
+        },
+        {
+            "type": "file",
+            "name": "assets/vendors/elegant-icon/fonts/ElegantIcons.eot",
+            "size": 59572,
+            "hash": "912b4fcc232e1f45d329e2a127bca4bdf3195d965a2abce223b068e3c3c7db6a"
+        },
+        {
+            "type": "file",
+            "name": "assets/vendors/elegant-icon/fonts/ElegantIcons.svg",
+            "size": 277297,
+            "hash": "91f068a06a78d5ecdea0571a3b56f51d723ce1adbf5ba64283ecc1805b04e60b"
+        },
+        {
+            "type": "file",
+            "name": "assets/vendors/elegant-icon/fonts/ElegantIcons.ttf",
+            "size": 59388,
+            "hash": "7be552fcc35865c045cfafde15e7939c557cb88801a1abf461a4febc6d55fea0"
+        },
+        {
+            "type": "file",
+            "name": "assets/vendors/elegant-icon/fonts/ElegantIcons.woff",
+            "size": 63664,
+            "hash": "be1825e52a0dc7df04df9322f62abe2a2f2a25d98aac186de0140dfc7f6bdcae"
+        },
+        {
+            "type": "file",
+            "name": "assets/vendors/font-awesome/css/all.css",
+            "size": 39032,
+            "hash": "23fdac9f558683cd7c4e646286080a990f41ca3c271bbc0edf498713b28ca21c"
+        },
+        {
+            "type": "file",
+            "name": "assets/vendors/font-awesome/css/all.min.css",
+            "size": 102025,
+            "hash": "1edb1725a9ea8ca4dcf2f5508cee183218aa1685e47c1b23056717f754f58ebf"
+        },
+        {
+            "type": "file",
+            "name": "assets/vendors/font-awesome/fonts/FontAwesome.otf",
+            "size": 134808,
+            "hash": "444dd4366615ffc4a16d012b2fa90137065d3ccb410fa6fd5e4ddd7b5e4ffcd5"
+        },
+        {
+            "type": "file",
+            "name": "assets/vendors/font-awesome/fonts/fontawesome-webfont.eot",
+            "size": 165742,
+            "hash": "7bfcab6db99d5cfbf1705ca0536ddc78585432cc5fa41bbd7ad0f009033b2979"
+        },
+        {
+            "type": "file",
+            "name": "assets/vendors/font-awesome/fonts/fontawesome-webfont.svg",
+            "size": 444379,
+            "hash": "ad6157926c1622ba4e1d03d478f1541368524bfc46f51e42fe0d945f7ef323e4"
+        },
+        {
+            "type": "file",
+            "name": "assets/vendors/font-awesome/fonts/fontawesome-webfont.ttf",
+            "size": 165548,
+            "hash": "aa58f33f239a0fb02f5c7a6c45c043d7a9ac9a093335806694ecd6d4edc0d6a8"
+        },
+        {
+            "type": "file",
+            "name": "assets/vendors/font-awesome/fonts/fontawesome-webfont.woff",
+            "size": 98024,
+            "hash": "ba0c59deb5450f5cb41b3f93609ee2d0d995415877ddfa223e8a8a7533474f07"
+        },
+        {
+            "type": "file",
+            "name": "assets/vendors/font-awesome/fonts/fontawesome-webfont.woff2",
+            "size": 77160,
+            "hash": "2adefcbc041e7d18fcf2d417879dc5a09997aa64d675b7a3c4b6ce33da13f3fe"
+        },
+        {
+            "type": "file",
+            "name": "assets/vendors/font-size/css/rvfs.css",
+            "size": 1219,
+            "hash": "e77a4ac962c583dc911690d84fceb28185f450dd30f210a108462421ca6409a5"
+        },
+        {
+            "type": "file",
+            "name": "assets/vendors/font-size/js/rv-jquery-fontsize-2.0.3.js",
+            "size": 1146,
+            "hash": "27e049c951ec5664127ef241d95b5e69c89968a4d654632b17825248fe0023eb"
+        },
+        {
+            "type": "file",
+            "name": "assets/vendors/font-size/js/rv-jquery-fontsize-2.0.3.min.js",
+            "size": 4136,
+            "hash": "c6a859d63074353264d5008abde2b73ebfb3703109c3554f2a222952ce526f0a"
+        },
+        {
+            "type": "file",
+            "name": "assets/vendors/slick/fonts/slick.eot",
+            "size": 2048,
+            "hash": "06d80cf01250132fd1068701108453feee68854b750d22c344ffc0de395e1dcb"
+        },
+        {
+            "type": "file",
+            "name": "assets/vendors/slick/fonts/slick.svg",
+            "size": 2152,
+            "hash": "12459f221a0b787bf1eaebf2e4c48fca2bd9f8493f71256c3043e7a0c7e932f6"
+        },
+        {
+            "type": "file",
+            "name": "assets/vendors/slick/fonts/slick.ttf",
+            "size": 1892,
+            "hash": "37bc99cfdbbc046193a26396787374d00e7b10d3a758a36045c07bd8886360d2"
+        },
+        {
+            "type": "file",
+            "name": "assets/vendors/slick/fonts/slick.woff",
+            "size": 1380,
+            "hash": "26726bac4060abb1226e6ceebc1336e84930fe7a7af1b3895a109d067f5b5dcc"
+        },
+        {
+            "type": "file",
+            "name": "inc/csf/assets/css/style-rtl.css",
+            "size": 9475,
+            "hash": "04adcc195320519e0904c9b7f39cd9325427f67b4ebae0c08c1caed0161dd295"
+        },
+        {
+            "type": "file",
+            "name": "inc/csf/assets/css/style-rtl.min.css",
+            "size": 5622,
+            "hash": "76ca6a865838e00f318230305cbe61e22090bce3c4674facc9235b88db96d89a"
+        },
+        {
+            "type": "file",
+            "name": "inc/csf/assets/css/style.css",
+            "size": 104633,
+            "hash": "4d7f50758726b5005663a919d2a2cd9d5b3e47890338109c4672dda71434f1ff"
+        },
+        {
+            "type": "file",
+            "name": "inc/csf/assets/css/style.min.css",
+            "size": 84219,
+            "hash": "609f0c3955b03f2574983cc2d80422ec6cd254e2e774269ba1b328d5845b85d9"
+        },
+        {
+            "type": "file",
+            "name": "inc/csf/assets/images/checkerboard.png",
+            "size": 2340,
+            "hash": "1df29a767945751132f97010d914a7d89a31bf9cb4d2843665eb3860bf19dbd5"
+        },
+        {
+            "type": "file",
+            "name": "inc/csf/assets/images/wp-logo.svg",
+            "size": 940,
+            "hash": "c8c762080f6f3cc20d4c635a2a75726a99aa78b126f9e0ed9016e4210be6968c"
+        },
+        {
+            "type": "file",
+            "name": "inc/csf/assets/images/wp-plugin-logo.svg",
+            "size": 482,
+            "hash": "f86ed6fa5f4128e7e6c5c33bd44214a4cfc800e5d69ea7faabeeea167b4f1aec"
+        },
+        {
+            "type": "file",
+            "name": "inc/csf/assets/js/gutenberg.js",
+            "size": 2249,
+            "hash": "ef84552686bf57ef6cc16e15a6fff16faaea0e1cd31378c1e6b38c798130a559"
+        },
+        {
+            "type": "file",
+            "name": "inc/csf/assets/js/main.js",
+            "size": 100147,
+            "hash": "c2cc19f31f823435d53ae74177575f0cb97065b3e33db6c185f02a763dc97f9c"
+        },
+        {
+            "type": "file",
+            "name": "inc/csf/assets/js/main.min.js",
+            "size": 47451,
+            "hash": "4c411fb9e59321d7825afb85546fca75a232d70ded2b6d7bb41db37d997f829c"
+        },
+        {
+            "type": "file",
+            "name": "inc/csf/assets/js/plugins.js",
+            "size": 188190,
+            "hash": "8041580f8070de25ccae0c3ba374fe6efe89d141ae59921a7e2f1a3ff57f7058"
+        },
+        {
+            "type": "file",
+            "name": "inc/csf/assets/js/plugins.min.js",
+            "size": 86960,
+            "hash": "f4e0bc71215275ea546a93c7c8e1030271ba5ca9f08eac68b37d962954ab13dd"
+        },
+        {
+            "type": "folder",
+            "name": "inc/csf/assets/scss/partials"
+        },
+        {
+            "type": "file",
+            "name": "inc/csf/assets/scss/style-rtl.scss",
+            "size": 9170,
+            "hash": "9953221c63ce95cfa2b9c2495baa62d9935f167cb7fd0c851952016b3575e183"
+        },
+        {
+            "type": "file",
+            "name": "inc/csf/assets/scss/style.scss",
+            "size": 2581,
+            "hash": "b6f5859dc2a1ab05ce02c391564513f3edd43f985440324cc6bf3387bd95b29c"
+        },
+        {
+            "type": "file",
+            "name": "inc/csf/fields/accordion/accordion.php",
+            "size": 1881,
+            "hash": "b63203a5710b2c663c915d2b774694cad5cb58fb73c16e76122422de5236ff51"
+        },
+        {
+            "type": "file",
+            "name": "inc/csf/fields/background/background.php",
+            "size": 12961,
+            "hash": "8a9740f4d874b5b8e754ad9b5d62b883fe5d94d62d9120b7cd05d041adb846d1"
+        },
+        {
+            "type": "file",
+            "name": "inc/csf/fields/backup/backup.php",
+            "size": 1638,
+            "hash": "e3e81ff57b24d70f73b3d9dab75fe59fa7842387ed2a6ad59b3019b70dce6497"
+        },
+        {
+            "type": "file",
+            "name": "inc/csf/fields/border/border.php",
+            "size": 7984,
+            "hash": "ce70452ff8db30cfd63108119727ff9edaa3312f283c7f7b09c2ddb5da523106"
+        },
+        {
+            "type": "file",
+            "name": "inc/csf/fields/button_set/button_set.php",
+            "size": 2170,
+            "hash": "9d88b930e4f0cee6557f8658390f6b4d16529c108e0ddba91a54d0f446b48743"
+        },
+        {
+            "type": "file",
+            "name": "inc/csf/fields/callback/callback.php",
+            "size": 705,
+            "hash": "b0b666f63ba1d6b4a72d3ddb29e83a76414ee60e80608537734108ab322de015"
+        },
+        {
+            "type": "file",
+            "name": "inc/csf/fields/checkbox/checkbox.php",
+            "size": 3644,
+            "hash": "831a2b378d183179964d14c02e30b63104304c9463bfb3beb8971d508168412e"
+        },
+        {
+            "type": "file",
+            "name": "inc/csf/fields/code_editor/code_editor.php",
+            "size": 2088,
+            "hash": "424b72487dc9bf5510e44b58e0310a6ad3ee79b06f58e51dc52dc01ce2c756e5"
+        },
+        {
+            "type": "file",
+            "name": "inc/csf/fields/color/color.php",
+            "size": 1744,
+            "hash": "ffb91cb06ecfa544def898d3c15e40af2e352d6a43ed4d3fb66e81c888871382"
+        },
+        {
+            "type": "file",
+            "name": "inc/csf/fields/color_group/color_group.php",
+            "size": 1326,
+            "hash": "59c750bf2d3a71f81b86566d639654db56439fc58daf754ac8461acf33c99d4c"
+        },
+        {
+            "type": "file",
+            "name": "inc/csf/fields/content/content.php",
+            "size": 556,
+            "hash": "44e21015e6126db441534d3364fe503331946e1fb3c518be03e5719f509f9d67"
+        },
+        {
+            "type": "file",
+            "name": "inc/csf/fields/date/date.php",
+            "size": 2007,
+            "hash": "e7b8bb9de303f47b35b241df0f72c38ebfc5c4021012862d8dcaa5f0ba7efd6a"
+        },
+        {
+            "type": "file",
+            "name": "inc/csf/fields/datetime/datetime.php",
+            "size": 1980,
+            "hash": "d8e09d14580d49cd511d6711256d93d95032ae74aa94e9f7f74b763c86da7605"
+        },
+        {
+            "type": "file",
+            "name": "inc/csf/fields/dimensions/dimensions.php",
+            "size": 4478,
+            "hash": "141fd3066d82c054b5415d4c771f6c9f94b291d8eda02041b3959fff9fda206d"
+        },
+        {
+            "type": "file",
+            "name": "inc/csf/fields/fieldset/fieldset.php",
+            "size": 1176,
+            "hash": "760cccd761d101cd977e4af4306cebe731592e06d2a120d63abe09e4fdb30b9e"
+        },
+        {
+            "type": "file",
+            "name": "inc/csf/fields/gallery/gallery.php",
+            "size": 1658,
+            "hash": "d585d65ff17bb165f9aee770403c37f8a6273e7da98371c5c4c88b0407004de8"
+        },
+        {
+            "type": "file",
+            "name": "inc/csf/fields/group/group.php",
+            "size": 6681,
+            "hash": "3856740fde5e9a2b83b1acc7ab1d889260c921a6bbbc1108112eb46c3e4d586a"
+        },
+        {
+            "type": "file",
+            "name": "inc/csf/fields/heading/heading.php",
+            "size": 540,
+            "hash": "f6cd5d19c37cfef11f1f3474f97c10bc89093246d5eb278afc4381d7005e7a78"
+        },
+        {
+            "type": "file",
+            "name": "inc/csf/fields/icon/fa4-icons.php",
+            "size": 12647,
+            "hash": "cd80fc072e425698a9cf82d4c5311435fccb537329322506e5e6394f5b27a8a3"
+        },
+        {
+            "type": "file",
+            "name": "inc/csf/fields/icon/fa5-icons.php",
+            "size": 31698,
+            "hash": "07fc16753b868b10ed330df764497f14eecd23951d7f211dc99a39e27456b28e"
+        },
+        {
+            "type": "file",
+            "name": "inc/csf/fields/icon/icon.php",
+            "size": 2665,
+            "hash": "80f37d9022cee809aa4703f6038b8ea1f169ce6ed7e6a11a6f79cf423356e415"
+        },
+        {
+            "type": "file",
+            "name": "inc/csf/fields/image_select/image_select.php",
+            "size": 2443,
+            "hash": "57d613786e6bd7b9c1a66158e459c1bc7f57d5e5594c3cee71128ee5e7728d49"
+        },
+        {
+            "type": "file",
+            "name": "inc/csf/fields/link/link.php",
+            "size": 2871,
+            "hash": "fc9daeec5adf5d927fb88bd83a62d3f195e7e579e4d3bfae9979fd6e05efbdf2"
+        },
+        {
+            "type": "file",
+            "name": "inc/csf/fields/link_color/link_color.php",
+            "size": 3346,
+            "hash": "4f2f38089b07e1470e2efc4eeddd6be2e9d3fde0f1757c4630d10929a1124b53"
+        },
+        {
+            "type": "file",
+            "name": "inc/csf/fields/map/map.php",
+            "size": 3724,
+            "hash": "0995ec92362f05fd06d551a2c892a62c301b09e1e731703407b1556f2eafbed7"
+        },
+        {
+            "type": "file",
+            "name": "inc/csf/fields/media/media.php",
+            "size": 4770,
+            "hash": "de918963984f7a6f79d058f4f817bf286365e15e1fe545d1262cc4662574aba4"
+        },
+        {
+            "type": "file",
+            "name": "inc/csf/fields/notice/notice.php",
+            "size": 700,
+            "hash": "f8e27d78e358d1c5b1c5d4df5aa975d3aaa2c720e8677d8da5646f0603934c8d"
+        },
+        {
+            "type": "file",
+            "name": "inc/csf/fields/number/number.php",
+            "size": 2168,
+            "hash": "7b721a167d23d6f336a3796e4a2c4d842b9d1d0af31fb5dbd737cf135675ea8c"
+        },
+        {
+            "type": "file",
+            "name": "inc/csf/fields/palette/palette.php",
+            "size": 1427,
+            "hash": "8a384da6f365d37867138374d1f2ef66980225de34c0e91de1959277bd69316b"
+        },
+        {
+            "type": "file",
+            "name": "inc/csf/fields/radio/radio.php",
+            "size": 3136,
+            "hash": "862bca0c216ce3ea236dec57a4dfd41f2ca6ba594e3e0e7b1e32fed6f7b258e7"
+        },
+        {
+            "type": "file",
+            "name": "inc/csf/fields/repeater/repeater.php",
+            "size": 4014,
+            "hash": "7ffa5216dbfe3ebf5a7ea19640b00486ea9997bc764c3413d9e920c781cffaea"
+        },
+        {
+            "type": "file",
+            "name": "inc/csf/fields/select/select.php",
+            "size": 5029,
+            "hash": "dfae325c01d500db98d3d3a716109fbe8a059f9a9a0ca6a0071f58dbaadc517c"
+        },
+        {
+            "type": "file",
+            "name": "inc/csf/fields/slider/slider.php",
+            "size": 2578,
+            "hash": "b813ede25b910f7f99929766fdeb3129986ab3ff954e0d39125cf15ed0942550"
+        },
+        {
+            "type": "file",
+            "name": "inc/csf/fields/sortable/sortable.php",
+            "size": 2238,
+            "hash": "d04b24e8e0197a38bead0b606c5525f00aa820df57aaa441931f6c0a8dc4b451"
+        },
+        {
+            "type": "file",
+            "name": "inc/csf/fields/sorter/sorter.php",
+            "size": 2580,
+            "hash": "c7ac1f4af0781ed34129f81f27abd10678422db66db9220b5b891ef2f07c4ea4"
+        },
+        {
+            "type": "file",
+            "name": "inc/csf/fields/spacing/spacing.php",
+            "size": 6903,
+            "hash": "56e937d441c7d133c4a5a7d16f314e1818d2498cf56606dce1238df51c85f005"
+        },
+        {
+            "type": "file",
+            "name": "inc/csf/fields/spinner/spinner.php",
+            "size": 2283,
+            "hash": "d4c6b6f8a451f3179ab4cea4c35a8c9ce2aeb887b745ea19bd88d90a39d5878f"
+        },
+        {
+            "type": "file",
+            "name": "inc/csf/fields/subheading/subheading.php",
+            "size": 549,
+            "hash": "afc1cd7baf19bfb0ad9dcede8d1e261e5fd73e96e0384b8eb78538bd31565e8f"
+        },
+        {
+            "type": "file",
+            "name": "inc/csf/fields/submessage/submessage.php",
+            "size": 674,
+            "hash": "0b1d89a742895bd489348685f19ef31fbf327e970af3d9202b0256081878a020"
+        },
+        {
+            "type": "file",
+            "name": "inc/csf/fields/switcher/switcher.php",
+            "size": 1548,
+            "hash": "d9beaeba7660df61135dd202dc49699aace7dfe62ed00a09c89970336353fb53"
+        },
+        {
+            "type": "file",
+            "name": "inc/csf/fields/tabbed/tabbed.php",
+            "size": 1977,
+            "hash": "4dda92c4d151231ac14653cfdc1afe2f290a2f6e76cbba53254b26ff6949f3c1"
+        },
+        {
+            "type": "file",
+            "name": "inc/csf/fields/text/text.php",
+            "size": 800,
+            "hash": "278885fb210a6f6f3a1e44f01c638f857bd9f4d464c7d1b7e5372e8d008e0383"
+        },
+        {
+            "type": "file",
+            "name": "inc/csf/fields/textarea/textarea.php",
+            "size": 1587,
+            "hash": "4051566ff72b59e238a5c20a50b99fd8fa5188a313f9216dc057be7296dd403a"
+        },
+        {
+            "type": "file",
+            "name": "inc/csf/fields/typography/google-fonts.php",
+            "size": 140904,
+            "hash": "00d8fada9dada8fd04e21d07cbce9d9ff2af3de46cea366b5ed3d7c94cc8cfec"
+        },
+        {
+            "type": "file",
+            "name": "inc/csf/fields/typography/typography.php",
+            "size": 23103,
+            "hash": "5ccf48610d84566b066fb8a86dd26e02c87edd59dcdc8c7ceadc0bc510f29b18"
+        },
+        {
+            "type": "file",
+            "name": "inc/csf/fields/upload/upload.php",
+            "size": 2722,
+            "hash": "79b93288fec007805ee7c9680a91a1e3b62bd9faa57af54c7f590e18b3bc037b"
+        },
+        {
+            "type": "file",
+            "name": "inc/csf/fields/wp_editor/wp_editor.php",
+            "size": 2865,
+            "hash": "b6818cad9c45f3be52a8fc70276301750663c633376990838f204e87eda4a0fe"
+        },
+        {
+            "type": "file",
+            "name": "inc/csf/assets/scss/partials/_base.scss",
+            "size": 6193,
+            "hash": "9ea456fae0c8a60f6d3309896b4a9fc86d8748dbaafe4fb6e23aa2f8261ee485"
+        },
+        {
+            "type": "file",
+            "name": "inc/csf/assets/scss/partials/_chosen.scss",
+            "size": 8329,
+            "hash": "eb45039a02310205f67b40b6754dce38accb6407b16f2884dca3e8d6ab5fc971"
+        },
+        {
+            "type": "file",
+            "name": "inc/csf/assets/scss/partials/_customizer.scss",
+            "size": 2514,
+            "hash": "868c2e920a7a22856bac587672b24a42c1ca50d2b93abc8b0243f2711c440e67"
+        },
+        {
+            "type": "file",
+            "name": "inc/csf/assets/scss/partials/_fields.scss",
+            "size": 36996,
+            "hash": "a2cc8ab9c74fa5f4eab3c58902b7f051167bc2b008551b47534357c866ab62b5"
+        },
+        {
+            "type": "file",
+            "name": "inc/csf/assets/scss/partials/_flatpickr.scss",
+            "size": 19024,
+            "hash": "dd31a7c47248c8d3276462502c2820db5591c7673747fc95e9cbee7f5d805dc2"
+        },
+        {
+            "type": "file",
+            "name": "inc/csf/assets/scss/partials/_helper.scss",
+            "size": 2233,
+            "hash": "a6e6ef24333a2dffa8a076c89de7dc3b0ebb7bf203a5821633c0e7c7f7e1fb41"
+        },
+        {
+            "type": "file",
+            "name": "inc/csf/assets/scss/partials/_modal.scss",
+            "size": 5066,
+            "hash": "39f5a0df0f26ecf08a1663d5dbd91ef292b776ecb868b6c74520852d1b47c67f"
+        },
+        {
+            "type": "file",
+            "name": "inc/csf/assets/scss/partials/_navmenu.scss",
+            "size": 806,
+            "hash": "f716940b35af6e03bf14d78f1cede60ddd52ec6456bd6a5ded6a254ebfab20eb"
+        },
+        {
+            "type": "file",
+            "name": "inc/csf/assets/scss/partials/_profile.scss",
+            "size": 1050,
+            "hash": "1b75a096a8ec93d0d629b8c7c73be64daba460cf3737e0a35d1ec3cc3bd2fe9c"
+        },
+        {
+            "type": "file",
+            "name": "inc/csf/assets/scss/partials/_responsive.scss",
+            "size": 2086,
+            "hash": "58b6810aba7d2e7c2b2e62d1d2f0e4f8b926210cdfa9ab94b467f0e7978084b5"
+        },
+        {
+            "type": "file",
+            "name": "inc/csf/assets/scss/partials/_taxonomy.scss",
+            "size": 1726,
+            "hash": "ff00bfb94771f2422129e3249dce894ed03e5c4c68e3de330447bea49f581a0b"
+        },
+        {
+            "type": "file",
+            "name": "inc/csf/assets/scss/partials/_themes.scss",
+            "size": 4426,
+            "hash": "910fd4e984b899234fe01b3855bacc24941c77f10c058ae02d60b5310b05433b"
+        },
+        {
+            "type": "file",
+            "name": "inc/csf/assets/scss/partials/_welcome.scss",
+            "size": 5343,
+            "hash": "625cad36865a572910b364feb331ae1f0840d948caa3f378dd538df3f6d00c8e"
+        },
+        {
+            "type": "file",
+            "name": "inc/csf/assets/scss/partials/_widget.scss",
+            "size": 840,
+            "hash": "01eed0c336f4f2df8d02a634b4a47a2540df7a67a6ddfdda5f9f31f1a8a9bfb1"
+        }
+    ]
+}

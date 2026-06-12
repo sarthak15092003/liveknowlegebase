@@ -1,0 +1,4 @@
+[18-Apr-2026 19:52:18 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function get_header() in /home/e89fpft/public_html/wp-content/themes/docy/index.php:15
+Stack trace:
+#0 {main}
+  thrown in /home/e89fpft/public_html/wp-content/themes/docy/index.php on line 15
