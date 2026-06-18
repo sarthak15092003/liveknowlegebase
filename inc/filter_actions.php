@@ -198,3 +198,15 @@ if( function_exists('acf_add_options_sub_page') ) {
 if ( class_exists('bbPress') ) {
 	require get_template_directory() . '/inc/bbpress-config.php';
 }
+
+/**
+ * Change the order of posts in categories to ascending order 
+ * (newly uploaded articles come last)
+ */
+function docy_category_post_order( $query ) {
+    if ( !is_admin() && $query->is_main_query() && $query->is_category() ) {
+        $query->set( 'order', 'ASC' );
+        $query->set( 'orderby', 'date' );
+    }
+}
+add_action( 'pre_get_posts', 'docy_category_post_order' );
