@@ -200,13 +200,24 @@ if ( class_exists('bbPress') ) {
 }
 
 /**
- * Change the order of posts in categories to ascending order 
- * (newly uploaded articles come last)
+ * Set default menu_order to a high number for new posts so they appear at the bottom 
+ * when using manual sorting plugins.
  */
-function docy_category_post_order( $query ) {
-    if ( !is_admin() && $query->is_main_query() && $query->is_category() ) {
-        $query->set( 'order', 'ASC' );
-        $query->set( 'orderby', 'date' );
+function docy_set_new_post_menu_order( $data, $postarr ) {
+    // Check if the post is an auto-draft or if it's completely new
+    if ( ( isset( $data['post_status'] ) && $data['post_status'] === 'auto-draft' ) || empty( $postarr['ID'] ) ) {
+        $data['menu_order'] = 9999;
     }
+    
+    // If saving a draft for the first time, and menu_order is 0, bump it up
+    if ( isset( $postarr['ID'] ) && $postarr['ID'] > 0 && isset( $data['menu_order'] ) && $data['menu_order'] == 0 ) {
+        // Only do this if we are not explicitly dragging/dropping using a plugin 
+        // (those usually have specific AJAX actions)
+        if ( ! isset( $_POST['action'] ) || $_POST['action'] !== 'update-menu-order' ) {
+            $data['menu_order'] = 9999;
+        }
+    }
+
+    return $data;
 }
-add_action( 'pre_get_posts', 'docy_category_post_order' );
+add_filter( 'wp_insert_post_data', 'docy_set_new_post_menu_order', 10, 2 );

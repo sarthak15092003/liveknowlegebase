@@ -459,8 +459,8 @@ get_template_part( 'template-parts/single-post/banner', $banner_type );
 
                         <!-- Post Navigation Cards -->
                         <?php
-                        $prev_post = get_previous_post();
-                        $next_post = get_next_post();
+                        $prev_post = get_next_post();
+                        $next_post = get_previous_post();
                         if ( $prev_post || $next_post ) : ?>
                             <div class="post-navigation-cards mt-4 d-flex gap-3">
                                 <?php if ( $prev_post ) : ?>
