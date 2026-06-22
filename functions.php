@@ -224,9 +224,22 @@ add_filter('post_thumbnail_html', 'docy_fix_localhost_paths', 99);
  * (newly uploaded articles come last)
  */
 function docy_docs_custom_order( $query ) {
-    if ( ! is_admin() && $query->get( 'post_type' ) === 'docs' ) {
+    if ( is_admin() ) return;
+    
+    $post_type = $query->get( 'post_type' );
+    $is_docs = false;
+    
+    if ( $post_type === 'docs' || ( is_array( $post_type ) && in_array( 'docs', $post_type ) ) ) {
+        $is_docs = true;
+    } elseif ( $query->get('post_type') == '' && ( $query->is_tax('doc_dir') || $query->is_post_type_archive('docs') ) ) {
+        $is_docs = true;
+    }
+
+    if ( $is_docs ) {
         $query->set( 'order', 'ASC' );
-        $query->set( 'orderby', 'date' );
+        $query->set( 'orderby', 'menu_order date' );
+        $query->set( 'posts_per_page', -1 );
+        $query->set( 'nopaging', true );
     }
 }
 add_action( 'pre_get_posts', 'docy_docs_custom_order', 99 );
