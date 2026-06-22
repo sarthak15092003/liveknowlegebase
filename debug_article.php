@@ -1,5 +1,5 @@
 <?php
-require '../../../wp-load.php';
+require_once('../../../wp-load.php');
 
 $article_title = 'How to Validate and Filter Imported Data in CMGalaxy';
 $query = new WP_Query([
