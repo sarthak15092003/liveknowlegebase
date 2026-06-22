@@ -266,9 +266,9 @@ if (empty($sidebar_sections)) {
                     
                     $cat_args = array(
                         'cat'            => $cat_id,
-                        'posts_per_page' => 20,
+                        'posts_per_page' => -1,
                         'orderby'        => 'date',
-                        'order'          => 'DESC',
+                        'order'          => 'ASC',
                     );
                     $cat_query = new WP_Query($cat_args);
 
@@ -405,9 +405,9 @@ function toggleCatArticles(header) {
                 
                 $args = array(
                     'cat'            => $cat_id,
-                    'posts_per_page' => 15,
+                    'posts_per_page' => -1,
                     'orderby'        => 'date',
-                    'order'          => 'DESC',
+                    'order'          => 'ASC',
                 );
                 
                 $query = new WP_Query($args);
