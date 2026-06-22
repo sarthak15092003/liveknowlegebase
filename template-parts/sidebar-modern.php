@@ -165,8 +165,8 @@ if (empty($sidebar_sections)) {
         /* Active category article list */
         .single-post-sidebar .cat-articles {
             padding: 4px 0 0 0;
-            max-height: 500px;
-            overflow-y: auto;
+            max-height: 2500px;
+            overflow: hidden;
             transition: max-height 0.3s ease, opacity 0.3s ease, padding 0.3s ease;
             opacity: 1;
         }
