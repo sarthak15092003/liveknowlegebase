@@ -218,3 +218,15 @@ function docy_fix_localhost_paths($content) {
 add_filter('the_content', 'docy_fix_localhost_paths', 99);
 add_filter('the_excerpt', 'docy_fix_localhost_paths', 99);
 add_filter('post_thumbnail_html', 'docy_fix_localhost_paths', 99);
+
+/**
+ * Change the order of EazyDocs posts to ascending order by date
+ * (newly uploaded articles come last)
+ */
+function docy_docs_custom_order( $query ) {
+    if ( ! is_admin() && $query->get( 'post_type' ) === 'docs' ) {
+        $query->set( 'order', 'ASC' );
+        $query->set( 'orderby', 'date' );
+    }
+}
+add_action( 'pre_get_posts', 'docy_docs_custom_order', 99 );
