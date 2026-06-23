@@ -957,21 +957,34 @@ blockquote {
 /*============= doc_blog_classic_area css ==============*/
 .pagination {
   margin-top: 30px;
+  display: flex;
   justify-content: center;
 
+  .nav-links {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 14px;
+  }
+
   .page-numbers {
-    width: 35px;
-    height: 35px;
+    width: 42px;
+    height: 42px;
     display: inline-flex;
-    border-radius: 100%;
-    border: none;
+    border-radius: 50%;
+    border: none !important;
     text-align: center;
     align-items: center;
     justify-content: center;
     font-size: 16px;
+    font-weight: 500;
     vertical-align: middle;
     color: var(--p_color);
-    transition: all 0.2s linear;
+    background-color: transparent;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    text-decoration: none !important;
+    box-shadow: none !important;
 
     i {
       font-size: 20px;
@@ -980,21 +993,35 @@ blockquote {
     &.next,
     &.prev {
       color: var(--brand_color);
+
+      &:hover {
+        background-color: rgba(var(--brand_color_rgb), 0.1) !important;
+        color: var(--brand_color) !important;
+      }
+    }
+
+    &.dots {
+      color: #9E9E9E;
+      background-color: transparent !important;
+      cursor: default;
+      width: auto;
+      padding: 0 4px;
     }
 
     &+.page-numbers {
-      margin-left: 8px;
+      margin-left: 0;
     }
 
-    &:hover {
-      color: var(--brand_color);
-      background-color: transparent;
+    &:hover:not(.current):not(.dots) {
+      color: var(--brand_color) !important;
+      background-color: rgba(var(--brand_color_rgb), 0.08) !important;
     }
 
     &.current {
-      background: var(--brand_color);
-      box-shadow: none;
-      color: #fff;
+      background: var(--brand_color) !important;
+      color: #fff !important;
+      font-weight: 600;
+      box-shadow: 0 4px 10px rgba(var(--brand_color_rgb), 0.3) !important;
     }
 
     &:hover {
