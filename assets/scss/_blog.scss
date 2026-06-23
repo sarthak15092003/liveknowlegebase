@@ -956,32 +956,39 @@ blockquote {
 
 /*============= doc_blog_classic_area css ==============*/
 .pagination {
+  margin-top: 30px;
+  justify-content: center;
+
   .page-numbers {
     width: 35px;
     height: 35px;
     display: inline-flex;
     border-radius: 100%;
-    border: 1px solid brand_color_rgba(0.3);
+    border: none;
     text-align: center;
     align-items: center;
     justify-content: center;
-    font-size: 14px;
+    font-size: 16px;
     vertical-align: middle;
-    color: var(--brand_color);
+    color: var(--p_color);
     transition: all 0.2s linear;
 
     i {
-      font-size: 24px;
+      font-size: 20px;
+    }
+
+    &.next,
+    &.prev {
+      color: var(--brand_color);
     }
 
     &+.page-numbers {
-      margin-left: 2px;
+      margin-left: 8px;
     }
 
-    &:hover,
-    &.current {
-      background-color: brand_color_rgba(0.1);
-      border-color: var(--brand_color);
+    &:hover {
+      color: var(--brand_color);
+      background-color: transparent;
     }
 
     &.current {
