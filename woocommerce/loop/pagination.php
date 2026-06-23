@@ -28,5 +28,23 @@ if ( $total <= 1 ) {
 	return;
 }
 echo '<div class="col-lg-12">';
-Docy_helper()->pagination();
+echo '<nav class="navigation pagination"><div class="nav-links">';
+echo paginate_links(
+	apply_filters(
+		'woocommerce_pagination_args',
+		array( // WPCS: XSS ok.
+			'base'      => $base,
+			'format'    => $format,
+			'add_args'  => false,
+			'current'   => max( 1, $current ),
+			'total'     => $total,
+			'prev_text' => '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>',
+			'next_text' => '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>',
+			'type'      => 'plain',
+			'end_size'  => 3,
+			'mid_size'  => 3,
+		)
+	)
+);
+echo '</div></nav>';
 echo '</div>';
