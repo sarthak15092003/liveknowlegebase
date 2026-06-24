@@ -479,13 +479,13 @@ if ($blog_layout == 'blog_category' && !$is_category_page) {
 							your business.</p>
 					</div>
 					<div class="home-cta-banner__actions">
-						<a class="home-cta-banner__primary" href="#">Request a Demo</a>
-						<a class="home-cta-banner__secondary" href="#">
+						<a class="home-cta-banner__primary" href="https://cmgalaxy.com/book-a-demo">Book a Demo</a>
+						<a class="home-cta-banner__secondary" href="https://platform.cmgalaxy.com/sign-up">
 							<span class="home-cta-banner__icon" aria-hidden="true">
 								<img src="<?php echo esc_url(get_template_directory_uri() . '/assets/img/message.svg'); ?>"
 									alt="" width="24" height="24">
 							</span>
-							Let’s Talk Growth
+							Try CMGalaxy
 						</a>
 					</div>
 				</div>
