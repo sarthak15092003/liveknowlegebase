@@ -398,7 +398,7 @@ if ( $blog_layout == 'blog_category' && ! $is_category_page ) {
 				}
 				echo '</div></div>';
 				?>
-				<section class="container highest-rated-section">
+				<section class="container highest-rated-section" style="display: none;">
 					<div class="text-center mb-5">
 						<h2 class="highest-rated-title" style="font-weight:600;">Highest rated articles</h2>
 					</div>
