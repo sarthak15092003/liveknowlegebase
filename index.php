@@ -303,7 +303,7 @@ if ( $blog_layout == 'blog_category' && ! $is_category_page ) {
             if ( is_array($docy_categories) && ! empty( $docy_categories ) ) {
                 $first_cat = reset($docy_categories);
                 $all_cat_link = ( $first_cat && isset($first_cat->term_id) ) ? home_url( '/?cat=' . $first_cat->term_id . '&infinite=1' ) : '#';
-                echo '<div class="col-md-6 col-lg-6">';
+                echo '<div class="col-md-6 col-lg-6" style="display: none;">';
                 echo '<a class="card h-100 category-card border text-reset text-decoration-none" href="' . esc_url( $all_cat_link ) . '" style="background: #ffffff;">';
                 echo '<div class="card-body">';
                 echo '<div class="category-card__icon custom-icon" aria-hidden="true">'
