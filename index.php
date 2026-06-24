@@ -305,7 +305,7 @@ if ($blog_layout == 'blog_category' && !$is_category_page) {
     line-height: 170%;
     text-align: center;
     margin: 30px auto 0;
-    max-width: 900px;">Welcome to the CMGalaxy Documentation Center. Learn how to connect your advertising, analytics, CRM, and e-commerce platforms to gain a unified view of performance, automate reporting, and drive better marketing decisions.</p>
+    max-width: 900px;"> Your CMGalaxy questions, answered. Learn how to connect your platforms, read your attribution data, analyse creatives, and turn insights into better ROAS.</p>
                 </div>
                 </div>
                 </div>';

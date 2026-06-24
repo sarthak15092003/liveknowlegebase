@@ -24,7 +24,7 @@ if ($has_cat_sidebar) {
                         <?php
                     }
                     ?>
-                    <span class="post-date">
+                    <span class="post-date" style="display: none;">
                         <i class="fa fa-calendar"></i> <?php the_time(get_option('date_format')); ?>
                     </span>
                 </div>
