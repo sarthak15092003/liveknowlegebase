@@ -300,10 +300,12 @@ if ($blog_layout == 'blog_category' && !$is_category_page) {
 			echo '<div class="container mb-4">
                 <div class="row">
                 <div class="col-12">
-                <p class="category-intro lead mb-10" style="font-size: 18px;
+				<p class="category-intro lead mb-10" style="font-size: 18px;
     font-weight: 400;
     line-height: 170%;
-    text-align: center;margin-top:30px;">Welcome to the CMGalaxy Documentation Center. Learn how to connect your advertising, analytics, CRM, and e-commerce platforms to gain a unified view of performance, automate reporting, and drive better marketing decisions.</p>
+    text-align: center;
+    margin: 30px auto 0;
+    max-width: 900px;">Welcome to the CMGalaxy Documentation Center. Learn how to connect your advertising, analytics, CRM, and e-commerce platforms to gain a unified view of performance, automate reporting, and drive better marketing decisions.</p>
                 </div>
                 </div>
                 </div>';
