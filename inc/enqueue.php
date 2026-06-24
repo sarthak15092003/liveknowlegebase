@@ -56,7 +56,7 @@ function docy_scripts() {
 	wp_enqueue_style( 'elegant-icon', DOCY_DIR_VEND . '/elegant-icon/style.css' );
 	wp_enqueue_style( 'font-awesome', DOCY_DIR_VEND . '/font-awesome/css/all.css' );
 	wp_enqueue_style( 'animate', DOCY_DIR_VEND . '/animation/animate.css' );
-	wp_enqueue_style( 'docy-main', DOCY_DIR_CSS . '/style-main.css', array(), DOCY_VERSION . '.7' );
+	wp_enqueue_style( 'docy-main', DOCY_DIR_CSS . '/style-main.css', array(), DOCY_VERSION . '.9' );
 	
 	// CMGALAXY Custom Header Styles
 	wp_enqueue_style( 'cmgalaxy-header', DOCY_DIR_CSS . '/cmgalaxy-header.css', array(), DOCY_VERSION );

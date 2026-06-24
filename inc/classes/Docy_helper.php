@@ -300,8 +300,8 @@ class Docy_Helper_Class {
     function pagination() {
         the_posts_pagination(array(
             'screen_reader_text' => ' ',
-            'prev_text'          => '<i class="arrow_carrot-left"></i>',
-            'next_text'          => '<i class="arrow_carrot-right"></i>'
+            'prev_text'          => '&lt;',
+            'next_text'          => '&gt;'
         ));
     }
 
