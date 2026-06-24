@@ -41,7 +41,7 @@ $is_focus_search      = $is_focus_search == '1' ? 'focused-form' : '';
 				// Title and subtitle
 				include('title.php');
 
-                echo '<h1 class="banner-support-title" style="color:#161C52;font-weight:600;font-size:40px;line-height:125%;">From Setup to Scale: Your CMGalaxy Guide, Start to Finish
+                echo '<h1 class="banner-support-title" style="color:#161C52;font-weight:600;font-size:40px;line-height:125%;">From Setup to Scale<br> Your CMGalaxy Guide, Start to Finish
 
 </h1>';
 
