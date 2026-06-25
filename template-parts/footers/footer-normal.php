@@ -119,8 +119,8 @@ footer {
                 
                 <!-- Links Section -->
                 <div class="footer-links">
-                    <a href="<?php echo esc_url(home_url('/privacy-policy')); ?>">Privacy Policy</a>
-                    <a href="<?php echo esc_url(home_url('/terms-conditions')); ?>">Terms & Conditions</a>
+                    <a href="https://cmgalaxy.com/privacy-policy">Privacy Policy</a>
+                    <a href="https://cmgalaxy.com/terms-and-conditions">Terms & Conditions</a>
                 </div>
                 
                 <!-- Social Media Section -->
