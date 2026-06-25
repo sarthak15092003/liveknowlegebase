@@ -7350,6 +7350,11 @@ body.body_dark .tutor-toggle-more-collapsed:before {
   box-sizing: content-box;
 }
 
+.pagination {
+  display: flex;
+  justify-content: center;
+}
+
 .documentation_item .media-body {
   flex: 1;
 }
