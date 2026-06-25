@@ -7350,11 +7350,6 @@ body.body_dark .tutor-toggle-more-collapsed:before {
   box-sizing: content-box;
 }
 
-.pagination {
-  display: flex;
-  justify-content: center;
-}
-
 .documentation_item .media-body {
   flex: 1;
 }
@@ -20145,7 +20140,7 @@ header *:not(.form-control):not(.search_form *):not(.breadcrumb *) {
 }
 
 /* Force hide all possible arrow/icon elements */
- *[class*="arrow"],
+*[class*="arrow"],
 *[class*="chevron"],
 *[class*="plus-minus"],
 .card-header button *[class*="fa-"],
