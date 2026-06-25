@@ -16449,7 +16449,6 @@ blockquote .author {
 
 /*============= doc_blog_classic_area css ==============*/
 .pagination {
-  margin-top: 0 !important;
   display: flex;
   justify-content: center;
 }
