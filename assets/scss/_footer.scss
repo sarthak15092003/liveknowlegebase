@@ -629,3 +629,8 @@
 }
 /* End Forum Footer Area css
   ============================================================================================ */
+
+/* Force Pagination Margin Removal */
+.pagination {
+  margin-top: 0 !important;
+}
