@@ -47,6 +47,14 @@ endif;
 <style>
 /* Bypass CSS cache to enforce pagination margin removal */
 .pagination { margin-top: 0 !important; }
+
+/* Social Icon Customization */
+.social-icon {
+    color: #ffffff !important;
+    font-size: 18px !important;
+    transition: color 0.3s ease !important;
+    background: #16168b38;
+}
 </style>
 <?php
 wp_footer();
