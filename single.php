@@ -427,8 +427,8 @@ get_template_part( 'template-parts/single-post/banner', $banner_type );
                                         while ($related_query->have_posts()) {
                                             $related_query->the_post();
                                             ?>
-                                            <li class="mb-3">
-                                                <a href="<?php the_permalink(); ?>" class="d-flex justify-content-between align-items-center p-3" style="border: 1px solid #e5e7eb; border-radius: 8px; color: #374151; text-decoration: none; transition: all 0.2s ease;">
+                                            <li class="mb-2">
+                                                <a href="<?php the_permalink(); ?>" class="d-flex justify-content-between align-items-center" style="color: #374151; text-decoration: none; transition: all 0.2s ease;">
                                                     <span><?php the_title(); ?></span>
                                                     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="color: #3b82f6;">
                                                         <path d="M7 17L17 7M17 7H9M17 7V15" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />

@@ -20141,7 +20141,7 @@ header *:not(.form-control):not(.search_form *):not(.breadcrumb *) {
 }
 
 /* Force hide all possible arrow/icon elements */
-/* *[class*="arrow"],
+ *[class*="arrow"],
 *[class*="chevron"],
 *[class*="plus-minus"],
 .card-header button *[class*="fa-"],
@@ -20149,7 +20149,7 @@ header *:not(.form-control):not(.search_form *):not(.breadcrumb *) {
   display: none !important;
   visibility: hidden !important;
   opacity: 0 !important;
-} */
+}
 
 /* Nuclear option - hide ALL possible arrow elements in accordions */
 .doc_accordion svg,
