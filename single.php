@@ -420,7 +420,7 @@ get_template_part( 'template-parts/single-post/banner', $banner_type );
                             Thanks for being here with us! We are beyond excited to see how you'll use CMGalaxy to drive growth for your business.
                         </p>
 
-                        <div class="related-articles-section" style="margin-top: 5rem; margin-bottom: 1.5rem;">
+                        <div class="related-articles-section" style="margin-top: 3.0rem; margin-bottom: 1.5rem;">
                             <h5 class="fw-semibold mb-3" style="color: #484a61 !important; font-size: 1.125rem;">Related Articles</h5>
                             <ul class="list-unstyled mb-0" style="border: 1px solid #e5e7eb; border-radius: 8px; padding: 1.5rem 1.5rem 1.5rem 2.5rem;">
                                 <?php
