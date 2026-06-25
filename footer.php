@@ -43,6 +43,12 @@ if ( is_singular('docs') || is_singular('post') ) :
     <?php 
 endif;
 
+?>
+<style>
+/* Bypass CSS cache to enforce pagination margin removal */
+.pagination { margin-top: 0 !important; }
+</style>
+<?php
 wp_footer();
 ?>
 </body>
