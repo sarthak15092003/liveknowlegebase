@@ -442,8 +442,8 @@ get_template_part( 'template-parts/single-post/banner', $banner_type );
                                         while ($related_query->have_posts()) {
                                             $related_query->the_post();
                                             ?>
-                                            <li class="mb-4">
-                                                <a href="<?php the_permalink(); ?>" class="d-flex justify-content-between align-items-center" style="color: #484a61; text-decoration: none; transition: all 0.2s ease; font-size: 1rem;">
+                                            <li class="mb-3">
+                                                <a href="<?php the_permalink(); ?>" class="d-flex justify-content-between align-items-center related-article-link" style="color: #484a61; text-decoration: none; font-size: 1rem;">
                                                     <span><?php the_title(); ?></span>
                                                     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="color: #3b82f6;">
                                                         <path d="M7 17L17 7M17 7H9M17 7V15" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
@@ -509,10 +509,20 @@ get_template_part( 'template-parts/single-post/banner', $banner_type );
                         <?php endif; ?>
 
                         <style>
+                            .related-article-link {
+                                padding: 12px 16px;
+                                border-radius: 8px;
+                                background-color: #f8f9fa; /* Default background color */
+                                transition: all 0.2s ease;
+                            }
+                            
+                            .related-article-link:hover {
+                                background-color: rgba(59, 130, 246, 0.08) !important; /* Hover background color */
+                                transform: translateX(4px);
+                            }
+
                             .cmgalaxy-engagement-block a:hover {
-                                background-color: rgba(59, 130, 246, 0.05) !important;
                                 border-color: #3b82f6 !important;
-                                transform: translateY(-1px);
                             }
 
                             .feedback-section .btn {
