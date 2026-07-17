@@ -1067,7 +1067,7 @@ if ( ! function_exists( 'docy_render_category_header_card' ) ) {
                     $breadcrumb_label = $is_infinite ? 'All Categories' : ( $category ? $category->name : '' );
                     ?>
                     <nav aria-label="breadcrumb" class="mb-3">
-                        <ol class="breadcrumb" style="font-size: 12px !important;">
+                        <ol class="breadcrumb">
                             <li class="breadcrumb-item"><a href="<?php echo esc_url( home_url( '/' ) ) ?>">Home</a></li>
                             <li class="breadcrumb-item active" aria-current="page"><?php echo esc_html( $breadcrumb_label ); ?></li>
                         </ol>
