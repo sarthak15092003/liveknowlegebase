@@ -184,3 +184,10 @@ Text Domain: docy
   border-color: #c8ccd0 !important;
   color: #3A7DFF !important;
 }
+
+/* Ensure breadcrumb active text and links have the same font size */
+.breadcrumb .breadcrumb-item a,
+.breadcrumb .breadcrumb-item.active,
+.breadcrumb .breadcrumb-item {
+  font-size: 15px !important;
+}
