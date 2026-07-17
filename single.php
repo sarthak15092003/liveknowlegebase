@@ -461,7 +461,7 @@ get_template_part( 'template-parts/single-post/banner', $banner_type );
                             </ul>
                         </div>
 
-                        <div class="feedback-section mt-4">
+                        <div class="feedback-section"  style="margin-top:20px">
                             <p class="fw-semibold mb-2" style="color: #484a61 !important;">Was this helpful?</p>
                             <div class="d-flex gap-2 mb-3">
                                 <button type="button" class="btn btn-primary">Yes</button>
