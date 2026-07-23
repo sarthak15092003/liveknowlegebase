@@ -375,13 +375,14 @@ if ($blog_layout == 'blog_category' && !$is_category_page) {
 				echo '<div class="col-md-4 col-lg-4">';
 				echo '<a class="card h-100 category-card border text-reset text-decoration-none" href="' . esc_url($cat_link) . '">';
 				echo '<div class="card-body">';
-				echo '<div class="category-card__icon custom-icon" aria-hidden="true">';
 				if ($cat_name === 'Account Mangement' || $cat_name === 'Account Management') {
+					echo '<div class="category-card__icon" aria-hidden="true">';
 					echo '<svg width="28" height="28" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">'
 						. '<rect x="2" y="7" width="20" height="14" rx="2" ry="2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>'
 						. '<path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>'
 						. '</svg>';
 				} else {
+					echo '<div class="category-card__icon custom-icon" aria-hidden="true">';
 					echo '<svg width="28" height="28" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">'
 						. '<path d="M4 7a2 2 0 0 1 2-2h3.586a1 1 0 0 1 .707.293l2.414 2.414a1 1 0 0 0 .707.293h6.586a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V7z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>'
 						. '</svg>';
