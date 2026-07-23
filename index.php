@@ -372,7 +372,7 @@ if ($blog_layout == 'blog_category' && !$is_category_page) {
 				} elseif ($author_count_total > 2) {
 					$byline = sprintf(__('By %1$s and %2$s others', 'docy'), esc_html($author_names[0]), number_format_i18n($author_count_total - 1));
 				}
-				echo '<div class="col-md-6 col-lg-6">';
+				echo '<div class="col-md-4 col-lg-4">';
 				echo '<a class="card h-100 category-card border text-reset text-decoration-none" href="' . esc_url($cat_link) . '">';
 				echo '<div class="card-body">';
 				echo '<div class="category-card__icon custom-icon" aria-hidden="true">';
