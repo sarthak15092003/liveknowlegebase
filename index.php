@@ -378,7 +378,6 @@ if ($blog_layout == 'blog_category' && !$is_category_page) {
 				if ($cat_name === 'Account Mangement' || $cat_name === 'Account Management') {
 					echo '<div class="category-card__icon" aria-hidden="true">';
 					echo '<img src="https://docs.cmgalaxy.com/wp-content/uploads/2026/07/account-management.png" alt="Account Management" style="width: 28px; height: 28px; object-fit: contain;">';
-					echo '</div>';
 				} else {
 					echo '<div class="category-card__icon custom-icon" aria-hidden="true">';
 					echo '<svg width="28" height="28" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">'
