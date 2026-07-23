@@ -320,7 +320,7 @@ if ($blog_layout == 'blog_category' && !$is_category_page) {
 				echo '<a class="card h-100 category-card border text-reset text-decoration-none" href="' . esc_url($all_cat_link) . '" style="background: #ffffff;">';
 				echo '<div class="card-body">';
 				echo '<div class="category-card__icon custom-icon" aria-hidden="true">'
-					. '<svg width="36" height="36" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">'
+					. '<svg width="28" height="28" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">'
 					. '<path d="M6 4a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v16l-6-3-6 3V4z" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"></path>'
 					. '</svg>'
 					. '</div>';
@@ -376,7 +376,7 @@ if ($blog_layout == 'blog_category' && !$is_category_page) {
 				echo '<a class="card h-100 category-card border text-reset text-decoration-none" href="' . esc_url($cat_link) . '">';
 				echo '<div class="card-body">';
 				echo '<div class="category-card__icon custom-icon" aria-hidden="true">';
-				echo '<svg width="36" height="36" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">'
+				echo '<svg width="28" height="28" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">'
 					. '<path d="M6 4a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v16l-6-3-6 3V4z" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>'
 					. '</svg>';
 				echo '</div>';
