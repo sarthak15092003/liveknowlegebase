@@ -19905,6 +19905,9 @@ footer {
   background-image: url('../img/knowledge.png');
   width: 28px;
   height: 28px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
 }
 
 .category-card__icon.custom-icon svg {
