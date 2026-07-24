@@ -304,7 +304,7 @@ if ($blog_layout == 'blog_category' && !$is_category_page) {
     font-weight: 400;
     line-height: 170%;
     text-align: center;
-    margin: 30px auto 50px;
+    margin: 10px auto 50px;
     max-width: 900px;"> Your CMGalaxy questions, answered. Learn how to connect your platforms, read your attribution data, analyse creatives, and turn insights into better ROAS.</p>
                 </div>
                 </div>
