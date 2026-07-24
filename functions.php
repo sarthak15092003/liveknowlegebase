@@ -263,6 +263,11 @@ function docy_force_breadcrumb_css() {
             letter-spacing: 0px !important;
             word-spacing: normal !important;
         }
+        .breadcrumb-item+.breadcrumb-item,
+        .ezd-breadcrumb li+li,
+        ul.breadcrumb li+li {
+            padding-left: 0 !important;
+        }
         .breadcrumb-item+.breadcrumb-item::before,
         .ezd-breadcrumb li+li::before,
         ul.breadcrumb li+li::before {
