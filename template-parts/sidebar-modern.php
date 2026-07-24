@@ -481,8 +481,8 @@ function toggleCatArticles(header) {
                         $subcat_wrapper_class = $is_subcat_active ? 'subsection-item expandable-subcat current-page' : 'subsection-item expandable-subcat';
                         $subcat_content_id = 'subcat-' . $subcat->term_id;
                         ?>
-                        <div class="<?php echo esc_attr($subcat_wrapper_class); ?>" style="padding-left: 10px; cursor: pointer;" data-target="<?php echo esc_attr($subcat_content_id); ?>">
-                            <span class="subsection-title" style="color:#007bff; font-weight:500; font-size: 14px;" title="<?php echo esc_attr($subcat->name); ?>"><?php echo esc_html($subcat->name); ?></span>
+                        <div class="<?php echo esc_attr($subcat_wrapper_class); ?>" style="padding-left: 55px; cursor: pointer;" data-target="<?php echo esc_attr($subcat_content_id); ?>">
+                            <span class="subsection-title" style="color:#475569; font-weight:500; font-size: 14px;" title="<?php echo esc_attr($subcat->name); ?>"><?php echo esc_html($subcat->name); ?></span>
                             <span class="expand-icon-subcat" style="transition: transform 0.3s; transform: rotate(180deg); display: inline-flex; align-items: center; justify-content: center; width: 20px; height: 20px; color: #94a3b8; margin-left: auto;">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none">
                                     <path d="M15 6L9 12.0001L15 18" stroke="currentColor" stroke-width="1.5" stroke-miterlimit="16" stroke-linecap="round" stroke-linejoin="round"/>
@@ -504,8 +504,8 @@ function toggleCatArticles(header) {
                                     $is_current_post = (get_the_ID() == $current_post_id);
                                     $item_wrapper_class = $is_current_post ? 'subsection-item current-page' : 'subsection-item';
                                     ?>
-                                    <div class="<?php echo esc_attr($item_wrapper_class); ?>">
-                                        <a href="<?php the_permalink(); ?>" class="subsection-title" style="font-size: 13px; font-weight: normal; color: #64748b;" title="<?php echo esc_attr(get_the_title()); ?>"><?php the_title(); ?></a>
+                                    <div class="<?php echo esc_attr($item_wrapper_class); ?>" style="padding-left: 55px;">
+                                        <a href="<?php the_permalink(); ?>" class="subsection-title" style="font-size: 13px; font-weight: normal; color: #475569;" title="<?php echo esc_attr(get_the_title()); ?>"><?php the_title(); ?></a>
                                     </div>
                                     <?php
                                 endwhile;
