@@ -189,5 +189,5 @@ Text Domain: docy
 .breadcrumb .breadcrumb-item a,
 .breadcrumb .breadcrumb-item.active,
 .breadcrumb .breadcrumb-item {
-  font-size: 12px;
+  font-size: 12px !important;
 }
