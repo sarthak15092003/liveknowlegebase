@@ -316,10 +316,10 @@ if (empty($sidebar_sections)) {
                             $is_subcat_active = in_array($subcat->slug, $current_categories);
                             $subcat_wrapper_class = $is_subcat_active ? 'cat-article-item active-article' : 'cat-article-item';
                             ?>
-                            <div class="<?php echo esc_attr($subcat_wrapper_class); ?>" style="padding-left: 20px; display: flex; align-items: center; justify-content: space-between;">
+                            <div class="<?php echo esc_attr($subcat_wrapper_class); ?>" style="padding-left: 44px; display: flex; align-items: center; justify-content: space-between;">
                                 <a href="<?php echo esc_url(get_category_link($subcat->term_id)); ?>" title="<?php echo esc_attr($subcat->name); ?>" style="flex: 1; <?php echo $is_subcat_active ? 'color:#1e40af; font-weight:500;' : 'color:#475569;'; ?>"><?php echo esc_html($subcat->name); ?></a>
                                 <?php if ($is_subcat_active): ?>
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#94a3b8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0; transform: rotate(90deg);"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#94a3b8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0; transform: rotate(0deg);"><polyline points="6 9 12 15 18 9"></polyline></svg>
                                 <?php else: ?>
                                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#94a3b8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0;"><polyline points="9 18 15 12 9 6"></polyline></svg>
                                 <?php endif; ?>
@@ -483,7 +483,7 @@ function toggleCatArticles(header) {
                             $is_subcat_active = in_array($subcat->slug, $current_categories);
                             $subcat_wrapper_class = $is_subcat_active ? 'subsection-item current-page' : 'subsection-item';
                             ?>
-                            <div class="<?php echo esc_attr($subcat_wrapper_class); ?>" style="padding-left: 10px; display: flex; align-items: center; justify-content: space-between;">
+                            <div class="<?php echo esc_attr($subcat_wrapper_class); ?>" style="padding-left: 44px; display: flex; align-items: center; justify-content: space-between;">
                                 <a href="<?php echo esc_url(get_category_link($subcat->term_id)); ?>" class="subsection-title" title="<?php echo esc_attr($subcat->name); ?>" style="flex: 1; font-size: 14px; <?php echo $is_subcat_active ? 'color:#1e40af; font-weight:500;' : 'color:#475569;'; ?>"><?php echo esc_html($subcat->name); ?></a>
                                 <?php if ($is_subcat_active): ?>
                                     <span class="subsection-arrow" style="transform: rotate(0deg); color:#94a3b8;"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg></span>
