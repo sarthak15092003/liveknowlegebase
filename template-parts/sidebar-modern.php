@@ -40,7 +40,8 @@ $icon_mapping = array(
 
 // Fetch categories dynamically
 $wp_categories = get_categories(array(
-    'hide_empty' => 1, // Only show categories with articles
+    'parent'     => 0, // Only fetch top-level categories
+    'hide_empty' => 1, // Only show categories with articles (subcategories shown within them)
     'exclude'    => array(1), // Exclude 'Uncategorized' (usually ID 1)
     'orderby'    => 'ID',
     'order'      => 'ASC'
@@ -264,6 +265,24 @@ if (empty($sidebar_sections)) {
                     $cat_obj = get_category_by_slug($section['slug']);
                     $cat_id = $cat_obj ? $cat_obj->term_id : 0;
                     
+                    // Fetch and display subcategories first
+                    $subcats = get_categories(array(
+                        'parent'     => $cat_id,
+                        'hide_empty' => 0
+                    ));
+                    
+                    if (!empty($subcats)) {
+                        foreach ($subcats as $subcat) {
+                            $is_subcat_active = in_array($subcat->slug, $current_categories);
+                            $subcat_wrapper_class = $is_subcat_active ? 'cat-article-item active-article' : 'cat-article-item';
+                            ?>
+                            <div class="<?php echo esc_attr($subcat_wrapper_class); ?>" style="padding-left: 20px;">
+                                <a href="<?php echo esc_url(get_category_link($subcat->term_id)); ?>" title="<?php echo esc_attr($subcat->name); ?>"><span style="color:#007bff; font-weight:600;">[Cat]</span> <?php echo esc_html($subcat->name); ?></a>
+                            </div>
+                            <?php
+                        }
+                    }
+
                     $cat_args = array(
                         'cat'            => $cat_id,
                         'posts_per_page' => -1,
@@ -403,6 +422,25 @@ function toggleCatArticles(header) {
 
                 $cat_id = $cat_obj ? $cat_obj->term_id : 0;
                 
+                // Fetch and display subcategories first
+                $subcats = get_categories(array(
+                    'parent'     => $cat_id,
+                    'hide_empty' => 0 // Set to 0 so we can see newly added subcategories even without posts
+                ));
+                
+                if (!empty($subcats)) {
+                    foreach ($subcats as $subcat) {
+                        $is_subcat_active = in_array($subcat->slug, $current_categories);
+                        $subcat_wrapper_class = $is_subcat_active ? 'subsection-item current-page' : 'subsection-item';
+                        ?>
+                        <div class="<?php echo esc_attr($subcat_wrapper_class); ?>" style="padding-left: 10px;">
+                            <a href="<?php echo esc_url(get_category_link($subcat->term_id)); ?>" class="subsection-title" title="<?php echo esc_attr($subcat->name); ?>"><span style="color:#007bff; font-weight:600;">[Cat]</span> <?php echo esc_html($subcat->name); ?></a>
+                            <span class="subsection-arrow">▶</span>
+                        </div>
+                        <?php
+                    }
+                }
+
                 $args = array(
                     'cat'            => $cat_id,
                     'posts_per_page' => -1,
@@ -426,7 +464,8 @@ function toggleCatArticles(header) {
                 <?php
                     endwhile;
                     wp_reset_postdata();
-                else :
+                elseif (empty($subcats)) :
+                    // No posts and no subcategories found
                     // No posts found in this category
                     ?>
                     <div class="subsection-item">
