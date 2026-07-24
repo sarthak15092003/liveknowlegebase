@@ -649,6 +649,26 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
     });
+
+    // Auto-scroll to active item on load
+    const activeItem = document.querySelector('.active-article, .current-page');
+    if (activeItem) {
+        // If it's inside a subcategory, ensure the subcategory is open
+        const parentSubcatContent = activeItem.closest('.subcat-content');
+        if (parentSubcatContent) {
+            parentSubcatContent.style.display = 'block';
+            const toggleHeader = document.querySelector(`[data-target="${parentSubcatContent.id}"]`);
+            if (toggleHeader) {
+                const icon = toggleHeader.querySelector('.expand-icon-subcat');
+                if (icon) icon.style.transform = 'rotate(270deg)';
+            }
+        }
+        
+        // Scroll into view (centered to avoid sticky headers)
+        setTimeout(() => {
+            activeItem.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }, 300);
+    }
 });
 </script>
 <?php endif; ?>
