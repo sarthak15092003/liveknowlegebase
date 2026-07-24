@@ -185,7 +185,7 @@ if ((isset($_GET['cat']) && !empty($_GET['cat'])) || is_category()): ?>
 			.breadcrumb .breadcrumb-item a {
 				color: #161c52 !important;
 				text-decoration: none !important;
-				font-size:16px;
+				
 			}
 
 			.breadcrumb .breadcrumb-item a:hover {
@@ -424,8 +424,8 @@ if ($blog_layout == 'blog_category' && !$is_category_page) {
 				$custom_icons = [
 					'User Manegement' => 'https://docs.cmgalaxy.com/wp-content/uploads/2026/07/usermanagement.png',
 					'User Management' => 'https://docs.cmgalaxy.com/wp-content/uploads/2026/07/usermanagement.png',
-					'Account Mangement' => 'https://docs.cmgalaxy.com/wp-content/uploads/2026/07/account-management.png',
-					'Account Management' => 'https://docs.cmgalaxy.com/wp-content/uploads/2026/07/account-management.png',
+					'Account Mangement' => 'https://docs.cmgalaxy.com/wp-content/uploads/2026/07/account-management-1.png',
+					'Account Management' => 'https://docs.cmgalaxy.com/wp-content/uploads/2026/07/account-management-1.png',
 					'Master Dashboard' => 'https://docs.cmgalaxy.com/wp-content/uploads/2026/07/master-dashboard.png',
 					'Main Dashboard' => 'https://docs.cmgalaxy.com/wp-content/uploads/2026/07/category-2.png',
 					'Funnel Attribution' => 'https://docs.cmgalaxy.com/wp-content/uploads/2026/07/funnel.png',
