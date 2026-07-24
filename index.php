@@ -318,7 +318,7 @@ if ($blog_layout == 'blog_category' && !$is_category_page) {
 				$all_cat_link = ($first_cat && isset($first_cat->term_id)) ? home_url('/?cat=' . $first_cat->term_id . '&infinite=1') : '#';
 				echo '<div class="col-md-6 col-lg-6" style="display: none;">';
 				echo '<a class="card h-100 category-card border text-reset text-decoration-none" href="' . esc_url($all_cat_link) . '" style="background: #ffffff;">';
-				echo '<div class="card-body">';
+				echo '<div class="card-body" style="padding: 24px;">';
 				echo '<div class="category-card__icon custom-icon" aria-hidden="true">'
 					. '<svg width="28" height="28" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">'
 					. '<path d="M6 4a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v16l-6-3-6 3V4z" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"></path>'
@@ -374,7 +374,7 @@ if ($blog_layout == 'blog_category' && !$is_category_page) {
 				}
 				echo '<div class="col-md-4 col-lg-4">';
 				echo '<a class="card h-100 category-card border text-reset text-decoration-none" href="' . esc_url($cat_link) . '">';
-				echo '<div class="card-body">';
+				echo '<div class="card-body" style="padding: 24px;">';
 				$custom_icons = [
 					'User Manegement' => 'https://docs.cmgalaxy.com/wp-content/uploads/2026/07/usermanagement.png',
 					'User Management' => 'https://docs.cmgalaxy.com/wp-content/uploads/2026/07/usermanagement.png',
