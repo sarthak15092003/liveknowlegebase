@@ -296,6 +296,27 @@ if ($blog_layout == 'blog_category' && !$is_category_page) {
 			'hide_empty' => true,
 			'parent' => 0,
 		]);
+
+		// Custom sort order for categories
+		$custom_order = [
+			'Getting started' => 1,
+			'Getting Started' => 1,
+			'Account Management' => 2,
+			'Account Mangement' => 2,
+			'User Management' => 3,
+			'User Manegement' => 3,
+			'Master Dashboard' => 4,
+			'Main Dashboard' => 5,
+		];
+
+		usort($docy_categories, function($a, $b) use ($custom_order) {
+			$pos_a = isset($custom_order[$a->name]) ? $custom_order[$a->name] : 999;
+			$pos_b = isset($custom_order[$b->name]) ? $custom_order[$b->name] : 999;
+			if ($pos_a == $pos_b) {
+				return strcmp($a->name, $b->name);
+			}
+			return $pos_a - $pos_b;
+		});
 		if (!empty($docy_categories)) {
 			echo '<div class="container mb-4">
                 <div class="row">
