@@ -20336,3 +20336,15 @@ h2,
 a:hover {
   text-decoration: none !important;
 }
+
+/* Custom Breadcrumb Font Size */
+.ezd-breadcrumb,
+.ezd-breadcrumb li,
+.ezd-breadcrumb li a,
+.breadcrumb,
+.breadcrumb li,
+.breadcrumb li a,
+.breadcrumb .breadcrumb-item,
+.breadcrumb .breadcrumb-item a {
+    font-size: 16px !important;
+}
