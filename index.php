@@ -165,6 +165,7 @@ if ((isset($_GET['cat']) && !empty($_GET['cat'])) || is_category()): ?>
 
 			.breadcrumb {
 				display: flex !important;
+				align-items: center !important;
 				flex-wrap: wrap !important;
 				font-size: 12px !important;
 				gap: 5px !important;

@@ -323,17 +323,18 @@ get_template_part( 'template-parts/single-post/banner', $banner_type );
                                     list-style: none !important;
                                     padding-left: 0 !important;
                                     display: flex !important;
+                                    align-items: center !important;
                                     flex-wrap: wrap !important;
-                                    font-size: 16px !important;
+                                    font-size: 12px !important;
                                 }
                                 .blog_single_item .breadcrumb li {
                                     list-style: none !important;
-                                    font-size: 16px !important;
+                                    font-size: 12px !important;
                                 }
                                 .blog_single_item .breadcrumb li a {
                                     color: #161c52 !important;
                                     text-decoration: none;
-                                    font-size: 16px !important;
+                                    font-size: 12px !important;
                                 }
                                 .blog_single_item .breadcrumb li a:hover {
                                     text-decoration: underline;
@@ -350,7 +351,7 @@ get_template_part( 'template-parts/single-post/banner', $banner_type );
                                         padding: 0 !important;
                                     }
                                     .blog_single_item .breadcrumb {
-                                        font-size: 16px !important;
+                                        font-size: 12px !important;
                                         gap: 5px !important;
                                         display: flex !important;
                                         flex-wrap: wrap !important;

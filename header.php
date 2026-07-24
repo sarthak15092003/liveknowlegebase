@@ -33,7 +33,7 @@
             .breadcrumb li a,
             .breadcrumb .breadcrumb-item,
             .breadcrumb .breadcrumb-item a {
-                font-size: 16px !important;
+                font-size: 12px !important;
             }
         </style>
         
