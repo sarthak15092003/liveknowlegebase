@@ -243,3 +243,24 @@ function docy_docs_custom_order( $query ) {
     }
 }
 add_action( 'pre_get_posts', 'docy_docs_custom_order', 99 );
+
+/**
+ * Force breadcrumb font size
+ */
+function docy_force_breadcrumb_css() {
+    echo '<style>
+        .breadcrumb .breadcrumb-item a,
+        .breadcrumb .breadcrumb-item.active,
+        .breadcrumb .breadcrumb-item,
+        .ezd-breadcrumb,
+        .ezd-breadcrumb li,
+        .ezd-breadcrumb li a,
+        .page_breadcrumb .breadcrumb-item a,
+        .page_breadcrumb .breadcrumb-item,
+        ul.breadcrumb li, ul.breadcrumb li a,
+        .bbp-breadcrumb {
+            font-size: 12px !important;
+        }
+    </style>';
+}
+add_action('wp_head', 'docy_force_breadcrumb_css', 999);
