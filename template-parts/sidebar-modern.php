@@ -47,8 +47,42 @@ $wp_categories = get_categories(array(
     'order'      => 'ASC'
 ));
 
+// Group dashboard related categories under "Dashboard" manually
+$dashboard_sub_categories = array();
+$dashboard_keywords = array('dashboard');
+$dashboard_exact_slugs = array('amazon-dashboard', 'dv360-dashboard', 'google-dashboard', 'linkedin-dashboard', 'main-dashboard', 'master-dashboard', 'meta-dashboard', 'pinterest-dashboard', 'teads-dashboard');
+
 $sidebar_sections = array();
+$dashboard_section_exists = false;
+
+// First pass: identify dashboard sub-items and check if Dashboard exists
 foreach ($wp_categories as $cat) {
+    $is_dashboard_sub = in_array($cat->slug, $dashboard_exact_slugs) || (strpos(strtolower($cat->name), 'dashboard') !== false && strtolower($cat->name) !== 'dashboard');
+    
+    if (strtolower($cat->name) === 'dashboard') {
+        $dashboard_section_exists = true;
+    }
+}
+
+// Ensure a Dashboard section exists if we have dashboard sub-items
+if (!$dashboard_section_exists) {
+    $sidebar_sections[] = array(
+        'slug'  => 'dashboard',
+        'title' => 'Dashboard',
+        'icon'  => 'dashboard.svg',
+        'id'    => 'dashboard',
+        'is_virtual' => true // mark as virtual so we know it's injected
+    );
+}
+
+foreach ($wp_categories as $cat) {
+    $is_dashboard_sub = in_array($cat->slug, $dashboard_exact_slugs) || (strpos(strtolower($cat->name), 'dashboard') !== false && strtolower($cat->name) !== 'dashboard');
+    
+    if ($is_dashboard_sub) {
+        $dashboard_sub_categories[] = $cat;
+        continue; // Skip adding to top level
+    }
+
     $sidebar_sections[] = array(
         'slug'  => $cat->slug,
         'title' => $cat->name,
@@ -56,6 +90,8 @@ foreach ($wp_categories as $cat) {
         'id'    => $cat->slug
     );
 }
+
+// We will pass the $dashboard_sub_categories to the rendering logic
 
 // Fallback if no categories are found (unlikely but safe)
 if (empty($sidebar_sections)) {
