@@ -23,6 +23,20 @@
 
         <?php wp_head(); ?>
         
+        <style id="global-breadcrumb-font-size">
+            /* Custom Breadcrumb Font Size - forced inline to bypass cache */
+            .ezd-breadcrumb,
+            .ezd-breadcrumb li,
+            .ezd-breadcrumb li a,
+            .breadcrumb,
+            .breadcrumb li,
+            .breadcrumb li a,
+            .breadcrumb .breadcrumb-item,
+            .breadcrumb .breadcrumb-item a {
+                font-size: 16px !important;
+            }
+        </style>
+        
         <?php
         // Remove shadow and add stroke for cards on ?cat=1 page only
         if ( isset( $_GET['cat'] ) && intval( $_GET['cat'] ) === 1 ) : ?>
