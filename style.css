@@ -188,6 +188,13 @@ Text Domain: docy
 /* Ensure breadcrumb active text and links have the same font size */
 .breadcrumb .breadcrumb-item a,
 .breadcrumb .breadcrumb-item.active,
-.breadcrumb .breadcrumb-item {
+.breadcrumb .breadcrumb-item,
+.ezd-breadcrumb,
+.ezd-breadcrumb li,
+.ezd-breadcrumb li a,
+.page_breadcrumb .breadcrumb-item a,
+.page_breadcrumb .breadcrumb-item,
+ul.breadcrumb li, ul.breadcrumb li a,
+.bbp-breadcrumb {
   font-size: 12px !important;
 }
