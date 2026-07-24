@@ -375,9 +375,22 @@ if ($blog_layout == 'blog_category' && !$is_category_page) {
 				echo '<div class="col-md-4 col-lg-4">';
 				echo '<a class="card h-100 category-card border text-reset text-decoration-none" href="' . esc_url($cat_link) . '">';
 				echo '<div class="card-body">';
-				if ($cat_name === 'Account Mangement' || $cat_name === 'Account Management') {
+				$custom_icons = [
+					'User Manegement' => 'https://docs.cmgalaxy.com/wp-content/uploads/2026/07/usermanagement.png',
+					'User Management' => 'https://docs.cmgalaxy.com/wp-content/uploads/2026/07/usermanagement.png',
+					'Account Mangement' => 'https://docs.cmgalaxy.com/wp-content/uploads/2026/07/usermanagement.png',
+					'Account Management' => 'https://docs.cmgalaxy.com/wp-content/uploads/2026/07/usermanagement.png',
+					'Master Dashboard' => 'https://docs.cmgalaxy.com/wp-content/uploads/2026/07/usermanagement.png',
+					'Main Dashboard' => 'https://docs.cmgalaxy.com/wp-content/uploads/2026/07/category-2.png',
+					'Funnel Attribution' => 'https://docs.cmgalaxy.com/wp-content/uploads/2026/07/funnel.png',
+					'Integrations' => 'https://docs.cmgalaxy.com/wp-content/uploads/2026/07/integrations.png',
+					'Google Dashboard' => 'https://docs.cmgalaxy.com/wp-content/uploads/2026/07/google.png',
+					'Meta Dashboard' => 'https://docs.cmgalaxy.com/wp-content/uploads/2026/07/meta.png'
+				];
+
+				if (array_key_exists($cat_name, $custom_icons)) {
 					echo '<div class="category-card__icon" aria-hidden="true">';
-					echo '<img src="https://docs.cmgalaxy.com/wp-content/uploads/2026/07/account-management.png" alt="Account Management" style="width: 48px; height: 48px; object-fit: contain;">';
+					echo '<img src="' . esc_url($custom_icons[$cat_name]) . '" alt="' . esc_attr($cat_name) . '" style="width: 48px; height: 48px; object-fit: contain;">';
 				} else {
 					echo '<div class="category-card__icon custom-icon" aria-hidden="true">';
 					echo '<svg width="28" height="28" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">'
