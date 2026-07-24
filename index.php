@@ -319,7 +319,7 @@ if ($blog_layout == 'blog_category' && !$is_category_page) {
 				echo '<div class="col-md-6 col-lg-6" style="display: none;">';
 				echo '<a class="card h-100 category-card border text-reset text-decoration-none" href="' . esc_url($all_cat_link) . '" style="background: #ffffff;">';
 				echo '<div class="card-body" style="padding: 24px;">';
-				echo '<div class="category-card__icon custom-icon" aria-hidden="true" style="margin-bottom: 30px;">'
+				echo '<div class="category-card__icon custom-icon" aria-hidden="true" style="margin-bottom: 16px;">'
 					. '<svg width="28" height="28" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">'
 					. '<path d="M6 4a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v16l-6-3-6 3V4z" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"></path>'
 					. '</svg>'
@@ -406,10 +406,10 @@ if ($blog_layout == 'blog_category' && !$is_category_page) {
 				];
 
 				if (array_key_exists($cat_name, $custom_icons)) {
-					echo '<div class="category-card__icon" aria-hidden="true" style="margin-bottom: 30px;">';
+					echo '<div class="category-card__icon" aria-hidden="true" style="margin-bottom: 16px;">';
 					echo '<img src="' . esc_url($custom_icons[$cat_name]) . '" alt="' . esc_attr($cat_name) . '" style="width: 32px; height: 32px; object-fit: contain;">';
 				} else {
-					echo '<div class="category-card__icon custom-icon" aria-hidden="true" style="margin-bottom: 30px;">';
+					echo '<div class="category-card__icon custom-icon" aria-hidden="true" style="margin-bottom: 16px;">';
 					echo '<svg width="28" height="28" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">'
 						. '<path d="M6 4a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v16l-6-3-6 3V4z" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>'
 						. '</svg>';
