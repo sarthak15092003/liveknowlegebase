@@ -47,42 +47,8 @@ $wp_categories = get_categories(array(
     'order'      => 'ASC'
 ));
 
-// Group dashboard related categories under "Dashboard" manually
-$dashboard_sub_categories = array();
-$dashboard_keywords = array('dashboard');
-$dashboard_exact_slugs = array('amazon-dashboard', 'dv360-dashboard', 'google-dashboard', 'linkedin-dashboard', 'main-dashboard', 'master-dashboard', 'meta-dashboard', 'pinterest-dashboard', 'teads-dashboard');
-
 $sidebar_sections = array();
-$dashboard_section_exists = false;
-
-// First pass: identify dashboard sub-items and check if Dashboard exists
 foreach ($wp_categories as $cat) {
-    $is_dashboard_sub = in_array($cat->slug, $dashboard_exact_slugs) || (strpos(strtolower($cat->name), 'dashboard') !== false && strtolower($cat->name) !== 'dashboard');
-    
-    if (strtolower($cat->name) === 'dashboard') {
-        $dashboard_section_exists = true;
-    }
-}
-
-// Ensure a Dashboard section exists if we have dashboard sub-items
-if (!$dashboard_section_exists) {
-    $sidebar_sections[] = array(
-        'slug'  => 'dashboard',
-        'title' => 'Dashboard',
-        'icon'  => 'dashboard.svg',
-        'id'    => 'dashboard',
-        'is_virtual' => true // mark as virtual so we know it's injected
-    );
-}
-
-foreach ($wp_categories as $cat) {
-    $is_dashboard_sub = in_array($cat->slug, $dashboard_exact_slugs) || (strpos(strtolower($cat->name), 'dashboard') !== false && strtolower($cat->name) !== 'dashboard');
-    
-    if ($is_dashboard_sub) {
-        $dashboard_sub_categories[] = $cat;
-        continue; // Skip adding to top level
-    }
-
     $sidebar_sections[] = array(
         'slug'  => $cat->slug,
         'title' => $cat->name,
@@ -90,8 +56,6 @@ foreach ($wp_categories as $cat) {
         'id'    => $cat->slug
     );
 }
-
-// We will pass the $dashboard_sub_categories to the rendering logic
 
 // Fallback if no categories are found (unlikely but safe)
 if (empty($sidebar_sections)) {
@@ -307,22 +271,13 @@ if (empty($sidebar_sections)) {
                         'hide_empty' => 0
                     ));
                     
-                    if (strtolower($section['title']) === 'dashboard' && !empty($dashboard_sub_categories)) {
-                        $subcats = array_merge($subcats, $dashboard_sub_categories);
-                    }
-                    
                     if (!empty($subcats)) {
                         foreach ($subcats as $subcat) {
                             $is_subcat_active = in_array($subcat->slug, $current_categories);
                             $subcat_wrapper_class = $is_subcat_active ? 'cat-article-item active-article' : 'cat-article-item';
                             ?>
-                            <div class="<?php echo esc_attr($subcat_wrapper_class); ?>" style="padding-left: 44px; display: flex; align-items: center; justify-content: space-between;">
-                                <a href="<?php echo esc_url(get_category_link($subcat->term_id)); ?>" title="<?php echo esc_attr($subcat->name); ?>" style="flex: 1; <?php echo $is_subcat_active ? 'color:#1e40af; font-weight:500;' : 'color:#475569;'; ?>"><?php echo esc_html($subcat->name); ?></a>
-                                <?php if ($is_subcat_active): ?>
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#94a3b8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0; transform: rotate(0deg);"><polyline points="6 9 12 15 18 9"></polyline></svg>
-                                <?php else: ?>
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#94a3b8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0;"><polyline points="9 18 15 12 9 6"></polyline></svg>
-                                <?php endif; ?>
+                            <div class="<?php echo esc_attr($subcat_wrapper_class); ?>" style="padding-left: 20px;">
+                                <a href="<?php echo esc_url(get_category_link($subcat->term_id)); ?>" title="<?php echo esc_attr($subcat->name); ?>"><span style="color:#007bff; font-weight:600;">[Cat]</span> <?php echo esc_html($subcat->name); ?></a>
                             </div>
                             <?php
                         }
@@ -473,26 +428,17 @@ function toggleCatArticles(header) {
                     'hide_empty' => 0 // Set to 0 so we can see newly added subcategories even without posts
                 ));
                 
-                // Merge in our virtual dashboard subcategories if this is the Dashboard section
-                if (strtolower($section['title']) === 'dashboard' && !empty($dashboard_sub_categories)) {
-                    $subcats = array_merge($subcats, $dashboard_sub_categories);
-                }
-                
                 if (!empty($subcats)) {
-                        foreach ($subcats as $subcat) {
-                            $is_subcat_active = in_array($subcat->slug, $current_categories);
-                            $subcat_wrapper_class = $is_subcat_active ? 'subsection-item current-page' : 'subsection-item';
-                            ?>
-                            <div class="<?php echo esc_attr($subcat_wrapper_class); ?>" style="padding-left: 44px; display: flex; align-items: center; justify-content: space-between;">
-                                <a href="<?php echo esc_url(get_category_link($subcat->term_id)); ?>" class="subsection-title" title="<?php echo esc_attr($subcat->name); ?>" style="flex: 1; font-size: 14px; <?php echo $is_subcat_active ? 'color:#1e40af; font-weight:500;' : 'color:#475569;'; ?>"><?php echo esc_html($subcat->name); ?></a>
-                                <?php if ($is_subcat_active): ?>
-                                    <span class="subsection-arrow" style="transform: rotate(0deg); color:#94a3b8;"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg></span>
-                                <?php else: ?>
-                                    <span class="subsection-arrow" style="color:#94a3b8;"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg></span>
-                                <?php endif; ?>
-                            </div>
-                            <?php
-                        }
+                    foreach ($subcats as $subcat) {
+                        $is_subcat_active = in_array($subcat->slug, $current_categories);
+                        $subcat_wrapper_class = $is_subcat_active ? 'subsection-item current-page' : 'subsection-item';
+                        ?>
+                        <div class="<?php echo esc_attr($subcat_wrapper_class); ?>" style="padding-left: 10px;">
+                            <a href="<?php echo esc_url(get_category_link($subcat->term_id)); ?>" class="subsection-title" title="<?php echo esc_attr($subcat->name); ?>"><span style="color:#007bff; font-weight:600;">[Cat]</span> <?php echo esc_html($subcat->name); ?></a>
+                            <span class="subsection-arrow">▶</span>
+                        </div>
+                        <?php
+                    }
                 }
 
                 $args = array(
