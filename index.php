@@ -185,6 +185,7 @@ if ((isset($_GET['cat']) && !empty($_GET['cat'])) || is_category()): ?>
 			.breadcrumb .breadcrumb-item a {
 				color: #161c52 !important;
 				text-decoration: none !important;
+				font-size:16px;
 			}
 
 			.breadcrumb .breadcrumb-item a:hover {
