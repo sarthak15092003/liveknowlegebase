@@ -57,6 +57,53 @@ foreach ($wp_categories as $cat) {
     );
 }
 
+// Custom sort logic based on desired category order
+$desired_order = array(
+    'getting started',
+    'account management',
+    'dashboard',
+    'user management',
+    'master dashboard',
+    'main dashboard',
+    'funnel attribution',
+    'integrations',
+    'google dashboard',
+    'meta dashboard',
+    'linkedin dashbaord',
+    'linkedin dashboard',
+    'teads dashboard',
+    'pinterest dashboard',
+    'dv360 dashboard',
+    'amazon dashboard',
+    'recommendation',
+    'milestone',
+    'notification center',
+    'ticket/ support',
+    'tickets / supports',
+    'report hub',
+    'reporting hub',
+    'lex',
+    'user jounery',
+    'user journey'
+);
+
+usort($sidebar_sections, function($a, $b) use ($desired_order) {
+    $title_a = strtolower(trim($a['title']));
+    $title_b = strtolower(trim($b['title']));
+    
+    $pos_a = array_search($title_a, $desired_order);
+    $pos_b = array_search($title_b, $desired_order);
+    
+    if ($pos_a === false) $pos_a = 999;
+    if ($pos_b === false) $pos_b = 999;
+    
+    if ($pos_a == $pos_b) {
+        return strcmp($a['title'], $b['title']);
+    }
+    
+    return $pos_a - $pos_b;
+});
+
 // Fallback if no categories are found (unlikely but safe)
 if (empty($sidebar_sections)) {
     $sidebar_sections = array(
