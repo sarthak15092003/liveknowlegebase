@@ -478,21 +478,64 @@ function toggleCatArticles(header) {
                 if (!empty($subcats)) {
                     foreach ($subcats as $subcat) {
                         $is_subcat_active = in_array($subcat->slug, $current_categories);
-                        $subcat_wrapper_class = $is_subcat_active ? 'subsection-item current-page' : 'subsection-item';
+                        $subcat_wrapper_class = $is_subcat_active ? 'subsection-item expandable-subcat current-page' : 'subsection-item expandable-subcat';
+                        $subcat_content_id = 'subcat-' . $subcat->term_id;
                         ?>
-                        <div class="<?php echo esc_attr($subcat_wrapper_class); ?>" style="padding-left: 10px;">
-                            <a href="<?php echo esc_url(get_category_link($subcat->term_id)); ?>" class="subsection-title" title="<?php echo esc_attr($subcat->name); ?>"><span style="color:#007bff; font-weight:600;">[Cat]</span> <?php echo esc_html($subcat->name); ?></a>
-                            <span class="subsection-arrow">▶</span>
+                        <div class="<?php echo esc_attr($subcat_wrapper_class); ?>" style="padding-left: 10px; cursor: pointer;" data-target="<?php echo esc_attr($subcat_content_id); ?>">
+                            <span class="subsection-title" style="color:#007bff; font-weight:500; font-size: 14px;" title="<?php echo esc_attr($subcat->name); ?>"><?php echo esc_html($subcat->name); ?></span>
+                            <span class="expand-icon-subcat" style="transition: transform 0.3s; transform: rotate(180deg); display: inline-flex; align-items: center; justify-content: center; width: 20px; height: 20px; color: #94a3b8; margin-left: auto;">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none">
+                                    <path d="M15 6L9 12.0001L15 18" stroke="currentColor" stroke-width="1.5" stroke-miterlimit="16" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                            </span>
+                        </div>
+                        
+                        <div class="subcat-content" id="<?php echo esc_attr($subcat_content_id); ?>" style="display: none; padding-left: 15px; margin-bottom: 8px;">
+                            <?php
+                            $subcat_args = array(
+                                'category__in'   => array($subcat->term_id),
+                                'posts_per_page' => -1,
+                                'orderby'        => 'date',
+                                'order'          => 'ASC',
+                            );
+                            $subcat_query = new WP_Query($subcat_args);
+                            if ($subcat_query->have_posts()) :
+                                while ($subcat_query->have_posts()) : $subcat_query->the_post();
+                                    $is_current_post = (get_the_ID() == $current_post_id);
+                                    $item_wrapper_class = $is_current_post ? 'subsection-item current-page' : 'subsection-item';
+                                    ?>
+                                    <div class="<?php echo esc_attr($item_wrapper_class); ?>">
+                                        <a href="<?php the_permalink(); ?>" class="subsection-title" style="font-size: 13px; font-weight: normal; color: #64748b;" title="<?php echo esc_attr(get_the_title()); ?>"><?php the_title(); ?></a>
+                                    </div>
+                                    <?php
+                                endwhile;
+                                wp_reset_postdata();
+                            else:
+                                ?>
+                                <div class="subsection-item">
+                                    <span class="subsection-title-plain" style="color: #94a3b8; font-size: 12px; padding-left: 10px;">No articles found</span>
+                                </div>
+                                <?php
+                            endif;
+                            ?>
                         </div>
                         <?php
                     }
                 }
 
+                $subcat_ids = array();
+                if (!empty($subcats)) {
+                    foreach ($subcats as $s) {
+                        $subcat_ids[] = $s->term_id;
+                    }
+                }
+                
                 $args = array(
-                    'cat'            => $cat_id,
-                    'posts_per_page' => -1,
-                    'orderby'        => 'date',
-                    'order'          => 'ASC',
+                    'category__in'     => array($cat_id),
+                    'category__not_in' => $subcat_ids,
+                    'posts_per_page'   => -1,
+                    'orderby'          => 'date',
+                    'order'            => 'ASC',
                 );
                 
                 $query = new WP_Query($args);
@@ -579,6 +622,29 @@ document.addEventListener('DOMContentLoaded', function() {
     nonExpandableHeaders.forEach(header => {
         header.addEventListener('click', function() {
             console.log('Clicked:', this.querySelector('.section-title').textContent);
+        });
+    });
+
+    // Handle expandable subcategories
+    const expandableSubcats = document.querySelectorAll('.expandable-subcat');
+    expandableSubcats.forEach(subcat => {
+        subcat.addEventListener('click', function(e) {
+            if (e.target.tagName === 'A') return;
+            const targetId = this.getAttribute('data-target');
+            const content = document.getElementById(targetId);
+            const expandIcon = this.querySelector('.expand-icon-subcat');
+            
+            if (content) {
+                const isExpanding = content.style.display === 'none' || content.style.display === '';
+                
+                if (isExpanding) {
+                    content.style.display = 'block';
+                    if (expandIcon) expandIcon.style.transform = 'rotate(270deg)';
+                } else {
+                    content.style.display = 'none';
+                    if (expandIcon) expandIcon.style.transform = 'rotate(180deg)';
+                }
+            }
         });
     });
 });
