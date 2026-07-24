@@ -651,7 +651,7 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     // Auto-scroll to active item on load
-    const activeItem = document.querySelector('.active-article, .current-page');
+    const activeItem = document.querySelector('.current-page:not(.expandable-subcat), .active-article');
     if (activeItem) {
         // If it's inside a subcategory, ensure the subcategory is open
         const parentSubcatContent = activeItem.closest('.subcat-content');
