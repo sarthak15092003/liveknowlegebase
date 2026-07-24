@@ -388,7 +388,7 @@ get_template_part( 'template-parts/single-post/banner', $banner_type );
                             
                             <div class="post-author-meta-box d-flex align-items-center mb-5 mt-4" style="gap: 15px; border-radius: 50px; padding: 5px;">
                                 <div class="author-avatar">
-                                    <img src="https://docs.cmgalaxy.com/wp-content/uploads/2026/06/cropped-Group-1000004539-300x300-1.png" alt="Author Avatar" class="rounded-circle" style="width: 48px; height: 48px; object-fit: cover; border: none !important;" />
+                                    <img src="https://docs.cmgalaxy.com/wp-content/uploads/2026/06/cropped-Group-1000004539-300x300-1.png" alt="Author Avatar" class="rounded-circle" style="width: 24px; height: 24px; object-fit: cover; border: none !important;">
                                 </div>
                                 <div class="author-info" style="line-height: 1.5; color: #6b7280; font-family: 'Instrument Sans', sans-serif;">
                                     <div style="font-size: 15px;">Written by <span style="color: #4b5563;"><?php echo get_the_author(); ?></span></div>
