@@ -26,14 +26,17 @@
         <style id="global-breadcrumb-font-size">
             /* Custom Breadcrumb Font Size - forced inline to bypass cache */
             .ezd-breadcrumb,
-            .ezd-breadcrumb li,
-            .ezd-breadcrumb li a,
+            .ezd-breadcrumb *,
             .breadcrumb,
-            .breadcrumb li,
-            .breadcrumb li a,
-            .breadcrumb .breadcrumb-item,
-            .breadcrumb .breadcrumb-item a {
+            .breadcrumb * {
                 font-size: 12px !important;
+            }
+            .ezd-breadcrumb,
+            .breadcrumb {
+                display: flex !important;
+                align-items: center !important;
+                flex-wrap: wrap !important;
+                gap: 5px !important;
             }
         </style>
         
