@@ -423,8 +423,8 @@ if ($blog_layout == 'blog_category' && !$is_category_page) {
 				$custom_icons = [
 					'User Manegement' => 'https://docs.cmgalaxy.com/wp-content/uploads/2026/07/usermanagement.png',
 					'User Management' => 'https://docs.cmgalaxy.com/wp-content/uploads/2026/07/usermanagement.png',
-					'Account Mangement' => 'https://docs.cmgalaxy.com/wp-content/uploads/2026/07/usermanagement.png',
-					'Account Management' => 'https://docs.cmgalaxy.com/wp-content/uploads/2026/07/usermanagement.png',
+					'Account Mangement' => 'https://docs.cmgalaxy.com/wp-content/uploads/2026/07/account-management.png',
+					'Account Management' => 'https://docs.cmgalaxy.com/wp-content/uploads/2026/07/account-management.png',
 					'Master Dashboard' => 'https://docs.cmgalaxy.com/wp-content/uploads/2026/07/master-dashboard.png',
 					'Main Dashboard' => 'https://docs.cmgalaxy.com/wp-content/uploads/2026/07/category-2.png',
 					'Funnel Attribution' => 'https://docs.cmgalaxy.com/wp-content/uploads/2026/07/funnel.png',
