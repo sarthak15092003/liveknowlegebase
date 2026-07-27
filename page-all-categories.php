@@ -127,7 +127,8 @@ $terms = get_terms( array(
 			<style>
 				.modern-sidebar {
 					background: #ffffff;
-					border: 1px solid #e5e7eb;
+					border: none !important;
+					box-shadow: none !important;
 					border-radius: 8px;
 					padding: 0;
 					margin-bottom: 2rem;
