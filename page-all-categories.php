@@ -20,8 +20,8 @@ $terms = get_terms( array(
 
 <style>
 	.tw-category-container {
-		max-width: 1000px;
-		margin: 60px auto;
+		width: 100%;
+		margin: 20px 0;
 		padding: 0 20px;
 		font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
 	}
@@ -117,13 +117,43 @@ $terms = get_terms( array(
 		object-fit: cover;
 	}
 
-	/* Different icon background colors based on a pseudo-random attribute (for visual variety) */
-	.tw-category-card:nth-child(2n) .tw-category-icon { background: #f1f8eb; color: #28a745; }
-	.tw-category-card:nth-child(3n) .tw-category-icon { background: #fdf3f4; color: #cb2431; }
-	.tw-category-card:nth-child(4n) .tw-category-icon { background: #fff5e6; color: #dbab09; }
+
 </style>
 
-<div class="tw-category-container">
+<div class="container" style="max-width: 100% !important; padding-left: 30px !important; padding-right: 30px !important;">
+	<div class="row">
+		<!-- Sidebar Column -->
+		<div class="col-lg-3 mb-4 category-left-sidebar-col" style="flex: 0 0 20% !important; max-width: 20% !important;">
+			<style>
+				.modern-sidebar {
+					background: #ffffff;
+					border: 1px solid #e5e7eb;
+					border-radius: 8px;
+					padding: 0;
+					margin-bottom: 2rem;
+					position: sticky;
+					top: 110px;
+					max-height: calc(100vh - 120px);
+					overflow-y: auto;
+				}
+				@media (max-width: 1024px) {
+					.category-left-sidebar-col {
+						flex: 0 0 100% !important;
+						max-width: 100% !important;
+						display: none !important; /* Hide on mobile by default like category pages */
+					}
+					.category-main-col {
+						flex: 0 0 100% !important;
+						max-width: 100% !important;
+					}
+				}
+			</style>
+			<?php get_template_part('template-parts/sidebar-modern'); ?>
+		</div>
+
+		<!-- Content Column -->
+		<div class="col-lg-9 category-main-col" style="flex: 0 0 80% !important; max-width: 80% !important;">
+			<div class="tw-category-container">
 	<?php if ( ! empty( $terms ) && ! is_wp_error( $terms ) ) : ?>
 		<?php foreach ( $terms as $term ) : ?>
 			<?php 
@@ -246,6 +276,9 @@ $terms = get_terms( array(
 	<?php else : ?>
 		<p>No categories found.</p>
 	<?php endif; ?>
+			</div>
+		</div>
+	</div>
 </div>
 
 <?php
