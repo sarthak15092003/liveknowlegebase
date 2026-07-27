@@ -673,13 +673,10 @@ if ($blog_layout == 'blog_category' && !$is_category_page) {
 							?>
 							<div class="row">
 								<?php
-								while (have_posts()):
-									the_post();
-									get_template_part('template-parts/contents/content-grid');
-								endwhile;
+								get_template_part('template-parts/contents/content-category-detail');
 								?>
 							</div>
-							<?php Docy_helper()->pagination(); ?>
+							<?php // Docy_helper()->pagination(); ?>
 						</div>
 						<?php
 					} else {
@@ -873,11 +870,8 @@ if ($blog_layout == 'blog_category' && !$is_category_page) {
 								<div class="row category-posts-row"
 									data-cat-slug="<?php echo esc_attr(get_category($current_cat_id)->slug); ?>">
 									<?php
-									// Render posts for category page
-									while (have_posts()):
-										the_post();
-										get_template_part('template-parts/contents/content-grid');
-									endwhile;
+									// Render posts and subcategories for category page
+									get_template_part('template-parts/contents/content-category-detail');
 									?>
 								</div>
 
