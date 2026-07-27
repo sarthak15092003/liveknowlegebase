@@ -725,14 +725,9 @@ if ($blog_layout == 'blog_category' && !$is_category_page) {
 							?>
 							<!-- Left Modern Sidebar for Cat 3 -->
 							<div class="mb-4 category-left-sidebar-col"
-								style="border-right: 1px solid #e5e7eb;flex: 0 0 20% !important;max-width: 20% !important;position: sticky;top: 110px;">
+								style="border-right: 1px solid #e5e7eb;flex: 0 0 20% !important;max-width: 20% !important;">
 								<style>
 									/* Sticky left sidebar for cat=2 and cat=3 */
-									.category-left-sidebar-col {
-										align-self: flex-start;
-										min-height: 100vh;
-									}
-
 									.cat-title {
 										color: #161c52 !important;
 										font-weight: 500 !important;
