@@ -2770,7 +2770,7 @@ div.bbp-template-notice.info {
 .tw-article-title {
   font-size: 24px;
   font-weight: 600;
-  color: #161C52;
+  color: #161C52 !important;
   margin-bottom: 4px;
 }
 
