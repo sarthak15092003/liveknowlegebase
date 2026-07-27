@@ -162,6 +162,7 @@ get_template_part( 'template-parts/single-post/banner', $banner_type );
         .category-left-sidebar-col .modern-sidebar {
             max-height: calc(100vh - 140px) !important;
             overflow-y: auto !important;
+            position: relative !important;
         }
         
         /* Remove right padding from col-lg-3 on all screen sizes */
@@ -278,17 +279,16 @@ get_template_part( 'template-parts/single-post/banner', $banner_type );
     <div class="container">
         <div class="row">
             <!-- Left Modern Sidebar (20%) -->
-            <div class="col-lg-3 category-left-sidebar-col" style="border-right: 1px solid #e5e7eb; background: #ffffff !important;">
+            <div class="col-lg-3 category-left-sidebar-col" style="border-right: 1px solid #e5e7eb; background: #ffffff !important; position: sticky; top: 110px; align-self: flex-start; height: fit-content;">
                 <style>
                     /* Align single-post sidebar with category layout */
                     .modern-sidebar {
                         background: #ffffff;
-                        
                         border-radius: 8px;
                         padding: 0 0px 0 0;
                         margin-bottom: 0;
-                        position: sticky;
-                        top: 110px;
+                        position: relative !important;
+                        top: auto !important;
                         width: 100%;
                         max-width: 240px;
                         margin-top: 5px;
