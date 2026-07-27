@@ -60,7 +60,8 @@
 /* box-shadow used instead of border-right so border only shows alongside actual content */
 .category-left-sidebar-col {
     align-self: flex-start;
-    box-shadow: 1px 0 0 0 #e5e7eb;
+    box-shadow: none !important;
+    border: none !important;
 }
 
 /* Rows containing a category sidebar must NOT stretch their children */
