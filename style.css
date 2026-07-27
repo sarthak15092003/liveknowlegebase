@@ -147,56 +147,44 @@ Text Domain: docy
   /* slightly darker on hover */
 }
 
-/* Breadcrumb background to white and text to black */
-.page_breadcrumb {
-  background-color: #ffffff !important;
+/* Breadcrumb Styling - Clean & Modern matching design */
+.breadcrumb {
+  background: transparent !important;
+  padding: 0 !important;
+  margin: 0 0 20px 0 !important;
+  display: flex !important;
+  align-items: center !important;
+  flex-wrap: wrap !important;
 }
 
-.page_breadcrumb .breadcrumb .breadcrumb-item a,
-.page_breadcrumb .breadcrumb .breadcrumb-item,
-.page_breadcrumb .breadcrumb .breadcrumb-item+.breadcrumb-item:before,
-.page_breadcrumb .date {
-  color: #000000 !important;
-}
-
-.page_breadcrumb .breadcrumb .breadcrumb-item a:hover,
-.page_breadcrumb .breadcrumb .active {
-  color: #3A7DFF !important;
-}
-
-/* Menu navigation link color */
-.menu>.nav-item>.nav-link {
-  color: #242729 !important;
-}
-
-.menu>.nav-item.active>.nav-link,
-.menu>.nav-item:hover>.nav-link {
-  color: #3A7DFF !important;
-}
-
-/* Single breadcrumb title color */
-.single_breadcrumb .doc_banner_content .title {
-  color: #242729 !important;
-}
-
-/* Right navigation button border and text color */
-.right-nav .nav_btn {
-  border-color: #c8ccd0 !important;
-  color: #3A7DFF !important;
-}
-
-/* Ensure breadcrumb active text and links have the same font size */
+.breadcrumb .breadcrumb-item,
 .breadcrumb .breadcrumb-item a,
 .breadcrumb .breadcrumb-item.active,
-.breadcrumb .breadcrumb-item,
-.ezd-breadcrumb,
-.ezd-breadcrumb li,
-.ezd-breadcrumb li a,
 .page_breadcrumb .breadcrumb-item a,
 .page_breadcrumb .breadcrumb-item,
-ul.breadcrumb li, ul.breadcrumb li a,
-.bbp-breadcrumb {
-  font-size: 12px !important;
+.ezd-breadcrumb,
+.ezd-breadcrumb li,
+.ezd-breadcrumb li a {
+  font-size: 15px !important;
+  font-weight: 400 !important;
+}
+
+.breadcrumb .breadcrumb-item a,
+.page_breadcrumb .breadcrumb-item a {
+  color: #1E2B5B !important;
+  text-decoration: none !important;
+}
+
+.breadcrumb .breadcrumb-item.active,
+.page_breadcrumb .breadcrumb-item.active {
+  color: #5B6B8C !important;
+}
+
+.breadcrumb-item + .breadcrumb-item::before {
+  content: "/" !important;
+  padding: 0 8px !important;
+  color: #3B82F6 !important;
+  font-weight: 400 !important;
 }
 
 /* Category Grid Card Paragraph Description */
