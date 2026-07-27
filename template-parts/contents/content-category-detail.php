@@ -54,7 +54,7 @@ if ( ! $current_cat_id ) {
 }
 .tw-article-desc {
     font-size: 14px !important;
-    color: #596375;
+    color: #484A61 !important;
     margin: 0;
     line-height: 1.5;
 }
