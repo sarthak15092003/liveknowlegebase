@@ -473,7 +473,7 @@ function toggleCatArticles(header) {
                 <div class="section-icon">
                     <img src="<?php echo esc_url($section['icon']); ?>" alt="<?php echo esc_attr($section['title']); ?> Icon" style="width: 22px; height: 22px; object-fit: contain;">
                 </div>
-                <span class="section-title"><?php echo esc_html($section['title']); ?></span>
+                <a href="<?php echo esc_url(get_category_link(get_category_by_slug($section['slug'])->term_id)); ?>" class="section-title" style="text-decoration: none; color: inherit; display: block; flex: 1;"><?php echo esc_html($section['title']); ?></a>
                 <span class="<?php echo esc_attr($expand_class); ?>">
                     <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none">
                         <path d="M15 6L9 12.0001L15 18" stroke="currentColor" stroke-width="1.5" stroke-miterlimit="16" stroke-linecap="round" stroke-linejoin="round"/>
@@ -516,8 +516,8 @@ function toggleCatArticles(header) {
                         $subcat_content_id = 'subcat-' . $subcat->term_id;
                         $subcat_font_weight = $is_subcat_active ? 'bold' : '500';
                         ?>
-                        <div class="<?php echo esc_attr($subcat_wrapper_class); ?>" style="padding-left: 55px; cursor: pointer;" data-target="<?php echo esc_attr($subcat_content_id); ?>">
-                            <span class="subsection-title" style="color:#475569; font-weight:<?php echo $subcat_font_weight; ?>; font-size: 14px;" title="<?php echo esc_attr($subcat->name); ?>"><?php echo esc_html($subcat->name); ?></span>
+                        <div class="<?php echo esc_attr($subcat_wrapper_class); ?>" style="padding-left: 55px; cursor: pointer; display: flex; align-items: center;" data-target="<?php echo esc_attr($subcat_content_id); ?>">
+                            <a href="<?php echo esc_url(get_category_link($subcat->term_id)); ?>" class="subsection-title" style="color:#475569; font-weight:<?php echo $subcat_font_weight; ?>; font-size: 14px; text-decoration: none; flex: 1; padding-right: 10px;" title="<?php echo esc_attr($subcat->name); ?>"><?php echo esc_html($subcat->name); ?></a>
                             <span class="expand-icon-subcat" style="transition: transform 0.3s; transform: rotate(180deg); display: inline-flex; align-items: center; justify-content: center; width: 20px; height: 20px; color: #94a3b8; margin-left: auto;">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none">
                                     <path d="M15 6L9 12.0001L15 18" stroke="currentColor" stroke-width="1.5" stroke-miterlimit="16" stroke-linecap="round" stroke-linejoin="round"/>

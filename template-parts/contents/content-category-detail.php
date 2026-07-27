@@ -63,12 +63,21 @@ if ( ! $current_cat_id ) {
 .tw-subcategory-header {
     padding: 24px 24px 16px;
     border-bottom: 1px solid #e1e4e8;
+    background-color: #f8fafc;
+    position: relative;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+.tw-subcategory-header:hover {
+    background-color: #f1f5f9;
 }
 .tw-subcategory-title {
     font-size: 18px;
     font-weight: 600;
-    color: #24292e;
-    margin: 0 0 4px 0;
+    color: #0f172a;
+    margin: 0 0 6px 0;
+    display: flex;
+    align-items: center;
 }
 .tw-subcategory-desc {
     font-size: 14px;
@@ -130,13 +139,18 @@ if ( ! $current_cat_id ) {
 			if ( $sub_articles->have_posts() ) {
 				echo '<div class="tw-cat-articles-card">';
 				
-				// Subcategory Header
-				echo '<div class="tw-subcategory-header">';
-				echo '<h3 class="tw-subcategory-title">' . esc_html( $subcat->name ) . '</h3>';
+				// Subcategory Header (Make it distinct and clickable)
+				echo '<div class="tw-subcategory-header" onclick="window.location.href=\''. esc_url(get_category_link($subcat->term_id)) .'\'">';
+				echo '<h3 class="tw-subcategory-title">';
+				// Add a folder icon to differentiate from articles
+				echo '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#3b82f6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-right: 8px;"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path></svg>';
+				echo esc_html( $subcat->name );
+				echo '<span style="font-size: 13px; font-weight: 500; color: #3b82f6; margin-left: auto;">View all &rarr;</span>';
+				echo '</h3>';
 				if ( ! empty( $subcat->description ) ) {
-					echo '<p class="tw-subcategory-desc">' . esc_html( $subcat->description ) . '</p>';
+					echo '<p class="tw-subcategory-desc" style="margin-left: 28px;">' . esc_html( $subcat->description ) . '</p>';
 				} else {
-                    echo '<p class="tw-subcategory-desc">Articles relating to ' . esc_html( $subcat->name ) . '</p>';
+                    echo '<p class="tw-subcategory-desc" style="margin-left: 28px;">Articles relating to ' . esc_html( $subcat->name ) . '</p>';
                 }
 				echo '</div>';
 
