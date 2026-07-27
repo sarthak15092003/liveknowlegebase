@@ -554,10 +554,6 @@ function toggleCatArticles(header) {
                         <?php
                     }
                 }
-
-                        <?php
-                    }
-                }
                 ?>
             </div>
             <?php endif; ?>
