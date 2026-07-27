@@ -162,7 +162,14 @@ get_template_part( 'template-parts/single-post/banner', $banner_type );
         .category-left-sidebar-col .modern-sidebar {
             max-height: calc(100vh - 140px) !important;
             overflow-y: auto !important;
-            position: relative !important;
+        }
+        
+        /* Draw the right border using gradient on the row so it doesn't stretch beyond content */
+        .blog_area.tip_doc_area .row.align-items-start {
+            background-image: linear-gradient(to bottom, #e5e7eb, #e5e7eb);
+            background-size: 1px 100%;
+            background-position: 20% 0;
+            background-repeat: no-repeat;
         }
         
         /* Remove right padding from col-lg-3 on all screen sizes */
@@ -279,7 +286,7 @@ get_template_part( 'template-parts/single-post/banner', $banner_type );
     <div class="container">
         <div class="row align-items-start">
             <!-- Left Modern Sidebar (20%) -->
-            <div class="col-lg-3 category-left-sidebar-col" style="border-right: 1px solid #e5e7eb; background: #ffffff !important;">
+            <div class="col-lg-3 category-left-sidebar-col" style="background: #ffffff !important;">
                 <style>
                     /* Align single-post sidebar with category layout */
                     .modern-sidebar {
