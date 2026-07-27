@@ -210,3 +210,9 @@ ul.breadcrumb li, ul.breadcrumb li a,
   color: #484A61 !important;
   line-height: 1.5 !important;
 }
+
+/* Modern Sidebar border override */
+.modern-sidebar {
+  border: none !important;
+  box-shadow: none !important;
+}

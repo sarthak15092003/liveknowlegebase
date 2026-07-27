@@ -5,8 +5,8 @@
     padding: 0 10px 0 0;
     margin: 0 0 3rem;
     overflow: hidden;
-    border: 0px;
-    /* Changed from 1px to 0px */
+    border: none !important;
+    box-shadow: none !important;
     width: 100%;
     max-width: 240px;
 }
