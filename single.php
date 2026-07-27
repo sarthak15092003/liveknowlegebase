@@ -156,8 +156,6 @@ get_template_part( 'template-parts/single-post/banner', $banner_type );
         
         /* Make the sidebar column extend to full viewport height */
         .category-left-sidebar-col {
-            align-self: flex-start;
-            min-height: 100vh !important;
         }
         
         /* Keep internal scrolling but ensure proper height */
@@ -280,7 +278,7 @@ get_template_part( 'template-parts/single-post/banner', $banner_type );
     <div class="container">
         <div class="row">
             <!-- Left Modern Sidebar (20%) -->
-            <div class="col-lg-3 category-left-sidebar-col" style="border-right: 1px solid #e5e7eb; background: #ffffff !important; position: sticky; top: 110px;">
+            <div class="col-lg-3 category-left-sidebar-col" style="border-right: 1px solid #e5e7eb; background: #ffffff !important;">
                 <style>
                     /* Align single-post sidebar with category layout */
                     .modern-sidebar {
