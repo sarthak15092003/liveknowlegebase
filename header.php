@@ -140,7 +140,7 @@
             $meta_value   = docy_meta_apply( 'is_banner', '1');
             $is_cat_query = (isset( $_GET['cat'] ) && ! empty( $_GET['cat'] )) || is_category() || is_archive() || is_tag() || is_tax();
 
-            if ( $meta_value == '1' && ! is_singular( 'post' ) && ! is_404() && ! $is_cat_query ) {
+            if ( $meta_value == '1' && ! is_singular( 'post' ) && ! is_page_template('page-all-categories.php') && ! is_404() && ! $is_cat_query ) {
                 $is_banner_meta = docy_meta('is_banner');
                 $homepage_ids = docy_homepage_ids();
                 if ( isset($is_banner_meta) && $is_banner_meta != '1' && in_array( get_the_ID(), $homepage_ids ) ) {

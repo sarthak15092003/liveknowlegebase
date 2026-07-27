@@ -153,6 +153,16 @@ $terms = get_terms( array(
 
 		<!-- Content Column -->
 		<div class="col-lg-9 category-main-col" style="flex: 0 0 80% !important; max-width: 80% !important;">
+			<nav aria-label="breadcrumb" class="mb-4" style="margin-top: 15px;">
+				<ol class="breadcrumb" style="font-size: 12px !important; gap: 5px !important; display: flex !important; flex-wrap: wrap !important; padding: 0 !important; margin-bottom: 15px !important; list-style: none;">
+					<li class="breadcrumb-item"><a href="<?php echo esc_url(home_url('/')); ?>" style="color: #3b82f6; text-decoration: none;">Home</a></li>
+					<span style="color: #94a3b8; margin: 0 5px;">/</span>
+					<li class="breadcrumb-item active" aria-current="page" style="color: #484a61 !important;">All Categories</li>
+				</ol>
+			</nav>
+			
+			<h1 class="post-title mb-4" style="font-size: 36px; font-weight: 700; color: #111827; line-height: 1.2; margin-top: 20px;">All Categories</h1>
+			
 			<div class="tw-category-container">
 	<?php if ( ! empty( $terms ) && ! is_wp_error( $terms ) ) : ?>
 		<?php foreach ( $terms as $term ) : ?>
