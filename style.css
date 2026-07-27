@@ -198,3 +198,14 @@ ul.breadcrumb li, ul.breadcrumb li a,
 .bbp-breadcrumb {
   font-size: 12px !important;
 }
+
+/* Category Grid Card Paragraph Description */
+.categories_guide_item p,
+.category-card p,
+.doc_border_btn p,
+.tw-cat-card-desc,
+.tw-article-desc {
+  font-size: 14px !important;
+  color: #484A61 !important;
+  line-height: 1.5 !important;
+}
