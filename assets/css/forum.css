@@ -2776,7 +2776,7 @@ div.bbp-template-notice.info {
 }
 
 .tw-article-desc {
-  font-size: 14px;
+  font-size: 14px !important;
   color: #596375;
   margin: 0;
   line-height: 1.5;

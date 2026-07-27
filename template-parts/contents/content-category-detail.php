@@ -53,7 +53,7 @@ if ( ! $current_cat_id ) {
     line-height: 1.35;
 }
 .tw-article-desc {
-    font-size: 14px;
+    font-size: 14px !important;
     color: #596375;
     margin: 0;
     line-height: 1.5;
