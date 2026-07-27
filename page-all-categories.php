@@ -73,8 +73,8 @@ $terms = get_terms( array(
 	}
 
 	.tw-category-desc {
-		font-size: 15px;
-		color: #586069;
+		font-size: 14px !important;
+		color: #484A61 !important;
 		margin: 0 0 16px 0;
 		line-height: 1.5;
 	}
