@@ -464,8 +464,26 @@ function toggleCatArticles(header) {
         <?php foreach ($sidebar_sections as $section) :
             // Check if current page is in this category
             $is_active_cat = in_array($section['slug'], $current_categories);
-            $header_class = 'section-header expandable' . ($is_active_cat ? ' active' : '');
-            $content_class = 'section-content' . ($is_active_cat ? ' expanded' : '');
+            
+            // Get the category object to ensure we have the correct ID
+            $slug_to_check = $section['slug'];
+            $cat_obj = get_category_by_slug($slug_to_check);
+            if ( ! $cat_obj ) $cat_obj = get_category_by_slug(strtolower($slug_to_check));
+            if ( ! $cat_obj && is_numeric($section['id']) ) $cat_obj = get_term($section['id'], 'category');
+            if ( ! $cat_obj ) $cat_obj = get_term_by('name', $section['title'], 'category');
+            
+            $cat_id = $cat_obj ? $cat_obj->term_id : 0;
+            
+            // Fetch subcategories
+            $subcats = get_categories(array(
+                'parent'     => $cat_id,
+                'hide_empty' => 0 // Set to 0 so we can see newly added subcategories even without posts
+            ));
+            
+            $has_subcats = !empty($subcats);
+            
+            $header_class = 'section-header' . ($has_subcats ? ' expandable' : '') . ($is_active_cat ? ' active' : '');
+            $content_class = 'section-content' . ($is_active_cat && $has_subcats ? ' expanded' : '');
             $expand_class = 'expand-icon' . ($is_active_cat ? ' expanded' : '');
         ?>
         <div class="sidebar-section">
@@ -473,41 +491,19 @@ function toggleCatArticles(header) {
                 <div class="section-icon">
                     <img src="<?php echo esc_url($section['icon']); ?>" alt="<?php echo esc_attr($section['title']); ?> Icon" style="width: 22px; height: 22px; object-fit: contain;">
                 </div>
-                <a href="<?php echo esc_url(get_category_link(get_category_by_slug($section['slug'])->term_id)); ?>" class="section-title" style="text-decoration: none; color: inherit; display: block; flex: 1;"><?php echo esc_html($section['title']); ?></a>
+                <a href="<?php echo esc_url(get_category_link($cat_id)); ?>" class="section-title" style="text-decoration: none; color: inherit; display: block; flex: 1;"><?php echo esc_html($section['title']); ?></a>
+                <?php if ($has_subcats) : ?>
                 <span class="<?php echo esc_attr($expand_class); ?>">
                     <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none">
                         <path d="M15 6L9 12.0001L15 18" stroke="currentColor" stroke-width="1.5" stroke-miterlimit="16" stroke-linecap="round" stroke-linejoin="round"/>
                     </svg>
                 </span>
+                <?php endif; ?>
             </div>
 
+            <?php if ($has_subcats) : ?>
             <div class="<?php echo esc_attr($content_class); ?>" id="<?php echo esc_attr($section['id']); ?>">
                 <?php
-                // Get the category object to ensure we have the correct ID
-                $slug_to_check = $section['slug'];
-                $cat_obj = get_category_by_slug($slug_to_check);
-                
-                // Fallback for case sensitivity or common Slug variations
-                if ( ! $cat_obj ) {
-                    $cat_obj = get_category_by_slug(strtolower($slug_to_check));
-                }
-                
-                if ( ! $cat_obj && is_numeric($section['id']) ) {
-                    $cat_obj = get_term($section['id'], 'category');
-                }
-                
-                // Final fallback if slug is mismatched
-                if ( ! $cat_obj ) {
-                    $cat_obj = get_term_by('name', $section['title'], 'category');
-                }
-
-                $cat_id = $cat_obj ? $cat_obj->term_id : 0;
-                
-                // Fetch and display subcategories first
-                $subcats = get_categories(array(
-                    'parent'     => $cat_id,
-                    'hide_empty' => 0 // Set to 0 so we can see newly added subcategories even without posts
-                ));
                 
                 if (!empty($subcats)) {
                     foreach ($subcats as $subcat) {
@@ -559,46 +555,12 @@ function toggleCatArticles(header) {
                     }
                 }
 
-                $subcat_ids = array();
-                if (!empty($subcats)) {
-                    foreach ($subcats as $s) {
-                        $subcat_ids[] = $s->term_id;
+                        <?php
                     }
                 }
-                
-                $args = array(
-                    'category__in'     => array($cat_id),
-                    'category__not_in' => $subcat_ids,
-                    'posts_per_page'   => -1,
-                    'orderby'          => 'date',
-                    'order'            => 'ASC',
-                );
-                
-                $query = new WP_Query($args);
-                
-                echo "<!-- DEBUG: Section: {$section['slug']} | Cat ID: {$cat_id} | Posts Found: {$query->found_posts} -->";
-
-                if ($query->have_posts()) :
-                    while ($query->have_posts()) : $query->the_post();
-                        $is_current_post = (get_the_ID() == $current_post_id);
-                        $item_wrapper_class = $is_current_post ? 'subsection-item current-page' : 'subsection-item';
                 ?>
-                    <div class="<?php echo esc_attr($item_wrapper_class); ?>">
-                        <a href="<?php the_permalink(); ?>" class="subsection-title" title="<?php echo esc_attr(get_the_title()); ?>"><?php the_title(); ?></a>
-                        <span class="subsection-arrow">▶</span>
-                    </div>
-                <?php
-                    endwhile;
-                    wp_reset_postdata();
-                elseif (empty($subcats)) :
-                    // No posts and no subcategories found
-                    // No posts found in this category
-                    ?>
-                    <div class="subsection-item">
-                        <span class="subsection-title-plain" style="color: #94a3b8; font-size: 13px; padding-left: 20px;">No articles found</span>
-                    </div>
-                <?php endif; ?>
             </div>
+            <?php endif; ?>
         </div>
         <?php endforeach; ?>
     </div>
