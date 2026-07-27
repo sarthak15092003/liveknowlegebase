@@ -300,16 +300,16 @@ if (empty($sidebar_sections)) {
     <div class="sidebar-content">
         <!-- Back Button -->
         <?php
-        // Get the category link for the back button
-        $back_url = home_url('/');
-        $back_label = 'All Categories';
-        if (!empty($current_categories)) {
-            $cat_obj = get_category_by_slug($current_categories[0]);
-            if ($cat_obj) {
-                $back_url = get_category_link($cat_obj->term_id);
-                $back_label = 'All Categories';
-            }
+        // Get the link to the All Categories page
+        $back_url = home_url('/all-categories/'); // Fallback URL
+        $pages = get_pages(array(
+            'meta_key' => '_wp_page_template',
+            'meta_value' => 'page-all-categories.php'
+        ));
+        if (!empty($pages)) {
+            $back_url = get_permalink($pages[0]->ID);
         }
+        $back_label = 'All Categories';
         ?>
         <a href="<?php echo esc_url($back_url); ?>" class="sidebar-back-btn">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
