@@ -106,7 +106,8 @@
 
 /* Section Styles */
 .sidebar-section {
-    border-bottom: 1px solid #f8fafc;
+    border-bottom: none !important;
+    border: none !important;
 }
 
 .sidebar-section:last-child {

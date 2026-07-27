@@ -213,7 +213,11 @@ ul.breadcrumb li, ul.breadcrumb li a,
 
 /* Modern Sidebar border override */
 .modern-sidebar,
-.category-left-sidebar-col {
+.modern-sidebar *,
+.category-left-sidebar-col,
+.sidebar-section,
+.subsection-item {
   border: none !important;
+  border-bottom: none !important;
   box-shadow: none !important;
 }
