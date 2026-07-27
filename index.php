@@ -864,7 +864,29 @@ if ($blog_layout == 'blog_category' && !$is_category_page) {
 								</div>
 								<?php
 								if (isset($GLOBALS['cat_header_data']) && !empty($GLOBALS['cat_header_data'])) {
-									docy_render_category_header_card($GLOBALS['cat_header_data']);
+									// Replace the old card with the single post style header
+									$cat_title = $GLOBALS['cat_header_data']['title'];
+									$cat_count = $GLOBALS['cat_header_data']['count'];
+									?>
+									<nav aria-label="breadcrumb" class="mb-4" style="margin-top: 15px;">
+										<ol class="breadcrumb" style="font-size: 12px !important; gap: 5px !important; display: flex !important; flex-wrap: wrap !important; padding: 0 !important; margin-bottom: 15px !important; list-style: none;">
+											<li class="breadcrumb-item"><a href="<?php echo esc_url(home_url('/')); ?>" style="color: #3b82f6; text-decoration: none;">Home</a></li>
+											<span style="color: #94a3b8; margin: 0 5px;">/</span>
+											<li class="breadcrumb-item active" aria-current="page" style="color: #484a61 !important;"><?php echo esc_html($cat_title); ?></li>
+										</ol>
+									</nav>
+									
+									<h1 class="post-title mb-3" style="font-size: 36px; font-weight: 700; color: #111827; line-height: 1.2; margin-top: 20px;"><?php echo esc_html($cat_title); ?></h1>
+									
+									<div class="post-author-meta-box d-flex align-items-center mb-5 mt-4" style="gap: 15px; padding: 5px;">
+										<div class="author-avatar">
+											<img src="https://docs.cmgalaxy.com/wp-content/uploads/2026/06/cropped-Group-1000004539-300x300-1.png" alt="Author Avatar" class="rounded-circle" style="width: 24px; height: 24px; object-fit: cover; border: none !important;">
+										</div>
+										<div class="author-info" style="line-height: 1.5; color: #6b7280;">
+											<div style="font-size: 15px;">By <span style="color: #4b5563;">CMGalaxy</span> &nbsp;&middot;&nbsp; <?php echo esc_html($cat_count); ?> articles</div>
+										</div>
+									</div>
+									<?php
 								}
 								?>
 								<div class="row category-posts-row"

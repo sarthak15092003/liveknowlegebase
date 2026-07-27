@@ -5,8 +5,8 @@
  * On other pages: shows all categories
  */
 
-// Determine if we're on a single post page
-$is_single_post = is_singular('post');
+// Determine if we're on a single post page or category page
+$is_single_post = is_singular('post') || is_category();
 $current_post_id = get_queried_object_id();
 
 // Get current post's categories or current archive's category
