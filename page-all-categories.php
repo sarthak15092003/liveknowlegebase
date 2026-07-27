@@ -20,7 +20,7 @@ $terms = get_terms( array(
 
 <style>
 	.tw-category-container {
-		max-width: 800px;
+		max-width: 1000px;
 		margin: 60px auto;
 		padding: 0 20px;
 		font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
@@ -50,13 +50,11 @@ $terms = get_terms( array(
 		width: 56px;
 		height: 56px;
 		min-width: 56px;
-		background: #f0f7ff;
-		color: #0366d6;
+		background: #ffffff; /* Removed blue background so image looks clean */
 		border-radius: 12px;
 		display: flex;
 		align-items: center;
 		justify-content: center;
-		font-size: 24px;
 		margin-right: 24px;
 	}
 
@@ -129,23 +127,87 @@ $terms = get_terms( array(
 	<?php if ( ! empty( $terms ) && ! is_wp_error( $terms ) ) : ?>
 		<?php foreach ( $terms as $term ) : ?>
 			<?php 
-			// Fallback icon based on slug or term ID
-			$icon_html = '<i class="fa fa-folder-open"></i>'; // Default FontAwesome icon if docy uses FA
-			
-			// You can implement custom logic here to assign different icons per category slug
-			if ( strpos( $term->slug, 'start' ) !== false ) {
-				$icon_html = '<i class="fa fa-play-circle"></i>';
-			} elseif ( strpos( $term->slug, 'market' ) !== false ) {
-				$icon_html = '<i class="fa fa-globe"></i>';
-			} elseif ( strpos( $term->slug, 'analytic' ) !== false || strpos( $term->slug, 'summary' ) !== false ) {
-				$icon_html = '<i class="fa fa-bar-chart"></i>';
-			} elseif ( strpos( $term->slug, 'creative' ) !== false ) {
-				$icon_html = '<i class="fa fa-pencil-square-o"></i>';
+			// --- ICON LOGIC (Same as Home Page) ---
+			$cat_name = $term->name;
+			$custom_icons = [
+				'User Manegement' => 'https://docs.cmgalaxy.com/wp-content/uploads/2026/07/usermanagement.png',
+				'User Management' => 'https://docs.cmgalaxy.com/wp-content/uploads/2026/07/usermanagement.png',
+				'Account Mangement' => 'https://docs.cmgalaxy.com/wp-content/uploads/2026/07/account-management-1.png',
+				'Account Management' => 'https://docs.cmgalaxy.com/wp-content/uploads/2026/07/account-management-1.png',
+				'Master Dashboard' => 'https://docs.cmgalaxy.com/wp-content/uploads/2026/07/master-dashboard.png',
+				'Main Dashboard' => 'https://docs.cmgalaxy.com/wp-content/uploads/2026/07/category-2.png',
+				'Dashboard' => 'https://docs.cmgalaxy.com/wp-content/uploads/2026/07/category-2.png',
+				'Funnel Attribution' => 'https://docs.cmgalaxy.com/wp-content/uploads/2026/07/funnel.png',
+				'Integrations' => 'https://docs.cmgalaxy.com/wp-content/uploads/2026/07/integrations.png',
+				'Google Dashboard' => 'https://docs.cmgalaxy.com/wp-content/uploads/2026/07/google.png',
+				'Meta Dashboard' => 'https://docs.cmgalaxy.com/wp-content/uploads/2026/07/meta.png',
+				'DV360 Dashboard' => 'https://docs.cmgalaxy.com/wp-content/uploads/2026/07/DV360.png',
+				'Amazon Dashboard' => 'https://docs.cmgalaxy.com/wp-content/uploads/2026/07/amzone.png',
+				'Recommendation' => 'https://docs.cmgalaxy.com/wp-content/uploads/2026/07/recommendation.png',
+				'Pinterest Dashboard' => 'https://docs.cmgalaxy.com/wp-content/uploads/2026/07/pinterest.png',
+				'Milestone' => 'https://docs.cmgalaxy.com/wp-content/uploads/2026/07/milestonte.png',
+				'Notification Center' => 'https://docs.cmgalaxy.com/wp-content/uploads/2026/07/notification.png',
+				'Tickets / Supports' => 'https://docs.cmgalaxy.com/wp-content/uploads/2026/07/support.png',
+				'Reporting HUb' => 'https://docs.cmgalaxy.com/wp-content/uploads/2026/07/report.png',
+				'Reporting Hub' => 'https://docs.cmgalaxy.com/wp-content/uploads/2026/07/report.png',
+				'Lex' => 'https://docs.cmgalaxy.com/wp-content/uploads/2026/07/recommendation.png',
+				'User Journey' => 'https://docs.cmgalaxy.com/wp-content/uploads/2026/07/user-jounery.png',
+				'Onboarding' => 'https://docs.cmgalaxy.com/wp-content/uploads/2026/07/onboarding.png',
+				'Linkedin Dashboard' => 'https://docs.cmgalaxy.com/wp-content/uploads/2026/07/linkedin.png',
+				'LinkedIn Dashboard' => 'https://docs.cmgalaxy.com/wp-content/uploads/2026/07/linkedin.png',
+				'Teads Dashboard' => 'https://docs.cmgalaxy.com/wp-content/uploads/2026/07/teads.png',
+				'Getting started' => 'https://docs.cmgalaxy.com/wp-content/uploads/2026/07/onboarding.png',
+				'Getting Started' => 'https://docs.cmgalaxy.com/wp-content/uploads/2026/07/onboarding.png',
+				'UTM Parameters Guidelines' => 'https://docs.cmgalaxy.com/wp-content/uploads/2026/07/UTM-.png'
+			];
+
+			if (array_key_exists($cat_name, $custom_icons)) {
+				$icon_html = '<img src="' . esc_url($custom_icons[$cat_name]) . '" alt="' . esc_attr($cat_name) . '" style="width: 32px; height: 32px; object-fit: contain;">';
+			} else {
+				$icon_html = '<svg width="28" height="28" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">'
+					. '<path d="M6 4a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v16l-6-3-6 3V4z" stroke="#0052cc" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>'
+					. '</svg>';
 			}
 
 			$term_link = get_term_link( $term );
 			
-			// Approximate metadata (Authors and Article Count)
+			// --- AUTHOR LOGIC (Same as Home Page) ---
+			$author_names = [];
+			$author_ids = [];
+			$author_query = new WP_Query([
+				'post_type' => 'post', // Or whatever post type Eazydocs uses if taxonomy is doc_dir
+				'posts_per_page' => 10,
+				'cat' => $term->term_id,
+				'ignore_sticky_posts' => true,
+				'fields' => 'ids',
+			]);
+			if ($author_query->have_posts()) {
+				foreach ($author_query->posts as $post_id) {
+					$aid = (int) get_post_field('post_author', $post_id);
+					if ($aid && !in_array($aid, $author_ids, true)) {
+						$author_ids[] = $aid;
+						$author_names[] = get_the_author_meta('display_name', $aid);
+					}
+					if (count($author_names) >= 3) {
+						break;
+					}
+				}
+			}
+			wp_reset_postdata();
+			
+			$byline = '';
+			$author_count_total = count($author_ids);
+			if ($author_count_total === 1) {
+				$byline = sprintf(__('By %s', 'docy'), esc_html($author_names[0]));
+			} elseif ($author_count_total === 2) {
+				$byline = sprintf(__('By %1$s and %2$s', 'docy'), esc_html($author_names[0]), esc_html($author_names[1]));
+			} elseif ($author_count_total > 2) {
+				$byline = sprintf(__('By %1$s and %2$s others', 'docy'), esc_html($author_names[0]), number_format_i18n($author_count_total - 1));
+			} else {
+				$byline = 'By Authors';
+			}
+
+			// Approximate metadata (Article Count)
 			$count = $term->count;
 			$articles_text = sprintf( _n( '%s article', '%s articles', $count, 'docy' ), $count );
 			?>
@@ -165,11 +227,18 @@ $terms = get_terms( array(
 					
 					<div class="tw-category-meta">
 						<div class="tw-authors-avatars">
-							<div class="tw-author-avatar">A</div>
-							<div class="tw-author-avatar" style="background:#28a745">B</div>
-							<div class="tw-author-avatar" style="background:#6f42c1">C</div>
+							<?php 
+							if ( !empty($author_ids) ) {
+								foreach ($author_ids as $aid) {
+									echo '<div class="tw-author-avatar">' . get_avatar($aid, 26) . '</div>';
+								}
+							} else {
+								// Fallback if no authors found
+								echo '<div class="tw-author-avatar" style="background:#0366d6">C</div>';
+							}
+							?>
 						</div>
-						<span>By Authors &bull; <?php echo esc_html( $articles_text ); ?></span>
+						<span><?php echo esc_html($byline); ?> &bull; <?php echo esc_html( $articles_text ); ?></span>
 					</div>
 				</div>
 			</a>
