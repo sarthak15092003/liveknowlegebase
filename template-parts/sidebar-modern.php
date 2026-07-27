@@ -514,48 +514,11 @@ function toggleCatArticles(header) {
                 if (!empty($subcats)) {
                     foreach ($subcats as $subcat) {
                         $is_subcat_active = in_array($subcat->slug, $current_categories);
-                        $subcat_wrapper_class = $is_subcat_active ? 'subsection-item expandable-subcat current-page' : 'subsection-item expandable-subcat';
-                        $subcat_content_id = 'subcat-' . $subcat->term_id;
+                        $subcat_wrapper_class = $is_subcat_active ? 'subsection-item current-page' : 'subsection-item';
                         $subcat_font_weight = $is_subcat_active ? 'bold' : '500';
                         ?>
-                        <div class="<?php echo esc_attr($subcat_wrapper_class); ?>" style="padding-left: 55px; cursor: pointer; display: flex; align-items: center;" data-target="<?php echo esc_attr($subcat_content_id); ?>">
+                        <div class="<?php echo esc_attr($subcat_wrapper_class); ?>" style="padding-left: 55px; display: flex; align-items: center;">
                             <a href="<?php echo esc_url(get_category_link($subcat->term_id)); ?>" class="subsection-title" style="color:#475569; font-weight:<?php echo $subcat_font_weight; ?>; font-size: 14px; text-decoration: none; flex: 1; padding-right: 10px;" title="<?php echo esc_attr($subcat->name); ?>"><?php echo esc_html($subcat->name); ?></a>
-                            <span class="expand-icon-subcat" style="transition: transform 0.3s; transform: rotate(180deg); display: inline-flex; align-items: center; justify-content: center; width: 20px; height: 20px; color: #94a3b8; margin-left: auto;">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none">
-                                    <path d="M15 6L9 12.0001L15 18" stroke="currentColor" stroke-width="1.5" stroke-miterlimit="16" stroke-linecap="round" stroke-linejoin="round"/>
-                                </svg>
-                            </span>
-                        </div>
-                        
-                        <div class="subcat-content" id="<?php echo esc_attr($subcat_content_id); ?>" style="display: none; padding-left: 15px; margin-bottom: 8px;">
-                            <?php
-                            $subcat_args = array(
-                                'category__in'   => array($subcat->term_id),
-                                'posts_per_page' => -1,
-                                'orderby'        => 'date',
-                                'order'          => 'ASC',
-                            );
-                            $subcat_query = new WP_Query($subcat_args);
-                            if ($subcat_query->have_posts()) :
-                                while ($subcat_query->have_posts()) : $subcat_query->the_post();
-                                    $is_current_post = (get_the_ID() == $current_post_id);
-                                    $item_wrapper_class = $is_current_post ? 'subsection-item current-page' : 'subsection-item';
-                                    $item_font_weight = $is_current_post ? 'bold' : 'normal';
-                                    ?>
-                                    <div class="<?php echo esc_attr($item_wrapper_class); ?>" style="padding-left: 55px;">
-                                        <a href="<?php the_permalink(); ?>" class="subsection-title" style="font-size: 13px; font-weight: <?php echo $item_font_weight; ?>; color: #475569;" title="<?php echo esc_attr(get_the_title()); ?>"><?php the_title(); ?></a>
-                                    </div>
-                                    <?php
-                                endwhile;
-                                wp_reset_postdata();
-                            else:
-                                ?>
-                                <div class="subsection-item">
-                                    <span class="subsection-title-plain" style="color: #94a3b8; font-size: 12px; padding-left: 10px;">No articles found</span>
-                                </div>
-                                <?php
-                            endif;
-                            ?>
                         </div>
                         <?php
                     }
