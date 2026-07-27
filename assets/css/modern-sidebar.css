@@ -56,8 +56,17 @@
 }
 
 /* The outer column must use align-self: flex-start so sticky works in a flex row */
+/* Also ensures content columns don't stretch creating blank space */
 .category-left-sidebar-col {
     align-self: flex-start;
+}
+
+/* Rows containing a category sidebar must NOT stretch their children */
+/* This prevents blank space appearing in the main content column */
+.blog_area .row:has(.category-left-sidebar-col),
+.blog_area.tip_doc_area .row:has(.category-left-sidebar-col),
+.tip_doc_area > .container > .row:has(.category-left-sidebar-col) {
+    align-items: flex-start;
 }
 
 /* Apply sticky properties to modern sidebar */

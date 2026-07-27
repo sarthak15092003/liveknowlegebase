@@ -277,7 +277,7 @@ get_template_part( 'template-parts/single-post/banner', $banner_type );
         }
     </style>
     <div class="container">
-        <div class="row">
+        <div class="row align-items-start">
             <!-- Left Modern Sidebar (20%) -->
             <div class="col-lg-3 category-left-sidebar-col" style="border-right: 1px solid #e5e7eb; background: #ffffff !important;">
                 <style>
