@@ -325,22 +325,38 @@ get_template_part( 'template-parts/single-post/banner', $banner_type );
                                     display: flex !important;
                                     align-items: center !important;
                                     flex-wrap: wrap !important;
-                                    font-size: 12px !important;
+                                    font-size: 15px !important;
+                                    margin-bottom: 20px !important;
+                                    background: transparent !important;
                                 }
-                                .blog_single_item .breadcrumb li {
+                                .blog_single_item .breadcrumb li,
+                                .blog_single_item .breadcrumb .breadcrumb-item {
                                     list-style: none !important;
-                                    font-size: 12px !important;
+                                    font-size: 15px !important;
+                                    font-weight: 400 !important;
                                 }
-                                .blog_single_item .breadcrumb li a {
-                                    color: #161c52 !important;
-                                    text-decoration: none;
-                                    font-size: 12px !important;
+                                .blog_single_item .breadcrumb li a,
+                                .blog_single_item .breadcrumb .breadcrumb-item a {
+                                    color: #1E2B5B !important;
+                                    text-decoration: none !important;
+                                    font-size: 15px !important;
+                                    font-weight: 400 !important;
                                 }
-                                .blog_single_item .breadcrumb li a:hover {
-                                    text-decoration: underline;
+                                .blog_single_item .breadcrumb li a:hover,
+                                .blog_single_item .breadcrumb .breadcrumb-item a:hover {
+                                    text-decoration: underline !important;
                                 }
-                                .blog_single_item .breadcrumb li.active {
-                                    color: #484a61 !important;
+                                .blog_single_item .breadcrumb li.active,
+                                .blog_single_item .breadcrumb .breadcrumb-item.active {
+                                    color: #5B6B8C !important;
+                                    font-size: 15px !important;
+                                    font-weight: 400 !important;
+                                }
+                                .blog_single_item .breadcrumb .breadcrumb-item+.breadcrumb-item::before {
+                                    content: "/" !important;
+                                    padding: 0 8px !important;
+                                    color: #3B82F6 !important;
+                                    font-weight: 400 !important;
                                 }
                                 /* Mobile breadcrumb visibility */
                                 @media (max-width: 1024px) {
@@ -351,24 +367,17 @@ get_template_part( 'template-parts/single-post/banner', $banner_type );
                                         padding: 0 !important;
                                     }
                                     .blog_single_item .breadcrumb {
-                                        font-size: 12px !important;
-                                        gap: 5px !important;
+                                        font-size: 14px !important;
                                         display: flex !important;
                                         flex-wrap: wrap !important;
                                     }
                                     .blog_single_item .breadcrumb li,
-                                    .blog_single_item .breadcrumb .breadcrumb-item {
-                                        display: inline-flex !important;
-                                        visibility: visible !important;
-                                    }
-                                    .blog_single_item .breadcrumb .breadcrumb-item+.breadcrumb-item {
-                                        padding-left: 0 !important;
-                                    }
+                                    .blog_single_item .breadcrumb .breadcrumb-item,
+                                    .blog_single_item .breadcrumb li a,
+                                    .blog_single_item .breadcrumb .breadcrumb-item a,
                                     .blog_single_item .breadcrumb li.active,
                                     .blog_single_item .breadcrumb .breadcrumb-item.active {
-                                        display: inline-flex !important;
-                                        visibility: visible !important;
-                                        color: #484a61 !important;
+                                        font-size: 14px !important;
                                     }
                                 }
                             </style>';
