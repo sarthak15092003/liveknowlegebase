@@ -2767,4 +2767,11 @@ div.bbp-template-notice.info {
   margin-top: 15px;
 }
 
+.tw-article-title {
+  font-size: 24px;
+  font-weight: 600;
+  color: #161C52;
+  margin-bottom: 4px;
+}
+
 /*# sourceMappingURL=forum.css.map */
