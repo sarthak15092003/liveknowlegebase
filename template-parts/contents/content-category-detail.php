@@ -46,15 +46,17 @@ if ( ! $current_cat_id ) {
     padding-right: 20px;
 }
 .tw-article-title {
-    font-size: 16px;
-    font-weight: 500;
-    color: #24292e;
-    margin: 0 0 4px 0;
+    font-size: 22px;
+    font-weight: 600;
+    color: #161C52 !important;
+    margin: 0 0 8px 0;
+    line-height: 1.35;
 }
 .tw-article-desc {
-    font-size: 14px;
-    color: #586069;
+    font-size: 15px;
+    color: #596375;
     margin: 0;
+    line-height: 1.5;
 }
 .tw-article-arrow {
     color: #0366d6;

@@ -2768,10 +2768,11 @@ div.bbp-template-notice.info {
 }
 
 .tw-article-title {
-  font-size: 24px;
+  font-size: 22px;
   font-weight: 600;
   color: #161C52 !important;
-  margin-bottom: 4px;
+  line-height: 1.35;
+  margin-bottom: 8px;
 }
 
 /*# sourceMappingURL=forum.css.map */
