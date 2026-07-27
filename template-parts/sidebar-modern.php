@@ -25,17 +25,39 @@ if ($is_single_post) {
     }
 }
 
-// Define icons mapping for dynamic categories
-$icon_mapping = array(
-    'getting-started'            => 'getting start.svg',
-    'utm-parameters-guidelines'  => 'link.svg',
-    'reporting-hub'              => 'sonar.svg',
-    'dashboard-guides'           => 'dashboard.svg',
-    'chat-data'                  => 'chat.svg',
-    'data-library'               => 'clone.svg',
-    'faq'                        => 'faq.svg',
-    'global-filters'             => 'global.svg',
-    'navigation'                 => 'navigation.svg',
+// Define custom icons mapping for dynamic categories based on category name
+$custom_icons = array(
+    'User Manegement' => 'https://docs.cmgalaxy.com/wp-content/uploads/2026/07/usermanagement.png',
+    'User Management' => 'https://docs.cmgalaxy.com/wp-content/uploads/2026/07/usermanagement.png',
+    'Account Mangement' => 'https://docs.cmgalaxy.com/wp-content/uploads/2026/07/account-management-1.png',
+    'Account Management' => 'https://docs.cmgalaxy.com/wp-content/uploads/2026/07/account-management-1.png',
+    'Master Dashboard' => 'https://docs.cmgalaxy.com/wp-content/uploads/2026/07/master-dashboard.png',
+    'Main Dashboard' => 'https://docs.cmgalaxy.com/wp-content/uploads/2026/07/category-2.png',
+    'Funnel Attribution' => 'https://docs.cmgalaxy.com/wp-content/uploads/2026/07/funnel.png',
+    'Integrations' => 'https://docs.cmgalaxy.com/wp-content/uploads/2026/07/integrations.png',
+    'Google Dashboard' => 'https://docs.cmgalaxy.com/wp-content/uploads/2026/07/google.png',
+    'Meta Dashboard' => 'https://docs.cmgalaxy.com/wp-content/uploads/2026/07/meta.png',
+    'DV360 Dashboard' => 'https://docs.cmgalaxy.com/wp-content/uploads/2026/07/DV360.png',
+    'Amazon Dashboard' => 'https://docs.cmgalaxy.com/wp-content/uploads/2026/07/amzone.png',
+    'Recommendation' => 'https://docs.cmgalaxy.com/wp-content/uploads/2026/07/recommendation.png',
+    'Pinterest Dashboard' => 'https://docs.cmgalaxy.com/wp-content/uploads/2026/07/pinterest.png',
+    'Milestone' => 'https://docs.cmgalaxy.com/wp-content/uploads/2026/07/milestonte.png',
+    'Notification Center' => 'https://docs.cmgalaxy.com/wp-content/uploads/2026/07/notification.png',
+    'Ticket/ Support' => 'https://docs.cmgalaxy.com/wp-content/uploads/2026/07/support.png',
+    'Tickets / Supports' => 'https://docs.cmgalaxy.com/wp-content/uploads/2026/07/support.png',
+    'Reporting HUb' => 'https://docs.cmgalaxy.com/wp-content/uploads/2026/07/report.png',
+    'Reporting Hub' => 'https://docs.cmgalaxy.com/wp-content/uploads/2026/07/report.png',
+    'Report hub' => 'https://docs.cmgalaxy.com/wp-content/uploads/2026/07/report.png',
+    'Lex' => 'https://docs.cmgalaxy.com/wp-content/uploads/2026/07/recommendation.png',
+    'User Journey' => 'https://docs.cmgalaxy.com/wp-content/uploads/2026/07/user-jounery.png',
+    'User Jounery' => 'https://docs.cmgalaxy.com/wp-content/uploads/2026/07/user-jounery.png',
+    'Onboarding' => 'https://docs.cmgalaxy.com/wp-content/uploads/2026/07/onboarding.png',
+    'Linkedin Dashboard' => 'https://docs.cmgalaxy.com/wp-content/uploads/2026/07/linkedin.png',
+    'LinkedIn Dashboard' => 'https://docs.cmgalaxy.com/wp-content/uploads/2026/07/linkedin.png',
+    'linkedin dashbaord' => 'https://docs.cmgalaxy.com/wp-content/uploads/2026/07/linkedin.png',
+    'Teads Dashboard' => 'https://docs.cmgalaxy.com/wp-content/uploads/2026/07/teads.png',
+    'Getting started' => 'https://docs.cmgalaxy.com/wp-content/uploads/2026/07/onboarding.png',
+    'Getting Started' => 'https://docs.cmgalaxy.com/wp-content/uploads/2026/07/onboarding.png'
 );
 
 // Fetch categories dynamically
@@ -49,10 +71,16 @@ $wp_categories = get_categories(array(
 
 $sidebar_sections = array();
 foreach ($wp_categories as $cat) {
+    // Default fallback icon
+    $icon_url = get_template_directory_uri() . '/assets/img/clone.svg';
+    if (isset($custom_icons[$cat->name])) {
+        $icon_url = $custom_icons[$cat->name];
+    }
+    
     $sidebar_sections[] = array(
         'slug'  => $cat->slug,
         'title' => $cat->name,
-        'icon'  => isset($icon_mapping[$cat->slug]) ? $icon_mapping[$cat->slug] : 'clone.svg', // Fallback icon
+        'icon'  => $icon_url,
         'id'    => $cat->slug
     );
 }
@@ -299,7 +327,7 @@ if (empty($sidebar_sections)) {
                 <!-- Active Category Header (Always expanded) -->
                 <div class="active-cat-header">
                     <div class="cat-icon">
-                        <img src="<?php echo esc_url(get_template_directory_uri() . '/assets/img/' . $section['icon']); ?>" alt="<?php echo esc_attr($section['title']); ?>">
+                        <img src="<?php echo esc_url($section['icon']); ?>" alt="<?php echo esc_attr($section['title']); ?>" style="width: 22px; height: 22px; object-fit: contain;">
                     </div>
                     <div class="cat-title">
                         <?php echo esc_html($section['title']); ?>
@@ -437,7 +465,7 @@ function toggleCatArticles(header) {
         <div class="sidebar-section">
             <div class="<?php echo esc_attr($header_class); ?>" data-target="<?php echo esc_attr($section['id']); ?>">
                 <div class="section-icon">
-                    <img src="<?php echo esc_url(get_template_directory_uri() . '/assets/img/' . $section['icon']); ?>" alt="<?php echo esc_attr($section['title']); ?> Icon">
+                    <img src="<?php echo esc_url($section['icon']); ?>" alt="<?php echo esc_attr($section['title']); ?> Icon" style="width: 22px; height: 22px; object-fit: contain;">
                 </div>
                 <span class="section-title"><?php echo esc_html($section['title']); ?></span>
                 <span class="<?php echo esc_attr($expand_class); ?>">
