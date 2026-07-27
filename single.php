@@ -166,10 +166,7 @@ get_template_part( 'template-parts/single-post/banner', $banner_type );
         
         /* Draw the right border using gradient on the row so it doesn't stretch beyond content */
         .blog_area.tip_doc_area .row.align-items-start {
-            background-image: linear-gradient(to bottom, #e5e7eb, #e5e7eb);
-            background-size: 1px 100%;
-            background-position: 20% 0;
-            background-repeat: no-repeat;
+            background-image: none !important;
         }
         
         /* Remove right padding from col-lg-3 on all screen sizes */
