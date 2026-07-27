@@ -354,35 +354,38 @@ if (empty($sidebar_sections)) {
                             $subcat_wrapper_class = $is_subcat_active ? 'cat-article-item active-article' : 'cat-article-item';
                             ?>
                             <div class="<?php echo esc_attr($subcat_wrapper_class); ?>" style="padding-left: 20px;">
-                                <a href="<?php echo esc_url(get_category_link($subcat->term_id)); ?>" title="<?php echo esc_attr($subcat->name); ?>"><span style="color:#007bff; font-weight:600;">[Cat]</span> <?php echo esc_html($subcat->name); ?></a>
+                                <a href="<?php echo esc_url(get_category_link($subcat->term_id)); ?>" title="<?php echo esc_attr($subcat->name); ?>"><?php echo esc_html($subcat->name); ?></a>
                             </div>
                             <?php
                         }
                     }
 
-                    $cat_args = array(
-                        'cat'            => $cat_id,
-                        'posts_per_page' => -1,
-                        'orderby'        => 'date',
-                        'order'          => 'ASC',
-                    );
-                    $cat_query = new WP_Query($cat_args);
+                    // Only show articles if we are not on a category page (i.e. we are on a single post)
+                    if (!is_category()) :
+                        $cat_args = array(
+                            'cat'            => $cat_id,
+                            'posts_per_page' => -1,
+                            'orderby'        => 'date',
+                            'order'          => 'ASC',
+                        );
+                        $cat_query = new WP_Query($cat_args);
 
-                    if ($cat_query->have_posts()) :
-                        while ($cat_query->have_posts()) : $cat_query->the_post();
-                            $is_current = (get_the_ID() == $current_post_id);
-                    ?>
-                        <div class="cat-article-item <?php echo $is_current ? 'active-article' : ''; ?>">
-                            <a href="<?php the_permalink(); ?>" title="<?php echo esc_attr(get_the_title()); ?>"><?php the_title(); ?></a>
-                        </div>
-                    <?php
-                        endwhile;
-                        wp_reset_postdata();
-                    else :
-                    ?>
-                        <div class="cat-article-item">
-                            <span style="color: #94a3b8; font-size: 13px;">No articles found</span>
-                        </div>
+                        if ($cat_query->have_posts()) :
+                            while ($cat_query->have_posts()) : $cat_query->the_post();
+                                $is_current = (get_the_ID() == $current_post_id);
+                        ?>
+                            <div class="cat-article-item <?php echo $is_current ? 'active-article' : ''; ?>">
+                                <a href="<?php the_permalink(); ?>" title="<?php echo esc_attr(get_the_title()); ?>"><?php the_title(); ?></a>
+                            </div>
+                        <?php
+                            endwhile;
+                            wp_reset_postdata();
+                        else :
+                        ?>
+                            <div class="cat-article-item">
+                                <span style="color: #94a3b8; font-size: 13px;">No articles found</span>
+                            </div>
+                        <?php endif; ?>
                     <?php endif; ?>
                 </div>
         <?php
@@ -409,29 +412,32 @@ if (empty($sidebar_sections)) {
 
                 <div class="cat-articles">
                     <?php
-                    $cat_args = array(
-                        'cat'            => $first_cat->term_id,
-                        'posts_per_page' => 20,
-                        'orderby'        => 'date',
-                        'order'          => 'DESC',
-                    );
-                    $cat_query = new WP_Query($cat_args);
+                    // Only show articles if we are not on a category page (i.e. we are on a single post)
+                    if (!is_category()) :
+                        $cat_args = array(
+                            'cat'            => $first_cat->term_id,
+                            'posts_per_page' => 20,
+                            'orderby'        => 'date',
+                            'order'          => 'DESC',
+                        );
+                        $cat_query = new WP_Query($cat_args);
 
-                    if ($cat_query->have_posts()) :
-                        while ($cat_query->have_posts()) : $cat_query->the_post();
-                            $is_current = (get_the_ID() == $current_post_id);
-                    ?>
-                        <div class="cat-article-item <?php echo $is_current ? 'active-article' : ''; ?>">
-                            <a href="<?php the_permalink(); ?>" title="<?php echo esc_attr(get_the_title()); ?>"><?php the_title(); ?></a>
-                        </div>
-                    <?php
-                        endwhile;
-                        wp_reset_postdata();
-                    else :
-                    ?>
-                        <div class="cat-article-item">
-                            <span style="color: #94a3b8; font-size: 13px;">No articles found</span>
-                        </div>
+                        if ($cat_query->have_posts()) :
+                            while ($cat_query->have_posts()) : $cat_query->the_post();
+                                $is_current = (get_the_ID() == $current_post_id);
+                        ?>
+                            <div class="cat-article-item <?php echo $is_current ? 'active-article' : ''; ?>">
+                                <a href="<?php the_permalink(); ?>" title="<?php echo esc_attr(get_the_title()); ?>"><?php the_title(); ?></a>
+                            </div>
+                        <?php
+                            endwhile;
+                            wp_reset_postdata();
+                        else :
+                        ?>
+                            <div class="cat-article-item">
+                                <span style="color: #94a3b8; font-size: 13px;">No articles found</span>
+                            </div>
+                        <?php endif; ?>
                     <?php endif; ?>
                 </div>
         <?php
