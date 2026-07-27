@@ -2775,7 +2775,9 @@ div.bbp-template-notice.info {
   margin-bottom: 8px;
 }
 
-.tw-article-desc {
+.tw-article-desc,
+.tw-cat-card-desc,
+.categories_guide_item p {
   font-size: 14px !important;
   color: #596375;
   margin: 0;
