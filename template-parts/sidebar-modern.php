@@ -393,7 +393,6 @@ if (empty($sidebar_sections)) {
         if (!$active_section_found && !empty($current_categories)) :
             $first_cat = get_category_by_slug($current_categories[0]);
             if ($first_cat) :
-        <?php
             $fallback_icon_url = get_template_directory_uri() . '/assets/img/link.svg';
             if (isset($custom_icons[$first_cat->name])) {
                 $fallback_icon_url = $custom_icons[$first_cat->name];
