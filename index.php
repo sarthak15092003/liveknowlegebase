@@ -865,7 +865,7 @@ if ($blog_layout == 'blog_category' && !$is_category_page) {
 								<?php
 								if (isset($GLOBALS['cat_header_data']) && !empty($GLOBALS['cat_header_data'])) {
 									// Replace the old card with the single post style header
-									$cat_title = $GLOBALS['cat_header_data']['title'];
+									$cat_title = $GLOBALS['cat_header_data']['name'];
 									$cat_count = $GLOBALS['cat_header_data']['count'];
 									?>
 									<nav aria-label="breadcrumb" class="mb-4" style="margin-top: 15px;">

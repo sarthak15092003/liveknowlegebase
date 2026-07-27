@@ -11,7 +11,7 @@ $current_post_id = get_queried_object_id();
 
 // Get current post's categories or current archive's category
 $current_categories = array();
-if ($is_single_post) {
+if (is_singular('post')) {
     $cats = get_the_category($current_post_id);
     if ($cats) {
         foreach ($cats as $cat) {
