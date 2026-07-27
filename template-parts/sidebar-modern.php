@@ -393,10 +393,15 @@ if (empty($sidebar_sections)) {
         if (!$active_section_found && !empty($current_categories)) :
             $first_cat = get_category_by_slug($current_categories[0]);
             if ($first_cat) :
+        <?php
+            $fallback_icon_url = get_template_directory_uri() . '/assets/img/link.svg';
+            if (isset($custom_icons[$first_cat->name])) {
+                $fallback_icon_url = $custom_icons[$first_cat->name];
+            }
         ?>
                 <div class="active-cat-header">
                     <div class="cat-icon">
-                        <img src="<?php echo esc_url(get_template_directory_uri() . '/assets/img/link.svg'); ?>" alt="<?php echo esc_attr($first_cat->name); ?>">
+                        <img src="<?php echo esc_url($fallback_icon_url); ?>" alt="<?php echo esc_attr($first_cat->name); ?>" style="width: 22px; height: 22px; object-fit: contain;">
                     </div>
                     <div class="cat-title">
                         <?php echo esc_html($first_cat->name); ?>
