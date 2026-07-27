@@ -55,17 +55,18 @@
     text-decoration: none;
 }
 
-.sidebar-cta-link:hover {
-    text-decoration: none;
+/* The outer column must use align-self: flex-start so sticky works in a flex row */
+.category-left-sidebar-col {
+    align-self: flex-start;
 }
 
-/* Apply TOC-like sticky properties to modern sidebar */
+/* Apply sticky properties to modern sidebar */
 .category-left-sidebar-col .modern-sidebar {
     position: sticky;
     top: 130px;
     width: 100%;
     max-width: 100%;
-    max-height: calc(100vh - 130px);
+    max-height: calc(100vh - 140px);
     overflow-y: auto;
     margin-top: 20px;
     margin-left: 0;
@@ -84,16 +85,11 @@
     margin-right: 0;
 }
 
-/* Make sidebar static when footer is in view */
+/* When footer is in view, keep sidebar sticky but limit its bottom to not overlap footer */
 .footer-in-view .category-left-sidebar-col .modern-sidebar,
-.footer-in-view .category-right-sidebar-col .cat-3-right-sidebar,
-.footer-in-view #toc_stick.stick .left_sidebarlist {
-    position: static !important;
-    top: auto !important;
-    max-height: none !important;
-    overflow-y: visible !important;
-    width: 100% !important;
-    max-width: 100% !important;
+.footer-in-view .category-right-sidebar-col .cat-3-right-sidebar {
+    max-height: calc(100vh - 140px);
+    overflow-y: auto;
 }
 
 /* Section Styles */

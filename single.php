@@ -279,7 +279,7 @@ get_template_part( 'template-parts/single-post/banner', $banner_type );
     <div class="container">
         <div class="row">
             <!-- Left Modern Sidebar (20%) -->
-            <div class="col-lg-3 category-left-sidebar-col" style="border-right: 1px solid #e5e7eb; background: #ffffff !important; position: sticky; top: 110px; align-self: flex-start; height: fit-content;">
+            <div class="col-lg-3 category-left-sidebar-col" style="border-right: 1px solid #e5e7eb; background: #ffffff !important;">
                 <style>
                     /* Align single-post sidebar with category layout */
                     .modern-sidebar {
@@ -287,8 +287,6 @@ get_template_part( 'template-parts/single-post/banner', $banner_type );
                         border-radius: 8px;
                         padding: 0 0px 0 0;
                         margin-bottom: 0;
-                        position: relative !important;
-                        top: auto !important;
                         width: 100%;
                         max-width: 240px;
                         margin-top: 5px;
