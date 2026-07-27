@@ -199,12 +199,15 @@ ul.breadcrumb li, ul.breadcrumb li a,
   font-size: 12px !important;
 }
 
-/* Category Grid Card Paragraph Description */
+/* Category & Article Card Paragraph Description */
 .categories_guide_item p,
+.categories_guide_item .categories_guide_item_content p,
 .category-card p,
 .doc_border_btn p,
 .tw-cat-card-desc,
-.tw-article-desc {
+.tw-article-desc,
+.community-post-box p,
+.community-post-box .post-content p {
   font-size: 14px !important;
   color: #484A61 !important;
   line-height: 1.5 !important;
