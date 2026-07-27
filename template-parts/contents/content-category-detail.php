@@ -145,7 +145,6 @@ if ( ! $current_cat_id ) {
 				// Add a folder icon to differentiate from articles
 				echo '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#3b82f6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-right: 8px;"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path></svg>';
 				echo esc_html( $subcat->name );
-				echo '<span style="font-size: 13px; font-weight: 500; color: #3b82f6; margin-left: auto;">View all &rarr;</span>';
 				echo '</h3>';
 				if ( ! empty( $subcat->description ) ) {
 					echo '<p class="tw-subcategory-desc" style="margin-left: 28px;">' . esc_html( $subcat->description ) . '</p>';
