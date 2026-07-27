@@ -2768,7 +2768,7 @@ div.bbp-template-notice.info {
 }
 
 .tw-article-title {
-  font-size: 22px;
+  font-size: 18px !important;
   font-weight: 600;
   color: #161C52 !important;
   line-height: 1.35;

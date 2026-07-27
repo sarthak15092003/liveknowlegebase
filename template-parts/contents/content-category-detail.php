@@ -46,7 +46,7 @@ if ( ! $current_cat_id ) {
     padding-right: 20px;
 }
 .tw-article-title {
-    font-size: 22px;
+    font-size: 18px !important;
     font-weight: 600;
     color: #161C52 !important;
     margin: 0 0 8px 0;
