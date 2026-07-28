@@ -364,7 +364,7 @@ body .body_wrapper {
   position: relative;
   background: #ffffff;
   z-index: 30;
-  overflow: hidden;
+  overflow: visible; /* Changed from hidden to allow sticky children */
   min-height: 100vh;
 }
 
