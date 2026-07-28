@@ -733,8 +733,6 @@ if ($blog_layout == 'blog_category' && !$is_category_page) {
 									.category-left-sidebar-col .modern-sidebar {
 										width: 100%;
 										max-width: 100%;
-										max-height: calc(100vh - 140px);
-										overflow-y: auto;
 										margin-top: 5px;
 										margin-left: 0;
 										margin-right: 0;
@@ -742,8 +740,16 @@ if ($blog_layout == 'blog_category' && !$is_category_page) {
 										border-radius: 8px;
 										padding: 0;
 									}
+									
+									/* Bypass CSS cache to fix sticky context */
+									.body_wrapper {
+										overflow: visible !important;
+									}
 
 									/* Extend the border upward to connect with navbar */
+									.category-main-col {
+										position: relative;
+									}
 									.category-main-col::before {
 										content: '';
 										position: absolute;
@@ -790,21 +796,21 @@ if ($blog_layout == 'blog_category' && !$is_category_page) {
 									}
 
 									/* Smooth scrollbar for sidebar */
-									.category-left-sidebar-col .modern-sidebar::-webkit-scrollbar {
+									.category-left-sidebar-col::-webkit-scrollbar {
 										width: 6px;
 									}
 
-									.category-left-sidebar-col .modern-sidebar::-webkit-scrollbar-track {
+									.category-left-sidebar-col::-webkit-scrollbar-track {
 										background: #f1f1f1;
 										border-radius: 3px;
 									}
 
-									.category-left-sidebar-col .modern-sidebar::-webkit-scrollbar-thumb {
+									.category-left-sidebar-col::-webkit-scrollbar-thumb {
 										background: #888;
 										border-radius: 3px;
 									}
 
-									.category-left-sidebar-col .modern-sidebar::-webkit-scrollbar-thumb:hover {
+									.category-left-sidebar-col::-webkit-scrollbar-thumb:hover {
 										background: #555;
 									}
 
@@ -874,9 +880,9 @@ if ($blog_layout == 'blog_category' && !$is_category_page) {
 									?>
 									<nav aria-label="breadcrumb" class="mb-4" style="margin-top: 15px;">
 										<ol class="custom-breadcrumb" style="font-size: 12px !important; display: flex !important; flex-wrap: wrap !important; align-items: center !important; padding: 0 !important; margin-bottom: 15px !important; list-style: none; gap: 5px;">
-											<li><a href="<?php echo esc_url(home_url('/')); ?>" style="color: #3b82f6; text-decoration: none;">Home</a></li>
-											<li style="color: #94a3b8;">/</li>
-											<li class="active" aria-current="page" style="color: #484a61 !important;"><?php echo esc_html($cat_title); ?></li>
+											<li style="padding: 0; margin: 0;"><a href="<?php echo esc_url(home_url('/')); ?>" style="color: #3b82f6; text-decoration: none;">Home</a></li>
+											<li style="color: #94a3b8; padding: 0; margin: 0;">/</li>
+											<li class="active" aria-current="page" style="color: #484a61 !important; padding: 0; margin: 0;"><?php echo esc_html($cat_title); ?></li>
 										</ol>
 									</nav>
 									
