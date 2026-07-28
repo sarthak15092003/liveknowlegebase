@@ -662,6 +662,19 @@ if ($blog_layout == 'blog_category' && !$is_category_page) {
 								}
 							</style>
 							<?php get_template_part('template-parts/sidebar-modern'); ?>
+				<script>
+					(function() {
+						var sidebar = document.querySelector('.category-left-sidebar-col .modern-sidebar');
+						if (sidebar) {
+							sidebar.addEventListener('mouseenter', function() {
+								this.classList.add('sidebar-hovered');
+							});
+							sidebar.addEventListener('mouseleave', function() {
+								this.classList.remove('sidebar-hovered');
+							});
+						}
+					})();
+				</script>
 						</div>
 
 						<!-- Content Column -->
