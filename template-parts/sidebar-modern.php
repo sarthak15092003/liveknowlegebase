@@ -6,7 +6,7 @@
  */
 
 // Determine if we're on a single post page or category page
-$is_single_post = is_singular('post') || is_category();
+$is_single_post = is_singular('post');
 $current_post_id = get_queried_object_id();
 
 // Get current post's categories or current archive's category
@@ -21,6 +21,11 @@ if (is_singular('post')) {
 } elseif (is_category()) {
     $cat = get_queried_object();
     if ($cat && isset($cat->slug)) {
+        $current_categories[] = $cat->slug;
+    }
+} elseif (isset($_GET['cat']) && !empty($_GET['cat'])) {
+    $cat = get_category(intval($_GET['cat']));
+    if ($cat && !is_wp_error($cat) && isset($cat->slug)) {
         $current_categories[] = $cat->slug;
     }
 }
