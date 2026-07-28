@@ -748,10 +748,10 @@ if ($blog_layout == 'blog_category' && !$is_category_page) {
 										content: '';
 										position: absolute;
 										right: 0;
-										top: -118px;
-										/* Adjusted for 38px margin */
+										top: -250px;
+										/* Adjusted for margin */
 										width: 1px;
-										height: 118px;
+										height: 250px;
 										background-color: #e5e7eb;
 										z-index: 1;
 									}

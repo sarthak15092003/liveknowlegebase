@@ -55,11 +55,8 @@
     text-decoration: none;
 }
 
-/* The outer column must use align-self: flex-start so sticky works in a flex row */
-/* Also ensures content columns don't stretch creating blank space */
-/* box-shadow used instead of border-right so border only shows alongside actual content */
+/* The outer column must NOT use align-self: flex-start so sticky works in a flex row */
 .category-left-sidebar-col {
-    align-self: flex-start;
     box-shadow: none !important;
     border: none !important;
 }
