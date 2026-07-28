@@ -795,23 +795,14 @@ if ($blog_layout == 'blog_category' && !$is_category_page) {
 										}
 									}
 
-									/* Smooth scrollbar for sidebar */
+									/* Hide scrollbar for sidebar but keep functionality */
 									.category-left-sidebar-col::-webkit-scrollbar {
-										width: 6px;
+										width: 0px;
+										background: transparent;
 									}
-
-									.category-left-sidebar-col::-webkit-scrollbar-track {
-										background: #f1f1f1;
-										border-radius: 3px;
-									}
-
-									.category-left-sidebar-col::-webkit-scrollbar-thumb {
-										background: #888;
-										border-radius: 3px;
-									}
-
-									.category-left-sidebar-col::-webkit-scrollbar-thumb:hover {
-										background: #555;
+									.category-left-sidebar-col {
+										scrollbar-width: none; /* Firefox */
+										-ms-overflow-style: none; /* IE/Edge */
 									}
 
 									/* Mobile Responsive Styles for Left Sidebar */
