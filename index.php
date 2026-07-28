@@ -795,23 +795,7 @@ if ($blog_layout == 'blog_category' && !$is_category_page) {
 										}
 									}
 
-									/* Show scrollbar only on hover over the sidebar */
-									.modern-sidebar::-webkit-scrollbar {
-										width: 6px;
-									}
-									.modern-sidebar::-webkit-scrollbar-track {
-										background: transparent;
-									}
-									.modern-sidebar::-webkit-scrollbar-thumb {
-										background: transparent;
-										border-radius: 3px;
-									}
-									.modern-sidebar:hover::-webkit-scrollbar-thumb {
-										background: #c1c1c1;
-									}
-									.modern-sidebar:hover::-webkit-scrollbar-thumb:hover {
-										background: #888;
-									}
+
 
 									/* Mobile Responsive Styles for Left Sidebar */
 									@media (max-width: 767px) {
