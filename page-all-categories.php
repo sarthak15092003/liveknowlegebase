@@ -153,7 +153,7 @@ $terms = get_terms( array(
 		</div>
 
 		<!-- Content Column -->
-		<div class="col-lg-9 category-main-col" style="flex: 0 0 80% !important; max-width: 80% !important; padding-top: 50px !important;">
+		<div class="col-lg-9 category-main-col" style="flex: 0 0 80% !important; max-width: 80% !important; padding-top: 30px !important;">
 			<nav aria-label="breadcrumb" class="mb-4" style="margin-bottom: 15px;">
 				<ol class="breadcrumb" style="gap: 5px !important; display: flex !important; flex-wrap: wrap !important; align-items: center !important; padding: 0 !important; margin-bottom: 15px !important; list-style: none;">
 					<li class="breadcrumb-item" style="font-size: 11px !important;"><a href="<?php echo esc_url(home_url('/')); ?>" style="color: #3b82f6; text-decoration: none; font-size: 11px !important;">Home</a></li>

@@ -751,7 +751,7 @@ if ($blog_layout == 'blog_category' && !$is_category_page) {
 									/* Extend the border upward to connect with navbar */
 									.category-main-col {
 										position: relative;
-										padding: 50px 20px 0 20px !important;
+										padding: 30px 20px 0 20px !important;
 										border-left: 1px solid #e5e7eb;
 									}
 									.category-main-col::before {
