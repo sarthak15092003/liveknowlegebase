@@ -739,6 +739,8 @@ if ($blog_layout == 'blog_category' && !$is_category_page) {
 										background: #ffffff;
 										border-radius: 8px;
 										padding: 0;
+										max-height: calc(100vh - 140px);
+										overflow-y: auto;
 									}
 									
 									/* Bypass CSS cache to fix sticky context */
@@ -768,8 +770,6 @@ if ($blog_layout == 'blog_category' && !$is_category_page) {
 										position: sticky;
 										top: 130px;
 										align-self: flex-start;
-										max-height: calc(100vh - 140px);
-										overflow-y: auto;
 									}
 
 									/* Remove margin-top from all category columns */
@@ -796,20 +796,20 @@ if ($blog_layout == 'blog_category' && !$is_category_page) {
 									}
 
 									/* Show scrollbar only on hover over the sidebar */
-									.category-left-sidebar-col::-webkit-scrollbar {
+									.modern-sidebar::-webkit-scrollbar {
 										width: 6px;
 									}
-									.category-left-sidebar-col::-webkit-scrollbar-track {
+									.modern-sidebar::-webkit-scrollbar-track {
 										background: transparent;
 									}
-									.category-left-sidebar-col::-webkit-scrollbar-thumb {
+									.modern-sidebar::-webkit-scrollbar-thumb {
 										background: transparent;
 										border-radius: 3px;
 									}
-									.category-left-sidebar-col:hover::-webkit-scrollbar-thumb {
+									.modern-sidebar:hover::-webkit-scrollbar-thumb {
 										background: #c1c1c1;
 									}
-									.category-left-sidebar-col:hover::-webkit-scrollbar-thumb:hover {
+									.modern-sidebar:hover::-webkit-scrollbar-thumb:hover {
 										background: #888;
 									}
 
