@@ -4,7 +4,8 @@
     border-radius: 12px;
     padding: 0 10px 0 0;
     margin: 0 0 3rem;
-    overflow: hidden;
+    overflow-x: hidden;
+    overflow-y: auto;
     border: none !important;
     box-shadow: none !important;
     width: 100%;
@@ -699,11 +700,10 @@
 
 /* Firefox: hide scrollbar by default, show on hover class */
 .modern-sidebar {
-    scrollbar-width: none;
+    scrollbar-width: thin;
     scrollbar-color: transparent transparent;
 }
 .modern-sidebar.sidebar-hovered {
-    scrollbar-width: thin;
     scrollbar-color: #cbd5e1 #f1f5f9;
 }
 
