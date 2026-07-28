@@ -664,25 +664,21 @@ if ($blog_layout == 'blog_category' && !$is_category_page) {
 							<?php get_template_part('template-parts/sidebar-modern'); ?>
 				<script>
 					(function() {
-						var sidebar = document.querySelector('.category-left-sidebar-col .modern-sidebar');
-						if (sidebar) {
-							sidebar.addEventListener('mouseenter', function() {
-								this.classList.add('sidebar-hovered');
-								// Force Chrome to repaint scrollbar
-								var ov = this.style.overflowY;
-								this.style.overflowY = 'hidden';
-								var self = this;
+						var col = document.querySelector('.category-left-sidebar-col');
+						var sidebar = col ? col.querySelector('.modern-sidebar') : null;
+						if (col && sidebar) {
+							col.addEventListener('mouseenter', function() {
+								sidebar.classList.add('sidebar-hovered');
+								sidebar.style.overflowY = 'hidden';
 								requestAnimationFrame(function() {
-									self.style.overflowY = 'auto';
+									sidebar.style.overflowY = 'auto';
 								});
 							});
-							sidebar.addEventListener('mouseleave', function() {
-								this.classList.remove('sidebar-hovered');
-								var ov = this.style.overflowY;
-								this.style.overflowY = 'hidden';
-								var self = this;
+							col.addEventListener('mouseleave', function() {
+								sidebar.classList.remove('sidebar-hovered');
+								sidebar.style.overflowY = 'hidden';
 								requestAnimationFrame(function() {
-									self.style.overflowY = 'auto';
+									sidebar.style.overflowY = 'auto';
 								});
 							});
 						}
