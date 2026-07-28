@@ -662,28 +662,6 @@ if ($blog_layout == 'blog_category' && !$is_category_page) {
 								}
 							</style>
 							<?php get_template_part('template-parts/sidebar-modern'); ?>
-				<script>
-					(function() {
-						var col = document.querySelector('.category-left-sidebar-col');
-						var sidebar = col ? col.querySelector('.modern-sidebar') : null;
-						if (col && sidebar) {
-							col.addEventListener('mouseenter', function() {
-								sidebar.classList.add('sidebar-hovered');
-								sidebar.style.overflowY = 'hidden';
-								requestAnimationFrame(function() {
-									sidebar.style.overflowY = 'auto';
-								});
-							});
-							col.addEventListener('mouseleave', function() {
-								sidebar.classList.remove('sidebar-hovered');
-								sidebar.style.overflowY = 'hidden';
-								requestAnimationFrame(function() {
-									sidebar.style.overflowY = 'auto';
-								});
-							});
-						}
-					})();
-				</script>
 						</div>
 
 						<!-- Content Column -->
@@ -1108,6 +1086,30 @@ if ($blog_layout == 'blog_category' && !$is_category_page) {
 			</div>
 		</div>
 	<?php endif; ?>
+	<script>
+		document.addEventListener('DOMContentLoaded', function() {
+			var cols = document.querySelectorAll('.category-left-sidebar-col');
+			cols.forEach(function(col) {
+				var sidebar = col.querySelector('.modern-sidebar');
+				if (sidebar) {
+					col.addEventListener('mouseenter', function() {
+						sidebar.classList.add('sidebar-hovered');
+						sidebar.style.overflowY = 'hidden';
+						requestAnimationFrame(function() {
+							sidebar.style.overflowY = 'auto';
+						});
+					});
+					col.addEventListener('mouseleave', function() {
+						sidebar.classList.remove('sidebar-hovered');
+						sidebar.style.overflowY = 'hidden';
+						requestAnimationFrame(function() {
+							sidebar.style.overflowY = 'auto';
+						});
+					});
+				}
+			});
+		});
+	</script>
 </section>
 
 <?php
