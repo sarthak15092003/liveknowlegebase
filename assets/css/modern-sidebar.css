@@ -661,49 +661,37 @@
     animation: slideDown 0.3s ease;
 }
 
-/* Scrollbar Styling - Hidden by default, visible via JS hover class */
-.modern-sidebar::-webkit-scrollbar,
-.left_sidebarlist::-webkit-scrollbar,
-.doc_left_sidebarlist::-webkit-scrollbar,
-#docy-toc::-webkit-scrollbar {
+/* Scrollbar Styling - Width 0 by default (invisible but scrollable), 5px on hover */
+.modern-sidebar::-webkit-scrollbar {
+    width: 0px !important;
+    background: transparent !important;
+}
+
+.modern-sidebar.sidebar-hovered::-webkit-scrollbar {
     width: 5px !important;
 }
 
-.modern-sidebar::-webkit-scrollbar-track,
-.left_sidebarlist::-webkit-scrollbar-track,
-.doc_left_sidebarlist::-webkit-scrollbar-track,
-#docy-toc::-webkit-scrollbar-track {
-    background: transparent !important;
-}
-
-.modern-sidebar::-webkit-scrollbar-thumb,
-.left_sidebarlist::-webkit-scrollbar-thumb,
-.doc_left_sidebarlist::-webkit-scrollbar-thumb,
-#docy-toc::-webkit-scrollbar-thumb {
-    background: transparent !important;
-    border-radius: 3px !important;
-    transition: background 0.3s ease !important;
-}
-
-/* When sidebar-hovered class is added by JS */
 .modern-sidebar.sidebar-hovered::-webkit-scrollbar-track {
     background: #f1f5f9 !important;
+    border-radius: 3px !important;
 }
 
 .modern-sidebar.sidebar-hovered::-webkit-scrollbar-thumb {
     background: #cbd5e1 !important;
+    border-radius: 3px !important;
 }
 
 .modern-sidebar.sidebar-hovered::-webkit-scrollbar-thumb:hover {
     background: #94a3b8 !important;
 }
 
-/* Firefox: hide scrollbar by default, show on hover class */
+/* Firefox */
 .modern-sidebar {
-    scrollbar-width: thin;
+    scrollbar-width: none;
     scrollbar-color: transparent transparent;
 }
 .modern-sidebar.sidebar-hovered {
+    scrollbar-width: thin;
     scrollbar-color: #cbd5e1 #f1f5f9;
 }
 

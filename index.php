@@ -668,9 +668,22 @@ if ($blog_layout == 'blog_category' && !$is_category_page) {
 						if (sidebar) {
 							sidebar.addEventListener('mouseenter', function() {
 								this.classList.add('sidebar-hovered');
+								// Force Chrome to repaint scrollbar
+								var ov = this.style.overflowY;
+								this.style.overflowY = 'hidden';
+								var self = this;
+								requestAnimationFrame(function() {
+									self.style.overflowY = 'auto';
+								});
 							});
 							sidebar.addEventListener('mouseleave', function() {
 								this.classList.remove('sidebar-hovered');
+								var ov = this.style.overflowY;
+								this.style.overflowY = 'hidden';
+								var self = this;
+								requestAnimationFrame(function() {
+									self.style.overflowY = 'auto';
+								});
 							});
 						}
 					})();
