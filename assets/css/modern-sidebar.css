@@ -69,14 +69,11 @@
     align-items: flex-start;
 }
 
-/* Apply sticky properties to modern sidebar */
+/* Make modern sidebar child fill its sticky parent */
 .category-left-sidebar-col .modern-sidebar {
-    position: sticky;
-    top: 130px;
+    position: static;
     width: 100%;
     max-width: 100%;
-    max-height: calc(100vh - 140px);
-    overflow-y: auto;
     margin-top: 20px;
     margin-left: 0;
     margin-right: 0;
@@ -84,22 +81,14 @@
 
 /* Right sidebar (Category 3) */
 .category-right-sidebar-col .cat-3-right-sidebar {
-    position: sticky;
-    top: 130px;
+    position: static;
     width: 100%;
     max-width: 100%;
-    max-height: calc(100vh - 200px);
-    overflow-y: auto;
     margin-left: 0;
     margin-right: 0;
 }
 
-/* When footer is in view, keep sidebar sticky but limit its bottom to not overlap footer */
-.footer-in-view .category-left-sidebar-col .modern-sidebar,
-.footer-in-view .category-right-sidebar-col .cat-3-right-sidebar {
-    max-height: calc(100vh - 140px);
-    overflow-y: auto;
-}
+
 
 /* Section Styles */
 .sidebar-section {

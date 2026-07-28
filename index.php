@@ -744,22 +744,26 @@ if ($blog_layout == 'blog_category' && !$is_category_page) {
 									}
 
 									/* Extend the border upward to connect with navbar */
-									.category-left-sidebar-col::before {
+									.category-main-col::before {
 										content: '';
 										position: absolute;
-										right: 0;
+										left: -1px;
 										top: -250px;
-										/* Adjusted for margin */
 										width: 1px;
 										height: 250px;
-										background-color: #e5e7eb;
+										background: #e5e7eb;
 										z-index: 1;
 									}
 
-									/* Remove Bootstrap row padding */
+									/* Apply sticky to the column itself */
 									.category-left-sidebar-col {
 										padding-left: 0 !important;
 										padding-right: 0 !important;
+										position: sticky;
+										top: 130px;
+										align-self: flex-start;
+										max-height: calc(100vh - 140px);
+										overflow-y: auto;
 									}
 
 									/* Remove margin-top from all category columns */
@@ -869,7 +873,7 @@ if ($blog_layout == 'blog_category' && !$is_category_page) {
 									$cat_count = $GLOBALS['cat_header_data']['count'];
 									?>
 									<nav aria-label="breadcrumb" class="mb-4" style="margin-top: 15px;">
-										<ol class="custom-breadcrumb" style="font-size: 13px !important; display: flex !important; flex-wrap: wrap !important; align-items: center !important; padding: 0 !important; margin-bottom: 15px !important; list-style: none; gap: 8px;">
+										<ol class="custom-breadcrumb" style="font-size: 12px !important; display: flex !important; flex-wrap: wrap !important; align-items: center !important; padding: 0 !important; margin-bottom: 15px !important; list-style: none; gap: 5px;">
 											<li><a href="<?php echo esc_url(home_url('/')); ?>" style="color: #3b82f6; text-decoration: none;">Home</a></li>
 											<li style="color: #94a3b8;">/</li>
 											<li class="active" aria-current="page" style="color: #484a61 !important;"><?php echo esc_html($cat_title); ?></li>
