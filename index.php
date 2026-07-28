@@ -863,11 +863,11 @@ if ($blog_layout == 'blog_category' && !$is_category_page) {
 									$cat_title = $GLOBALS['cat_header_data']['name'];
 									$cat_count = $GLOBALS['cat_header_data']['count'];
 									?>
-									<nav aria-label="breadcrumb" class="mb-4" style="margin-top: 50px; margin-left: 0;">
-										<ol class="custom-breadcrumb" style="font-size: 10px !important; display: flex !important; flex-wrap: wrap !important; align-items: center !important; padding: 0 !important; margin-bottom: 15px !important; list-style: none; gap: 5px;">
-											<li style="padding: 0; margin: 0;"><a href="<?php echo esc_url(home_url('/')); ?>" style="color: #3b82f6; text-decoration: none;">Home</a></li>
-											<li style="color: #94a3b8; padding: 0; margin: 0;">/</li>
-											<li class="active" aria-current="page" style="color: #484a61 !important; padding: 0; margin: 0;"><?php echo esc_html($cat_title); ?></li>
+									<nav aria-label="breadcrumb" class="mb-4" style="padding-top: 50px !important; margin-left: 0;">
+										<ol class="custom-breadcrumb" style="display: flex !important; flex-wrap: wrap !important; align-items: center !important; padding: 0 !important; margin-bottom: 15px !important; list-style: none; gap: 5px;">
+											<li style="padding: 0; margin: 0; font-size: 11px !important;"><a href="<?php echo esc_url(home_url('/')); ?>" style="color: #3b82f6; text-decoration: none; font-size: 11px !important;">Home</a></li>
+											<li style="color: #94a3b8; padding: 0; margin: 0; font-size: 11px !important;">/</li>
+											<li class="active" aria-current="page" style="color: #484a61 !important; padding: 0; margin: 0; font-size: 11px !important;"><?php echo esc_html($cat_title); ?></li>
 										</ol>
 									</nav>
 									

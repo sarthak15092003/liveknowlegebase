@@ -154,11 +154,11 @@ $terms = get_terms( array(
 
 		<!-- Content Column -->
 		<div class="col-lg-9 category-main-col" style="flex: 0 0 80% !important; max-width: 80% !important;">
-			<nav aria-label="breadcrumb" class="mb-4" style="margin-top: 50px;">
-				<ol class="breadcrumb" style="font-size: 10px !important; gap: 5px !important; display: flex !important; flex-wrap: wrap !important; align-items: center !important; padding: 0 !important; margin-bottom: 15px !important; list-style: none;">
-					<li class="breadcrumb-item"><a href="<?php echo esc_url(home_url('/')); ?>" style="color: #3b82f6; text-decoration: none;">Home</a></li>
-					<span style="color: #94a3b8; margin: 0 5px;">/</span>
-					<li class="breadcrumb-item active" aria-current="page" style="color: #484a61 !important;">All Categories</li>
+			<nav aria-label="breadcrumb" class="mb-4" style="padding-top: 50px !important;">
+				<ol class="breadcrumb" style="gap: 5px !important; display: flex !important; flex-wrap: wrap !important; align-items: center !important; padding: 0 !important; margin-bottom: 15px !important; list-style: none;">
+					<li class="breadcrumb-item" style="font-size: 11px !important;"><a href="<?php echo esc_url(home_url('/')); ?>" style="color: #3b82f6; text-decoration: none; font-size: 11px !important;">Home</a></li>
+					<span style="color: #94a3b8; margin: 0 5px; font-size: 11px !important;">/</span>
+					<li class="breadcrumb-item active" aria-current="page" style="color: #484a61 !important; font-size: 11px !important;">All Categories</li>
 				</ol>
 			</nav>
 			
