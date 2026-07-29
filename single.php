@@ -322,7 +322,34 @@ get_template_part( 'template-parts/single-post/banner', $banner_type );
             endif; ?>
             <?php // TOC will render after the content column ?>
 
-            <div class="col-lg-<?php echo esc_attr( $blog_column ) ?> blog_single_info pe-lg-3" style="">
+            <style>
+                /* Vertical border line to match category pages */
+                .category-main-col {
+                    position: relative;
+                    padding-left: 20px !important;
+                    border-left: 1px solid #e5e7eb;
+                }
+                .category-main-col::before {
+                    content: '';
+                    position: absolute;
+                    left: -1px;
+                    top: -500px;
+                    width: 1px;
+                    height: 500px;
+                    background: #e5e7eb;
+                    z-index: 1;
+                }
+                @media (max-width: 1024px) {
+                    .category-main-col {
+                        border-left: none !important;
+                        padding-left: 0 !important;
+                    }
+                    .category-main-col::before {
+                        display: none !important;
+                    }
+                }
+            </style>
+            <div class="col-lg-<?php echo esc_attr( $blog_column ) ?> blog_single_info category-main-col pe-lg-3" style="">
                 <div class="main-post <?php echo docy_toc('post') == '1' ? 'anchor-enabled' : ''; ?>">
                     <div class="blog_single_item editor-content" style=" margin-top:20px; ">
                         <?php
