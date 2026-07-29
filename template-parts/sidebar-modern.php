@@ -167,7 +167,7 @@ if (empty($sidebar_sections)) {
 }
 ?>
 
-<?php if (false) : // Disabled single-post specific sidebar to show full category tree dropdowns everywhere ?>
+<?php if ($is_single_post) : ?>
 <!-- ==================== SINGLE POST SIDEBAR ==================== -->
 <div class="modern-sidebar single-post-sidebar">
     <style>
@@ -548,7 +548,6 @@ function toggleCatArticles(header) {
                 
                 if (!empty($subcats)) {
                     foreach ($subcats as $subcat) {
-                        <?php
                         // Fetch sub-subcategories (3rd level categories)
                         $sub_subcats = get_categories(array(
                             'parent'     => $subcat->term_id,
