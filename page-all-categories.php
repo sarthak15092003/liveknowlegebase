@@ -158,6 +158,23 @@ $terms = get_terms( array(
 					overflow: visible !important;
 				}
 
+				/* Vertical border line */
+				.category-main-col {
+					position: relative;
+					padding: 30px 20px 0 20px !important;
+					border-left: none;
+				}
+				.category-main-col::before {
+					content: '';
+					position: absolute;
+					left: 0;
+					top: -500px;
+					bottom: -9999px;
+					width: 1px;
+					background: #e5e7eb;
+					z-index: 1;
+				}
+
 				@media (max-width: 1024px) {
 					.category-left-sidebar-col {
 						position: static !important;
@@ -169,6 +186,9 @@ $terms = get_terms( array(
 					.category-main-col {
 						flex: 0 0 100% !important;
 						max-width: 100% !important;
+					}
+					.category-main-col::before {
+						display: none;
 					}
 				}
 			</style>

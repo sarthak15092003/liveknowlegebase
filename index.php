@@ -752,15 +752,15 @@ if ($blog_layout == 'blog_category' && !$is_category_page) {
 									.category-main-col {
 										position: relative;
 										padding: 30px 20px 0 20px !important;
-										border-left: 1px solid #e5e7eb;
+										border-left: none;
 									}
 									.category-main-col::before {
 										content: '';
 										position: absolute;
-										left: -1px;
-										top: -300px;
+										left: 0;
+										top: -500px;
+										bottom: -9999px;
 										width: 1px;
-										height: 300px;
 										background: #e5e7eb;
 										z-index: 1;
 									}
