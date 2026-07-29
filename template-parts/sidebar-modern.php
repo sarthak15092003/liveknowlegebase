@@ -570,7 +570,6 @@ function toggleCatArticles(header) {
                                 wp_reset_postdata();
                             }
                         }
-                        ?>
                     }
                 }
                 ?>
