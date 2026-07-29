@@ -319,5 +319,30 @@ $terms = get_terms( array(
 	</div>
 </div>
 
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        var cols = document.querySelectorAll('.category-left-sidebar-col');
+        cols.forEach(function(col) {
+            var sidebar = col.querySelector('.modern-sidebar');
+            if (sidebar) {
+                col.addEventListener('mouseenter', function() {
+                    sidebar.classList.add('sidebar-hovered');
+                    sidebar.style.overflowY = 'hidden';
+                    requestAnimationFrame(function() {
+                        sidebar.style.overflowY = 'auto';
+                    });
+                });
+                col.addEventListener('mouseleave', function() {
+                    sidebar.classList.remove('sidebar-hovered');
+                    sidebar.style.overflowY = 'hidden';
+                    requestAnimationFrame(function() {
+                        sidebar.style.overflowY = 'auto';
+                    });
+                });
+            }
+        });
+    });
+</script>
+
 <?php
 get_footer();

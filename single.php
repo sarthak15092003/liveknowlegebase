@@ -970,5 +970,30 @@ get_template_part( 'template-parts/single-post/banner', $banner_type );
             font-weight: 500 !important;
         }
     </style>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var cols = document.querySelectorAll('.category-left-sidebar-col');
+            cols.forEach(function(col) {
+                var sidebar = col.querySelector('.modern-sidebar');
+                if (sidebar) {
+                    col.addEventListener('mouseenter', function() {
+                        sidebar.classList.add('sidebar-hovered');
+                        sidebar.style.overflowY = 'hidden';
+                        requestAnimationFrame(function() {
+                            sidebar.style.overflowY = 'auto';
+                        });
+                    });
+                    col.addEventListener('mouseleave', function() {
+                        sidebar.classList.remove('sidebar-hovered');
+                        sidebar.style.overflowY = 'hidden';
+                        requestAnimationFrame(function() {
+                            sidebar.style.overflowY = 'auto';
+                        });
+                    });
+                }
+            });
+        });
+    </script>
 <?php
 get_footer();
