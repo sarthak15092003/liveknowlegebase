@@ -548,22 +548,49 @@ function toggleCatArticles(header) {
                 
                 if (!empty($subcats)) {
                     foreach ($subcats as $subcat) {
-                        $is_subcat_active = in_array($subcat->slug, $current_categories);
-                        $subcat_wrapper_class = $is_subcat_active ? 'subsection-item current-page' : 'subsection-item';
-                        $subcat_font_weight = $is_subcat_active ? 'bold' : '500';
-                        ?>
-                        <div class="<?php echo esc_attr($subcat_wrapper_class); ?>" style="padding-left: 55px; display: flex; align-items: center; padding-top: 8px; padding-bottom: 8px;">
-                            <a href="<?php echo esc_url(get_category_link($subcat->term_id)); ?>" class="subsection-title" style="color:#475569; font-weight:<?php echo $subcat_font_weight; ?>; font-size: 14px; text-decoration: none; flex: 1; padding-right: 10px;" title="<?php echo esc_attr($subcat->name); ?>"><?php echo esc_html($subcat->name); ?></a>
-                        </div>
                         <?php
                         // Fetch sub-subcategories (3rd level categories)
                         $sub_subcats = get_categories(array(
                             'parent'     => $subcat->term_id,
                             'hide_empty' => 0
                         ));
+                        
+                        $has_sub_subcats = !empty($sub_subcats);
+                        
+                        // Check if any sub-subcat is active to expand the parent subcat
+                        $is_any_sub_subcat_active = false;
+                        if ($has_sub_subcats) {
+                            foreach ($sub_subcats as $ss) {
+                                if (in_array($ss->slug, $current_categories)) {
+                                    $is_any_sub_subcat_active = true;
+                                    break;
+                                }
+                            }
+                        }
 
-                        if (!empty($sub_subcats)) {
-                            echo '<div class="sub-subcategories" style="padding-left: 0; margin-bottom: 10px; border-left: 1px solid #e2e8f0; margin-left: 55px;">';
+                        $is_subcat_active = in_array($subcat->slug, $current_categories) || $is_any_sub_subcat_active;
+                        
+                        $subcat_wrapper_class = 'subsection-item';
+                        if ($is_subcat_active) $subcat_wrapper_class .= ' current-page';
+                        if ($has_sub_subcats) $subcat_wrapper_class .= ' expandable-subcat';
+                        
+                        $subcat_font_weight = $is_subcat_active ? 'bold' : '500';
+                        $subcat_target_id = 'subcat-' . $subcat->term_id;
+                        ?>
+                        <div class="<?php echo esc_attr($subcat_wrapper_class); ?>" style="padding-left: 55px; display: flex; align-items: center; padding-top: 8px; padding-bottom: 8px; cursor: pointer;" data-target="<?php echo esc_attr($subcat_target_id); ?>">
+                            <a href="<?php echo esc_url(get_category_link($subcat->term_id)); ?>" class="subsection-title" style="color:#475569; font-weight:<?php echo $subcat_font_weight; ?>; font-size: 14px; text-decoration: none; flex: 1; padding-right: 10px;" title="<?php echo esc_attr($subcat->name); ?>"><?php echo esc_html($subcat->name); ?></a>
+                            <?php if ($has_sub_subcats) : ?>
+                            <span class="expand-icon-subcat" style="color: #64748b; margin-right: 15px; display: inline-flex; transition: transform 0.3s; transform: <?php echo $is_subcat_active ? 'rotate(270deg)' : 'rotate(180deg)'; ?>;">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none">
+                                    <path d="M15 6L9 12.0001L15 18" stroke="currentColor" stroke-width="1.5" stroke-miterlimit="16" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                            </span>
+                            <?php endif; ?>
+                        </div>
+                        <?php
+                        if ($has_sub_subcats) {
+                            $sub_subcat_display = $is_subcat_active ? 'block' : 'none';
+                            echo '<div class="sub-subcategories" id="' . esc_attr($subcat_target_id) . '" style="display: ' . $sub_subcat_display . '; padding-left: 0; margin-bottom: 10px; border-left: 1px solid #e2e8f0; margin-left: 55px;">';
                             foreach ($sub_subcats as $sub_subcat) {
                                 $is_sub_subcat_active = in_array($sub_subcat->slug, $current_categories);
                                 $sub_subcat_color = $is_sub_subcat_active ? '#3B82F6' : '#64748b';
