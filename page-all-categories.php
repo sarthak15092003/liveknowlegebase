@@ -97,7 +97,7 @@ $terms = get_terms( array(
 		border-radius: 50%;
 		border: 2px solid #fff;
 		margin-left: -8px;
-		background: #0366d6;
+		background: transparent;
 		color: #fff;
 		display: flex;
 		align-items: center;
