@@ -548,17 +548,20 @@ function toggleCatArticles(header) {
                         ));
 
                         if (!empty($sub_subcats)) {
-                            echo '<div class="sub-subcategories" style="padding-left: 65px; margin-bottom: 10px; border-left: 1px solid #e2e8f0; margin-left: 55px;">';
+                            echo '<div class="sub-subcategories" style="padding-left: 0; margin-bottom: 10px; border-left: 1px solid #e2e8f0; margin-left: 55px;">';
                             foreach ($sub_subcats as $sub_subcat) {
                                 $is_sub_subcat_active = in_array($sub_subcat->slug, $current_categories);
                                 $sub_subcat_color = $is_sub_subcat_active ? '#3B82F6' : '#64748b';
                                 $sub_subcat_weight = $is_sub_subcat_active ? '500' : '400';
                                 ?>
-                                <div class="sidebar-sub-subcat-item" style="padding: 6px 0 6px 12px; position: relative;">
+                                <div class="sidebar-sub-subcat-item" style="padding: 6px 0 6px 8px; position: relative;">
                                     <?php if ($is_sub_subcat_active): ?>
                                         <div style="position: absolute; left: -1px; top: 0; bottom: 0; width: 2px; background: #3B82F6;"></div>
                                     <?php endif; ?>
-                                    <a href="<?php echo esc_url(get_category_link($sub_subcat->term_id)); ?>" style="color: <?php echo $sub_subcat_color; ?>; font-size: 13.5px; text-decoration: none; font-weight: <?php echo $sub_subcat_weight; ?>; display: block; line-height: 1.4;"><?php echo esc_html($sub_subcat->name); ?></a>
+                                    <a href="<?php echo esc_url(get_category_link($sub_subcat->term_id)); ?>" style="color: <?php echo $sub_subcat_color; ?>; font-size: 13.5px; text-decoration: none; font-weight: <?php echo $sub_subcat_weight; ?>; display: flex; align-items: center; justify-content: space-between; line-height: 1.4;">
+                                        <span><?php echo esc_html($sub_subcat->name); ?></span>
+                                        <span style="font-size: 11px; background: #f1f5f9; padding: 2px 6px; border-radius: 4px; color: #94a3b8; font-weight: 500; margin-left: 8px;"><?php echo esc_html($sub_subcat->count); ?></span>
+                                    </a>
                                 </div>
                                 <?php
                             }
