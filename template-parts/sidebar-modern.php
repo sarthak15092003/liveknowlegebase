@@ -243,6 +243,8 @@ if (empty($sidebar_sections)) {
             font-weight: 500 !important;
             line-height: 1.3;
             white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
         }
         .single-post-sidebar .active-cat-header .cat-toggle {
             width: 20px;
