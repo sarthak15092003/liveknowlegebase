@@ -167,7 +167,7 @@ if (empty($sidebar_sections)) {
 }
 ?>
 
-<?php if ($is_single_post) : ?>
+<?php if (false) : // Disabled single-post specific sidebar to show full category tree dropdowns everywhere ?>
 <!-- ==================== SINGLE POST SIDEBAR ==================== -->
 <div class="modern-sidebar single-post-sidebar">
     <style>
@@ -537,10 +537,40 @@ function toggleCatArticles(header) {
                         $subcat_wrapper_class = $is_subcat_active ? 'subsection-item current-page' : 'subsection-item';
                         $subcat_font_weight = $is_subcat_active ? 'bold' : '500';
                         ?>
-                        <div class="<?php echo esc_attr($subcat_wrapper_class); ?>" style="padding-left: 55px; display: flex; align-items: center;">
+                        <div class="<?php echo esc_attr($subcat_wrapper_class); ?>" style="padding-left: 55px; display: flex; align-items: center; padding-top: 8px; padding-bottom: 8px;">
                             <a href="<?php echo esc_url(get_category_link($subcat->term_id)); ?>" class="subsection-title" style="color:#475569; font-weight:<?php echo $subcat_font_weight; ?>; font-size: 14px; text-decoration: none; flex: 1; padding-right: 10px;" title="<?php echo esc_attr($subcat->name); ?>"><?php echo esc_html($subcat->name); ?></a>
                         </div>
                         <?php
+                        // If this subcategory is active, list its articles underneath it
+                        if ($is_subcat_active) {
+                            $subcat_args = array(
+                                'cat'            => $subcat->term_id,
+                                'posts_per_page' => -1,
+                                'orderby'        => 'date',
+                                'order'          => 'DESC',
+                            );
+                            $subcat_query = new WP_Query($subcat_args);
+                            if ($subcat_query->have_posts()) {
+                                echo '<div class="subcat-articles" style="padding-left: 65px; margin-bottom: 10px; border-left: 1px solid #e2e8f0; margin-left: 55px;">';
+                                while ($subcat_query->have_posts()) {
+                                    $subcat_query->the_post();
+                                    $is_current_post = (isset($current_post_id) && get_the_ID() == $current_post_id);
+                                    $article_color = $is_current_post ? '#3B82F6' : '#64748b';
+                                    $article_weight = $is_current_post ? '500' : '400';
+                                    ?>
+                                    <div class="sidebar-article-item" style="padding: 6px 0 6px 12px; position: relative;">
+                                        <?php if ($is_current_post): ?>
+                                            <div style="position: absolute; left: -1px; top: 0; bottom: 0; width: 2px; background: #3B82F6;"></div>
+                                        <?php endif; ?>
+                                        <a href="<?php the_permalink(); ?>" style="color: <?php echo $article_color; ?>; font-size: 13.5px; text-decoration: none; font-weight: <?php echo $article_weight; ?>; display: block; line-height: 1.4;"><?php the_title(); ?></a>
+                                    </div>
+                                    <?php
+                                }
+                                echo '</div>';
+                                wp_reset_postdata();
+                            }
+                        }
+                        ?>
                     }
                 }
                 ?>
