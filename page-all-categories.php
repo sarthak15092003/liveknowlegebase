@@ -162,15 +162,15 @@ $terms = get_terms( array(
 				.category-main-col {
 					position: relative;
 					padding: 30px 20px 0 20px !important;
-					border-left: none;
+					border-left: 1px solid #e5e7eb;
 				}
 				.category-main-col::before {
 					content: '';
 					position: absolute;
-					left: 0;
+					left: -1px;
 					top: -500px;
-					bottom: -9999px;
 					width: 1px;
+					height: 500px;
 					background: #e5e7eb;
 					z-index: 1;
 				}
@@ -279,17 +279,7 @@ $terms = get_terms( array(
 			}
 			wp_reset_postdata();
 			
-			$byline = '';
-			$author_count_total = count($author_ids);
-			if ($author_count_total === 1) {
-				$byline = sprintf(__('By %s', 'docy'), esc_html($author_names[0]));
-			} elseif ($author_count_total === 2) {
-				$byline = sprintf(__('By %1$s and %2$s', 'docy'), esc_html($author_names[0]), esc_html($author_names[1]));
-			} elseif ($author_count_total > 2) {
-				$byline = sprintf(__('By %1$s and %2$s others', 'docy'), esc_html($author_names[0]), number_format_i18n($author_count_total - 1));
-			} else {
-				$byline = 'By Authors';
-			}
+			$byline = 'By CMGalaxy';
 
 			// Approximate metadata (Article Count)
 			$count = $term->count;
@@ -312,15 +302,9 @@ $terms = get_terms( array(
 					<div class="tw-category-meta">
 						<div class="tw-authors-avatars">
 							<?php 
-							if ( !empty($author_ids) ) {
-								foreach ($author_ids as $aid) {
-									echo '<div class="tw-author-avatar">' . get_avatar($aid, 26) . '</div>';
-								}
-							} else {
-								// Fallback if no authors found
-								echo '<div class="tw-author-avatar" style="background:#0366d6">C</div>';
-							}
-							?>
+						// Always use CMGalaxy logo as author avatar
+						echo '<div class="tw-author-avatar"><img src="https://docs.cmgalaxy.com/wp-content/uploads/2026/06/cropped-Group-1000004539-300x300-1.png" alt="CMGalaxy" style="width: 100%; height: 100%; border-radius: 50%; object-fit: cover;"></div>';
+						?>
 						</div>
 						<span><?php echo esc_html($byline); ?> &bull; <?php echo esc_html( $articles_text ); ?></span>
 					</div>
