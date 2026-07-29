@@ -902,9 +902,9 @@ if ($blog_layout == 'blog_category' && !$is_category_page) {
 
 								<?php
 								// Show pagination if infinite scroll is NOT active
-								if (!(isset($_GET['infinite']) && $_GET['infinite'] == '1')) {
-									Docy_helper()->pagination();
-								}
+								// if (!(isset($_GET['infinite']) && $_GET['infinite'] == '1')) {
+								//	Docy_helper()->pagination();
+								// }
 								?>
 							</div>
 

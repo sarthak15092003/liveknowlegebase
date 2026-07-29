@@ -241,6 +241,12 @@ function docy_docs_custom_order( $query ) {
         $query->set( 'posts_per_page', -1 );
         $query->set( 'nopaging', true );
     }
+
+    // Disable pagination and show all posts on category archives
+    if ( ! is_admin() && $query->is_main_query() && $query->is_category() ) {
+        $query->set( 'posts_per_page', -1 );
+        $query->set( 'nopaging', true );
+    }
 }
 add_action( 'pre_get_posts', 'docy_docs_custom_order', 99 );
 

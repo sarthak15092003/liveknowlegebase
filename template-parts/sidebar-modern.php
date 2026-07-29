@@ -488,9 +488,6 @@ function toggleCatArticles(header) {
 <div class="modern-sidebar">
     <div class="sidebar-content">
         <?php foreach ($sidebar_sections as $section) :
-            // Check if current page is in this category
-            $is_active_cat = in_array($section['slug'], $current_categories);
-            
             // Get the category object to ensure we have the correct ID
             $slug_to_check = $section['slug'];
             $cat_obj = get_category_by_slug($slug_to_check);
@@ -507,6 +504,24 @@ function toggleCatArticles(header) {
             ));
             
             $has_subcats = !empty($subcats);
+            
+            // Check if current page is in this category OR any of its subcategories
+            $is_active_cat = in_array($section['slug'], $current_categories);
+            if (!$is_active_cat && $has_subcats) {
+                foreach ($subcats as $sub) {
+                    if (in_array($sub->slug, $current_categories)) {
+                        $is_active_cat = true;
+                        break;
+                    }
+                    $sub_subcats_check = get_categories(array('parent' => $sub->term_id, 'hide_empty' => 0));
+                    foreach ($sub_subcats_check as $ss) {
+                        if (in_array($ss->slug, $current_categories)) {
+                            $is_active_cat = true;
+                            break 2;
+                        }
+                    }
+                }
+            }
             
             $header_class = 'section-header' . ($has_subcats ? ' expandable' : '') . ($is_active_cat ? ' active' : '');
             $content_class = 'section-content' . ($is_active_cat && $has_subcats ? ' expanded' : '');
