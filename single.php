@@ -154,8 +154,18 @@ get_template_part( 'template-parts/single-post/banner', $banner_type );
             padding-bottom: 0 !important;
         }
         
-        /* Make the sidebar column extend to full viewport height */
+        /* Make the sidebar column sticky */
         .category-left-sidebar-col {
+            position: sticky;
+            top: 130px;
+            align-self: flex-start;
+            padding-left: 0 !important;
+            padding-right: 0 !important;
+        }
+        
+        /* Bypass overflow to fix sticky context */
+        .body_wrapper {
+            overflow: visible !important;
         }
         
         /* Keep internal scrolling but ensure proper height */
