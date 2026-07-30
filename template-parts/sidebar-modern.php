@@ -376,9 +376,9 @@ if (empty($sidebar_sections)) {
                             $subcat_wrapper_class = $is_subcat_active ? 'cat-article-item active-article' : 'cat-article-item';
                             ?>
                             <div class="<?php echo esc_attr($subcat_wrapper_class); ?>" style="padding-left: 20px;">
-                                <a href="<?php echo esc_url(get_category_link($subcat->term_id)); ?>" title="<?php echo esc_attr($subcat->name); ?>" style="display: flex; justify-content: space-between; align-items: center;">
-                                    <span><?php echo esc_html($subcat->name); ?></span>
-                                    <span style="font-size: 11px; background: #f1f5f9; padding: 2px 6px; border-radius: 4px; color: #94a3b8; font-weight: 500; margin-left: 8px;"><?php echo esc_html($subcat->count); ?></span>
+                                <a href="<?php echo esc_url(get_category_link($subcat->term_id)); ?>" title="<?php echo esc_attr($subcat->name); ?>" style="display: flex; justify-content: space-between; align-items: center; width: 100%; overflow: hidden;">
+                                    <span style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis; flex: 1;"><?php echo esc_html($subcat->name); ?></span>
+                                    <span style="font-size: 11px; background: #f1f5f9; padding: 2px 6px; border-radius: 4px; color: #94a3b8; font-weight: 500; margin-left: 8px; flex-shrink: 0;"><?php echo esc_html($subcat->count); ?></span>
                                 </a>
                             </div>
                             <?php
@@ -582,9 +582,9 @@ function toggleCatArticles(header) {
                         $subcat_target_id = 'subcat-' . $subcat->term_id;
                         ?>
                         <div class="<?php echo esc_attr($subcat_wrapper_class); ?>" style="padding-left: 55px; display: flex; align-items: center; padding-top: 8px; padding-bottom: 8px; cursor: pointer;" data-target="<?php echo esc_attr($subcat_target_id); ?>">
-                            <a href="<?php echo esc_url(get_category_link($subcat->term_id)); ?>" class="subsection-title" style="color:#475569; font-weight:<?php echo $subcat_font_weight; ?>; font-size: 14px; text-decoration: none; flex: 1; padding-right: 10px; display: flex; align-items: center; justify-content: space-between;" title="<?php echo esc_attr($subcat->name); ?>">
-                                <span><?php echo esc_html($subcat->name); ?></span>
-                                <span style="font-size: 11px; background: #f1f5f9; padding: 2px 6px; border-radius: 4px; color: #94a3b8; font-weight: 500; margin-left: 8px;"><?php echo esc_html($subcat->count); ?></span>
+                            <a href="<?php echo esc_url(get_category_link($subcat->term_id)); ?>" class="subsection-title" style="color:#475569; font-weight:<?php echo $subcat_font_weight; ?>; font-size: 14px; text-decoration: none; flex: 1; padding-right: 10px; display: flex; align-items: center; justify-content: space-between; width: 100%; overflow: hidden;" title="<?php echo esc_attr($subcat->name); ?>">
+                                <span style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis; flex: 1;"><?php echo esc_html($subcat->name); ?></span>
+                                <span style="font-size: 11px; background: #f1f5f9; padding: 2px 6px; border-radius: 4px; color: #94a3b8; font-weight: 500; margin-left: 8px; flex-shrink: 0;"><?php echo esc_html($subcat->count); ?></span>
                             </a>
                             <?php if ($has_sub_subcats) : ?>
                             <span class="expand-icon-subcat" style="color: #64748b; margin-right: 15px; display: inline-flex; transition: transform 0.3s; transform: <?php echo $is_subcat_active ? 'rotate(270deg)' : 'rotate(180deg)'; ?>;">
@@ -607,9 +607,9 @@ function toggleCatArticles(header) {
                                     <?php if ($is_sub_subcat_active): ?>
                                         <div style="position: absolute; left: -1px; top: 0; bottom: 0; width: 2px; background: #3B82F6;"></div>
                                     <?php endif; ?>
-                                    <a href="<?php echo esc_url(get_category_link($sub_subcat->term_id)); ?>" style="color: <?php echo $sub_subcat_color; ?>; font-size: 13.5px; text-decoration: none; font-weight: <?php echo $sub_subcat_weight; ?>; display: flex; align-items: center; justify-content: space-between; line-height: 1.4;">
-                                        <span><?php echo esc_html($sub_subcat->name); ?></span>
-                                        <span style="font-size: 11px; background: #f1f5f9; padding: 2px 6px; border-radius: 4px; color: #94a3b8; font-weight: 500; margin-left: 8px;"><?php echo esc_html($sub_subcat->count); ?></span>
+                                    <a href="<?php echo esc_url(get_category_link($sub_subcat->term_id)); ?>" style="color: <?php echo $sub_subcat_color; ?>; font-size: 13.5px; text-decoration: none; font-weight: <?php echo $sub_subcat_weight; ?>; display: flex; align-items: center; justify-content: space-between; line-height: 1.4; width: 100%; overflow: hidden;">
+                                        <span style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis; flex: 1;"><?php echo esc_html($sub_subcat->name); ?></span>
+                                        <span style="font-size: 11px; background: #f1f5f9; padding: 2px 6px; border-radius: 4px; color: #94a3b8; font-weight: 500; margin-left: 8px; flex-shrink: 0;"><?php echo esc_html($sub_subcat->count); ?></span>
                                     </a>
                                 </div>
                                 <?php
