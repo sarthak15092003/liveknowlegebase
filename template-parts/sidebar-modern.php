@@ -599,6 +599,9 @@ function toggleCatArticles(header) {
                             }
                             echo '</div>';
                         }
+                        ?>
+                        </div>
+                        <?php
                     }
                 }
                 ?>
