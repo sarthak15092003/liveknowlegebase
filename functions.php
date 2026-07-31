@@ -339,3 +339,24 @@ function cmgalaxy_sort_terms_by_order( $a, $b ) {
     }
     return ( $val_a < $val_b ) ? -1 : 1;
 }
+
+// 5. AJAX handler for drag and drop sorting
+function cmgalaxy_update_category_order_callback() {
+    if ( ! current_user_can( 'manage_categories' ) ) {
+        wp_send_json_error( 'Permission denied' );
+    }
+
+    if ( isset( $_POST['ordered_ids'] ) ) {
+        $ordered_ids = json_decode( stripslashes( $_POST['ordered_ids'] ), true );
+        if ( is_array( $ordered_ids ) ) {
+            $order = 10;
+            foreach ( $ordered_ids as $term_id ) {
+                update_term_meta( intval( $term_id ), '_cmgalaxy_sidebar_order', $order );
+                $order += 10;
+            }
+            wp_send_json_success( 'Order updated' );
+        }
+    }
+    wp_send_json_error( 'Invalid data' );
+}
+add_action( 'wp_ajax_cmgalaxy_update_category_order', 'cmgalaxy_update_category_order_callback' );

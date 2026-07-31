@@ -463,7 +463,7 @@ function toggleCatArticles(header) {
 
 <?php else : ?>
 <!-- ==================== DEFAULT SIDEBAR (All Categories) ==================== -->
-<div class="modern-sidebar">
+<div class="modern-sidebar cmgalaxy-sortable-top">
     <div class="sidebar-content">
         <?php foreach ($sidebar_sections as $section) :
             // Get the category object to ensure we have the correct ID
@@ -508,7 +508,7 @@ function toggleCatArticles(header) {
             $content_class = 'section-content' . ($is_active_cat && $has_subcats ? ' expanded' : '');
             $expand_class = 'expand-icon' . ($is_active_cat ? ' expanded' : '');
         ?>
-        <div class="sidebar-section">
+        <div class="sidebar-section" data-term-id="<?php echo esc_attr($section['term_id']); ?>">
             <div class="<?php echo esc_attr($header_class); ?>" data-target="<?php echo esc_attr($section['id']); ?>">
                 <div class="section-icon">
                     <img src="<?php echo esc_url($section['icon']); ?>" alt="<?php echo esc_attr($section['title']); ?> Icon" style="width: 22px; height: 22px; object-fit: contain;">
@@ -524,7 +524,7 @@ function toggleCatArticles(header) {
             </div>
 
             <?php if ($has_subcats) : ?>
-            <div class="<?php echo esc_attr($content_class); ?>" id="<?php echo esc_attr($section['id']); ?>">
+            <div class="<?php echo esc_attr($content_class); ?> cmgalaxy-sortable-sub" id="<?php echo esc_attr($section['id']); ?>">
                 <?php
                 
                 if (!empty($subcats)) {
@@ -560,29 +560,30 @@ function toggleCatArticles(header) {
                         $subcat_font_weight = $is_subcat_active ? 'bold' : '500';
                         $subcat_target_id = 'subcat-' . $subcat->term_id;
                         ?>
-                        <div class="<?php echo esc_attr($subcat_wrapper_class); ?>" style="padding-left: 55px; display: flex; align-items: center; padding-top: 8px; padding-bottom: 8px; cursor: pointer;" data-target="<?php echo esc_attr($subcat_target_id); ?>">
-                            <a href="<?php echo esc_url(get_category_link($subcat->term_id)); ?>" class="subsection-title" style="color:#475569; font-weight:<?php echo $subcat_font_weight; ?>; font-size: 14px; text-decoration: none; flex: 1; padding-right: 10px; display: flex; align-items: center; justify-content: space-between; width: 100%; overflow: hidden;" title="<?php echo esc_attr($subcat->name); ?>">
-                                <span style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis; flex: 1;"><?php echo esc_html($subcat->name); ?></span>
-                                <span style="font-size: 11px; background: #f1f5f9; padding: 2px 6px; border-radius: 4px; color: #94a3b8; font-weight: 500; margin-left: 8px; flex-shrink: 0;"><?php echo esc_html($subcat->count); ?></span>
-                            </a>
-                            <?php if ($has_sub_subcats) : ?>
-                            <span class="expand-icon-subcat" style="color: #64748b; margin-right: 15px; display: inline-flex; transition: transform 0.3s; transform: <?php echo $is_subcat_active ? 'rotate(270deg)' : 'rotate(180deg)'; ?>;">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none">
-                                    <path d="M15 6L9 12.0001L15 18" stroke="currentColor" stroke-width="1.5" stroke-miterlimit="16" stroke-linecap="round" stroke-linejoin="round"/>
-                                </svg>
-                            </span>
-                            <?php endif; ?>
-                        </div>
-                        <?php
-                        if ($has_sub_subcats) {
-                            $sub_subcat_display = $is_subcat_active ? 'block' : 'none';
-                            echo '<div class="sub-subcategories" id="' . esc_attr($subcat_target_id) . '" style="display: ' . $sub_subcat_display . '; padding-left: 0; margin-bottom: 10px; border-left: 1px solid #e2e8f0; margin-left: 55px;">';
-                            foreach ($sub_subcats as $sub_subcat) {
-                                $is_sub_subcat_active = in_array($sub_subcat->slug, $current_categories);
-                                $sub_subcat_color = $is_sub_subcat_active ? '#3B82F6' : '#64748b';
-                                $sub_subcat_weight = $is_sub_subcat_active ? '500' : '400';
-                                ?>
-                                <div class="sidebar-sub-subcat-item" style="padding: 6px 0 6px 8px; position: relative;">
+                        <div class="cmgalaxy-subcat-wrapper" data-term-id="<?php echo esc_attr($subcat->term_id); ?>">
+                            <div class="<?php echo esc_attr($subcat_wrapper_class); ?>" style="padding-left: 55px; display: flex; align-items: center; padding-top: 8px; padding-bottom: 8px; cursor: pointer;" data-target="<?php echo esc_attr($subcat_target_id); ?>">
+                                <a href="<?php echo esc_url(get_category_link($subcat->term_id)); ?>" class="subsection-title" style="color:#475569; font-weight:<?php echo $subcat_font_weight; ?>; font-size: 14px; text-decoration: none; flex: 1; padding-right: 10px; display: flex; align-items: center; justify-content: space-between; width: 100%; overflow: hidden;" title="<?php echo esc_attr($subcat->name); ?>">
+                                    <span style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis; flex: 1;"><?php echo esc_html($subcat->name); ?></span>
+                                    <span style="font-size: 11px; background: #f1f5f9; padding: 2px 6px; border-radius: 4px; color: #94a3b8; font-weight: 500; margin-left: 8px; flex-shrink: 0;"><?php echo esc_html($subcat->count); ?></span>
+                                </a>
+                                <?php if ($has_sub_subcats) : ?>
+                                <span class="expand-icon-subcat" style="color: #64748b; margin-right: 15px; display: inline-flex; transition: transform 0.3s; transform: <?php echo $is_subcat_active ? 'rotate(270deg)' : 'rotate(180deg)'; ?>;">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none">
+                                        <path d="M15 6L9 12.0001L15 18" stroke="currentColor" stroke-width="1.5" stroke-miterlimit="16" stroke-linecap="round" stroke-linejoin="round"/>
+                                    </svg>
+                                </span>
+                                <?php endif; ?>
+                            </div>
+                            <?php
+                            if ($has_sub_subcats) {
+                                $sub_subcat_display = $is_subcat_active ? 'block' : 'none';
+                                echo '<div class="sub-subcategories cmgalaxy-sortable-sub-sub" id="' . esc_attr($subcat_target_id) . '" style="display: ' . $sub_subcat_display . '; padding-left: 0; margin-bottom: 10px; border-left: 1px solid #e2e8f0; margin-left: 55px;">';
+                                foreach ($sub_subcats as $sub_subcat) {
+                                    $is_sub_subcat_active = in_array($sub_subcat->slug, $current_categories);
+                                    $sub_subcat_color = $is_sub_subcat_active ? '#3B82F6' : '#64748b';
+                                    $sub_subcat_weight = $is_sub_subcat_active ? '500' : '400';
+                                    ?>
+                                    <div class="sidebar-sub-subcat-item" data-term-id="<?php echo esc_attr($sub_subcat->term_id); ?>" style="padding: 6px 0 6px 8px; position: relative;">
                                     <?php if ($is_sub_subcat_active): ?>
                                         <div style="position: absolute; left: -1px; top: 0; bottom: 0; width: 2px; background: #3B82F6;"></div>
                                     <?php endif; ?>
@@ -706,4 +707,79 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 });
 </script>
+
+<?php if (current_user_can('manage_categories')): ?>
+<script src="https://cdn.jsdelivr.net/npm/sortablejs@latest/Sortable.min.js"></script>
+<style>
+    .cmgalaxy-sortable-top > .sidebar-section,
+    .cmgalaxy-sortable-sub > .cmgalaxy-subcat-wrapper,
+    .cmgalaxy-sortable-sub-sub > .sidebar-sub-subcat-item {
+        cursor: grab !important;
+    }
+    .cmgalaxy-sortable-top > .sidebar-section:active,
+    .cmgalaxy-sortable-sub > .cmgalaxy-subcat-wrapper:active,
+    .cmgalaxy-sortable-sub-sub > .sidebar-sub-subcat-item:active {
+        cursor: grabbing !important;
+    }
+    .sortable-ghost { opacity: 0.4; }
+</style>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    function handleSort(evt) {
+        let container = evt.from;
+        let items = container.children;
+        let orderedIds = [];
+        for (let i = 0; i < items.length; i++) {
+            let termId = items[i].getAttribute('data-term-id');
+            if (termId) orderedIds.push(termId);
+        }
+        
+        if (orderedIds.length > 0) {
+            let formData = new FormData();
+            formData.append('action', 'cmgalaxy_update_category_order');
+            formData.append('ordered_ids', JSON.stringify(orderedIds));
+            
+            fetch('<?php echo admin_url('admin-ajax.php'); ?>', {
+                method: 'POST',
+                body: formData
+            }).then(res => res.json()).then(data => {
+                if(data.success) {
+                    console.log('Order updated');
+                }
+            });
+        }
+    }
+
+    // Initialize Top Level Sortable
+    let topContainer = document.querySelector('.cmgalaxy-sortable-top .sidebar-content');
+    if (!topContainer) topContainer = document.querySelector('.cmgalaxy-sortable-top'); // Fallback
+    if (topContainer) {
+        new Sortable(topContainer, {
+            animation: 150,
+            onEnd: handleSort,
+            filter: '.single-post-sidebar' // Don't allow sorting in single post view if they mixed it
+        });
+    }
+
+    // Initialize Subcategories Sortable
+    let subContainers = document.querySelectorAll('.cmgalaxy-sortable-sub');
+    subContainers.forEach(container => {
+        new Sortable(container, {
+            animation: 150,
+            onEnd: handleSort
+        });
+    });
+
+    // Initialize Sub-subcategories Sortable
+    let subSubContainers = document.querySelectorAll('.cmgalaxy-sortable-sub-sub');
+    subSubContainers.forEach(container => {
+        new Sortable(container, {
+            animation: 150,
+            onEnd: handleSort
+        });
+    });
+});
+</script>
+<?php endif; ?>
+
 <?php endif; ?>
