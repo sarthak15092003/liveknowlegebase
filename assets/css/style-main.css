@@ -364,7 +364,7 @@ body .body_wrapper {
   position: relative;
   background: #ffffff;
   z-index: 30;
-  overflow: visible; /* Changed from hidden to allow sticky children */
+  overflow: hidden;
   min-height: 100vh;
 }
 
@@ -16025,19 +16025,6 @@ a.cat,
   line-height: 1.3;
 }
 
-/* === Post Title (Article H1) - Force Visibility === */
-h1.post-title,
-.blog_single_item h1.post-title {
-  display: block !important;
-  visibility: visible !important;
-  color: #111827 !important;
-  font-size: 36px !important;
-  font-weight: 700 !important;
-  line-height: 1.2 !important;
-  margin-bottom: 1rem !important;
-  opacity: 1 !important;
-}
-
 .blog_single_item h1.mb-2 {
   font-size: 32px !important;
   line-height: 1.3;
@@ -20392,3 +20379,22 @@ a:hover {
 .breadcrumb .breadcrumb-item a {
     font-size: 16px !important;
 }
+
+/* === Heading Font Size Overrides (h3: 22px, h4: 18px) === */
+h3, .h3,
+.blog_single_item h3,
+.blog_single_item .h3,
+#post h3,
+.details_tab h3,
+.topic-content h3 {
+  font-size: 22px !important;
+}
+
+h4, .h4,
+.blog_single_item h4,
+.blog_single_item .h4,
+#post h4,
+.details_tab h4,
+.topic-content h4 {
+  font-size: 18px !important;
+}
