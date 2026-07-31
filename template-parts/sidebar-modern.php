@@ -508,7 +508,7 @@ function toggleCatArticles(header) {
             $content_class = 'section-content' . ($is_active_cat && $has_subcats ? ' expanded' : '');
             $expand_class = 'expand-icon' . ($is_active_cat ? ' expanded' : '');
         ?>
-        <div class="sidebar-section" data-term-id="<?php echo esc_attr($section['term_id']); ?>">
+        <div class="sidebar-section" data-term-id="<?php echo esc_attr($cat_id); ?>">
             <div class="<?php echo esc_attr($header_class); ?>" data-target="<?php echo esc_attr($section['id']); ?>">
                 <div class="section-icon">
                     <img src="<?php echo esc_url($section['icon']); ?>" alt="<?php echo esc_attr($section['title']); ?> Icon" style="width: 22px; height: 22px; object-fit: contain;">
