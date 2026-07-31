@@ -109,18 +109,21 @@ foreach ($wp_categories as $cat) {
 }
 
 // Custom sort logic based on the 'Sidebar Order' meta field
-if (function_exists('cmgalaxy_sort_terms_by_order')) {
+if (!empty($sidebar_sections)) {
     usort($sidebar_sections, function($a, $b) {
-        $order_a = get_term_meta( $a['term_id'], '_cmgalaxy_sidebar_order', true );
-        $order_b = get_term_meta( $b['term_id'], '_cmgalaxy_sidebar_order', true );
-        
+        $term_id_a = isset($a['term_id']) ? intval($a['term_id']) : 0;
+        $term_id_b = isset($b['term_id']) ? intval($b['term_id']) : 0;
+
+        $order_a = $term_id_a ? get_term_meta($term_id_a, '_cmgalaxy_sidebar_order', true) : '';
+        $order_b = $term_id_b ? get_term_meta($term_id_b, '_cmgalaxy_sidebar_order', true) : '';
+
         $val_a = ($order_a !== '') ? intval($order_a) : 9999;
         $val_b = ($order_b !== '') ? intval($order_b) : 9999;
-        
-        if ( $val_a == $val_b ) {
-            return strcasecmp( $a['title'], $b['title'] );
+
+        if ($val_a == $val_b) {
+            return strcasecmp($a['title'], $b['title']);
         }
-        return ( $val_a < $val_b ) ? -1 : 1;
+        return ($val_a < $val_b) ? -1 : 1;
     });
 }
 
