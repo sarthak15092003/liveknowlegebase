@@ -326,6 +326,11 @@ add_action( 'edited_category', 'cmgalaxy_save_category_order' );
 
 // 4. Helper function to sort term objects based on the Sidebar Order meta
 function cmgalaxy_sort_terms_by_order( $a, $b ) {
+    // Safety check to prevent fatal errors if the items are not term objects
+    if (!is_object($a) || !isset($a->term_id) || !is_object($b) || !isset($b->term_id)) {
+        return 0;
+    }
+
     $order_a = get_term_meta( $a->term_id, '_cmgalaxy_sidebar_order', true );
     $order_b = get_term_meta( $b->term_id, '_cmgalaxy_sidebar_order', true );
     
