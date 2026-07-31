@@ -283,3 +283,59 @@ function docy_force_breadcrumb_css() {
     </style>';
 }
 add_action('wp_head', 'docy_force_breadcrumb_css', 999);
+
+// =====================================================================
+// Custom Category Sidebar Order
+// =====================================================================
+
+// 1. Add "Sidebar Order" field to "Add New Category" screen
+function cmgalaxy_category_add_order_field() {
+    ?>
+    <div class="form-field">
+        <label for="cmgalaxy_sidebar_order"><?php _e( 'Sidebar Order', 'docy' ); ?></label>
+        <input type="number" name="cmgalaxy_sidebar_order" id="cmgalaxy_sidebar_order" value="">
+        <p class="description"><?php _e( 'Enter a number to order categories in the modern sidebar. Lower numbers appear first. (e.g. 10, 20, 30)', 'docy' ); ?></p>
+    </div>
+    <?php
+}
+add_action( 'category_add_form_fields', 'cmgalaxy_category_add_order_field' );
+
+// 2. Add "Sidebar Order" field to "Edit Category" screen
+function cmgalaxy_category_edit_order_field( $term ) {
+    $order = get_term_meta( $term->term_id, '_cmgalaxy_sidebar_order', true );
+    ?>
+    <tr class="form-field">
+        <th scope="row"><label for="cmgalaxy_sidebar_order"><?php _e( 'Sidebar Order', 'docy' ); ?></label></th>
+        <td>
+            <input type="number" name="cmgalaxy_sidebar_order" id="cmgalaxy_sidebar_order" value="<?php echo esc_attr( $order ); ?>">
+            <p class="description"><?php _e( 'Enter a number to order categories in the modern sidebar. Lower numbers appear first. (e.g. 10, 20, 30)', 'docy' ); ?></p>
+        </td>
+    </tr>
+    <?php
+}
+add_action( 'category_edit_form_fields', 'cmgalaxy_category_edit_order_field' );
+
+// 3. Save the "Sidebar Order" field value
+function cmgalaxy_save_category_order( $term_id ) {
+    if ( isset( $_POST['cmgalaxy_sidebar_order'] ) ) {
+        update_term_meta( $term_id, '_cmgalaxy_sidebar_order', sanitize_text_field( $_POST['cmgalaxy_sidebar_order'] ) );
+    }
+}
+add_action( 'created_category', 'cmgalaxy_save_category_order' );
+add_action( 'edited_category', 'cmgalaxy_save_category_order' );
+
+// 4. Helper function to sort term objects based on the Sidebar Order meta
+function cmgalaxy_sort_terms_by_order( $a, $b ) {
+    $order_a = get_term_meta( $a->term_id, '_cmgalaxy_sidebar_order', true );
+    $order_b = get_term_meta( $b->term_id, '_cmgalaxy_sidebar_order', true );
+    
+    // Default to 9999 if no order is set so they appear at the bottom
+    $val_a = ($order_a !== '') ? intval($order_a) : 9999;
+    $val_b = ($order_b !== '') ? intval($order_b) : 9999;
+    
+    if ( $val_a == $val_b ) {
+        // Fallback to alphabetical if order is the same
+        return strcasecmp( $a->name, $b->name );
+    }
+    return ( $val_a < $val_b ) ? -1 : 1;
+}

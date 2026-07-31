@@ -100,59 +100,29 @@ foreach ($wp_categories as $cat) {
     }
     
     $sidebar_sections[] = array(
-        'slug'  => $cat->slug,
-        'title' => $cat->name,
-        'icon'  => $icon_url,
-        'id'    => $cat->slug
+        'slug'    => $cat->slug,
+        'title'   => $cat->name,
+        'icon'    => $icon_url,
+        'id'      => $cat->slug,
+        'term_id' => $cat->term_id
     );
 }
 
-// Custom sort logic based on desired category order
-$desired_order = array(
-    'getting started',
-    'account management',
-    'dashboard',
-    'user management',
-    'master dashboard',
-    'main dashboard',
-    'funnel attribution',
-    'integrations',
-    'google dashboard',
-    'meta dashboard',
-    'linkedin dashbaord',
-    'linkedin dashboard',
-    'teads dashboard',
-    'pinterest dashboard',
-    'dv360 dashboard',
-    'amazon dashboard',
-    'recommendation',
-    'milestone',
-    'notification center',
-    'ticket/ support',
-    'tickets / supports',
-    'report hub',
-    'reporting hub',
-    'lex',
-    'user jounery',
-    'user journey'
-);
-
-usort($sidebar_sections, function($a, $b) use ($desired_order) {
-    $title_a = strtolower(trim($a['title']));
-    $title_b = strtolower(trim($b['title']));
-    
-    $pos_a = array_search($title_a, $desired_order);
-    $pos_b = array_search($title_b, $desired_order);
-    
-    if ($pos_a === false) $pos_a = 999;
-    if ($pos_b === false) $pos_b = 999;
-    
-    if ($pos_a == $pos_b) {
-        return strcmp($a['title'], $b['title']);
-    }
-    
-    return $pos_a - $pos_b;
-});
+// Custom sort logic based on the 'Sidebar Order' meta field
+if (function_exists('cmgalaxy_sort_terms_by_order')) {
+    usort($sidebar_sections, function($a, $b) {
+        $order_a = get_term_meta( $a['term_id'], '_cmgalaxy_sidebar_order', true );
+        $order_b = get_term_meta( $b['term_id'], '_cmgalaxy_sidebar_order', true );
+        
+        $val_a = ($order_a !== '') ? intval($order_a) : 9999;
+        $val_b = ($order_b !== '') ? intval($order_b) : 9999;
+        
+        if ( $val_a == $val_b ) {
+            return strcasecmp( $a['title'], $b['title'] );
+        }
+        return ( $val_a < $val_b ) ? -1 : 1;
+    });
+}
 
 // Fallback if no categories are found (unlikely but safe)
 if (empty($sidebar_sections)) {
@@ -369,6 +339,9 @@ if (empty($sidebar_sections)) {
                         'parent'     => $cat_id,
                         'hide_empty' => 0
                     ));
+                    if (function_exists('cmgalaxy_sort_terms_by_order')) {
+                        usort($subcats, 'cmgalaxy_sort_terms_by_order');
+                    }
                     
                     if (!empty($subcats)) {
                         foreach ($subcats as $subcat) {
@@ -507,6 +480,9 @@ function toggleCatArticles(header) {
                 'parent'     => $cat_id,
                 'hide_empty' => 0 // Set to 0 so we can see newly added subcategories even without posts
             ));
+            if (function_exists('cmgalaxy_sort_terms_by_order')) {
+                usort($subcats, 'cmgalaxy_sort_terms_by_order');
+            }
             
             $has_subcats = !empty($subcats);
             
@@ -558,6 +534,9 @@ function toggleCatArticles(header) {
                             'parent'     => $subcat->term_id,
                             'hide_empty' => 0
                         ));
+                        if (function_exists('cmgalaxy_sort_terms_by_order')) {
+                            usort($sub_subcats, 'cmgalaxy_sort_terms_by_order');
+                        }
                         
                         $has_sub_subcats = !empty($sub_subcats);
                         
