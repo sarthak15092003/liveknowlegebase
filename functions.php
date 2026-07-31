@@ -280,6 +280,33 @@ function docy_force_breadcrumb_css() {
             padding-right: 4px !important;
             padding-left: 4px !important;
         }
+        /* Heading Font Size Overrides */
+        h3, .h3,
+        .blog_single_item h3, .blog_single_item .h3,
+        .topic_comment_item h3, .topic_comment_item .h3,
+        .shortcode_title h3, .shortcode_title .h3,
+        .details_tab h3, .details_tab .h3,
+        .topic-content h3, .topic-content .h3,
+        .ezd-grid h3, .ezd-grid .h3,
+        .entry-content h3, .entry-content .h3,
+        .post-content h3, .post-content .h3,
+        #post h3, #post .h3,
+        article h3, article .h3 {
+            font-size: 22px !important;
+        }
+        h4, .h4,
+        .blog_single_item h4, .blog_single_item .h4,
+        .topic_comment_item h4, .topic_comment_item .h4,
+        .shortcode_title h4, .shortcode_title .h4,
+        .details_tab h4, .details_tab .h4,
+        .topic-content h4, .topic-content .h4,
+        .ezd-grid h4, .ezd-grid .h4,
+        .entry-content h4, .entry-content .h4,
+        .post-content h4, .post-content .h4,
+        #post h4, #post .h4,
+        article h4, article .h4 {
+            font-size: 18px !important;
+        }
     </style>';
 }
 add_action('wp_head', 'docy_force_breadcrumb_css', 999);
