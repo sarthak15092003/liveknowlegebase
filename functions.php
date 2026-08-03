@@ -392,3 +392,9 @@ function cmgalaxy_update_category_order_callback() {
     wp_send_json_error( 'Invalid data' );
 }
 add_action( 'wp_ajax_cmgalaxy_update_category_order', 'cmgalaxy_update_category_order_callback' );
+
+// Enqueue modern sidebar styles in head
+add_action("wp_enqueue_scripts", function() {
+    wp_enqueue_style("cmgalaxy-sidebar-modern", get_template_directory_uri() . "/assets/css/sidebar-modern.css", array(), DOCY_VERSION);
+});
+
