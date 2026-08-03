@@ -59,7 +59,7 @@ function docy_scripts() {
 	wp_enqueue_style( 'docy-main', DOCY_DIR_CSS . '/style-main.css', array(), DOCY_VERSION . '.9' );
 	
 	// CMGALAXY Custom Header Styles
-	wp_enqueue_style( 'cmgalaxy-header', DOCY_DIR_CSS . '/cmgalaxy-header.css', array(), DOCY_VERSION );
+	wp_enqueue_style( 'cmgalaxy-header', DOCY_DIR_CSS . '/cmgalaxy-header.css', array(), DOCY_VERSION . '.1' );
 	
 	// Modern Sidebar Styles
 	wp_enqueue_style( 'modern-sidebar', DOCY_DIR_CSS . '/modern-sidebar.css', array(), DOCY_VERSION );
