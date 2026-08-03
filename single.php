@@ -234,6 +234,34 @@ get_template_part( 'template-parts/single-post/banner', $banner_type );
                         </div>
                         */ ?>
                     </aside>
+                    <script>
+                    document.addEventListener('DOMContentLoaded', function() {
+                        const toc = document.getElementById('docy-toc');
+                        if (!toc) return;
+                        
+                        // Observe class changes on nav links to detect when they become active
+                        const observer = new MutationObserver(function(mutations) {
+                            mutations.forEach(function(mutation) {
+                                if (mutation.attributeName === 'class' && mutation.target.classList.contains('active')) {
+                                    const activeEl = mutation.target;
+                                    const tocRect = toc.getBoundingClientRect();
+                                    const elRect = activeEl.getBoundingClientRect();
+                                    
+                                    // If active element is out of the scrollable area, scroll it into view
+                                    if (elRect.top < tocRect.top || elRect.bottom > tocRect.bottom) {
+                                        activeEl.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+                                    }
+                                }
+                            });
+                        });
+                        
+                        // Wait for the TOC script to populate the links, then observe them
+                        setTimeout(function() {
+                            const links = toc.querySelectorAll('.nav-link, .nav-item');
+                            links.forEach(link => observer.observe(link, { attributes: true }));
+                        }, 1000);
+                    });
+                    </script>
                 </div>
 
                 <div class="sc-jtXEFf jrBzsJ">
