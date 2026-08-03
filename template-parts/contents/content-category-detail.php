@@ -17,6 +17,7 @@ if ( ! $current_cat_id ) {
 
 
 <div class="tw-cat-detail-container">
+	<?php
 	// Fetch subcategories
 	$subcategories = get_terms([
 		'taxonomy' => 'category',
