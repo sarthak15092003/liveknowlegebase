@@ -1469,6 +1469,17 @@ body.admin-bar {
     font-size: 12px !important;
 }
 
+/* Specific Gap Adjustments */
+.category .blog_area,
+.archive .blog_area {
+    padding-top: 50px !important; /* More gap on category pages */
+}
+
+.single-post .blog_area {
+    padding-top: 0px !important; 
+    margin-top: -20px !important; /* Reduce gap on blog detail (single post) */
+}
+
 /* Related Articles Hover Effects */
 .related-article-link {
     color: #484a61;
