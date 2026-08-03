@@ -40,7 +40,7 @@ get_template_part( 'template-parts/single-post/banner', $banner_type );
 //     get_template_part( 'template-parts/header-elements/search-banner/breadcrumb' );
 // }
 ?>
-<section class="blog_area tip_doc_area" id="toc_stick" style="padding-top: 30px !important;">
+<section class="blog_area tip_doc_area" id="toc_stick">
 
     <div class="container">
         <div class="row align-items-start">
