@@ -148,18 +148,19 @@ if (empty($sidebar_sections)) {
     <div class="sidebar-content">
         <!-- Back Button -->
         <?php
-        // Get the link to the All Categories page
-        $back_url = home_url('/all-categories/'); // Fallback URL
-        $pages = get_pages(array(
-            'meta_key' => '_wp_page_template',
-            'meta_value' => 'page-all-categories.php'
-        ));
-        if (!empty($pages)) {
-            $back_url = get_permalink($pages[0]->ID);
+        // Get the link to the top-level category of this post
+        $back_url = home_url('/'); // Fallback
+        $cats = get_the_category(get_queried_object_id());
+        if (!empty($cats)) {
+            $top_cat = $cats[0];
+            // Walk up to find the top-level parent
+            while ($top_cat->parent) {
+                $top_cat = get_category($top_cat->parent);
+            }
+            $back_url = get_category_link($top_cat->term_id);
         }
-        $back_label = 'All Categories';
         ?>
-        <a href="javascript:history.back()" class="sidebar-back-btn">
+        <a href="<?php echo esc_url($back_url); ?>" class="sidebar-back-btn">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M19 12H5M5 12L12 19M5 12L12 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
             </svg>
