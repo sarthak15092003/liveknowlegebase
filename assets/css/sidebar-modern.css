@@ -1462,3 +1462,25 @@ body {
 .blog_single_item .breadcrumb li a, .breadcrumb .breadcrumb-item.active, .blog_single_item .breadcrumb li.active, .blog_single_item .breadcrumb .breadcrumb-item.active {
     font-size: 12px !important;
 }
+
+/* Related Articles Hover Effects */
+.related-article-link {
+    color: #484a61;
+    text-decoration: none;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+}
+
+.related-article-link:hover,
+.related-article-link:hover span {
+    color: #3b82f6 !important;
+}
+
+.related-article-icon {
+    color: #3b82f6;
+    transition: all 0.3s ease;
+}
+
+.related-article-link:hover .related-article-icon {
+    transform: translateX(3px);
+}

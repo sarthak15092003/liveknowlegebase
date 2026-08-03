@@ -136,9 +136,9 @@ get_template_part( 'template-parts/single-post/banner', $banner_type );
                                             $related_query->the_post();
                                             ?>
                                             <li class="mb-3">
-                                                <a href="<?php the_permalink(); ?>" class="d-flex justify-content-between align-items-center related-article-link" style="color: #484a61; text-decoration: none; font-size: 1rem;">
+                                                <a href="<?php the_permalink(); ?>" class="d-flex justify-content-between align-items-center related-article-link">
                                                     <span><?php the_title(); ?></span>
-                                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="color: #3b82f6;">
+                                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="related-article-icon">
                                                         <path d="M7 17L17 7M17 7H9M17 7V15" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
                                                     </svg>
                                                 </a>
