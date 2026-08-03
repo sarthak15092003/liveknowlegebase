@@ -395,7 +395,7 @@ add_action( 'wp_ajax_cmgalaxy_update_category_order', 'cmgalaxy_update_category_
 
 // Enqueue modern sidebar styles in head
 add_action("wp_enqueue_scripts", function() {
-    // Version .11 = force cache bust for single post TOC height fix (2026-08-03)
-    wp_enqueue_style("cmgalaxy-sidebar-modern", get_template_directory_uri() . "/assets/css/sidebar-modern.css", array(), DOCY_VERSION . '.11');
+    // Version .12 = force cache bust for single post TOC track line fix (2026-08-03)
+    wp_enqueue_style("cmgalaxy-sidebar-modern", get_template_directory_uri() . "/assets/css/sidebar-modern.css", array(), DOCY_VERSION . '.12');
 });
 
