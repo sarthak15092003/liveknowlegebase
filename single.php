@@ -330,7 +330,7 @@ get_template_part( 'template-parts/single-post/banner', $banner_type );
         </div>
         -->
     </div>
-    
+</section>
     <script>
         (function($) {
             "use strict";

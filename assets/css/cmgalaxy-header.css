@@ -1211,7 +1211,7 @@ footer {
     color: rgba(250, 250, 250, 0.5) !important;
     padding: 40px 0px !important;
     font-family: var(--font-family-primary) !important;
-    margin-top: 50px;
+    margin-top: 0px;
 }
 
 /* Hide header logo on mobile and tablet devices */
