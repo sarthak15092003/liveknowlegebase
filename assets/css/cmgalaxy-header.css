@@ -113,6 +113,7 @@ body {
 .tip_doc_area {
     padding-top: 0 !important;
     margin-top: 0 !important;
+    padding-bottom: 20px !important;
 }
 
 /* Fix any overlapping issues */
