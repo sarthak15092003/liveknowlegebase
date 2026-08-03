@@ -110,6 +110,7 @@ html, body { scroll-padding-top: 85px !important; }
 .feedback-section .btn { min-width: 88px; padding: 0.45rem 0.9rem; border-radius: 999px; }
 .nav-card:hover { box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1) !important; transform: translateY(-2px) !important; border-color: #cbd5e1 !important; }
 .nav-card h5 { line-height: 1.4; margin-bottom: 1rem; }
+.doc-sidebar { position: sticky; align-self: flex-start; margin-top: 20px; padding: 0 !important; transition: all 0.3s ease; }
 .doc-sidebar .toc-title { padding-left: 24px !important; }
 .doc-sidebar .toc-sidebar-image { padding-top: 20px; }
 
