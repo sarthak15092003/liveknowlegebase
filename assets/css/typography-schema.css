@@ -27,7 +27,7 @@ h1,
 h2,
 .h2 {
     font-family: var(--font-family-primary) !important;
-    font-size: 28px;
+    font-size: 24px;
     line-height: 150%;
     font-weight: 600;
     margin-bottom: 1.25rem;
@@ -283,7 +283,7 @@ article {
     h2,
     .h2 {
         font-family: var(--font-family-primary) !important;
-        font-size: 28px !important;
+        font-size: 24px !important;
         line-height: 150% !important;
         font-weight: 600 !important;
         margin-bottom: 1.25rem !important;
@@ -413,6 +413,11 @@ article {
 
 
 /* Table of Contents - Blue Line Only on Active Items */
+#docy-toc li,
+.nav-sidebar.doc-nav li,
+.left_sidebarlist li {
+    margin-bottom: 0rem !important;
+}
 
 /* Base styles for all TOC links */
 #docy-toc .nav-link,
