@@ -1289,3 +1289,12 @@ mark.search-highlight {
     font-weight: 700 !important;
     padding: 0 !important;
 }
+
+/* Fix author avatar icon clipping on single post pages */
+.post-author-meta-box .author-avatar img {
+    border-radius: 0 !important;
+    object-fit: contain !important;
+    width: 36px !important;
+    height: 36px !important;
+    max-width: none !important;
+}
