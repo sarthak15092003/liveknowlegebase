@@ -110,11 +110,13 @@ html, body { scroll-padding-top: 85px !important; }
 .feedback-section .btn { min-width: 88px; padding: 0.45rem 0.9rem; border-radius: 999px; }
 .nav-card:hover { box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1) !important; transform: translateY(-2px) !important; border-color: #cbd5e1 !important; }
 .nav-card h5 { line-height: 1.4; margin-bottom: 1rem; }
-.doc-sidebar { position: sticky; top: 130px; align-self: flex-start; margin-top: 50px; padding: 0 !important; transition: all 0.3s ease; }
-.doc-sidebar .toc-title { padding-left: 24px !important; }
+.doc-sidebar { position: sticky; top: 130px; align-self: flex-start; height: calc(100vh - 180px); margin-top: 50px; padding: 0 !important; transition: all 0.3s ease; }
+.doc-sidebar .left_sidebarlist { display: flex; flex-direction: column; height: 100%; padding-left: 0 !important; }
+.doc-sidebar .toc-title { padding-left: 24px !important; flex-shrink: 0; }
+.doc-sidebar .toc-sidebar-image { margin-top: auto !important; flex-shrink: 0; padding-top: 20px; }
 
 /* Apply scrolling to the TOC nav instead of the whole sidebar so the banner stays visible */
-#docy-toc { max-height: calc(100vh - 400px); overflow-y: auto; }
+#docy-toc { overflow-y: auto; flex-grow: 1; min-height: 150px; }
 
 /* Custom scrollbar for TOC that appears only on hover */
 #docy-toc::-webkit-scrollbar { width: 0px; background: transparent; }
@@ -1445,7 +1447,6 @@ body {
   .doc-sidebar { flex: 0 0 20% !important; max-width: 20% !important; width: 20% !important; padding: 0 !important; }
 }
 /* Fix TOC double padding and track alignment */
-.doc-sidebar .left_sidebarlist { padding-left: 0 !important; }
 .doc-sidebar .left_sidebarlist .nav-sidebar:before { left: 0 !important; background: #e2e8f0 !important; }
 #docy-toc .nav-item.active > .nav-link::before { left: 0 !important; width: 2px !important; }
 @media (max-width: 991px) {
