@@ -271,6 +271,11 @@ button.btn-medium {
 .entry-content,
 article {
 
+    hr,
+    .wp-block-separator {
+        display: none !important;
+    }
+
     h1,
     .h1 {
         font-family: var(--font-family-primary) !important;
