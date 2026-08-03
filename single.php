@@ -16,7 +16,8 @@ if ( docy_toc('post') == '1' ) {
     wp_enqueue_script('anchor');
     // Custom H2 TOC is built inline below — bootstrap-toc is NOT needed here
 }
-$blog_column = '8'; // Main content fixed at 8 columns for 2-8-2 layout
+$has_toc = docy_toc('post') == '1';
+$blog_column = $has_toc ? '7' : '9'; // 3+7+2=12 (with TOC), 3+9=12 (no TOC)
 
 $banner_type_page = docy_meta('banner_type','default');
 $banner_type_page = docy_meta('banner_type','default');
