@@ -1,4 +1,4 @@
-/* Sidebar Modern & Global Page Styles - Moved from body to head */
+﻿/* Sidebar Modern & Global Page Styles - Moved from body to head */
 .sidebar-back-btn { display: flex; align-items: center; gap: 8px; padding: 10px 16px; margin-bottom: 8px; color: #64748b; font-size: 13px; font-weight: 500 !important; text-decoration: none !important; border-radius: 8px; transition: all 0.2s ease; cursor: pointer; border: none; background: none; width: 100%; text-align: left; }
 .sidebar-back-btn:hover { background: #f1f5f9; color: #1e293b; text-decoration: none !important; }
 .sidebar-back-btn svg { flex-shrink: 0; transition: transform 0.2s ease; }
@@ -220,7 +220,7 @@ footer { background-color: #041543 !important; color: rgba(250, 250, 250, 0.5) !
    LEX DRAWER STYLES
    ============================================= */
 
-/* Drawer container — hidden by default, covers the full viewport when open */
+/* Drawer container â€” hidden by default, covers the full viewport when open */
 .lex-drawer {
     display: none;
     position: fixed;
@@ -533,14 +533,14 @@ body.lex-drawer-open .lex-side-trigger {
     }
 }
 
-<style>
+
 /* CMGALAXY Header Styles */
 .cmgalaxy-header {
     flex-direction: column !important;
     padding: 1rem 0;
 }
 
-/* Search input — taller only when popup is open */
+/* Search input â€” taller only when popup is open */
 .cmgalaxy-search-section.popup-active .cmgalaxy-search-input {
     height: 50px !important;
     line-height: 50px !important;
@@ -1407,3 +1407,4 @@ body {
     cursor: grabbing !important;
 }
 .sortable-ghost { opacity: 0.4; }
+
