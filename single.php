@@ -214,9 +214,9 @@ get_template_part( 'template-parts/single-post/banner', $banner_type );
                     <aside class="left_sidebarlist">
                         <h6 class="toc-title mb-3"><?php esc_html_e('On this Page', 'docy'); ?></h6>
                         <nav class="list-unstyled nav-sidebar doc-nav" id="docy-toc"> </nav>
-                        <div class="toc-sidebar-image mt-4">
+                        <!-- <div class="toc-sidebar-image mt-4">
                             <img src="<?php echo esc_url( get_template_directory_uri() . '/assets/img/sidebarimg.png' ); ?>" alt="Sidebar CTA" class="img-fluid rounded-3" style="width: 100%;">
-                        </div>
+                        </div> -->
                         <?php /* Sidebar CTA Card - commented out
                         <div class="sidebar-cta-card" style="display: flex; align-items: center; gap: 16px; margin-top: 20px; padding: 1px 2px; border: 2px solid #3B82F6; border-radius: 18px; background: #f4f8ff; width: 100%; box-sizing: border-box;">
                             <div class="sidebar-cta-icon" aria-hidden="true">
