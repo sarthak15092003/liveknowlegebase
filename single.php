@@ -40,7 +40,7 @@ get_template_part( 'template-parts/single-post/banner', $banner_type );
 //     get_template_part( 'template-parts/header-elements/search-banner/breadcrumb' );
 // }
 ?>
-<section class="blog_area tip_doc_area" id="toc_stick">
+<section class="blog_area tip_doc_area" id="toc_stick" style="padding-top: 30px !important;">
 
     <div class="container">
         <div class="row align-items-start">
@@ -61,7 +61,7 @@ get_template_part( 'template-parts/single-post/banner', $banner_type );
             ?>
             <div class="col-lg-<?php echo esc_attr( $blog_column ) ?> blog_single_info category-main-col <?php echo esc_attr($main_col_extra_class); ?> pe-lg-3" style="">
                 <div class="main-post <?php echo $has_toc ? 'anchor-enabled' : ''; ?>">
-                    <div class="blog_single_item editor-content" style=" margin-top:20px; ">
+                    <div class="blog_single_item editor-content">
                         <?php
                         // Add breadcrumb inside blog single item
                         if ( function_exists('docy_post_breadcrumbs') ) {
