@@ -62,7 +62,7 @@ if ( ! $current_cat_id ) {
                     ?>
                     <a href="<?php the_permalink(); ?>" class="tw-article-row">
                         <div class="tw-article-content">
-                            <div class="tw-article-title" style="font-size: 16px; font-weight: 500; color: #1f2937; margin: 0 0 4px 0;"><?php the_title(); ?></div>
+                            <div class="tw-article-title" style="font-size: 16px; font-weight: 500 !important; color: #1f2937; margin: 0 0 4px 0;"><?php the_title(); ?></div>
                             <p class="tw-article-desc" style="margin: 0; color: #6b7280; font-size: 14px;"><?php echo esc_html( wp_trim_words( get_the_excerpt(), 15, '...' ) ); ?></p>
                         </div>
                         <div class="tw-article-arrow">
@@ -97,7 +97,7 @@ if ( ! $current_cat_id ) {
 				?>
 				<a href="<?php the_permalink(); ?>" class="tw-article-row">
 					<div class="tw-article-content">
-						<div class="tw-article-title" style="font-size: 16px; font-weight: 500; color: #1f2937; margin: 0 0 4px 0;"><?php the_title(); ?></div>
+						<div class="tw-article-title" style="font-size: 16px; font-weight: 500 !important; color: #1f2937; margin: 0 0 4px 0;"><?php the_title(); ?></div>
 						<p class="tw-article-desc" style="margin: 0; color: #6b7280; font-size: 14px;"><?php echo esc_html( wp_trim_words( get_the_excerpt(), 15, '...' ) ); ?></p>
 					</div>
 					<div class="tw-article-arrow">

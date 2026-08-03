@@ -316,6 +316,7 @@ get_template_part( 'template-parts/single-post/banner', $banner_type );
         </div>
 
         <!-- Secondary row: Related posts and comments below, without TOC on the side -->
+        <!--
         <div class="row mt-5">
             <div class="col-lg-<?php echo esc_attr( $blog_column ) ?> blog_single_info m-auto">
                 <?php
@@ -327,6 +328,7 @@ get_template_part( 'template-parts/single-post/banner', $banner_type );
                 ?>
             </div>
         </div>
+        -->
     </div>
     
     <script>
