@@ -1180,6 +1180,61 @@ body {
                                     }
                                     .blog_single_item .breadcrumb li,
                                     .blog_single_item .breadcrumb .breadcrumb-item,
+
+                                .blog_single_item .breadcrumb {
+                                    list-style: none !important;
+                                    padding-left: 0 !important;
+                                    display: flex !important;
+                                    align-items: center !important;
+                                    flex-wrap: wrap !important;
+                                    font-size: 15px !important;
+                                    margin-bottom: 20px !important;
+                                    background: transparent !important;
+                                }
+                                .blog_single_item .breadcrumb li,
+                                .blog_single_item .breadcrumb .breadcrumb-item {
+                                    list-style: none !important;
+                                    font-size: 15px !important;
+                                    font-weight: 400 !important;
+                                }
+                                .blog_single_item .breadcrumb li a,
+                                .blog_single_item .breadcrumb .breadcrumb-item a {
+                                    color: #1E2B5B !important;
+                                    text-decoration: none !important;
+                                    font-size: 15px !important;
+                                    font-weight: 400 !important;
+                                }
+                                .blog_single_item .breadcrumb li a:hover,
+                                .blog_single_item .breadcrumb .breadcrumb-item a:hover {
+                                    text-decoration: underline !important;
+                                }
+                                .blog_single_item .breadcrumb li.active,
+                                .blog_single_item .breadcrumb .breadcrumb-item.active {
+                                    color: #5B6B8C !important;
+                                    font-size: 15px !important;
+                                    font-weight: 400 !important;
+                                }
+                                .blog_single_item .breadcrumb .breadcrumb-item+.breadcrumb-item::before {
+                                    content: "/" !important;
+                                    padding: 0 8px !important;
+                                    color: #3B82F6 !important;
+                                    font-weight: 400 !important;
+                                }
+                                /* Mobile breadcrumb visibility */
+                                @media (max-width: 1024px) {
+                                    .blog_single_item nav[aria-label="breadcrumb"] {
+                                        display: block !important;
+                                        visibility: visible !important;
+                                        margin-bottom: 15px !important;
+                                        padding: 0 !important;
+                                    }
+                                    .blog_single_item .breadcrumb {
+                                        font-size: 14px !important;
+                                        display: flex !important;
+                                        flex-wrap: wrap !important;
+                                    }
+                                    .blog_single_item .breadcrumb li,
+                                    .blog_single_item .breadcrumb .breadcrumb-item,
                                     .blog_single_item .breadcrumb li a,
                                     .blog_single_item .breadcrumb .breadcrumb-item a,
                                     .blog_single_item .breadcrumb li.active,
@@ -1188,3 +1243,167 @@ body {
                                     }
                                 }
                             
+
+/* =============================================
+   MODERN SIDEBAR & SINGLE POST SIDEBAR STYLES
+   ============================================= */
+
+/* Back button styling */
+.sidebar-back-btn {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 16px;
+    margin-bottom: 8px;
+    color: #64748b;
+    font-size: 13px;
+    font-weight: 500 !important;
+    text-decoration: none !important;
+    border-radius: 8px;
+    transition: all 0.2s ease;
+    cursor: pointer;
+    border: none;
+    background: none;
+    width: 100%;
+    text-align: left;
+}
+.sidebar-back-btn:hover {
+    background: #f1f5f9;
+    color: #1e293b;
+    text-decoration: none !important;
+}
+.sidebar-back-btn svg {
+    flex-shrink: 0;
+    transition: transform 0.2s ease;
+}
+.sidebar-back-btn:hover svg {
+    transform: translateX(-3px);
+}
+.sidebar-back-btn span {
+    font-weight: 500 !important;
+}
+
+/* Single post sidebar - active category header */
+.single-post-sidebar .active-cat-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 16px;
+    margin-bottom: 4px;
+    border-radius: 10px;
+    background: #dbeafe2b;
+    border: none;
+    cursor: pointer;
+    transition: background 0.2s ease;
+    user-select: none;
+}
+.single-post-sidebar .active-cat-header:hover {
+    background: #dbeafe55;
+}
+.single-post-sidebar .active-cat-header .cat-icon {
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+.single-post-sidebar .active-cat-header .cat-icon img {
+    width: 22px;
+    height: 22px;
+    border: none !important;
+}
+.single-post-sidebar .active-cat-header .cat-title {
+    flex: 1;
+    font-size: 14px;
+    color: #161c52 !important;
+    font-weight: 500 !important;
+    line-height: 1.3;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.single-post-sidebar .active-cat-header .cat-toggle {
+    width: 20px;
+    height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    color: #94a3b8;
+    transition: transform 0.3s ease, color 0.2s ease;
+    transform: rotate(180deg);
+}
+.single-post-sidebar .active-cat-header .cat-toggle.open {
+    transform: rotate(270deg);
+    color: #1e40af;
+}
+
+/* Active category article list */
+.single-post-sidebar .cat-articles {
+    padding: 4px 0 0 0;
+    max-height: 2500px;
+    overflow: hidden;
+    transition: max-height 0.3s ease, opacity 0.3s ease, padding 0.3s ease;
+    opacity: 1;
+}
+.single-post-sidebar .cat-articles.collapsed {
+    max-height: 0;
+    opacity: 0;
+    padding: 0;
+}
+.single-post-sidebar .cat-article-item {
+    position: relative;
+    padding: 8px 12px 8px 20px;
+    border-left: 2px solid transparent;
+    transition: all 0.2s ease;
+    margin-left: 16px;
+}
+.single-post-sidebar .cat-article-item:hover {
+    border-left-color: #93c5fd;
+    background: #f8fafc;
+    border-radius: 0 6px 6px 0;
+}
+.single-post-sidebar .cat-article-item.active-article {
+    border-left-color: transparent;
+    background: #dbeafe2b;
+    border-radius: 6px;
+}
+.single-post-sidebar .cat-article-item a {
+    display: block;
+    font-size: 13px;
+    font-weight: 400 !important;
+    color: #64748b;
+    text-decoration: none !important;
+    line-height: 1.5;
+    transition: color 0.2s ease;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.single-post-sidebar .cat-article-item:hover a {
+    color: #1e293b;
+}
+.single-post-sidebar .cat-article-item.active-article a {
+    color: #007bff !important;
+}
+
+/* Divider */
+.sidebar-divider {
+    height: 1px;
+    background: #e2e8f0;
+    margin: 12px 16px;
+}
+
+/* Drag & Drop Sortable Styles */
+.cmgalaxy-sortable-top > .sidebar-section,
+.cmgalaxy-sortable-sub > .cmgalaxy-subcat-wrapper,
+.cmgalaxy-sortable-sub-sub > .sidebar-sub-subcat-item {
+    cursor: grab !important;
+}
+.cmgalaxy-sortable-top > .sidebar-section:active,
+.cmgalaxy-sortable-sub > .cmgalaxy-subcat-wrapper:active,
+.cmgalaxy-sortable-sub-sub > .sidebar-sub-subcat-item:active {
+    cursor: grabbing !important;
+}
+.sortable-ghost { opacity: 0.4; }
