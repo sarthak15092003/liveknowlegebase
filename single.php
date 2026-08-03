@@ -332,6 +332,21 @@ get_template_part( 'template-parts/single-post/banner', $banner_type );
     </div>
 </section>
     <script>
+        // Remove empty &nbsp; spacer paragraphs from article content
+        document.addEventListener('DOMContentLoaded', function() {
+            var content = document.querySelector('.blog_single_item, .editor-content, article');
+            if (content) {
+                var paras = content.querySelectorAll('p');
+                paras.forEach(function(p) {
+                    var text = p.textContent.replace(/\u00a0/g, '').trim();
+                    if (text === '') {
+                        p.remove();
+                    }
+                });
+            }
+        });
+    </script>
+    <script>
         (function($) {
             "use strict";
 

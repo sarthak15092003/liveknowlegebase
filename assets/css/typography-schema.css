@@ -276,6 +276,12 @@ article {
         display: none !important;
     }
 
+    /* Hide empty spacer paragraphs that only contain &nbsp; */
+    p:empty,
+    p[style*="text-align"] {
+        /* Can't detect &nbsp; via CSS, rely on JS or PHP filter */
+    }
+
     h1,
     .h1 {
         font-family: var(--font-family-primary) !important;
