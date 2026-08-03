@@ -1416,6 +1416,13 @@ body {
   .category-left-sidebar-col { flex: 0 0 20% !important; max-width: 20% !important; }
   .category-main-with-right { flex: 0 0 55% !important; max-width: 55% !important; }
   .category-right-sidebar-col { flex: 0 0 25% !important; max-width: 25% !important; }
+
+
+/* Category 3 Column Layout */
+@media (min-width: 992px) {
+  .category-left-sidebar-col { flex: 0 0 20% !important; max-width: 20% !important; }
+  .category-main-with-right { flex: 0 0 55% !important; max-width: 55% !important; }
+  .category-right-sidebar-col { flex: 0 0 25% !important; max-width: 25% !important; }
 }
 @media (max-width: 991px) {
   .category-left-sidebar-col, .category-main-with-right, .category-right-sidebar-col { flex: 0 0 100% !important; max-width: 100% !important; }
@@ -1424,8 +1431,12 @@ body {
 /* Single Post TOC Layout Fix */
 @media (min-width: 992px) {
   .category-main-col.has-toc-sidebar { flex: 0 0 60% !important; max-width: 60% !important; width: 60% !important; }
-  .doc-sidebar { flex: 0 0 20% !important; max-width: 20% !important; width: 20% !important; }
+  .doc-sidebar { flex: 0 0 20% !important; max-width: 20% !important; width: 20% !important; padding: 0 15px !important; }
 }
+/* Fix TOC double padding and track alignment */
+.doc-sidebar .left_sidebarlist { padding-left: 0 !important; }
+.doc-sidebar .left_sidebarlist .nav-sidebar:before { left: 0 !important; background: #e2e8f0 !important; }
+#docy-toc .nav-item.active > .nav-link::before { left: 0 !important; width: 2px !important; }
 @media (max-width: 991px) {
   .category-main-col.has-toc-sidebar, .doc-sidebar { flex: 0 0 100% !important; max-width: 100% !important; width: 100% !important; }
 }
