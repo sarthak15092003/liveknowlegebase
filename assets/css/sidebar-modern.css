@@ -1418,3 +1418,12 @@ body {
 @media (max-width: 991px) {
   .category-left-sidebar-col, .category-main-with-right, .category-right-sidebar-col { flex: 0 0 100% !important; max-width: 100% !important; }
 }
+
+/* Single Post TOC Layout Fix */
+@media (min-width: 992px) {
+  .category-main-col.has-toc-sidebar { flex: 0 0 60% !important; max-width: 60% !important; width: 60% !important; }
+  .doc-sidebar { flex: 0 0 20% !important; max-width: 20% !important; width: 20% !important; }
+}
+@media (max-width: 991px) {
+  .category-main-col.has-toc-sidebar, .doc-sidebar { flex: 0 0 100% !important; max-width: 100% !important; width: 100% !important; }
+}

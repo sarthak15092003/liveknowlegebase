@@ -56,8 +56,11 @@ get_template_part( 'template-parts/single-post/banner', $banner_type );
             <?php // TOC will render after the content column ?>
 
 
-            <div class="col-lg-<?php echo esc_attr( $blog_column ) ?> blog_single_info category-main-col pe-lg-3" style="">
-                <div class="main-post <?php echo docy_toc('post') == '1' ? 'anchor-enabled' : ''; ?>">
+            <?php 
+            $main_col_extra_class = $has_toc ? 'has-toc-sidebar' : '';
+            ?>
+            <div class="col-lg-<?php echo esc_attr( $blog_column ) ?> blog_single_info category-main-col <?php echo esc_attr($main_col_extra_class); ?> pe-lg-3" style="">
+                <div class="main-post <?php echo $has_toc ? 'anchor-enabled' : ''; ?>">
                     <div class="blog_single_item editor-content" style=" margin-top:20px; ">
                         <?php
                         // Add breadcrumb inside blog single item
