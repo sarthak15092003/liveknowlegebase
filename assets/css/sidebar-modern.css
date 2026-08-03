@@ -45,9 +45,11 @@
 }
 @media (min-width: 768px) {
     .category-left-sidebar-col { -ms-flex: 0 0 20% !important; flex: 0 0 20% !important; max-width: 20% !important; width: 20% !important; float: left; }
-    .category-main-col:not(.category-main-with-right) { -ms-flex: 0 0 80% !important; flex: 0 0 80% !important; max-width: 80% !important; width: 80% !important; float: left; }
+    .category-main-col:not(.category-main-with-right):not(.has-toc-sidebar) { -ms-flex: 0 0 80% !important; flex: 0 0 80% !important; max-width: 80% !important; width: 80% !important; float: left; }
     .category-main-col.category-main-with-right { -ms-flex: 0 0 55% !important; flex: 0 0 55% !important; max-width: 55% !important; width: 55% !important; float: left; }
+    .category-main-col.has-toc-sidebar { -ms-flex: 0 0 60% !important; flex: 0 0 60% !important; max-width: 60% !important; width: 60% !important; float: left; }
     .category-right-sidebar-col { -ms-flex: 0 0 25% !important; flex: 0 0 25% !important; max-width: 25% !important; width: 25% !important; float: left; }
+    .doc-sidebar { -ms-flex: 0 0 20% !important; flex: 0 0 20% !important; max-width: 20% !important; width: 20% !important; float: left; }
 }
 @media (max-width: 1024px) {
     .category-left-sidebar-col, .category-main-col, .category-right-sidebar-col { -ms-flex: 0 0 100% !important; flex: 0 0 100% !important; max-width: 100% !important; width: 100% !important; float: none !important; }
