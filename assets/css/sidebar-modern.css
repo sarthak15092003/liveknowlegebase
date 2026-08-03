@@ -1116,13 +1116,19 @@ nav#sticky[style] {
 
 /* Add padding to body to prevent content from hiding under fixed navbar */
 body {
-    padding-top: 114px !important; /* Space for fixed navbar */
+    padding-top: 85px !important; /* Space for fixed navbar when logged out */
+}
+body.admin-bar {
+    padding-top: 117px !important; /* Space for fixed navbar + 32px WP Admin bar when logged in */
 }
 
 /* Adjust for mobile */
 @media (max-width: 1024px) {
     body {
         padding-top: 70px !important; /* Smaller space for mobile header */
+    }
+    body.admin-bar {
+        padding-top: 102px !important; /* Mobile header + WP Admin bar */
     }
     
     .body_wrapper {
