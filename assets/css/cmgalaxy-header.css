@@ -111,7 +111,7 @@ body {
 /* Content area spacing */
 .blog_area,
 .tip_doc_area {
-    padding-top: 0 !important;
+    padding-top: 50px !important;
     margin-top: 0 !important;
     padding-bottom: 20px !important;
 }
@@ -652,7 +652,7 @@ section:first-of-type {
 
     .blog_area,
     .tip_doc_area {
-        padding-top: 0rem !important;
+        padding-top: 30px !important;
     }
 
     /* Mobile admin bar adjustments */
