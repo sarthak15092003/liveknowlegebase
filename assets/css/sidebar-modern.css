@@ -1116,13 +1116,13 @@ nav#sticky[style] {
 
 /* Add padding to body to prevent content from hiding under fixed navbar */
 body {
-    padding-top: 70px !important; /* Space for fixed navbar */
+    padding-top: 114px !important; /* Space for fixed navbar */
 }
 
 /* Adjust for mobile */
 @media (max-width: 1024px) {
     body {
-        padding-top: 60px !important; /* Smaller space for mobile header */
+        padding-top: 70px !important; /* Smaller space for mobile header */
     }
     
     .body_wrapper {
