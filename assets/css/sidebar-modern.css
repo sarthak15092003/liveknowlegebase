@@ -110,7 +110,8 @@ html, body { scroll-padding-top: 85px !important; }
 .feedback-section .btn { min-width: 88px; padding: 0.45rem 0.9rem; border-radius: 999px; }
 .nav-card:hover { box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1) !important; transform: translateY(-2px) !important; border-color: #cbd5e1 !important; }
 .nav-card h5 { line-height: 1.4; margin-bottom: 1rem; }
-.doc-sidebar { position: sticky; top: 130px; align-self: flex-start; max-height: calc(100vh - 180px); overflow-y: auto; margin-top: 50px; padding: 0 20px 0 25px !important; transition: all 0.3s ease; }
+.doc-sidebar { position: sticky; top: 130px; align-self: flex-start; max-height: calc(100vh - 180px); overflow-y: auto; margin-top: 50px; padding: 0 !important; transition: all 0.3s ease; }
+.doc-sidebar .toc-title { padding-left: 24px !important; }
 
 /* Custom scrollbar for TOC that appears only on hover */
 .doc-sidebar::-webkit-scrollbar { width: 0px; background: transparent; }
@@ -1438,7 +1439,7 @@ body {
 /* Single Post TOC Layout Fix */
 @media (min-width: 992px) {
   .category-main-col.has-toc-sidebar { flex: 0 0 60% !important; max-width: 60% !important; width: 60% !important; }
-  .doc-sidebar { flex: 0 0 20% !important; max-width: 20% !important; width: 20% !important; padding: 0 15px !important; }
+  .doc-sidebar { flex: 0 0 20% !important; max-width: 20% !important; width: 20% !important; padding: 0 !important; }
 }
 /* Fix TOC double padding and track alignment */
 .doc-sidebar .left_sidebarlist { padding-left: 0 !important; }
