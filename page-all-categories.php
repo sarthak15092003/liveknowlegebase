@@ -132,7 +132,7 @@ $terms = get_terms( array(
 						<div class="tw-authors-avatars">
 							<?php 
 						// Always use CMGalaxy logo as author avatar
-						echo '<div class="tw-author-avatar"><img src="https://docs.cmgalaxy.com/wp-content/uploads/2026/06/cropped-Group-1000004539-300x300-1.png" alt="CMGalaxy" style="width: 100%; height: 100%; border-radius: 50%; object-fit: cover;"></div>';
+						echo '<div class="tw-author-avatar" style="width: 24px; height: 24px; min-width: 24px; border-radius: 50%; overflow: hidden;"><img src="https://docs.cmgalaxy.com/wp-content/uploads/2026/06/cropped-Group-1000004539-300x300-1.png" alt="CMGalaxy" style="width: 100%; height: 100%; object-fit: cover;"></div>';
 						?>
 						</div>
 						<span><?php echo esc_html($byline); ?> &bull; <?php echo esc_html( $articles_text ); ?></span>
