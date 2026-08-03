@@ -1147,21 +1147,21 @@ body {
                                     display: flex !important;
                                     align-items: center !important;
                                     flex-wrap: wrap !important;
-                                    font-size: 15px !important;
+                                    font-size: 12px !important;
                                     margin-bottom: 20px !important;
                                     background: transparent !important;
                                 }
                                 .blog_single_item .breadcrumb li,
                                 .blog_single_item .breadcrumb .breadcrumb-item {
                                     list-style: none !important;
-                                    font-size: 15px !important;
+                                    font-size: 12px !important;
                                     font-weight: 400 !important;
                                 }
                                 .blog_single_item .breadcrumb li a,
                                 .blog_single_item .breadcrumb .breadcrumb-item a {
                                     color: #1E2B5B !important;
                                     text-decoration: none !important;
-                                    font-size: 15px !important;
+                                    font-size: 12px !important;
                                     font-weight: 400 !important;
                                 }
                                 .blog_single_item .breadcrumb li a:hover,
@@ -1171,7 +1171,7 @@ body {
                                 .blog_single_item .breadcrumb li.active,
                                 .blog_single_item .breadcrumb .breadcrumb-item.active {
                                     color: #5B6B8C !important;
-                                    font-size: 15px !important;
+                                    font-size: 12px !important;
                                     font-weight: 400 !important;
                                 }
                                 .blog_single_item .breadcrumb .breadcrumb-item+.breadcrumb-item::before {
@@ -1202,21 +1202,21 @@ body {
                                     display: flex !important;
                                     align-items: center !important;
                                     flex-wrap: wrap !important;
-                                    font-size: 15px !important;
+                                    font-size: 12px !important;
                                     margin-bottom: 20px !important;
                                     background: transparent !important;
                                 }
                                 .blog_single_item .breadcrumb li,
                                 .blog_single_item .breadcrumb .breadcrumb-item {
                                     list-style: none !important;
-                                    font-size: 15px !important;
+                                    font-size: 12px !important;
                                     font-weight: 400 !important;
                                 }
                                 .blog_single_item .breadcrumb li a,
                                 .blog_single_item .breadcrumb .breadcrumb-item a {
                                     color: #1E2B5B !important;
                                     text-decoration: none !important;
-                                    font-size: 15px !important;
+                                    font-size: 12px !important;
                                     font-weight: 400 !important;
                                 }
                                 .blog_single_item .breadcrumb li a:hover,
@@ -1226,7 +1226,7 @@ body {
                                 .blog_single_item .breadcrumb li.active,
                                 .blog_single_item .breadcrumb .breadcrumb-item.active {
                                     color: #5B6B8C !important;
-                                    font-size: 15px !important;
+                                    font-size: 12px !important;
                                     font-weight: 400 !important;
                                 }
                                 .blog_single_item .breadcrumb .breadcrumb-item+.breadcrumb-item::before {
