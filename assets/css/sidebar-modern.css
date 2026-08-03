@@ -1472,7 +1472,7 @@ body.admin-bar {
 /* Specific Gap Adjustments */
 .category .blog_area,
 .archive .blog_area {
-    padding-top: 50px !important; /* More gap on category pages */
+    padding-top: 80px !important; /* Huge gap on category pages to prevent breadcrumb from hiding */
 }
 
 .single-post .blog_area {
