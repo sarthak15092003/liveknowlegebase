@@ -75,7 +75,10 @@ get_template_part( 'template-parts/single-post/banner', $banner_type );
                         while ( have_posts() ) : the_post();
                             $user_desc = get_the_author_meta( 'description' );
                             ?>
-                            <div class="post-author-meta-box d-flex align-items-center mb-3 mt-3" style="gap: 15px; border-radius: 50px; padding: 5px;">
+                            <h1 class="post-title mb-3" style="font-size: 36px; font-weight: 700; color: #111827; line-height: 1.2; margin-top: 20px;">
+                                <?php the_title(); ?>
+                            </h1>
+                            <div class="post-author-meta-box d-flex align-items-center mb-4 mt-2" style="gap: 15px; border-radius: 50px; padding: 5px;">
                                 <div class="author-avatar">
                                     <img src="https://docs.cmgalaxy.com/wp-content/uploads/2026/06/cropped-Group-1000004539-300x300-1.png" alt="Author Avatar" class="rounded-circle" style="width: 24px; height: 24px; object-fit: cover; border: none !important;">
                                 </div>
