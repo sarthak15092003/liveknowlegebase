@@ -1484,15 +1484,21 @@ body.archive:not(.admin-bar) .blog_area {
     padding-top: 112px !important; /* 80px + 32px to compensate for missing admin bar */
 }
 
+.single .blog_area,
+.single .tip_doc_area,
 .single-post .blog_area,
-.single-post .tip_doc_area {
+.single-post .tip_doc_area,
+section.blog_area.tip_doc_area {
     padding-top: 0px !important; 
     margin-top: -20px !important; /* Reduce gap on blog detail (single post) */
 }
 
 /* When logged OUT on single post, add 32px extra gap to match logged-in appearance */
+body:not(.admin-bar).single .blog_area,
+body:not(.admin-bar).single .tip_doc_area,
 body:not(.admin-bar).single-post .blog_area,
-body:not(.admin-bar).single-post .tip_doc_area {
+body:not(.admin-bar).single-post .tip_doc_area,
+body:not(.admin-bar) section.blog_area.tip_doc_area {
     padding-top: 0px !important;
     margin-top: 12px !important; /* Compensate for missing admin bar */
 }
