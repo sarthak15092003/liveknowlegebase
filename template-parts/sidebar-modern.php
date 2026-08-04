@@ -253,7 +253,7 @@ if ($is_single_post) {
             <div class="<?php echo esc_attr($content_class); ?> cmgalaxy-sortable-sub" id="<?php echo esc_attr($section['id']); ?>">
                 <?php
                 // Render direct posts of top-level category if any
-                if ($has_main_direct_posts) {
+                if ($is_single_post && $has_main_direct_posts) {
                     foreach ($main_direct_posts as $main_post) {
                         $is_current_post = $is_single_post && ($current_post_id == $main_post->ID);
                         $post_color = $is_current_post ? '#3B82F6' : '#64748b';
@@ -326,7 +326,7 @@ if ($is_single_post) {
 
                         $is_subcat_active = in_array($subcat->slug, $current_categories) || $is_any_sub_subcat_active || $is_any_post_active;
                         
-                        $has_children = $has_sub_subcats || $has_posts;
+                        $has_children = $has_sub_subcats || ($is_single_post && $has_posts);
                         
                         $subcat_wrapper_class = 'subsection-item';
                         if ($is_subcat_active) $subcat_wrapper_class .= ' current-page';
@@ -384,7 +384,7 @@ if ($is_single_post) {
                                         </a>
                                         </div>
                                         <?php
-                                        if ($has_sub_subcat_posts) {
+                                        if ($is_single_post && $has_sub_subcat_posts) {
                                             foreach ($sub_subcat_posts as $ssp) {
                                                 $is_current_post = $is_single_post && ($current_post_id == $ssp->ID);
                                                 $post_color = $is_current_post ? '#3B82F6' : '#64748b';
@@ -408,7 +408,7 @@ if ($is_single_post) {
                                     }
                                 }
                                 
-                                if ($has_posts) {
+                                if ($is_single_post && $has_posts) {
                                     foreach ($subcat_posts as $subcat_post) {
                                         $is_current_post = $is_single_post && (get_queried_object_id() == $subcat_post->ID);
                                         $post_color = $is_current_post ? '#3B82F6' : '#64748b';
