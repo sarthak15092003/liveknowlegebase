@@ -182,6 +182,24 @@ if ($is_single_post) {
             
             $cat_id = $cat_obj ? $cat_obj->term_id : 0;
             
+            // Fetch direct posts of this top-level category
+            global $wpdb;
+            $main_direct_posts = array();
+            if ($cat_id) {
+                $main_direct_posts = $wpdb->get_results($wpdb->prepare("
+                    SELECT p.ID, p.post_title 
+                    FROM {$wpdb->posts} p
+                    INNER JOIN {$wpdb->term_relationships} tr ON p.ID = tr.object_id
+                    INNER JOIN {$wpdb->term_taxonomy} tt ON tr.term_taxonomy_id = tt.term_taxonomy_id
+                    WHERE tt.term_id = %d
+                    AND tt.taxonomy = 'category'
+                    AND p.post_type = 'post'
+                    AND p.post_status = 'publish'
+                    ORDER BY p.menu_order ASC, p.post_title ASC
+                ", $cat_id));
+            }
+            $has_main_direct_posts = !empty($main_direct_posts);
+            
             // Fetch subcategories
             $subcats = get_categories(array(
                 'parent'     => $cat_id,
@@ -192,6 +210,7 @@ if ($is_single_post) {
             }
             
             $has_subcats = !empty($subcats);
+            $has_content = $has_subcats || $has_main_direct_posts;
             
             // Check if current page is in this category OR any of its subcategories
             $is_active_cat = in_array($section['slug'], $current_categories);
@@ -211,8 +230,8 @@ if ($is_single_post) {
                 }
             }
             
-            $header_class = 'section-header' . ($has_subcats ? ' expandable' : '') . ($is_active_cat ? ' active' : '');
-            $content_class = 'section-content' . ($is_active_cat && $has_subcats ? ' expanded' : '');
+            $header_class = 'section-header' . ($has_content ? ' expandable' : '') . ($is_active_cat ? ' active' : '');
+            $content_class = 'section-content' . ($is_active_cat && $has_content ? ' expanded' : '');
             $expand_class = 'expand-icon' . ($is_active_cat ? ' expanded' : '');
         ?>
         <div class="sidebar-section" data-term-id="<?php echo esc_attr($cat_id); ?>">
@@ -221,7 +240,7 @@ if ($is_single_post) {
                     <img src="<?php echo esc_url($section['icon']); ?>" alt="<?php echo esc_attr($section['title']); ?> Icon" style="width: 22px; height: 22px; object-fit: contain;">
                 </div>
                 <a href="<?php echo esc_url(get_category_link($cat_id)); ?>" class="section-title" style="text-decoration: none; color: inherit; display: block; flex: 1;"><?php echo esc_html($section['title']); ?></a>
-                <?php if ($has_subcats) : ?>
+                <?php if ($has_content) : ?>
                 <span class="<?php echo esc_attr($expand_class); ?>">
                     <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none">
                         <path d="M15 6L9 12.0001L15 18" stroke="currentColor" stroke-width="1.5" stroke-miterlimit="16" stroke-linecap="round" stroke-linejoin="round"/>
@@ -230,10 +249,32 @@ if ($is_single_post) {
                 <?php endif; ?>
             </div>
 
-            <?php if ($has_subcats) : ?>
+            <?php if ($has_content) : ?>
             <div class="<?php echo esc_attr($content_class); ?> cmgalaxy-sortable-sub" id="<?php echo esc_attr($section['id']); ?>">
                 <?php
-                
+                // Render direct posts of top-level category if any
+                if ($has_main_direct_posts) {
+                    foreach ($main_direct_posts as $main_post) {
+                        $is_current_post = $is_single_post && ($current_post_id == $main_post->ID);
+                        $post_color = $is_current_post ? '#3B82F6' : '#64748b';
+                        $post_weight = $is_current_post ? '500' : '400';
+                        $post_wrapper_class = 'sidebar-subcat-post-item';
+                        if ($is_current_post) {
+                            $post_wrapper_class .= ' active-article';
+                        }
+                        ?>
+                        <div class="<?php echo esc_attr($post_wrapper_class); ?>" style="padding: 6px 0 6px 35px; position: relative;">
+                            <?php if ($is_current_post): ?>
+                                <div style="position: absolute; left: 20px; top: 0; bottom: 0; width: 2px; background: #3B82F6;"></div>
+                            <?php endif; ?>
+                            <a href="<?php echo esc_url(get_permalink($main_post->ID)); ?>" style="color: <?php echo $post_color; ?>; font-size: 13.5px; text-decoration: none; font-weight: <?php echo $post_weight; ?>; display: flex; align-items: center; line-height: 1.4; width: 100%;" class="cm-tooltip-target" data-cm-tooltip="<?php echo esc_attr($main_post->post_title); ?>">
+                                <span style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis; flex: 1;"><?php echo esc_html($main_post->post_title); ?></span>
+                            </a>
+                        </div>
+                        <?php
+                    }
+                }
+
                 if (!empty($subcats)) {
                     foreach ($subcats as $subcat) {
                         // Fetch sub-subcategories (3rd level categories)
@@ -248,7 +289,6 @@ if ($is_single_post) {
                         $has_sub_subcats = !empty($sub_subcats);
                         
                         // Fetch posts for this subcategory efficiently
-                        global $wpdb;
                         $subcat_posts = $wpdb->get_results($wpdb->prepare("
                             SELECT p.ID, p.post_title 
                             FROM {$wpdb->posts} p
@@ -303,7 +343,7 @@ if ($is_single_post) {
                                 </a>
                                 <?php if ($has_children) : ?>
                                 <span class="expand-icon-subcat" style="color: #64748b; margin-right: 15px; display: inline-flex; transition: transform 0.3s; transform: <?php echo $is_subcat_active ? 'rotate(270deg)' : 'rotate(180deg)'; ?>;">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none">
                                         <path d="M15 6L9 12.0001L15 18" stroke="currentColor" stroke-width="1.5" stroke-miterlimit="16" stroke-linecap="round" stroke-linejoin="round"/>
                                     </svg>
                                 </span>
@@ -319,6 +359,20 @@ if ($is_single_post) {
                                         $is_sub_subcat_active = in_array($sub_subcat->slug, $current_categories);
                                         $sub_subcat_color = $is_sub_subcat_active ? '#3B82F6' : '#64748b';
                                         $sub_subcat_weight = $is_sub_subcat_active ? '500' : '400';
+                                        
+                                        // Fetch posts for this sub-subcategory
+                                        $sub_subcat_posts = $wpdb->get_results($wpdb->prepare("
+                                            SELECT p.ID, p.post_title 
+                                            FROM {$wpdb->posts} p
+                                            INNER JOIN {$wpdb->term_relationships} tr ON p.ID = tr.object_id
+                                            INNER JOIN {$wpdb->term_taxonomy} tt ON tr.term_taxonomy_id = tt.term_taxonomy_id
+                                            WHERE tt.term_id = %d
+                                            AND tt.taxonomy = 'category'
+                                            AND p.post_type = 'post'
+                                            AND p.post_status = 'publish'
+                                            ORDER BY p.menu_order ASC, p.post_title ASC
+                                        ", $sub_subcat->term_id));
+                                        $has_sub_subcat_posts = !empty($sub_subcat_posts);
                                         ?>
                                         <div class="sidebar-sub-subcat-item" data-term-id="<?php echo esc_attr($sub_subcat->term_id); ?>" style="padding: 6px 0 6px 8px; position: relative;">
                                         <?php if ($is_sub_subcat_active): ?>
@@ -330,6 +384,27 @@ if ($is_single_post) {
                                         </a>
                                         </div>
                                         <?php
+                                        if ($has_sub_subcat_posts) {
+                                            foreach ($sub_subcat_posts as $ssp) {
+                                                $is_current_post = $is_single_post && ($current_post_id == $ssp->ID);
+                                                $post_color = $is_current_post ? '#3B82F6' : '#64748b';
+                                                $post_weight = $is_current_post ? '500' : '400';
+                                                $post_wrapper_class = 'sidebar-subcat-post-item';
+                                                if ($is_current_post) {
+                                                    $post_wrapper_class .= ' active-article';
+                                                }
+                                                ?>
+                                                <div class="<?php echo esc_attr($post_wrapper_class); ?>" style="padding: 6px 0 6px 20px; position: relative;">
+                                                    <?php if ($is_current_post): ?>
+                                                        <div style="position: absolute; left: 10px; top: 0; bottom: 0; width: 2px; background: #3B82F6;"></div>
+                                                    <?php endif; ?>
+                                                    <a href="<?php echo esc_url(get_permalink($ssp->ID)); ?>" style="color: <?php echo $post_color; ?>; font-size: 13.5px; text-decoration: none; font-weight: <?php echo $post_weight; ?>; display: flex; align-items: center; line-height: 1.4; width: 100%;" class="cm-tooltip-target" data-cm-tooltip="<?php echo esc_attr($ssp->post_title); ?>">
+                                                        <span style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis; flex: 1;"><?php echo esc_html($ssp->post_title); ?></span>
+                                                    </a>
+                                                </div>
+                                                <?php
+                                            }
+                                        }
                                     }
                                 }
                                 
@@ -539,36 +614,47 @@ document.addEventListener('DOMContentLoaded', function() {
 
 <!-- CM Custom Tooltip Logic -->
 <script>
-document.addEventListener('DOMContentLoaded', function() {
-    // Create tooltip element
-    var cmTooltip = document.createElement('div');
-    cmTooltip.className = 'cm-custom-tooltip';
-    document.body.appendChild(cmTooltip);
+(function() {
+    function initTooltip() {
+        var cmTooltip = document.querySelector('.cm-custom-tooltip');
+        if (!cmTooltip) {
+            cmTooltip = document.createElement('div');
+            cmTooltip.className = 'cm-custom-tooltip';
+            document.body.appendChild(cmTooltip);
+        }
 
-    var targets = document.querySelectorAll('.cm-tooltip-target');
-    
-    targets.forEach(function(target) {
-        target.addEventListener('mouseenter', function(e) {
+        document.addEventListener('mouseover', function(e) {
+            var target = e.target.closest('.cm-tooltip-target');
+            if (!target) return;
+
             var text = target.getAttribute('data-cm-tooltip');
-            if(!text) return;
-            
+            if (!text) return;
+
             cmTooltip.textContent = text;
             cmTooltip.style.opacity = '1';
             cmTooltip.style.visibility = 'visible';
-            
+
             var rect = target.getBoundingClientRect();
-            // Position to the right of the sidebar container
             var sidebar = target.closest('.modern-sidebar');
             var sidebarRect = sidebar ? sidebar.getBoundingClientRect() : rect;
-            
-            cmTooltip.style.top = (rect.top + (rect.height / 2) - (cmTooltip.offsetHeight / 2)) + 'px';
+
+            cmTooltip.style.top = Math.max(10, (rect.top + (rect.height / 2) - (cmTooltip.offsetHeight / 2))) + 'px';
             cmTooltip.style.left = (sidebarRect.right + 10) + 'px';
         });
-        
-        target.addEventListener('mouseleave', function() {
+
+        document.addEventListener('mouseout', function(e) {
+            var target = e.target.closest('.cm-tooltip-target');
+            if (!target) return;
+
             cmTooltip.style.opacity = '0';
             cmTooltip.style.visibility = 'hidden';
         });
-    });
-});
+    }
+
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initTooltip);
+    } else {
+        initTooltip();
+    }
+})();
 </script>
