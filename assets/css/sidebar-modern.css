@@ -1118,6 +1118,9 @@ nav#sticky[style] {
 body {
     padding-top: 149px !important; /* Logged OUT: 117 + 32 to compensate for missing admin bar */
 }
+body.single-post {
+    padding-top: 117px !important; /* Single post pages use 117px even when logged out */
+}
 body.admin-bar {
     padding-top: 117px !important; /* Logged IN: admin bar already adds 32px */
 }
