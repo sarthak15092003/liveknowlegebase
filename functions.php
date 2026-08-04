@@ -291,8 +291,9 @@ function docy_force_breadcrumb_css() {
         .entry-content h3, .entry-content .h3,
         .post-content h3, .post-content .h3,
         #post h3, #post .h3,
-        article h3, article .h3 {
-            font-size: 22px !important;
+        article h3, article .h3,
+        h3.wp-block-heading, .editor-content h3 {
+            font-size: 18px !important;
         }
         h4, .h4,
         .blog_single_item h4, .blog_single_item .h4,
