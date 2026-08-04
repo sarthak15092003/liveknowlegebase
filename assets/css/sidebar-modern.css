@@ -1524,3 +1524,8 @@ body:not(.admin-bar) section.blog_area.tip_doc_area {
 .related-article-link:hover .related-article-icon {
     transform: translateX(3px);
 }
+
+/* Force H3 font-size to 18px for all */
+h3, .editor-content h3, .blog_single_item h3, .entry-content h3 {
+    font-size: 18px !important;
+}
