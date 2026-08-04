@@ -1116,7 +1116,7 @@ nav#sticky[style] {
 
 /* Add padding to body to prevent content from hiding under fixed navbar */
 body {
-    padding-top: 149px !important; /* Logged OUT: 117 + 32 to compensate for missing admin bar */
+    padding-top: 140px !important; /* Logged OUT */
 }
 body.single-post {
     padding-top: 117px !important; /* Single post pages use 117px even when logged out */
