@@ -210,7 +210,7 @@ if ($is_single_post) {
             }
             
             $has_subcats = !empty($subcats);
-            $has_content = $has_subcats || $has_main_direct_posts;
+            $has_content = $has_subcats || ($is_single_post && $has_main_direct_posts && !$has_subcats);
             
             // Check if current page is in this category OR any of its subcategories
             $is_active_cat = in_array($section['slug'], $current_categories);
@@ -252,8 +252,8 @@ if ($is_single_post) {
             <?php if ($has_content) : ?>
             <div class="<?php echo esc_attr($content_class); ?> cmgalaxy-sortable-sub" id="<?php echo esc_attr($section['id']); ?>">
                 <?php
-                // Render direct posts of top-level category if any
-                if ($is_single_post && $has_main_direct_posts) {
+                // Render direct posts of top-level category ONLY if the category has NO subcategories
+                if ($is_single_post && $has_main_direct_posts && !$has_subcats) {
                     foreach ($main_direct_posts as $main_post) {
                         $is_current_post = $is_single_post && ($current_post_id == $main_post->ID);
                         $post_color = $is_current_post ? '#3B82F6' : '#64748b';
