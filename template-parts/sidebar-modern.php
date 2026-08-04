@@ -347,8 +347,8 @@ if ($is_single_post) {
                                             <?php if ($is_current_post): ?>
                                                 <div style="position: absolute; left: -1px; top: 0; bottom: 0; width: 2px; background: #3B82F6;"></div>
                                             <?php endif; ?>
-                                            <a href="<?php echo esc_url(get_permalink($subcat_post->ID)); ?>" style="color: <?php echo $post_color; ?>; font-size: 13.5px; text-decoration: none; font-weight: <?php echo $post_weight; ?>; display: flex; align-items: center; line-height: 1.4; width: 100%;">
-                                                <span style="white-space: normal; overflow: hidden; text-overflow: ellipsis; flex: 1;"><?php echo esc_html($subcat_post->post_title); ?></span>
+                                            <a href="<?php echo esc_url(get_permalink($subcat_post->ID)); ?>" style="color: <?php echo $post_color; ?>; font-size: 13.5px; text-decoration: none; font-weight: <?php echo $post_weight; ?>; display: flex; align-items: center; line-height: 1.4; width: 100%;" class="cm-tooltip-target" data-cm-tooltip="<?php echo esc_attr($subcat_post->post_title); ?>">
+                                                <span style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis; flex: 1;"><?php echo esc_html($subcat_post->post_title); ?></span>
                                             </a>
                                         </div>
                                         <?php
