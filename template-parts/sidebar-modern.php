@@ -268,7 +268,7 @@ if ($is_single_post) {
                                 <div style="position: absolute; left: 20px; top: 0; bottom: 0; width: 2px; background: #3B82F6;"></div>
                             <?php endif; ?>
                             <a href="<?php echo esc_url(get_permalink($main_post->ID)); ?>" style="color: <?php echo $post_color; ?>; font-size: 13.5px; text-decoration: none; font-weight: <?php echo $post_weight; ?>; display: flex; align-items: center; line-height: 1.4; width: 100%;" class="cm-tooltip-target" data-cm-tooltip="<?php echo esc_attr($main_post->post_title); ?>">
-                                <span style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis; flex: 1;"><?php echo esc_html($main_post->post_title); ?></span>
+                                <span style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis; flex: 1; pointer-events: none;"><?php echo esc_html($main_post->post_title); ?></span>
                             </a>
                         </div>
                         <?php
@@ -338,8 +338,8 @@ if ($is_single_post) {
                         <div class="cmgalaxy-subcat-wrapper" data-term-id="<?php echo esc_attr($subcat->term_id); ?>">
                             <div class="<?php echo esc_attr($subcat_wrapper_class); ?>" style="padding-left: 55px; display: flex; align-items: center; padding-top: 8px; padding-bottom: 8px; cursor: pointer;" data-target="<?php echo esc_attr($subcat_target_id); ?>">
                                 <a href="<?php echo esc_url(get_category_link($subcat->term_id)); ?>" class="subsection-title cm-tooltip-target" style="color:#475569; font-weight:<?php echo $subcat_font_weight; ?>; font-size: 14px; text-decoration: none; flex: 1; padding-right: 10px; display: flex; align-items: center; justify-content: space-between; width: 100%; overflow: hidden;" data-cm-tooltip="<?php echo esc_attr($subcat->name); ?>">
-                                    <span style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis; flex: 1;"><?php echo esc_html($subcat->name); ?></span>
-                                    <span style="font-size: 11px; background: #f1f5f9; padding: 2px 6px; border-radius: 4px; color: #94a3b8; font-weight: 500; margin-left: 8px; flex-shrink: 0;"><?php echo esc_html($subcat->count); ?></span>
+                                    <span style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis; flex: 1; pointer-events: none;"><?php echo esc_html($subcat->name); ?></span>
+                                    <span style="font-size: 11px; background: #f1f5f9; padding: 2px 6px; border-radius: 4px; color: #94a3b8; font-weight: 500; margin-left: 8px; flex-shrink: 0; pointer-events: none;"><?php echo esc_html($subcat->count); ?></span>
                                 </a>
                                 <?php if ($has_children) : ?>
                                 <span class="expand-icon-subcat" style="color: #64748b; margin-right: 15px; display: inline-flex; transition: transform 0.3s; transform: <?php echo $is_subcat_active ? 'rotate(270deg)' : 'rotate(180deg)'; ?>;">
@@ -379,8 +379,8 @@ if ($is_single_post) {
                                             <div style="position: absolute; left: -1px; top: 0; bottom: 0; width: 2px; background: #3B82F6;"></div>
                                         <?php endif; ?>
                                         <a href="<?php echo esc_url(get_category_link($sub_subcat->term_id)); ?>" class="cm-tooltip-target" style="color: <?php echo $sub_subcat_color; ?>; font-size: 13.5px; text-decoration: none; font-weight: <?php echo $sub_subcat_weight; ?>; display: flex; align-items: center; justify-content: space-between; line-height: 1.4; width: 100%; overflow: hidden;" data-cm-tooltip="<?php echo esc_attr($sub_subcat->name); ?>">
-                                            <span style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis; flex: 1;"><?php echo esc_html($sub_subcat->name); ?></span>
-                                            <span style="font-size: 11px; background: #f1f5f9; padding: 2px 6px; border-radius: 4px; color: #94a3b8; font-weight: 500; margin-left: 8px; flex-shrink: 0;"><?php echo esc_html($sub_subcat->count); ?></span>
+                                            <span style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis; flex: 1; pointer-events: none;"><?php echo esc_html($sub_subcat->name); ?></span>
+                                            <span style="font-size: 11px; background: #f1f5f9; padding: 2px 6px; border-radius: 4px; color: #94a3b8; font-weight: 500; margin-left: 8px; flex-shrink: 0; pointer-events: none;"><?php echo esc_html($sub_subcat->count); ?></span>
                                         </a>
                                         </div>
                                         <?php
@@ -399,7 +399,7 @@ if ($is_single_post) {
                                                         <div style="position: absolute; left: 10px; top: 0; bottom: 0; width: 2px; background: #3B82F6;"></div>
                                                     <?php endif; ?>
                                                     <a href="<?php echo esc_url(get_permalink($ssp->ID)); ?>" style="color: <?php echo $post_color; ?>; font-size: 13.5px; text-decoration: none; font-weight: <?php echo $post_weight; ?>; display: flex; align-items: center; line-height: 1.4; width: 100%;" class="cm-tooltip-target" data-cm-tooltip="<?php echo esc_attr($ssp->post_title); ?>">
-                                                        <span style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis; flex: 1;"><?php echo esc_html($ssp->post_title); ?></span>
+                                                        <span style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis; flex: 1; pointer-events: none;"><?php echo esc_html($ssp->post_title); ?></span>
                                                     </a>
                                                 </div>
                                                 <?php
@@ -423,7 +423,7 @@ if ($is_single_post) {
                                                 <div style="position: absolute; left: -1px; top: 0; bottom: 0; width: 2px; background: #3B82F6;"></div>
                                             <?php endif; ?>
                                             <a href="<?php echo esc_url(get_permalink($subcat_post->ID)); ?>" style="color: <?php echo $post_color; ?>; font-size: 13.5px; text-decoration: none; font-weight: <?php echo $post_weight; ?>; display: flex; align-items: center; line-height: 1.4; width: 100%;" class="cm-tooltip-target" data-cm-tooltip="<?php echo esc_attr($subcat_post->post_title); ?>">
-                                                <span style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis; flex: 1;"><?php echo esc_html($subcat_post->post_title); ?></span>
+                                                <span style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis; flex: 1; pointer-events: none;"><?php echo esc_html($subcat_post->post_title); ?></span>
                                             </a>
                                         </div>
                                         <?php
@@ -645,6 +645,11 @@ document.addEventListener('DOMContentLoaded', function() {
         document.addEventListener('mouseout', function(e) {
             var target = e.target.closest('.cm-tooltip-target');
             if (!target) return;
+
+            // If we are moving to a child element inside the target, do not hide!
+            if (e.relatedTarget && target.contains(e.relatedTarget)) {
+                return;
+            }
 
             cmTooltip.style.opacity = '0';
             cmTooltip.style.visibility = 'hidden';
