@@ -357,7 +357,6 @@ if ($is_single_post) {
                                 
                                 echo '</div>'; // close sub-subcategories div
                             }
-                        }
 
                         ?>
                         </div>
