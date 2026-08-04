@@ -247,6 +247,21 @@ if ($is_single_post) {
                         
                         $has_sub_subcats = !empty($sub_subcats);
                         
+                        // Fetch posts for this subcategory efficiently
+                        global $wpdb;
+                        $subcat_posts = $wpdb->get_results($wpdb->prepare("
+                            SELECT p.ID, p.post_title 
+                            FROM {$wpdb->posts} p
+                            INNER JOIN {$wpdb->term_relationships} tr ON p.ID = tr.object_id
+                            INNER JOIN {$wpdb->term_taxonomy} tt ON tr.term_taxonomy_id = tt.term_taxonomy_id
+                            WHERE tt.term_id = %d
+                            AND tt.taxonomy = 'category'
+                            AND p.post_type = 'post'
+                            AND p.post_status = 'publish'
+                            ORDER BY p.menu_order ASC, p.post_title ASC
+                        ", $subcat->term_id));
+                        $has_posts = !empty($subcat_posts);
+                        
                         // Check if any sub-subcat is active to expand the parent subcat
                         $is_any_sub_subcat_active = false;
                         if ($has_sub_subcats) {
@@ -257,12 +272,25 @@ if ($is_single_post) {
                                 }
                             }
                         }
+                        
+                        $is_any_post_active = false;
+                        if ($has_posts && $is_single_post) {
+                            $current_id = get_queried_object_id();
+                            foreach ($subcat_posts as $sp) {
+                                if ($sp->ID == $current_id) {
+                                    $is_any_post_active = true;
+                                    break;
+                                }
+                            }
+                        }
 
-                        $is_subcat_active = in_array($subcat->slug, $current_categories) || $is_any_sub_subcat_active;
+                        $is_subcat_active = in_array($subcat->slug, $current_categories) || $is_any_sub_subcat_active || $is_any_post_active;
+                        
+                        $has_children = $has_sub_subcats || $has_posts;
                         
                         $subcat_wrapper_class = 'subsection-item';
                         if ($is_subcat_active) $subcat_wrapper_class .= ' current-page';
-                        if ($has_sub_subcats) $subcat_wrapper_class .= ' expandable-subcat';
+                        if ($has_children) $subcat_wrapper_class .= ' expandable-subcat';
                         
                         $subcat_font_weight = $is_subcat_active ? 'bold' : '500';
                         $subcat_target_id = 'subcat-' . $subcat->term_id;
@@ -273,7 +301,7 @@ if ($is_single_post) {
                                     <span style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis; flex: 1;"><?php echo esc_html($subcat->name); ?></span>
                                     <span style="font-size: 11px; background: #f1f5f9; padding: 2px 6px; border-radius: 4px; color: #94a3b8; font-weight: 500; margin-left: 8px; flex-shrink: 0;"><?php echo esc_html($subcat->count); ?></span>
                                 </a>
-                                <?php if ($has_sub_subcats) : ?>
+                                <?php if ($has_children) : ?>
                                 <span class="expand-icon-subcat" style="color: #64748b; margin-right: 15px; display: inline-flex; transition: transform 0.3s; transform: <?php echo $is_subcat_active ? 'rotate(270deg)' : 'rotate(180deg)'; ?>;">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none">
                                         <path d="M15 6L9 12.0001L15 18" stroke="currentColor" stroke-width="1.5" stroke-miterlimit="16" stroke-linecap="round" stroke-linejoin="round"/>
@@ -282,27 +310,55 @@ if ($is_single_post) {
                                 <?php endif; ?>
                             </div>
                             <?php
-                            if ($has_sub_subcats) {
-                                $sub_subcat_display = $is_subcat_active ? 'block' : 'none';
-                                echo '<div class="sub-subcategories cmgalaxy-sortable-sub-sub" id="' . esc_attr($subcat_target_id) . '" style="display: ' . $sub_subcat_display . '; padding-left: 0; margin-bottom: 10px; border-left: 1px solid #e2e8f0; margin-left: 55px;">';
-                                foreach ($sub_subcats as $sub_subcat) {
-                                    $is_sub_subcat_active = in_array($sub_subcat->slug, $current_categories);
-                                    $sub_subcat_color = $is_sub_subcat_active ? '#3B82F6' : '#64748b';
-                                    $sub_subcat_weight = $is_sub_subcat_active ? '500' : '400';
-                                    ?>
-                                    <div class="sidebar-sub-subcat-item" data-term-id="<?php echo esc_attr($sub_subcat->term_id); ?>" style="padding: 6px 0 6px 8px; position: relative;">
-                                    <?php if ($is_sub_subcat_active): ?>
-                                        <div style="position: absolute; left: -1px; top: 0; bottom: 0; width: 2px; background: #3B82F6;"></div>
-                                    <?php endif; ?>
-                                    <a href="<?php echo esc_url(get_category_link($sub_subcat->term_id)); ?>" style="color: <?php echo $sub_subcat_color; ?>; font-size: 13.5px; text-decoration: none; font-weight: <?php echo $sub_subcat_weight; ?>; display: flex; align-items: center; justify-content: space-between; line-height: 1.4; width: 100%; overflow: hidden;">
-                                        <span style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis; flex: 1;"><?php echo esc_html($sub_subcat->name); ?></span>
-                                        <span style="font-size: 11px; background: #f1f5f9; padding: 2px 6px; border-radius: 4px; color: #94a3b8; font-weight: 500; margin-left: 8px; flex-shrink: 0;"><?php echo esc_html($sub_subcat->count); ?></span>
-                                    </a>
-                                </div>
-                                <?php
+                            if ($has_children) {
+                                $children_display = $is_subcat_active ? 'block' : 'none';
+                                echo '<div class="sub-subcategories cmgalaxy-sortable-sub-sub" id="' . esc_attr($subcat_target_id) . '" style="display: ' . $children_display . '; padding-left: 0; margin-bottom: 10px; border-left: 1px solid #e2e8f0; margin-left: 55px;">';
+                                
+                                if ($has_sub_subcats) {
+                                    foreach ($sub_subcats as $sub_subcat) {
+                                        $is_sub_subcat_active = in_array($sub_subcat->slug, $current_categories);
+                                        $sub_subcat_color = $is_sub_subcat_active ? '#3B82F6' : '#64748b';
+                                        $sub_subcat_weight = $is_sub_subcat_active ? '500' : '400';
+                                        ?>
+                                        <div class="sidebar-sub-subcat-item" data-term-id="<?php echo esc_attr($sub_subcat->term_id); ?>" style="padding: 6px 0 6px 8px; position: relative;">
+                                        <?php if ($is_sub_subcat_active): ?>
+                                            <div style="position: absolute; left: -1px; top: 0; bottom: 0; width: 2px; background: #3B82F6;"></div>
+                                        <?php endif; ?>
+                                        <a href="<?php echo esc_url(get_category_link($sub_subcat->term_id)); ?>" style="color: <?php echo $sub_subcat_color; ?>; font-size: 13.5px; text-decoration: none; font-weight: <?php echo $sub_subcat_weight; ?>; display: flex; align-items: center; justify-content: space-between; line-height: 1.4; width: 100%; overflow: hidden;">
+                                            <span style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis; flex: 1;"><?php echo esc_html($sub_subcat->name); ?></span>
+                                            <span style="font-size: 11px; background: #f1f5f9; padding: 2px 6px; border-radius: 4px; color: #94a3b8; font-weight: 500; margin-left: 8px; flex-shrink: 0;"><?php echo esc_html($sub_subcat->count); ?></span>
+                                        </a>
+                                        </div>
+                                        <?php
+                                    }
+                                }
+                                
+                                if ($has_posts) {
+                                    foreach ($subcat_posts as $subcat_post) {
+                                        $is_current_post = $is_single_post && (get_queried_object_id() == $subcat_post->ID);
+                                        $post_color = $is_current_post ? '#3B82F6' : '#64748b';
+                                        $post_weight = $is_current_post ? '500' : '400';
+                                        $post_wrapper_class = 'sidebar-subcat-post-item';
+                                        if ($is_current_post) {
+                                            $post_wrapper_class .= ' active-article';
+                                        }
+                                        ?>
+                                        <div class="<?php echo esc_attr($post_wrapper_class); ?>" style="padding: 6px 0 6px 15px; position: relative;">
+                                            <?php if ($is_current_post): ?>
+                                                <div style="position: absolute; left: -1px; top: 0; bottom: 0; width: 2px; background: #3B82F6;"></div>
+                                            <?php endif; ?>
+                                            <a href="<?php echo esc_url(get_permalink($subcat_post->ID)); ?>" style="color: <?php echo $post_color; ?>; font-size: 13.5px; text-decoration: none; font-weight: <?php echo $post_weight; ?>; display: flex; align-items: center; line-height: 1.4; width: 100%;">
+                                                <span style="white-space: normal; overflow: hidden; text-overflow: ellipsis; flex: 1;"><?php echo esc_html($subcat_post->post_title); ?></span>
+                                            </a>
+                                        </div>
+                                        <?php
+                                    }
+                                }
+                                
+                                echo '</div>'; // close sub-subcategories div
                             }
-                            echo '</div>';
                         }
+
                         ?>
                         </div>
                         <?php
@@ -399,14 +455,16 @@ document.addEventListener('DOMContentLoaded', function() {
     // Auto-scroll to active item on load
     const activeItem = document.querySelector('.current-page:not(.expandable-subcat), .active-article');
     if (activeItem) {
-        // If it's inside a subcategory, ensure the subcategory is open
-        const parentSubcatContent = activeItem.closest('.subcat-content');
+        // If it's inside a subcategory dropdown, ensure the subcategory is open
+        const parentSubcatContent = activeItem.closest('.sub-subcategories');
         if (parentSubcatContent) {
             parentSubcatContent.style.display = 'block';
             const toggleHeader = document.querySelector(`[data-target="${parentSubcatContent.id}"]`);
             if (toggleHeader) {
                 const icon = toggleHeader.querySelector('.expand-icon-subcat');
-                if (icon) icon.style.transform = 'rotate(270deg)';
+                if (icon) {
+                    icon.style.transform = 'rotate(270deg)';
+                }
             }
         }
         
