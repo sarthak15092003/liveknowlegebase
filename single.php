@@ -164,7 +164,6 @@ get_template_part( 'template-parts/single-post/banner', $banner_type );
                             display: flex;
                             justify-content: space-between;
                             align-items: center;
-                            border-bottom: 1px solid #e5e7eb;
                             padding-bottom: 20px;
                         }
                         .cm-feedback-title {
@@ -205,6 +204,7 @@ get_template_part( 'template-parts/single-post/banner', $banner_type );
                         .cm-feedback-form-area {
                             display: none;
                             padding-top: 24px;
+                            border-top: 1px solid #e5e7eb;
                         }
                         .cm-feedback-form-title {
                             font-size: 18px;
@@ -290,29 +290,54 @@ get_template_part( 'template-parts/single-post/banner', $banner_type );
                             </div>
                             
                             <div class="cm-feedback-form-area" id="cm-feedback-form">
-                                <h3 class="cm-feedback-form-title" style="margin-top: 0px;">How can we improve our product?</h3>
-                                <div class="cm-feedback-options">
+                                <h3 class="cm-feedback-form-title" id="cm-feedback-title" style="margin-top: 0px;">How can we improve our product?</h3>
+                                
+                                <div class="cm-feedback-options" id="cm-options-yes" style="display: none;">
                                     <label class="cm-feedback-option">
-                                        <input type="radio" name="cm_feedback_reason" class="cm-feedback-radio" value="Help me get started faster">
-                                        Help me get started faster
+                                        <input type="radio" name="cm_feedback_reason_yes" class="cm-feedback-radio" value="The guide worked as expected">
+                                        The guide worked as expected
                                     </label>
                                     <label class="cm-feedback-option">
-                                        <input type="radio" name="cm_feedback_reason" class="cm-feedback-radio" value="Make it easier to find what I'm looking for">
-                                        Make it easier to find what I'm looking for
+                                        <input type="radio" name="cm_feedback_reason_yes" class="cm-feedback-radio" value="It was easy to find the information I needed">
+                                        It was easy to find the information I needed
                                     </label>
                                     <label class="cm-feedback-option">
-                                        <input type="radio" name="cm_feedback_reason" class="cm-feedback-radio" value="Make it easy to understand the product and features">
-                                        Make it easy to understand the product and features
+                                        <input type="radio" name="cm_feedback_reason_yes" class="cm-feedback-radio" value="It was easy to understand the product and features">
+                                        It was easy to understand the product and features
                                     </label>
                                     <label class="cm-feedback-option">
-                                        <input type="radio" name="cm_feedback_reason" class="cm-feedback-radio" value="Update this documentation">
-                                        Update this documentation
+                                        <input type="radio" name="cm_feedback_reason_yes" class="cm-feedback-radio" value="The documentation is up to date">
+                                        The documentation is up to date
                                     </label>
                                     <label class="cm-feedback-option">
-                                        <input type="radio" name="cm_feedback_reason" class="cm-feedback-radio" value="Something else">
+                                        <input type="radio" name="cm_feedback_reason_yes" class="cm-feedback-radio" value="Something else">
                                         Something else
                                     </label>
                                 </div>
+
+                                <div class="cm-feedback-options" id="cm-options-no" style="display: none;">
+                                    <label class="cm-feedback-option">
+                                        <input type="radio" name="cm_feedback_reason_no" class="cm-feedback-radio" value="Help me get started faster">
+                                        Help me get started faster
+                                    </label>
+                                    <label class="cm-feedback-option">
+                                        <input type="radio" name="cm_feedback_reason_no" class="cm-feedback-radio" value="Make it easier to find what I'm looking for">
+                                        Make it easier to find what I'm looking for
+                                    </label>
+                                    <label class="cm-feedback-option">
+                                        <input type="radio" name="cm_feedback_reason_no" class="cm-feedback-radio" value="Make it easy to understand the product and features">
+                                        Make it easy to understand the product and features
+                                    </label>
+                                    <label class="cm-feedback-option">
+                                        <input type="radio" name="cm_feedback_reason_no" class="cm-feedback-radio" value="Update this documentation">
+                                        Update this documentation
+                                    </label>
+                                    <label class="cm-feedback-option">
+                                        <input type="radio" name="cm_feedback_reason_no" class="cm-feedback-radio" value="Something else">
+                                        Something else
+                                    </label>
+                                </div>
+
                                 <div class="cm-feedback-actions">
                                     <button type="button" class="cm-btn-cancel" id="cm-feedback-cancel">Cancel</button>
                                     <button type="button" class="cm-btn-submit" id="cm-feedback-submit">Submit feedback</button>
@@ -327,15 +352,26 @@ get_template_part( 'template-parts/single-post/banner', $banner_type );
                             const formArea = document.getElementById('cm-feedback-form');
                             const btnCancel = document.getElementById('cm-feedback-cancel');
                             const btnSubmit = document.getElementById('cm-feedback-submit');
+                            const title = document.getElementById('cm-feedback-title');
+                            const optionsYes = document.getElementById('cm-options-yes');
+                            const optionsNo = document.getElementById('cm-options-no');
                             
                             function showForm(vote) {
                                 formArea.style.display = 'block';
+                                document.querySelectorAll('.cm-feedback-radio').forEach(r => r.checked = false);
+                                
                                 if (vote === 'yes') {
                                     btnYes.classList.add('active');
                                     btnNo.classList.remove('active');
+                                    title.innerText = 'Great! What worked best for you?';
+                                    optionsYes.style.display = 'flex';
+                                    optionsNo.style.display = 'none';
                                 } else {
                                     btnNo.classList.add('active');
                                     btnYes.classList.remove('active');
+                                    title.innerText = 'How can we improve our product?';
+                                    optionsNo.style.display = 'flex';
+                                    optionsYes.style.display = 'none';
                                 }
                             }
                             
@@ -347,7 +383,6 @@ get_template_part( 'template-parts/single-post/banner', $banner_type );
                                     formArea.style.display = 'none';
                                     btnYes.classList.remove('active');
                                     btnNo.classList.remove('active');
-                                    // Uncheck radios
                                     document.querySelectorAll('.cm-feedback-radio').forEach(r => r.checked = false);
                                 });
                             }
