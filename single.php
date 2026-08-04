@@ -394,11 +394,48 @@ get_template_part( 'template-parts/single-post/banner', $banner_type );
                                         alert('Please select an option first.');
                                         return;
                                     }
-                                    alert('Thank you for your feedback!');
-                                    formArea.style.display = 'none';
-                                    btnYes.classList.remove('active');
-                                    btnNo.classList.remove('active');
-                                    document.querySelectorAll('.cm-feedback-radio').forEach(r => r.checked = false);
+                                    
+                                    const vote = btnYes.classList.contains('active') ? 'yes' : 'no';
+                                    const reason = selected.value;
+                                    const postId = <?php echo get_the_ID(); ?>;
+                                    const postTitle = <?php echo json_encode(get_the_title()); ?>;
+                                    
+                                    const formData = new FormData();
+                                    formData.append('action', 'cm_submit_feedback');
+                                    formData.append('post_id', postId);
+                                    formData.append('post_title', postTitle);
+                                    formData.append('vote', vote);
+                                    formData.append('reason', reason);
+                                    
+                                    // Disable submit button while saving
+                                    const originalText = btnSubmit.innerText;
+                                    btnSubmit.innerText = 'Saving...';
+                                    btnSubmit.disabled = true;
+
+                                    fetch('<?php echo admin_url("admin-ajax.php"); ?>', {
+                                        method: 'POST',
+                                        body: formData
+                                    })
+                                    .then(response => response.json())
+                                    .then(data => {
+                                        if(data.success) {
+                                            alert('Thank you for your feedback!');
+                                        } else {
+                                            alert('Something went wrong. Please try again.');
+                                        }
+                                    })
+                                    .catch(error => {
+                                        alert('Error saving feedback.');
+                                        console.error(error);
+                                    })
+                                    .finally(() => {
+                                        btnSubmit.innerText = originalText;
+                                        btnSubmit.disabled = false;
+                                        formArea.style.display = 'none';
+                                        btnYes.classList.remove('active');
+                                        btnNo.classList.remove('active');
+                                        document.querySelectorAll('.cm-feedback-radio').forEach(r => r.checked = false);
+                                    });
                                 });
                             }
                         });
