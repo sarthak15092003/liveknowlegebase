@@ -47,11 +47,6 @@ if ( ! $current_cat_id ) {
 			echo '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#3b82f6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-right: 8px; flex-shrink: 0;"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path></svg>';
 			echo '<span>' . esc_html( $subcat->name ) . '</span> <span style="font-size: 14px; color: #6b7280; font-weight: normal; margin-left: 5px;">(' . intval($subcat->count) . ' articles)</span>';
 			echo '</h3>';
-			if ( ! empty( $subcat->description ) ) {
-				echo '<p class="tw-subcategory-desc" style="margin-left: 28px; margin-bottom: 0;">' . esc_html( $subcat->description ) . '</p>';
-			} else {
-                echo '<p class="tw-subcategory-desc" style="margin-left: 28px; margin-bottom: 0;">Articles relating to ' . esc_html( $subcat->name ) . '</p>';
-            }
 			echo '</div>'; // End Header
 
             // Articles List (Visible by default)
