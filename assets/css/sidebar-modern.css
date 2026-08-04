@@ -1118,6 +1118,10 @@ nav#sticky[style] {
 body {
     padding-top: 117px !important; /* Same spacing for both logged in and logged out */
 }
+/* Match admin-bar margin-top for logged-out navbar */
+.navbar_fixed.menu_one {
+    margin-top: 32px;
+}
 body.admin-bar {
     padding-top: 117px !important; /* Same spacing for both logged in and logged out */
 }
