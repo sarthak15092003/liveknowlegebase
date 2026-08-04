@@ -410,6 +410,92 @@ function cmgalaxy_remove_empty_nbsp_paragraphs($content) {
 add_filter('the_content', 'cmgalaxy_remove_empty_nbsp_paragraphs', 20);
 
 // =====================================================================
+// CM Custom Tooltip for Sidebar (injected via wp_footer for reliability)
+// =====================================================================
+function cm_sidebar_tooltip_script() {
+    ?>
+    <style>
+    .cm-custom-tooltip {
+        position: fixed;
+        background: #ffffff;
+        color: #111827;
+        padding: 8px 14px;
+        border-radius: 6px;
+        font-size: 13px;
+        font-weight: 400;
+        white-space: nowrap;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.12);
+        z-index: 999999;
+        pointer-events: none;
+        border: 1px solid #e5e7eb;
+        opacity: 0;
+        visibility: hidden;
+        transition: opacity 0.15s ease, visibility 0.15s ease;
+        font-family: 'Instrument Sans', -apple-system, sans-serif;
+    }
+    .cm-custom-tooltip.cm-tooltip-visible {
+        opacity: 1;
+        visibility: visible;
+    }
+    .cm-custom-tooltip::before {
+        content: '';
+        position: absolute;
+        right: 100%;
+        top: 50%;
+        transform: translateY(-50%);
+        border-width: 5px 6px 5px 0;
+        border-style: solid;
+        border-color: transparent #ffffff transparent transparent;
+        filter: drop-shadow(-2px 0 1px rgba(0,0,0,0.04));
+    }
+    </style>
+    <script>
+    (function() {
+        // Create tooltip element
+        var tt = document.createElement('div');
+        tt.className = 'cm-custom-tooltip';
+        document.body.appendChild(tt);
+
+        var hideTimer = null;
+
+        document.addEventListener('mouseover', function(e) {
+            var link = e.target.closest('.cm-tooltip-target');
+            if (!link) return;
+
+            var text = link.getAttribute('data-cm-tooltip');
+            if (!text) return;
+
+            if (hideTimer) { clearTimeout(hideTimer); hideTimer = null; }
+
+            tt.textContent = text;
+            tt.classList.add('cm-tooltip-visible');
+
+            var rect = link.getBoundingClientRect();
+            var sidebar = link.closest('.modern-sidebar');
+            var sidebarRight = sidebar ? sidebar.getBoundingClientRect().right : rect.right;
+
+            tt.style.top = Math.max(10, (rect.top + (rect.height / 2) - (tt.offsetHeight / 2))) + 'px';
+            tt.style.left = (sidebarRight + 10) + 'px';
+        }, true);
+
+        document.addEventListener('mouseout', function(e) {
+            var link = e.target.closest('.cm-tooltip-target');
+            if (!link) return;
+
+            // Don't hide if moving to a child inside the same link
+            if (e.relatedTarget && link.contains(e.relatedTarget)) return;
+
+            hideTimer = setTimeout(function() {
+                tt.classList.remove('cm-tooltip-visible');
+            }, 50);
+        }, true);
+    })();
+    </script>
+    <?php
+}
+add_action('wp_footer', 'cm_sidebar_tooltip_script', 999);
+
+// =====================================================================
 // CM Feedback System
 // =====================================================================
 
