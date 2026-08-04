@@ -1116,20 +1116,10 @@ nav#sticky[style] {
 
 /* Add padding to body to prevent content from hiding under fixed navbar */
 body {
-    padding-top: 117px !important; /* Same spacing for both logged in and logged out */
-}
-/* Match admin-bar margin-top for logged-out navbar */
-nav#sticky[style] {
-    top: 32px !important; /* Push fixed navbar down 32px to match admin-bar position */
-}
-body.admin-bar nav#sticky[style] {
-    top: 32px !important; /* Already pushed by admin bar */
-}
-.menu_one {
-    margin-top: 32px;
+    padding-top: 149px !important; /* Logged OUT: 117 + 32 to compensate for missing admin bar */
 }
 body.admin-bar {
-    padding-top: 117px !important; /* Same spacing for both logged in and logged out */
+    padding-top: 117px !important; /* Logged IN: admin bar already adds 32px */
 }
 
 /* Adjust for mobile */
