@@ -536,3 +536,39 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 </script>
 <?php endif; ?>
+
+<!-- CM Custom Tooltip Logic -->
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // Create tooltip element
+    var cmTooltip = document.createElement('div');
+    cmTooltip.className = 'cm-custom-tooltip';
+    document.body.appendChild(cmTooltip);
+
+    var targets = document.querySelectorAll('.cm-tooltip-target');
+    
+    targets.forEach(function(target) {
+        target.addEventListener('mouseenter', function(e) {
+            var text = target.getAttribute('data-cm-tooltip');
+            if(!text) return;
+            
+            cmTooltip.textContent = text;
+            cmTooltip.style.opacity = '1';
+            cmTooltip.style.visibility = 'visible';
+            
+            var rect = target.getBoundingClientRect();
+            // Position to the right of the sidebar container
+            var sidebar = target.closest('.modern-sidebar');
+            var sidebarRect = sidebar ? sidebar.getBoundingClientRect() : rect;
+            
+            cmTooltip.style.top = (rect.top + (rect.height / 2) - (cmTooltip.offsetHeight / 2)) + 'px';
+            cmTooltip.style.left = (sidebarRect.right + 10) + 'px';
+        });
+        
+        target.addEventListener('mouseleave', function() {
+            cmTooltip.style.opacity = '0';
+            cmTooltip.style.visibility = 'hidden';
+        });
+    });
+});
+</script>
