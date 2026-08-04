@@ -475,7 +475,7 @@ function cm_sidebar_tooltip_script() {
             var sidebarRight = sidebar ? sidebar.getBoundingClientRect().right : rect.right;
 
             tt.style.top = Math.max(10, (rect.top + (rect.height / 2) - (tt.offsetHeight / 2))) + 'px';
-            tt.style.left = (sidebarRight - 5) + 'px';
+            tt.style.left = (sidebarRight - 15) + 'px';
         }, true);
 
         document.addEventListener('mouseout', function(e) {
