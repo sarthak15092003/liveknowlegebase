@@ -1472,7 +1472,13 @@ body.admin-bar {
 /* Specific Gap Adjustments */
 .category .blog_area,
 .archive .blog_area {
-    padding-top: 80px !important; /* Huge gap on category pages to prevent breadcrumb from hiding */
+    padding-top: 80px !important; /* Gap on category pages when logged in (admin bar adds 32px) */
+}
+
+/* When logged OUT (no admin bar), add 32px extra gap to match logged-in appearance */
+body:not(.admin-bar) .category .blog_area,
+body:not(.admin-bar) .archive .blog_area {
+    padding-top: 112px !important; /* 80px + 32px to compensate for missing admin bar */
 }
 
 .single-post .blog_area {
