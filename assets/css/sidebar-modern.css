@@ -1116,10 +1116,10 @@ nav#sticky[style] {
 
 /* Add padding to body to prevent content from hiding under fixed navbar */
 body {
-    padding-top: 85px !important; /* Space for fixed navbar when logged out */
+    padding-top: 117px !important; /* Same spacing for both logged in and logged out */
 }
 body.admin-bar {
-    padding-top: 117px !important; /* Space for fixed navbar + 32px WP Admin bar when logged in */
+    padding-top: 117px !important; /* Same spacing for both logged in and logged out */
 }
 
 /* Adjust for mobile */
