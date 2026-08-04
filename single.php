@@ -154,16 +154,220 @@ get_template_part( 'template-parts/single-post/banner', $banner_type );
                             </ul>
                         </div>
 
-                        <div class="feedback-section"  style="margin-top:20px">
-                            <p class="fw-semibold mb-2" style="color: #484a61 !important;">Was this helpful?</p>
-                            <div class="d-flex gap-2 mb-3">
-                                <button type="button" class="btn btn-primary">Yes</button>
-                                <button type="button" class="btn btn-outline-secondary">No</button>
+                        <style>
+                        .cm-feedback-wrapper {
+                            margin-top: 40px;
+                            margin-bottom: 40px;
+                            font-family: 'Instrument Sans', sans-serif;
+                        }
+                        .cm-feedback-top {
+                            display: flex;
+                            justify-content: space-between;
+                            align-items: center;
+                            border-bottom: 1px solid #e5e7eb;
+                            padding-bottom: 20px;
+                        }
+                        .cm-feedback-title {
+                            font-size: 16px;
+                            color: #4b5563;
+                            margin: 0;
+                        }
+                        .cm-feedback-buttons {
+                            display: flex;
+                            gap: 12px;
+                        }
+                        .cm-btn-vote {
+                            display: flex;
+                            align-items: center;
+                            gap: 8px;
+                            padding: 8px 16px;
+                            border: 1px solid #d1d5db;
+                            background: #ffffff;
+                            border-radius: 999px;
+                            color: #374151;
+                            font-size: 14px;
+                            font-weight: 500;
+                            cursor: pointer;
+                            transition: all 0.2s;
+                        }
+                        .cm-btn-vote:hover {
+                            background: #f9fafb;
+                            border-color: #9ca3af;
+                        }
+                        .cm-btn-vote.active {
+                            background: #f3f4f6;
+                            border-color: #6b7280;
+                        }
+                        .cm-btn-vote svg {
+                            width: 16px;
+                            height: 16px;
+                        }
+                        .cm-feedback-form-area {
+                            display: none;
+                            padding-top: 24px;
+                        }
+                        .cm-feedback-form-title {
+                            font-size: 18px;
+                            font-weight: 600;
+                            color: #111827;
+                            margin-bottom: 16px;
+                        }
+                        .cm-feedback-options {
+                            display: flex;
+                            flex-direction: column;
+                            gap: 12px;
+                            margin-bottom: 24px;
+                        }
+                        .cm-feedback-option {
+                            display: flex;
+                            align-items: center;
+                            gap: 12px;
+                            cursor: pointer;
+                            color: #4b5563;
+                            font-size: 15px;
+                        }
+                        .cm-feedback-radio {
+                            appearance: none;
+                            width: 20px;
+                            height: 20px;
+                            border: 1px solid #d1d5db;
+                            border-radius: 50%;
+                            margin: 0;
+                            cursor: pointer;
+                            position: relative;
+                        }
+                        .cm-feedback-radio:checked {
+                            border-color: #808080;
+                            border-width: 5px;
+                        }
+                        .cm-feedback-actions {
+                            display: flex;
+                            gap: 12px;
+                        }
+                        .cm-btn-cancel {
+                            padding: 10px 20px;
+                            border: 1px solid #d1d5db;
+                            background: #ffffff;
+                            border-radius: 12px;
+                            color: #374151;
+                            font-size: 14px;
+                            font-weight: 500;
+                            cursor: pointer;
+                            transition: all 0.2s;
+                        }
+                        .cm-btn-cancel:hover {
+                            background: #f9fafb;
+                        }
+                        .cm-btn-submit {
+                            padding: 10px 20px;
+                            border: none;
+                            background: #808080;
+                            border-radius: 12px;
+                            color: #ffffff;
+                            font-size: 14px;
+                            font-weight: 500;
+                            cursor: pointer;
+                            transition: all 0.2s;
+                        }
+                        .cm-btn-submit:hover {
+                            background: #6b7280;
+                        }
+                        </style>
+
+                        <div class="cm-feedback-wrapper">
+                            <div class="cm-feedback-top">
+                                <h4 class="cm-feedback-title">Was this page helpful?</h4>
+                                <div class="cm-feedback-buttons">
+                                    <button class="cm-btn-vote" id="cm-vote-yes">
+                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3zM7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3"></path></svg>
+                                        Yes
+                                    </button>
+                                    <button class="cm-btn-vote" id="cm-vote-no">
+                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 15v4a3 3 0 0 0 3 3l4-9V2H5.72a2 2 0 0 0-2 1.7l-1.38 9a2 2 0 0 0 2 2.3zm7-13h3a2 2 0 0 1 2 2v7a2 2 0 0 1-2 2h-3"></path></svg>
+                                        No
+                                    </button>
+                                </div>
                             </div>
-                            <p class="small text-muted mb-0">
-                                This form is used for documentation feedback only. Learn how to get help with <a href="#" style="color: #3b82f6;">CMGalaxy</a>.
-                            </p>
+                            
+                            <div class="cm-feedback-form-area" id="cm-feedback-form">
+                                <h3 class="cm-feedback-form-title" style="margin-top: 0px;">How can we improve our product?</h3>
+                                <div class="cm-feedback-options">
+                                    <label class="cm-feedback-option">
+                                        <input type="radio" name="cm_feedback_reason" class="cm-feedback-radio" value="Help me get started faster">
+                                        Help me get started faster
+                                    </label>
+                                    <label class="cm-feedback-option">
+                                        <input type="radio" name="cm_feedback_reason" class="cm-feedback-radio" value="Make it easier to find what I'm looking for">
+                                        Make it easier to find what I'm looking for
+                                    </label>
+                                    <label class="cm-feedback-option">
+                                        <input type="radio" name="cm_feedback_reason" class="cm-feedback-radio" value="Make it easy to understand the product and features">
+                                        Make it easy to understand the product and features
+                                    </label>
+                                    <label class="cm-feedback-option">
+                                        <input type="radio" name="cm_feedback_reason" class="cm-feedback-radio" value="Update this documentation">
+                                        Update this documentation
+                                    </label>
+                                    <label class="cm-feedback-option">
+                                        <input type="radio" name="cm_feedback_reason" class="cm-feedback-radio" value="Something else">
+                                        Something else
+                                    </label>
+                                </div>
+                                <div class="cm-feedback-actions">
+                                    <button type="button" class="cm-btn-cancel" id="cm-feedback-cancel">Cancel</button>
+                                    <button type="button" class="cm-btn-submit" id="cm-feedback-submit">Submit feedback</button>
+                                </div>
+                            </div>
                         </div>
+
+                        <script>
+                        document.addEventListener('DOMContentLoaded', function() {
+                            const btnYes = document.getElementById('cm-vote-yes');
+                            const btnNo = document.getElementById('cm-vote-no');
+                            const formArea = document.getElementById('cm-feedback-form');
+                            const btnCancel = document.getElementById('cm-feedback-cancel');
+                            const btnSubmit = document.getElementById('cm-feedback-submit');
+                            
+                            function showForm(vote) {
+                                formArea.style.display = 'block';
+                                if (vote === 'yes') {
+                                    btnYes.classList.add('active');
+                                    btnNo.classList.remove('active');
+                                } else {
+                                    btnNo.classList.add('active');
+                                    btnYes.classList.remove('active');
+                                }
+                            }
+                            
+                            if (btnYes) btnYes.addEventListener('click', () => showForm('yes'));
+                            if (btnNo) btnNo.addEventListener('click', () => showForm('no'));
+                            
+                            if (btnCancel) {
+                                btnCancel.addEventListener('click', () => {
+                                    formArea.style.display = 'none';
+                                    btnYes.classList.remove('active');
+                                    btnNo.classList.remove('active');
+                                    // Uncheck radios
+                                    document.querySelectorAll('.cm-feedback-radio').forEach(r => r.checked = false);
+                                });
+                            }
+                            
+                            if (btnSubmit) {
+                                btnSubmit.addEventListener('click', () => {
+                                    const selected = document.querySelector('.cm-feedback-radio:checked');
+                                    if (!selected) {
+                                        alert('Please select an option first.');
+                                        return;
+                                    }
+                                    alert('Thank you for your feedback!');
+                                    formArea.style.display = 'none';
+                                    btnYes.classList.remove('active');
+                                    btnNo.classList.remove('active');
+                                    document.querySelectorAll('.cm-feedback-radio').forEach(r => r.checked = false);
+                                });
+                            }
+                        });
+                        </script>
 
                         <!-- Post Navigation Cards -->
                         <?php
