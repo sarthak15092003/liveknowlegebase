@@ -1476,8 +1476,8 @@ body.admin-bar {
 }
 
 /* When logged OUT (no admin bar), add 32px extra gap to match logged-in appearance */
-body:not(.admin-bar) .category .blog_area,
-body:not(.admin-bar) .archive .blog_area {
+body.category:not(.admin-bar) .blog_area,
+body.archive:not(.admin-bar) .blog_area {
     padding-top: 112px !important; /* 80px + 32px to compensate for missing admin bar */
 }
 
