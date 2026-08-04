@@ -407,3 +407,126 @@ function cmgalaxy_remove_empty_nbsp_paragraphs($content) {
     return $content;
 }
 add_filter('the_content', 'cmgalaxy_remove_empty_nbsp_paragraphs', 20);
+
+// =====================================================================
+// CM Feedback System
+// =====================================================================
+
+// Function to create the custom table on admin init (if it doesn't exist)
+function cm_feedback_create_table() {
+    global $wpdb;
+    $table_name = $wpdb->prefix . 'cm_feedback';
+    $charset_collate = $wpdb->get_charset_collate();
+
+    // Only run if the table doesn't exist to avoid performance hit
+    if ( $wpdb->get_var( "SHOW TABLES LIKE '{$table_name}'" ) != $table_name ) {
+        $sql = "CREATE TABLE $table_name (
+            id mediumint(9) NOT NULL AUTO_INCREMENT,
+            post_id mediumint(9) NOT NULL,
+            post_title varchar(255) NOT NULL,
+            ip_address varchar(100) NOT NULL,
+            vote varchar(10) NOT NULL,
+            reason text NOT NULL,
+            created_at datetime DEFAULT CURRENT_TIMESTAMP NOT NULL,
+            PRIMARY KEY  (id)
+        ) $charset_collate;";
+
+        require_once( ABSPATH . 'wp-admin/includes/upgrade.php' );
+        dbDelta( $sql );
+    }
+}
+add_action( 'admin_init', 'cm_feedback_create_table' );
+
+// Handle AJAX submission
+add_action( 'wp_ajax_cm_submit_feedback', 'cm_handle_submit_feedback' );
+add_action( 'wp_ajax_nopriv_cm_submit_feedback', 'cm_handle_submit_feedback' );
+
+function cm_handle_submit_feedback() {
+    global $wpdb;
+
+    $post_id    = isset( $_POST['post_id'] ) ? intval( $_POST['post_id'] ) : 0;
+    $post_title = isset( $_POST['post_title'] ) ? sanitize_text_field( $_POST['post_title'] ) : '';
+    $vote       = isset( $_POST['vote'] ) ? sanitize_text_field( $_POST['vote'] ) : '';
+    $reason     = isset( $_POST['reason'] ) ? sanitize_text_field( $_POST['reason'] ) : '';
+    $ip_address = $_SERVER['REMOTE_ADDR'];
+
+    if ( ! $post_id || ! $vote || ! $reason ) {
+        wp_send_json_error( 'Missing required fields.' );
+    }
+
+    $table_name = $wpdb->prefix . 'cm_feedback';
+
+    $inserted = $wpdb->insert(
+        $table_name,
+        array(
+            'post_id'    => $post_id,
+            'post_title' => $post_title,
+            'ip_address' => $ip_address,
+            'vote'       => $vote,
+            'reason'     => $reason,
+        )
+    );
+
+    if ( $inserted ) {
+        wp_send_json_success( 'Feedback saved successfully.' );
+    } else {
+        wp_send_json_error( 'Failed to save feedback.' );
+    }
+}
+
+// Add Admin Menu Page
+add_action( 'admin_menu', 'cm_feedback_admin_menu' );
+
+function cm_feedback_admin_menu() {
+    add_menu_page(
+        'CM Feedback',
+        'CM Feedback',
+        'manage_options',
+        'cm-feedback-entries',
+        'cm_feedback_entries_page',
+        'dashicons-feedback',
+        30
+    );
+}
+
+// Display the Admin Page
+function cm_feedback_entries_page() {
+    global $wpdb;
+    $table_name = $wpdb->prefix . 'cm_feedback';
+    
+    $results = $wpdb->get_results( "SELECT * FROM $table_name ORDER BY created_at DESC" );
+    
+    echo '<div class="wrap">';
+    echo '<h1>CM Feedback Entries</h1>';
+    
+    if ( $results ) {
+        echo '<table class="wp-list-table widefat fixed striped">';
+        echo '<thead><tr>';
+        echo '<th>ID</th>';
+        echo '<th>Date</th>';
+        echo '<th>Post Title</th>';
+        echo '<th>IP Address</th>';
+        echo '<th>Vote</th>';
+        echo '<th>Reason</th>';
+        echo '</tr></thead>';
+        echo '<tbody>';
+        
+        foreach ( $results as $row ) {
+            echo '<tr>';
+            echo '<td>' . esc_html( $row->id ) . '</td>';
+            echo '<td>' . esc_html( $row->created_at ) . '</td>';
+            echo '<td><a href="' . get_permalink( $row->post_id ) . '" target="_blank">' . esc_html( $row->post_title ) . '</a></td>';
+            echo '<td>' . esc_html( $row->ip_address ) . '</td>';
+            echo '<td>' . esc_html( ucfirst( $row->vote ) ) . '</td>';
+            echo '<td>' . esc_html( $row->reason ) . '</td>';
+            echo '</tr>';
+        }
+        
+        echo '</tbody>';
+        echo '</table>';
+    } else {
+        echo '<p>No feedback entries found.</p>';
+    }
+    
+    echo '</div>';
+}
