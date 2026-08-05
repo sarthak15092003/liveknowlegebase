@@ -367,8 +367,8 @@ function cmgalaxy_sort_terms_by_order( $a, $b ) {
     $val_b = ($order_b !== '') ? intval($order_b) : 9999;
     
     if ( $val_a == $val_b ) {
-        // Fallback to alphabetical if order is the same
-        return strcasecmp( $a->name, $b->name );
+        // Fallback to creation order (term_id) instead of alphabetical if order is the same
+        return $a->term_id - $b->term_id;
     }
     return ( $val_a < $val_b ) ? -1 : 1;
 }
