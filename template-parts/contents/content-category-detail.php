@@ -28,6 +28,10 @@ if ( ! $current_cat_id ) {
 	$has_subcategories = ! empty( $subcategories ) && ! is_wp_error( $subcategories );
 
 	if ( $has_subcategories ) {
+        if (function_exists('cmgalaxy_sort_terms_by_order')) {
+            usort($subcategories, 'cmgalaxy_sort_terms_by_order');
+        }
+        
 		// Display Subcategories as Accordions (Open by default)
 		foreach ( $subcategories as $subcat ) {
             // Fetch articles for this subcategory
@@ -36,6 +40,7 @@ if ( ! $current_cat_id ) {
                 'category__in' => [ $subcat->term_id ],
                 'posts_per_page' => -1,
                 'ignore_sticky_posts' => true,
+                'orderby' => ['menu_order' => 'ASC', 'date' => 'DESC'],
             ]);
 
 			echo '<div class="tw-cat-articles-card" style="margin-bottom: 16px;">';
@@ -83,6 +88,7 @@ if ( ! $current_cat_id ) {
 			'category__in' => [ $current_cat_id ],
 			'posts_per_page' => -1,
 			'ignore_sticky_posts' => true,
+            'orderby' => ['menu_order' => 'ASC', 'date' => 'DESC'],
 		]);
 
 		if ( $main_articles->have_posts() ) {
