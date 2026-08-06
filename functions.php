@@ -308,6 +308,10 @@ function docy_force_breadcrumb_css() {
         article h4, article .h4 {
             font-size: 18px !important;
         }
+        /* Bold font weight override for single posts */
+        .single-post strong, .single-post b {
+            font-weight: 700 !important;
+        }
     </style>';
 }
 add_action('wp_head', 'docy_force_breadcrumb_css', 999);
