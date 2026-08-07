@@ -203,7 +203,7 @@ if ($is_single_post) {
             // Fetch subcategories
             $subcats = get_categories(array(
                 'parent'     => $cat_id,
-                'hide_empty' => 0 // Set to 0 so we can see newly added subcategories even without posts
+                'hide_empty' => 1 // Hide empty subcategories
             ));
             if (function_exists('cmgalaxy_sort_terms_by_order')) {
                 usort($subcats, 'cmgalaxy_sort_terms_by_order');
@@ -220,7 +220,7 @@ if ($is_single_post) {
                         $is_active_cat = true;
                         break;
                     }
-                    $sub_subcats_check = get_categories(array('parent' => $sub->term_id, 'hide_empty' => 0));
+                    $sub_subcats_check = get_categories(array('parent' => $sub->term_id, 'hide_empty' => 1));
                     foreach ($sub_subcats_check as $ss) {
                         if (in_array($ss->slug, $current_categories)) {
                             $is_active_cat = true;
@@ -277,10 +277,10 @@ if ($is_single_post) {
 
                 if (!empty($subcats)) {
                     foreach ($subcats as $subcat) {
-                        // Fetch sub-subcategories (3rd level categories)
+                        // Fetch sub-subcategories for this subcategory
                         $sub_subcats = get_categories(array(
                             'parent'     => $subcat->term_id,
-                            'hide_empty' => 0
+                            'hide_empty' => 1 // Hide empty sub-subcategories
                         ));
                         if (function_exists('cmgalaxy_sort_terms_by_order')) {
                             usort($sub_subcats, 'cmgalaxy_sort_terms_by_order');
