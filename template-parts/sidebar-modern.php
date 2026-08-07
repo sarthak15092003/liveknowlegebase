@@ -210,7 +210,7 @@ if ($is_single_post) {
             }
             
             $has_subcats = !empty($subcats);
-            $has_content = $has_subcats || ($is_single_post && $has_main_direct_posts && !$has_subcats);
+            $has_content = $has_subcats || $has_main_direct_posts;
             
             // Check if current page is in this category OR any of its subcategories
             $is_active_cat = in_array($section['slug'], $current_categories);
@@ -252,8 +252,8 @@ if ($is_single_post) {
             <?php if ($has_content) : ?>
             <div class="<?php echo esc_attr($content_class); ?> cmgalaxy-sortable-sub" id="<?php echo esc_attr($section['id']); ?>">
                 <?php
-                // Render direct posts of top-level category ONLY if the category has NO subcategories
-                if ($is_single_post && $has_main_direct_posts && !$has_subcats) {
+                // Render direct posts of top-level category
+                if ($has_main_direct_posts) {
                     foreach ($main_direct_posts as $main_post) {
                         $is_current_post = $is_single_post && ($current_post_id == $main_post->ID);
                         $post_color = $is_current_post ? '#3B82F6' : '#64748b';
@@ -314,7 +314,7 @@ if ($is_single_post) {
                         }
                         
                         $is_any_post_active = false;
-                        if ($has_posts && $is_single_post) {
+                        if ($has_posts) {
                             $current_id = get_queried_object_id();
                             foreach ($subcat_posts as $sp) {
                                 if ($sp->ID == $current_id) {
@@ -326,7 +326,7 @@ if ($is_single_post) {
 
                         $is_subcat_active = in_array($subcat->slug, $current_categories) || $is_any_sub_subcat_active || $is_any_post_active;
                         
-                        $has_children = $has_sub_subcats || ($is_single_post && $has_posts);
+                        $has_children = $has_sub_subcats || $has_posts;
                         
                         $subcat_wrapper_class = 'subsection-item';
                         if ($is_subcat_active) $subcat_wrapper_class .= ' current-page';
@@ -384,7 +384,7 @@ if ($is_single_post) {
                                         </a>
                                         </div>
                                         <?php
-                                        if ($is_single_post && $has_sub_subcat_posts) {
+                                        if ($has_sub_subcat_posts) {
                                             foreach ($sub_subcat_posts as $ssp) {
                                                 $is_current_post = $is_single_post && ($current_post_id == $ssp->ID);
                                                 $post_color = $is_current_post ? '#3B82F6' : '#64748b';
@@ -408,7 +408,7 @@ if ($is_single_post) {
                                     }
                                 }
                                 
-                                if ($is_single_post && $has_posts) {
+                                if ($has_posts) {
                                     foreach ($subcat_posts as $subcat_post) {
                                         $is_current_post = $is_single_post && (get_queried_object_id() == $subcat_post->ID);
                                         $post_color = $is_current_post ? '#3B82F6' : '#64748b';
