@@ -112,7 +112,6 @@ if ( ! $current_cat_id ) {
 			echo '</div>'; // End Card
             wp_reset_postdata();
 		}
-		}
 	}
 	?>
 </div>
