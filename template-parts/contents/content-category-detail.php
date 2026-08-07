@@ -57,7 +57,7 @@ if ( ! $current_cat_id ) {
                 'category__in' => [ $subcat->term_id ],
                 'posts_per_page' => -1,
                 'ignore_sticky_posts' => true,
-                'orderby' => ['menu_order' => 'ASC', 'date' => 'DESC'],
+                'orderby' => ['menu_order' => 'ASC', 'date' => 'ASC'],
             ]);
 
 			echo '<div class="tw-cat-articles-card" style="margin-bottom: 16px;">';
@@ -105,7 +105,7 @@ if ( ! $current_cat_id ) {
 			'category__in' => [ $current_cat_id ],
 			'posts_per_page' => -1,
 			'ignore_sticky_posts' => true,
-            'orderby' => ['menu_order' => 'ASC', 'date' => 'DESC'],
+            'orderby' => ['menu_order' => 'ASC', 'date' => 'ASC'],
 		]);
 
 		if ( $main_articles->have_posts() ) {

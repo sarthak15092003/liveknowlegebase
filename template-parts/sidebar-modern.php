@@ -195,7 +195,7 @@ if ($is_single_post) {
                     AND tt.taxonomy = 'category'
                     AND p.post_type = 'post'
                     AND p.post_status = 'publish'
-                    ORDER BY p.menu_order ASC, p.post_date DESC
+                    ORDER BY p.menu_order ASC, p.post_date ASC
                 ", $cat_id));
             }
             $has_main_direct_posts = !empty($main_direct_posts);
@@ -331,7 +331,7 @@ if ($is_single_post) {
                             AND tt.taxonomy = 'category'
                             AND p.post_type = 'post'
                             AND p.post_status = 'publish'
-                            ORDER BY p.menu_order ASC, p.post_date DESC
+                            ORDER BY p.menu_order ASC, p.post_date ASC
                         ", $subcat->term_id));
                         $has_posts = !empty($subcat_posts);
                         
@@ -403,7 +403,7 @@ if ($is_single_post) {
                                             AND tt.taxonomy = 'category'
                                             AND p.post_type = 'post'
                                             AND p.post_status = 'publish'
-                                            ORDER BY p.menu_order ASC, p.post_date DESC
+                                            ORDER BY p.menu_order ASC, p.post_date ASC
                                         ", $sub_subcat->term_id));
                                         $has_sub_subcat_posts = !empty($sub_subcat_posts);
                                         ?>
