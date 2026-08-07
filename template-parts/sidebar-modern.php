@@ -201,10 +201,26 @@ if ($is_single_post) {
             $has_main_direct_posts = !empty($main_direct_posts);
             
             // Fetch subcategories
-            $subcats = get_categories(array(
+            $subcats_raw = get_categories(array(
                 'parent'     => $cat_id,
-                'hide_empty' => 1 // Hide empty subcategories
+                'hide_empty' => 0 
             ));
+            
+            $subcats = [];
+            if (!empty($subcats_raw)) {
+                foreach ($subcats_raw as $subcat) {
+                    $post_count = $wpdb->get_var($wpdb->prepare("
+                        SELECT COUNT(p.ID) FROM {$wpdb->posts} p
+                        INNER JOIN {$wpdb->term_relationships} tr ON p.ID = tr.object_id
+                        INNER JOIN {$wpdb->term_taxonomy} tt ON tr.term_taxonomy_id = tt.term_taxonomy_id
+                        WHERE tt.term_id = %d AND p.post_status = 'publish'
+                    ", $subcat->term_id));
+                    if ($post_count > 0) {
+                        $subcat->count = $post_count;
+                        $subcats[] = $subcat;
+                    }
+                }
+            }
             if (function_exists('cmgalaxy_sort_terms_by_order')) {
                 usort($subcats, 'cmgalaxy_sort_terms_by_order');
             }
@@ -252,8 +268,8 @@ if ($is_single_post) {
             <?php if ($has_content) : ?>
             <div class="<?php echo esc_attr($content_class); ?> cmgalaxy-sortable-sub" id="<?php echo esc_attr($section['id']); ?>">
                 <?php
-                // Render direct posts of top-level category
-                if ($has_main_direct_posts) {
+                // Render direct posts of top-level category ONLY if the category has NO subcategories
+                if ($has_main_direct_posts && !$has_subcats) {
                     foreach ($main_direct_posts as $main_post) {
                         $is_current_post = $is_single_post && ($current_post_id == $main_post->ID);
                         $post_color = $is_current_post ? '#3B82F6' : '#64748b';
@@ -278,10 +294,27 @@ if ($is_single_post) {
                 if (!empty($subcats)) {
                     foreach ($subcats as $subcat) {
                         // Fetch sub-subcategories for this subcategory
-                        $sub_subcats = get_categories(array(
+                        $sub_subcats_raw = get_categories(array(
                             'parent'     => $subcat->term_id,
-                            'hide_empty' => 1 // Hide empty sub-subcategories
+                            'hide_empty' => 0
                         ));
+                        
+                        $sub_subcats = [];
+                        if (!empty($sub_subcats_raw)) {
+                            foreach ($sub_subcats_raw as $ss) {
+                                $post_count = $wpdb->get_var($wpdb->prepare("
+                                    SELECT COUNT(p.ID) FROM {$wpdb->posts} p
+                                    INNER JOIN {$wpdb->term_relationships} tr ON p.ID = tr.object_id
+                                    INNER JOIN {$wpdb->term_taxonomy} tt ON tr.term_taxonomy_id = tt.term_taxonomy_id
+                                    WHERE tt.term_id = %d AND p.post_status = 'publish'
+                                ", $ss->term_id));
+                                if ($post_count > 0) {
+                                    $ss->count = $post_count;
+                                    $sub_subcats[] = $ss;
+                                }
+                            }
+                        }
+                        
                         if (function_exists('cmgalaxy_sort_terms_by_order')) {
                             usort($sub_subcats, 'cmgalaxy_sort_terms_by_order');
                         }
