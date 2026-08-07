@@ -18,11 +18,42 @@ if ( ! $current_cat_id ) {
 
 <div class="tw-cat-detail-container">
 	<?php
-	// Fetch subcategories
+	// 1. First, render articles that belong directly to the current category
+	$main_articles = new WP_Query([
+		'post_type' => 'post',
+		'category__in' => [ $current_cat_id ],
+		'posts_per_page' => -1,
+		'ignore_sticky_posts' => true,
+        'orderby' => ['menu_order' => 'ASC', 'date' => 'DESC'],
+	]);
+
+	if ( $main_articles->have_posts() ) {
+		echo '<div class="tw-cat-articles-card" style="margin-bottom: 24px;">';
+		while ( $main_articles->have_posts() ) {
+			$main_articles->the_post();
+			?>
+			<a href="<?php the_permalink(); ?>" class="tw-article-row">
+				<div class="tw-article-content">
+					<div class="tw-article-title" style="font-size: 16px; font-weight: 500 !important; color: #1f2937; margin: 0 0 4px 0;"><?php the_title(); ?></div>
+					<p class="tw-article-desc" style="margin: 0; color: #6b7280; font-size: 14px;"><?php echo esc_html( wp_trim_words( get_the_excerpt(), 15, '...' ) ); ?></p>
+				</div>
+				<div class="tw-article-arrow">
+					<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+						<polyline points="9 18 15 12 9 6"></polyline>
+					</svg>
+				</div>
+			</a>
+			<?php
+		}
+		echo '</div>';
+	}
+	wp_reset_postdata();
+
+	// 2. Then, fetch and render subcategories
 	$subcategories = get_terms([
 		'taxonomy' => 'category',
 		'parent'   => $current_cat_id,
-		'hide_empty' => false,
+		'hide_empty' => true,
 	]);
 
 	$has_subcategories = ! empty( $subcategories ) && ! is_wp_error( $subcategories );
@@ -81,37 +112,7 @@ if ( ! $current_cat_id ) {
 			echo '</div>'; // End Card
             wp_reset_postdata();
 		}
-	} else {
-		// No subcategories, render articles that belong directly to the current category
-		$main_articles = new WP_Query([
-			'post_type' => 'post',
-			'category__in' => [ $current_cat_id ],
-			'posts_per_page' => -1,
-			'ignore_sticky_posts' => true,
-            'orderby' => ['menu_order' => 'ASC', 'date' => 'DESC'],
-		]);
-
-		if ( $main_articles->have_posts() ) {
-			echo '<div class="tw-cat-articles-card">';
-			while ( $main_articles->have_posts() ) {
-				$main_articles->the_post();
-				?>
-				<a href="<?php the_permalink(); ?>" class="tw-article-row">
-					<div class="tw-article-content">
-						<div class="tw-article-title" style="font-size: 16px; font-weight: 500 !important; color: #1f2937; margin: 0 0 4px 0;"><?php the_title(); ?></div>
-						<p class="tw-article-desc" style="margin: 0; color: #6b7280; font-size: 14px;"><?php echo esc_html( wp_trim_words( get_the_excerpt(), 15, '...' ) ); ?></p>
-					</div>
-					<div class="tw-article-arrow">
-						<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-							<polyline points="9 18 15 12 9 6"></polyline>
-						</svg>
-					</div>
-				</a>
-				<?php
-			}
-			echo '</div>';
 		}
-		wp_reset_postdata();
 	}
 	?>
 </div>
