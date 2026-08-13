@@ -608,7 +608,15 @@ function cm_feedback_entries_page() {
             echo '<td>' . esc_html( $row->created_at ) . '</td>';
             echo '<td><a href="' . get_permalink( $row->post_id ) . '" target="_blank">' . esc_html( $row->post_title ) . '</a></td>';
             echo '<td>' . esc_html( $row->ip_address ) . '</td>';
-            echo '<td>' . esc_html( ucfirst( $row->vote ) ) . '</td>';
+            $vote_val = strtolower( $row->vote );
+            if ( $vote_val === 'yes' || $vote_val === 'like' ) {
+                $vote_display = 'Like';
+            } elseif ( $vote_val === 'no' || $vote_val === 'dislike' ) {
+                $vote_display = 'Dislike';
+            } else {
+                $vote_display = ucfirst( $row->vote );
+            }
+            echo '<td>' . esc_html( $vote_display ) . '</td>';
             echo '<td>' . esc_html( $row->reason ) . '</td>';
             echo '</tr>';
         }

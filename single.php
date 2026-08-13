@@ -280,11 +280,11 @@ get_template_part( 'template-parts/single-post/banner', $banner_type );
                                 <div class="cm-feedback-buttons">
                                     <button class="cm-btn-vote" id="cm-vote-yes">
                                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3zM7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3"></path></svg>
-                                        Yes
+                                        Like
                                     </button>
                                     <button class="cm-btn-vote" id="cm-vote-no">
                                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 15v4a3 3 0 0 0 3 3l4-9V2H5.72a2 2 0 0 0-2 1.7l-1.38 9a2 2 0 0 0 2 2.3zm7-13h3a2 2 0 0 1 2 2v7a2 2 0 0 1-2 2h-3"></path></svg>
-                                        No
+                                        Dislike
                                     </button>
                                 </div>
                             </div>
@@ -372,7 +372,7 @@ get_template_part( 'template-parts/single-post/banner', $banner_type );
                                 document.querySelectorAll('.cm-feedback-radio').forEach(r => r.checked = false);
                                 resetCustomText();
                                 
-                                if (vote === 'yes') {
+                                if (vote === 'like' || vote === 'yes') {
                                     btnYes.classList.add('active');
                                     btnNo.classList.remove('active');
                                     title.innerText = 'Great! What worked best for you?';
@@ -398,8 +398,8 @@ get_template_part( 'template-parts/single-post/banner', $banner_type );
                                 });
                             });
                             
-                            if (btnYes) btnYes.addEventListener('click', () => showForm('yes'));
-                            if (btnNo) btnNo.addEventListener('click', () => showForm('no'));
+                            if (btnYes) btnYes.addEventListener('click', () => showForm('like'));
+                            if (btnNo) btnNo.addEventListener('click', () => showForm('dislike'));
                             
                             if (btnCancel) {
                                 btnCancel.addEventListener('click', () => {
@@ -419,7 +419,7 @@ get_template_part( 'template-parts/single-post/banner', $banner_type );
                                         return;
                                     }
                                     
-                                    const vote = btnYes.classList.contains('active') ? 'yes' : 'no';
+                                    const vote = btnYes.classList.contains('active') ? 'like' : 'dislike';
                                     let reason = selected.value;
                                     if (reason === 'Something else' && customTextarea) {
                                         const customVal = customTextarea.value.trim();
