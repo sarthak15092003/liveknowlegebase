@@ -62,7 +62,7 @@ function docy_scripts() {
 	wp_enqueue_style( 'cmgalaxy-header', DOCY_DIR_CSS . '/cmgalaxy-header.css', array(), DOCY_VERSION . '.1' );
 	
 	// Modern Sidebar Styles
-	wp_enqueue_style( 'modern-sidebar', DOCY_DIR_CSS . '/modern-sidebar.css', array(), DOCY_VERSION . '.2' );
+	wp_enqueue_style( 'modern-sidebar', DOCY_DIR_CSS . '/modern-sidebar.css', array(), DOCY_VERSION . '.1' );
 	
 	// Simple Post Card Styles
 	wp_enqueue_style( 'simple-post-card', DOCY_DIR_CSS . '/simple-post-card.css', array(), DOCY_VERSION );

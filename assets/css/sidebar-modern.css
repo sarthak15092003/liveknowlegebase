@@ -69,9 +69,9 @@
 .breadcrumb .breadcrumb-item.active { color: #484a61 !important; }
 
 /* Modern Sidebar & Left/Right Columns Sticky Styles */
-.modern-sidebar { background: #ffffff; border: 1px solid #e5e7eb !important; border-radius: 8px; padding: 0; margin-bottom: 2rem; position: sticky; top: 110px; max-height: calc(100vh - 120px); overflow-y: auto; }
+.modern-sidebar { background: #ffffff; border: 1px solid #e5e7eb; border-radius: 8px; padding: 0; margin-bottom: 2rem; position: sticky; top: 110px; max-height: calc(100vh - 120px); overflow-y: auto; }
 .cat-title { color: #161c52 !important; font-weight: 500 !important; }
-.category-left-sidebar-col .modern-sidebar { width: 100%; max-width: 100%; margin-top: 5px; margin-left: 0; margin-right: 0; background: #ffffff; border: 1px solid #e5e7eb !important; border-radius: 8px; padding: 0; max-height: calc(100vh - 140px); overflow-y: auto; }
+.category-left-sidebar-col .modern-sidebar { width: 100%; max-width: 100%; margin-top: 5px; margin-left: 0; margin-right: 0; background: #ffffff; border-radius: 8px; padding: 0; max-height: calc(100vh - 140px); overflow-y: auto; }
 .body_wrapper { overflow: visible !important; }
 .category-main-col { position: relative; }
 .category-left-sidebar-col { padding-left: 0 !important; padding-right: 0 !important; position: sticky; top: 130px; align-self: flex-start; }
@@ -1663,6 +1663,81 @@ h3, .editor-content h3, .blog_single_item h3, .entry-content h3 {
   .category-main-col.has-toc-sidebar, .doc-sidebar { flex: 0 0 100% !important; max-width: 100% !important; width: 100% !important; }
 }
 
+/* Single post "On this Page" TOC: vertical line style, no boxed panel */
+@media (min-width: 1025px) {
+  .single-post .doc-sidebar .left_sidebarlist,
+  .blog_area.tip_doc_area .doc-sidebar .left_sidebarlist {
+    position: relative !important;
+    margin-left: 0 !important;
+    padding-left: 0 !important;
+    background: transparent !important;
+    border: 0 !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+  }
+
+  .single-post .doc-sidebar .left_sidebarlist::before,
+  .blog_area.tip_doc_area .doc-sidebar .left_sidebarlist::before {
+    content: "" !important;
+    position: absolute !important;
+    top: 0 !important;
+    bottom: 0 !important;
+    left: 0 !important;
+    width: 1px !important;
+    background: #e2e8f0 !important;
+    display: block !important;
+    z-index: 1 !important;
+  }
+
+  .single-post .doc-sidebar .toc-title,
+  .blog_area.tip_doc_area .doc-sidebar .toc-title {
+    padding-left: 20px !important;
+    padding-bottom: 0 !important;
+    border-bottom: 0 !important;
+  }
+
+  .single-post #docy-toc,
+  .blog_area.tip_doc_area #docy-toc {
+    position: relative !important;
+    background: transparent !important;
+    border: 0 !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+    padding-left: 0 !important;
+  }
+
+  .single-post #docy-toc::before,
+  .single-post #docy-toc > ul::before,
+  .blog_area.tip_doc_area #docy-toc::before,
+  .blog_area.tip_doc_area #docy-toc > ul::before {
+    display: none !important;
+  }
+
+  .single-post #docy-toc .nav-link,
+  .blog_area.tip_doc_area #docy-toc .nav-link {
+    padding-left: 20px !important;
+    background: transparent !important;
+    border: 0 !important;
+    box-shadow: none !important;
+  }
+
+  .single-post #docy-toc .nav-item.active > .nav-link::before,
+  .single-post #docy-toc .nav-link.active::before,
+  .blog_area.tip_doc_area #docy-toc .nav-item.active > .nav-link::before,
+  .blog_area.tip_doc_area #docy-toc .nav-link.active::before {
+    content: "" !important;
+    display: block !important;
+    position: absolute !important;
+    top: 0 !important;
+    bottom: 0 !important;
+    left: 0 !important;
+    width: 2px !important;
+    background: #3B82F6 !important;
+    border-radius: 2px !important;
+    z-index: 2 !important;
+  }
+}
+
 /* Breadcrumb Styles Global Override */
 .breadcrumb, .breadcrumb li, .breadcrumb .breadcrumb-item, .breadcrumb .breadcrumb-item a, 
 .blog_single_item .breadcrumb, .blog_single_item .breadcrumb li, .blog_single_item .breadcrumb .breadcrumb-item, 
@@ -1949,10 +2024,5 @@ h3, .editor-content h3, .blog_single_item h3, .entry-content h3 {
     .category-left-sidebar-col {
         position: sticky;
         border-right: 1px solid #e2e8f0 !important;
-    }
-
-    .category-left-sidebar-col .modern-sidebar,
-    .modern-sidebar {
-        border: 1px solid #e5e7eb !important;
     }
 }
