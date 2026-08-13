@@ -24,6 +24,11 @@
 .cmgalaxy-sortable-top > .sidebar-section:active, .cmgalaxy-sortable-sub > .cmgalaxy-subcat-wrapper:active, .cmgalaxy-sortable-sub-sub > .sidebar-sub-subcat-item:active { cursor: grabbing !important; }
 .sortable-ghost { opacity: 0.4; }
 
+section:first-of-type {
+    margin-top: 0 !important;
+    margin-bottom: 100px;
+}
+
 /* Category Page Container Width & Layout Styles */
 @media (min-width: 992px) {
     body.archive.category .container,
