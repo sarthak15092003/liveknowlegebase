@@ -827,24 +827,80 @@
         box-sizing: border-box !important;
     }
 
-    /* Mobile Table of Contents (TOC) - Gap from top & Scrollable */
+    /* Mobile Table of Contents (TOC) - Fixed card with Top 80px Gap & Scrollable inner list */
+    .jrBzsJ .eYVFtH .bottom_table_content,
     aside.bottom_table_content,
     #docy-tocs,
     .bottom_table_content {
-        max-height: calc(100vh - 140px) !important;
-        margin-top: 20px !important;
-        border-radius: 16px 16px 0 0 !important;
-        box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.3) !important;
+        position: fixed !important;
+        top: 80px !important;            /* Gap from top fixed header */
+        bottom: 70px !important;         /* Space above bottom action bar */
+        left: 12px !important;
+        right: 12px !important;
+        width: auto !important;
+        max-width: none !important;
+        height: auto !important;
+        max-height: none !important;
+        background-color: #171a22 !important;
+        color: #ffffff !important;
+        padding: 20px 16px 16px 20px !important;
+        border-radius: 14px !important;
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.45) !important;
+        z-index: 99999 !important;
+        display: none;                   /* Toggled by JS */
+        flex-direction: column !important;
+        overflow: hidden !important;
+    }
+
+    .bottom_table_content .toc-title {
+        margin-top: 0 !important;
+        margin-bottom: 12px !important;
+        padding-right: 32px !important;
+        font-size: 16px !important;
+        font-weight: 600 !important;
+        color: #ffffff !important;
+        flex-shrink: 0 !important;
+    }
+
+    .bottom_table_content .close-toc {
+        top: 14px !important;
+        right: 14px !important;
+        z-index: 5 !important;
+        position: absolute !important;
     }
 
     #docy-tocs-mobile,
     .bottom_table_content nav,
     aside.bottom_table_content nav {
-        max-height: calc(100vh - 220px) !important;
+        flex: 1 1 auto !important;
+        height: auto !important;
+        max-height: 100% !important;
         overflow-y: auto !important;
         -webkit-overflow-scrolling: touch !important;
-        padding-right: 8px !important;
-        padding-bottom: 24px !important;
+        padding-right: 6px !important;
+        padding-bottom: 10px !important;
+    }
+
+    #docy-tocs-mobile ul,
+    .bottom_table_content nav ul {
+        max-height: none !important;
+        overflow: visible !important;
+    }
+
+    #docy-tocs-mobile .nav-link,
+    .bottom_table_content nav .nav-link {
+        padding: 8px 10px !important;
+        font-size: 14px !important;
+        line-height: 1.4 !important;
+        color: #d1d5db !important;
+        display: block !important;
+    }
+
+    #docy-tocs-mobile .nav-link:hover,
+    #docy-tocs-mobile .nav-link.active,
+    .bottom_table_content nav .nav-link:hover,
+    .bottom_table_content nav .nav-link.active {
+        color: #60a5fa !important;
     }
 
     /* Custom visible scrollbar for Mobile TOC */
@@ -861,8 +917,13 @@
 
     #docy-tocs-mobile::-webkit-scrollbar-thumb,
     .bottom_table_content nav::-webkit-scrollbar-thumb {
-        background: rgba(255, 255, 255, 0.35) !important;
+        background: rgba(255, 255, 255, 0.4) !important;
         border-radius: 4px !important;
+    }
+
+    #docy-tocs-mobile::-webkit-scrollbar-thumb:hover,
+    .bottom_table_content nav::-webkit-scrollbar-thumb:hover {
+        background: rgba(255, 255, 255, 0.6) !important;
     }
 
     #docy-toc {
