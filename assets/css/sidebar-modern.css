@@ -237,9 +237,20 @@ footer { background-color: #041543 !important; color: rgba(250, 250, 250, 0.5) !
     transition: color 0.3s ease !important;
 }
 #docy-toc, #docy-tocs-mobile { padding-left: 0 !important; }
-#docy-toc .toc-h1 > .nav-link, #docy-tocs-mobile .toc-h1 > .nav-link,
-#docy-toc .toc-h2 > .nav-link, #docy-tocs-mobile .toc-h2 > .nav-link { font-weight: 500 !important; font-size: 14px !important; color: #111827 !important; padding-left: 24px !important; }
-#docy-toc .toc-h1.active > .nav-link, #docy-toc .toc-h2.active > .nav-link, #docy-toc .nav-link.active, #docy-toc a.active, #docy-toc li.active > a, #docy-tocs-mobile .toc-h1.active > .nav-link, #docy-tocs-mobile .toc-h2.active > .nav-link, #docy-tocs-mobile .nav-link.active, #docy-tocs-mobile a.active, #docy-tocs-mobile li.active > a { color: #2563eb !important; font-weight: 700 !important; }
+#docy-toc ul,
+#docy-tocs-mobile ul,
+.doc-nav ul,
+.nav-sidebar.doc-nav ul,
+.bottom_table_content nav ul,
+aside.bottom_table_content nav ul {
+    border-left: 1px solid #e5e7eb !important;
+    padding-left: 8px !important;
+    margin-left: 2px !important;
+    list-style: none !important;
+}
+#docy-toc .toc-h1 > .nav-link, #docy-tocs-mobile .toc-h1 > .nav-link { font-weight: 500 !important; font-size: 14px !important; color: #111827 !important; padding-left: 12px !important; }
+#docy-toc .toc-h2 > .nav-link, #docy-tocs-mobile .toc-h2 > .nav-link { font-weight: 500 !important; font-size: 14px !important; color: #111827 !important; padding-left: 20px !important; }
+#docy-toc .toc-h1.active > .nav-link, #docy-toc .toc-h2.active > .nav-link, #docy-toc .nav-link.active, #docy-toc a.active, #docy-toc li.active > a, #docy-tocs-mobile .toc-h1.active > .nav-link, #docy-tocs-mobile .toc-h2.active > .nav-link, #docy-tocs-mobile .nav-link.active, #docy-tocs-mobile a.active, #docy-tocs-mobile li.active > a { color: #2563eb !important; font-weight: 700 !important; border-left: 2px solid #2563eb !important; margin-left: -9px !important; }
 
 
 /* Layout CMGalaxy Header Styles */
