@@ -17184,16 +17184,30 @@ blockquote .author {
     max-width: none !important;
     height: 85vh !important;
     max-height: 85vh !important;
-    background-color: #171a22 !important;
-    color: #fff !important;
+    background-color: #ffffff !important;
+    color: #111827 !important;
     padding: 20px 16px 16px 20px !important;
     border-radius: 14px !important;
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5) !important;
+    border: 1px solid #e5e7eb !important;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15) !important;
     z-index: 99999 !important;
     display: none;
     flex-direction: column !important;
     overflow-y: auto !important;
     box-sizing: border-box !important;
+  }
+
+  .jrBzsJ .eYVFtH .bottom_table_content::before,
+  aside.bottom_table_content::before,
+  #docy-tocs::before,
+  .bottom_table_content::before,
+  #docy-tocs-mobile::before,
+  .bottom_table_content nav::before {
+    display: none !important;
+    content: none !important;
+    background: transparent !important;
+    width: 0 !important;
+    border: none !important;
   }
 
   .jrBzsJ .eYVFtH .bottom_table_content .close-toc {
@@ -17202,7 +17216,7 @@ blockquote .author {
     right: 12px !important;
     top: 12px !important;
     padding: 8px;
-    color: #a9abb6;
+    color: #4b5563 !important;
     cursor: pointer;
     z-index: 10;
     border: 0;
@@ -17250,18 +17264,24 @@ blockquote .author {
   list-style: none;
 }
 
-.jrBzsJ .eYVFtH .bottom_table_content nav ul li a {
-  color: #898d9a;
+.jrBzsJ .eYVFtH .bottom_table_content nav ul li a,
+.bottom_table_content nav .nav-link,
+#docy-tocs-mobile .nav-link {
+  color: #374151 !important;
   text-decoration: none !important;
   font-weight: 500;
+  background: transparent !important;
 }
 
-.jrBzsJ .eYVFtH .bottom_table_content nav ul li a:hover {
-  color: #fff;
-}
-
-.jrBzsJ .eYVFtH .bottom_table_content nav ul li a:active {
-  color: #fff;
+.jrBzsJ .eYVFtH .bottom_table_content nav ul li a:hover,
+.jrBzsJ .eYVFtH .bottom_table_content nav ul li a:active,
+.bottom_table_content nav .nav-link:hover,
+.bottom_table_content nav .nav-link.active,
+#docy-tocs-mobile .nav-link:hover,
+#docy-tocs-mobile .nav-link.active {
+  color: #2563eb !important;
+  background: #f1f5f9 !important;
+  border-radius: 6px !important;
 }
 
 .jrBzsJ .eYVFtH .fqmceZ {

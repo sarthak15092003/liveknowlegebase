@@ -837,16 +837,30 @@
         min-height: 360px !important;
         max-height: calc(100vh - 148px) !important;
         max-height: calc(100dvh - 148px) !important;
-        background-color: #171a22 !important;
-        color: #ffffff !important;
+        background-color: #ffffff !important;
+        color: #111827 !important;
         padding: 20px 16px 16px 20px !important;
         border-radius: 14px !important;
-        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.45) !important;
+        border: 1px solid #e5e7eb !important;
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15) !important;
         z-index: 99999 !important;
         display: none;
         flex-direction: column !important;
         overflow: hidden !important;
         box-sizing: border-box !important;
+    }
+
+    .bottom_table_content::before,
+    aside.bottom_table_content::before,
+    #docy-tocs::before,
+    #docy-tocs-mobile::before,
+    .bottom_table_content nav::before,
+    aside.bottom_table_content nav::before {
+        display: none !important;
+        content: none !important;
+        background: transparent !important;
+        width: 0 !important;
+        border: none !important;
     }
 
     .bottom_table_content .toc-title {
@@ -856,7 +870,7 @@
         font-size: 17px !important;
         font-weight: 700 !important;
         line-height: 1.35 !important;
-        color: #ffffff !important;
+        color: #111827 !important;
         flex-shrink: 0 !important;
     }
 
@@ -865,6 +879,7 @@
         right: 14px !important;
         z-index: 5 !important;
         position: absolute !important;
+        color: #4b5563 !important;
     }
 
     #docy-tocs-mobile,
@@ -880,7 +895,7 @@
         padding-right: 6px !important;
         padding-bottom: 10px !important;
         scrollbar-width: thin !important;
-        scrollbar-color: rgba(255, 255, 255, 0.45) rgba(255, 255, 255, 0.08) !important;
+        scrollbar-color: rgba(0, 0, 0, 0.25) rgba(0, 0, 0, 0.05) !important;
     }
 
     #docy-tocs-mobile ul,
@@ -895,21 +910,21 @@
         font-size: 15px !important;
         font-weight: 600 !important;
         line-height: 1.55 !important;
-        color: #d1d5db !important;
+        color: #374151 !important;
         display: block !important;
+        background: transparent !important;
     }
 
     #docy-tocs-mobile .nav-item.active > .nav-link,
-    .bottom_table_content nav .nav-item.active > .nav-link {
-        font-weight: 700 !important;
-        color: #60a5fa !important;
-    }
-
+    .bottom_table_content nav .nav-item.active > .nav-link,
     #docy-tocs-mobile .nav-link:hover,
     #docy-tocs-mobile .nav-link.active,
     .bottom_table_content nav .nav-link:hover,
     .bottom_table_content nav .nav-link.active {
-        color: #60a5fa !important;
+        font-weight: 700 !important;
+        color: #2563eb !important;
+        background: #f1f5f9 !important;
+        border-radius: 6px !important;
     }
 
     /* Custom visible scrollbar for Mobile TOC */
