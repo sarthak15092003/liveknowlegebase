@@ -845,6 +845,7 @@ get_template_part( 'template-parts/single-post/banner', $banner_type );
                         var $target = $('#' + $.escapeSelector(id));
                         if ($target.length > 0) {
                             e.preventDefault();
+                            e.stopPropagation();
                             e.stopImmediatePropagation();
 
                             isClickScrolling = true;
@@ -855,11 +856,15 @@ get_template_part( 'template-parts/single-post/banner', $banner_type );
                             var headerOffset = ($(window).width() <= 1024 ? 90 : 140) + adminBarHeight;
                             var targetPosition = Math.max(0, $target.offset().top - headerOffset);
 
-                            $('html, body').stop(true, false).animate({
-                                scrollTop: targetPosition
-                            }, 250, 'swing', function() {
-                                isClickScrolling = false;
+                            window.scrollTo({
+                                top: targetPosition,
+                                behavior: 'smooth'
                             });
+
+                            if (clickTimeout) clearTimeout(clickTimeout);
+                            clickTimeout = setTimeout(function() {
+                                isClickScrolling = false;
+                            }, 400);
                         }
                     }
                 });

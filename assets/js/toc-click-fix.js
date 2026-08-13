@@ -54,12 +54,14 @@
                 var currentScroll = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop;
                 var targetPosition = target[0].getBoundingClientRect().top + currentScroll - scrollOffset;
 
-                $('html, body').stop(true, false).animate({
-                    scrollTop: targetPosition
-                }, 250, 'swing', function () {
+                window.scrollTo({
+                    top: Math.max(0, targetPosition),
+                    behavior: 'smooth'
+                });
+                setTimeout(function () {
                     setActiveTocItem(targetId);
                     isManualScroll = false;
-                });
+                }, 300);
             }
         });
 
@@ -130,11 +132,13 @@
                 var currentScroll = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop;
                 var targetPosition = target[0].getBoundingClientRect().top + currentScroll - scrollOffset;
 
-                $('html, body').stop(true, false).animate({
-                    scrollTop: targetPosition
-                }, 250, 'swing', function () {
-                    isManualScroll = false;
+                window.scrollTo({
+                    top: Math.max(0, targetPosition),
+                    behavior: 'smooth'
                 });
+                setTimeout(function () {
+                    isManualScroll = false;
+                }, 300);
 
                 // Close mobile TOC if open
                 $('.bottom_table_content').slideUp(300);
