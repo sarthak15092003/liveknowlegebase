@@ -443,8 +443,8 @@ article {
     transition: all 0.3s ease !important;
     padding-left: 15px !important;
     /* Consistent padding for all items */
-    color: #484a61 !important;
-    /* Default gray color for inactive items */
+    color: #111827 !important;
+    /* Default dark/black color for items */
     background-color: transparent !important;
     /* No background */
 }
