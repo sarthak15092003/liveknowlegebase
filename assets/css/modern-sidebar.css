@@ -59,10 +59,7 @@
 /* The outer column must NOT use align-self: flex-start so sticky works in a flex row */
 .category-left-sidebar-col {
     box-shadow: none !important;
-    border-top: none !important;
-    border-bottom: none !important;
-    border-left: none !important;
-    /* border-right is intentionally NOT reset — used as sidebar separator on desktop */
+    border: none !important;
 }
 
 /* Rows containing a category sidebar must NOT stretch their children */
