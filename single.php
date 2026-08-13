@@ -541,7 +541,7 @@ get_template_part( 'template-parts/single-post/banner', $banner_type );
 
                         .single-post .doc-sidebar #docy-toc .nav-link {
                             position: relative !important;
-                            padding: 6px 0 6px 16px !important;
+                            padding: 6px 0 6px 20px !important;
                             background: transparent !important;
                             border: 0 !important;
                             box-shadow: none !important;
@@ -551,17 +551,17 @@ get_template_part( 'template-parts/single-post/banner', $banner_type );
                         }
 
                         .single-post .doc-sidebar #docy-toc .toc-h1 > .nav-link {
-                            padding-left: 16px !important;
+                            padding-left: 20px !important;
                             font-weight: 400 !important;
                         }
 
                         .single-post .doc-sidebar #docy-toc .toc-h2 > .nav-link {
-                            padding-left: 28px !important;
+                            padding-left: 32px !important;
                             font-weight: 400 !important;
                         }
 
                         .single-post .doc-sidebar #docy-toc .toc-h3 > .nav-link {
-                            padding-left: 40px !important;
+                            padding-left: 44px !important;
                             font-weight: 400 !important;
                         }
 
