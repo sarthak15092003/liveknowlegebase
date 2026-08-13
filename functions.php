@@ -546,6 +546,10 @@ add_action( 'wp_ajax_nopriv_cm_submit_feedback', 'cm_handle_submit_feedback' );
 function cm_handle_submit_feedback() {
     global $wpdb;
 
+    if ( ! is_user_logged_in() ) {
+        wp_send_json_error( 'You must be signed in to submit feedback.' );
+    }
+
     $post_id    = isset( $_POST['post_id'] ) ? intval( $_POST['post_id'] ) : 0;
     $post_title = isset( $_POST['post_title'] ) ? sanitize_text_field( $_POST['post_title'] ) : '';
     $vote       = isset( $_POST['vote'] ) ? sanitize_text_field( $_POST['vote'] ) : '';

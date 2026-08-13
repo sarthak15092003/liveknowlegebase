@@ -274,6 +274,7 @@ get_template_part( 'template-parts/single-post/banner', $banner_type );
                         }
                         </style>
 
+                        <?php if ( is_user_logged_in() ) : ?>
                         <div class="cm-feedback-wrapper">
                             <div class="cm-feedback-top">
                                 <h4 class="cm-feedback-title">Was this page helpful?</h4>
@@ -475,6 +476,14 @@ get_template_part( 'template-parts/single-post/banner', $banner_type );
                             }
                         });
                         </script>
+                        <?php else : ?>
+                        <div class="cm-feedback-wrapper" style="text-align: center; padding: 24px 16px; background: #f8fafc; border: 1px dashed #cbd5e1; border-radius: 12px; margin-top: 30px;">
+                            <h4 class="cm-feedback-title" style="margin-bottom: 8px; color: #1e293b; font-size: 16px; font-weight: 600;">Was this page helpful?</h4>
+                            <p style="margin: 0; color: #64748b; font-size: 14px; line-height: 1.5;">
+                                Please <a href="<?php echo esc_url( wp_login_url( get_permalink() ) ); ?>" style="color: #3b82f6; font-weight: 600; text-decoration: underline;">Sign In</a> or <a href="<?php echo esc_url( wp_registration_url() ); ?>" style="color: #3b82f6; font-weight: 600; text-decoration: underline;">Sign Up</a> to leave your feedback.
+                            </p>
+                        </div>
+                        <?php endif; ?>
 
                         <!-- Post Navigation Cards -->
                         <?php
