@@ -837,7 +837,7 @@ get_template_part( 'template-parts/single-post/banner', $banner_type );
                     }
                 }
 
-                // Smooth click handler with top header margin offset
+                // Smooth click handler with zero jerk and zero delay
                 $(document).on('click', '#docy-toc a, #docy-tocs-mobile a', function(e) {
                     var href = $(this).attr('href');
                     if (href && href.startsWith('#')) {
@@ -845,21 +845,20 @@ get_template_part( 'template-parts/single-post/banner', $banner_type );
                         var $target = $('#' + $.escapeSelector(id));
                         if ($target.length > 0) {
                             e.preventDefault();
+                            e.stopImmediatePropagation();
+
                             isClickScrolling = true;
                             lastActiveId = id;
                             highlightTOC(id);
 
-                            var adminBarHeight = $('#wpadminbar').length > 0 ? $('#wpadminbar').height() : 0;
+                            var adminBarHeight = $('#wpadminbar').length > 0 ? $('#wpadminbar').outerHeight() : 0;
                             var headerOffset = ($(window).width() <= 1024 ? 90 : 140) + adminBarHeight;
-                            var targetPosition = $target.offset().top - headerOffset;
+                            var targetPosition = Math.max(0, $target.offset().top - headerOffset);
 
-                            $('html, body').stop().animate({
-                                scrollTop: Math.max(0, targetPosition)
-                            }, 450, function() {
-                                if (clickTimeout) clearTimeout(clickTimeout);
-                                clickTimeout = setTimeout(function() {
-                                    isClickScrolling = false;
-                                }, 150);
+                            $('html, body').stop(true, false).animate({
+                                scrollTop: targetPosition
+                            }, 250, 'swing', function() {
+                                isClickScrolling = false;
                             });
                         }
                     }

@@ -54,14 +54,11 @@
                 var currentScroll = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop;
                 var targetPosition = target[0].getBoundingClientRect().top + currentScroll - scrollOffset;
 
-                $('html, body').stop().animate({
+                $('html, body').stop(true, false).animate({
                     scrollTop: targetPosition
-                }, 600, function () {
-                    // After scroll completes, keep the active state and re-enable scrollspy
-                    setTimeout(function () {
-                        setActiveTocItem(targetId);
-                        isManualScroll = false;
-                    }, 300);
+                }, 250, 'swing', function () {
+                    setActiveTocItem(targetId);
+                    isManualScroll = false;
                 });
             }
         });
@@ -133,12 +130,10 @@
                 var currentScroll = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop;
                 var targetPosition = target[0].getBoundingClientRect().top + currentScroll - scrollOffset;
 
-                $('html, body').stop().animate({
+                $('html, body').stop(true, false).animate({
                     scrollTop: targetPosition
-                }, 600, function () {
-                    setTimeout(function () {
-                        isManualScroll = false;
-                    }, 300);
+                }, 250, 'swing', function () {
+                    isManualScroll = false;
                 });
 
                 // Close mobile TOC if open
