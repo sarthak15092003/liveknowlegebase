@@ -97,6 +97,8 @@ html.no-smooth-scroll { scroll-behavior: auto !important; }
 .sidebar-widget:last-child { border-bottom: none; }
 .widget-title { font-size: 1.125rem; font-weight: 600; color: #1e293b; margin-bottom: 1rem; }
 .random-image-container { text-align: center; }
+.random-image-container a { display: block; text-decoration: none; transition: opacity 0.2s ease, transform 0.2s ease; }
+.random-image-container a:hover { opacity: 0.92; transform: translateY(-1px); }
 .random-image-container img { max-width: 100%; height: auto; border-radius: 8px; }
 .quick-info-content p { color: #64748b; font-size: 0.9375rem; line-height: 1.6; margin-bottom: 1rem; }
 .info-list { list-style: none; padding: 0; margin: 0; }

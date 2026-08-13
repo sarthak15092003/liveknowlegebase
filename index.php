@@ -579,8 +579,10 @@ if ($blog_layout == 'blog_category' && !$is_category_page) {
 										$random_image = $random_images[array_rand($random_images)];
 										?>
 										<div class="random-image-container">
-											<img src="<?php echo esc_url($random_image); ?>" alt="Random Featured Image"
-												class="img-fluid rounded">
+											<a href="https://cmgalaxy.com/book-a-demo" target="_blank" rel="noopener noreferrer">
+												<img src="<?php echo esc_url($random_image); ?>" alt="Book a Demo - CMGalaxy"
+													class="img-fluid rounded">
+											</a>
 										</div>
 									</div>
 
