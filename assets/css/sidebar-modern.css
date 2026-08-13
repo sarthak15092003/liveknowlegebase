@@ -116,14 +116,14 @@ html, body { scroll-padding-top: 85px !important; }
 /* Apply scrolling to the TOC nav instead of the whole sidebar so the banner stays visible */
 #docy-toc { max-height: calc(100vh - 300px); overflow-y: auto; }
 
-/* Custom scrollbar for TOC that appears only on hover */
-#docy-toc::-webkit-scrollbar { width: 0px; background: transparent; }
-#docy-toc:hover::-webkit-scrollbar { width: 6px; }
-#docy-toc:hover::-webkit-scrollbar-track { background: #f1f1f1; border-radius: 3px; }
-#docy-toc:hover::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 3px; }
-#docy-toc:hover::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
+/* Custom scrollbar for TOC */
+#docy-toc::-webkit-scrollbar { width: 5px !important; height: 5px !important; background: transparent !important; }
+#docy-toc::-webkit-scrollbar-track { background: #f1f5f9 !important; border-radius: 4px !important; }
+#docy-toc::-webkit-scrollbar-thumb { background: #cbd5e1 !important; border-radius: 4px !important; }
+#docy-toc::-webkit-scrollbar-thumb:hover { background: #94a3b8 !important; }
+#docy-toc { scrollbar-width: thin !important; scrollbar-color: #cbd5e1 #f1f5f9 !important; }
 #docy-toc .nav-link, #docy-tocs-mobile .nav-link { position: relative !important; display: block !important; transition: color 0.3s ease !important; }
-#docy-toc .nav-item.active > .nav-link::before, #docy-tocs-mobile .nav-item.active > .nav-link::before { display: block !important; content: "" !important; width: 2px !important; background: #3B82F6 !important; position: absolute !important; }
+#docy-toc .nav-item.active > .nav-link::before, #docy-toc .nav-link.active::before, #docy-tocs-mobile .nav-item.active > .nav-link::before, #docy-tocs-mobile .nav-link.active::before { display: block !important; content: "" !important; width: 3px !important; background: #3B82F6 !important; position: absolute !important; left: 0 !important; top: 4px !important; bottom: 4px !important; border-radius: 3px !important; }
 
 /* Mobile Menu & Drawer Styles */
 .mobile-post-item.active-post { color: #007bff; font-weight: 600; }

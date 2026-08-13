@@ -522,24 +522,31 @@ get_template_part( 'template-parts/single-post/banner', $banner_type );
                         }
 
                         .single-post .doc-sidebar #docy-toc .nav-link {
-                            margin-left: -1px !important;
-                            padding: 6px 0 6px 20px !important;
+                            position: relative !important;
+                            padding: 6px 0 6px 16px !important;
                             background: transparent !important;
                             border: 0 !important;
-                            border-left: 2px solid transparent !important;
                             box-shadow: none !important;
+                            transition: color 0.2s ease !important;
                         }
 
                         .single-post .doc-sidebar #docy-toc .nav-item.active > .nav-link,
                         .single-post .doc-sidebar #docy-toc .nav-link.active {
-                            border-left-color: #3B82F6 !important;
-                            color: #000000 !important;
-                            font-weight: 500 !important;
+                            color: #3B82F6 !important;
+                            font-weight: 600 !important;
                         }
 
-                        .single-post .doc-sidebar #docy-toc .nav-link::before {
-                            content: none !important;
-                            display: none !important;
+                        .single-post .doc-sidebar #docy-toc .nav-item.active > .nav-link::before,
+                        .single-post .doc-sidebar #docy-toc .nav-link.active::before {
+                            content: "" !important;
+                            display: block !important;
+                            position: absolute !important;
+                            left: 0 !important;
+                            top: 4px !important;
+                            bottom: 4px !important;
+                            width: 3px !important;
+                            background: #3B82F6 !important;
+                            border-radius: 3px !important;
                         }
                     }
                     </style>
