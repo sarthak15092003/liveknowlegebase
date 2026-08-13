@@ -162,8 +162,8 @@
             } else {
                 console.log('Showing TOC');
                 toc.css({
-                    'background-color': '#171a22', // Background color
-                    'color': '#fff', // Text color
+                    'background-color': '#ffffff', // Background color
+                    'color': '#000000', // Text color
                     'display': 'flex' // Ensure flex display for mobile layout
                 }).hide().slideDown(300, function() {
                     $(this).css('height', ''); // Clear inline animation height so CSS bounds take over
@@ -202,8 +202,8 @@
                 shareModalVisible = false;
             } else {
                 shareModal.css({
-                    'background-color': '#171a22', // Background color
-                    'color': '#fff', // Text color
+                    'background-color': '#ffffff', // Background color
+                    'color': '#000000', // Text color
                     'padding': '24px 24px 12px 24px', // Padding for better appearance
                     'border-radius': '10px 10px 0 0', // Rounded corners
                     'box-shadow': 'none' // Removed shadow
@@ -219,7 +219,7 @@
         $('.docy-close').on('click', function () {
             let shareModal = $(this).closest('#share-modal'); // Select the parent modal
             let overlay = $('#toc-overlay'); // Select the overlay
-            let container = shareModal.closest('.jrBzsJ'); // Select the .jrBzsJ container
+            let container = shareModal.closest('.jrBzsJ'); // Select the container
 
             shareModal.slideUp(300, function () {
                 container.css('border-radius', '10px 10px 0 0'); // Reset border-radius after modal is hidden
@@ -258,8 +258,8 @@
                 top: '10%',
                 left: '50%',
                 transform: 'translateX(-50%)',
-                background: '#171a22',
-                color: '#fff',
+                background: '#ffffff',
+                color: '#000000',
                 padding: '8px 18px',
                 'border-radius': '5px',
                 'z-index': '9999',
