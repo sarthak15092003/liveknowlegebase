@@ -538,7 +538,7 @@ function cm_handle_submit_feedback() {
     $post_id    = isset( $_POST['post_id'] ) ? intval( $_POST['post_id'] ) : 0;
     $post_title = isset( $_POST['post_title'] ) ? sanitize_text_field( $_POST['post_title'] ) : '';
     $vote       = isset( $_POST['vote'] ) ? sanitize_text_field( $_POST['vote'] ) : '';
-    $reason     = isset( $_POST['reason'] ) ? sanitize_text_field( $_POST['reason'] ) : '';
+    $reason     = isset( $_POST['reason'] ) ? sanitize_textarea_field( $_POST['reason'] ) : '';
     $ip_address = $_SERVER['REMOTE_ADDR'];
 
     if ( ! $post_id || ! $vote || ! $reason ) {
