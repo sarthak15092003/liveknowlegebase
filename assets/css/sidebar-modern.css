@@ -69,9 +69,9 @@
 .breadcrumb .breadcrumb-item.active { color: #484a61 !important; }
 
 /* Modern Sidebar & Left/Right Columns Sticky Styles */
-.modern-sidebar { background: #ffffff; border: 1px solid #e5e7eb; border-radius: 8px; padding: 0; margin-bottom: 2rem; position: sticky; top: 110px; max-height: calc(100vh - 120px); overflow-y: auto; }
+.modern-sidebar { background: #ffffff; border: 1px solid #e5e7eb !important; border-radius: 8px; padding: 0; margin-bottom: 2rem; position: sticky; top: 110px; max-height: calc(100vh - 120px); overflow-y: auto; }
 .cat-title { color: #161c52 !important; font-weight: 500 !important; }
-.category-left-sidebar-col .modern-sidebar { width: 100%; max-width: 100%; margin-top: 5px; margin-left: 0; margin-right: 0; background: #ffffff; border-radius: 8px; padding: 0; max-height: calc(100vh - 140px); overflow-y: auto; }
+.category-left-sidebar-col .modern-sidebar { width: 100%; max-width: 100%; margin-top: 5px; margin-left: 0; margin-right: 0; background: #ffffff; border: 1px solid #e5e7eb !important; border-radius: 8px; padding: 0; max-height: calc(100vh - 140px); overflow-y: auto; }
 .body_wrapper { overflow: visible !important; }
 .category-main-col { position: relative; }
 .category-left-sidebar-col { padding-left: 0 !important; padding-right: 0 !important; position: sticky; top: 130px; align-self: flex-start; }
@@ -1813,37 +1813,41 @@ h3, .editor-content h3, .blog_single_item h3, .entry-content h3 {
         max-width: 100% !important;
     }
 
-    /* Mobile Table of Contents (TOC) - Fixed card with Top 80px Gap & Scrollable inner list */
+    /* Mobile Table of Contents (TOC) - tall fixed sheet with scrollable inner list */
     .jrBzsJ .eYVFtH .bottom_table_content,
     aside.bottom_table_content,
     #docy-tocs,
     .bottom_table_content {
         position: fixed !important;
-        top: 80px !important;            /* Gap from top fixed header */
-        bottom: 70px !important;         /* Space above bottom action bar */
+        top: 72px !important;
+        bottom: 76px !important;
         left: 12px !important;
         right: 12px !important;
         width: auto !important;
         max-width: none !important;
         height: auto !important;
-        max-height: none !important;
+        min-height: 360px !important;
+        max-height: calc(100vh - 148px) !important;
+        max-height: calc(100dvh - 148px) !important;
         background-color: #171a22 !important;
         color: #ffffff !important;
         padding: 20px 16px 16px 20px !important;
         border-radius: 14px !important;
         box-shadow: 0 8px 32px rgba(0, 0, 0, 0.45) !important;
         z-index: 99999 !important;
-        display: none;                   /* Toggled by JS */
+        display: none;
         flex-direction: column !important;
         overflow: hidden !important;
+        box-sizing: border-box !important;
     }
 
     .bottom_table_content .toc-title {
         margin-top: 0 !important;
-        margin-bottom: 12px !important;
+        margin-bottom: 14px !important;
         padding-right: 32px !important;
-        font-size: 16px !important;
-        font-weight: 600 !important;
+        font-size: 17px !important;
+        font-weight: 700 !important;
+        line-height: 1.35 !important;
         color: #ffffff !important;
         flex-shrink: 0 !important;
     }
@@ -1859,12 +1863,16 @@ h3, .editor-content h3, .blog_single_item h3, .entry-content h3 {
     .bottom_table_content nav,
     aside.bottom_table_content nav {
         flex: 1 1 auto !important;
+        min-height: 0 !important;
         height: auto !important;
-        max-height: 100% !important;
+        max-height: calc(100vh - 220px) !important;
+        max-height: calc(100dvh - 220px) !important;
         overflow-y: auto !important;
         -webkit-overflow-scrolling: touch !important;
         padding-right: 6px !important;
         padding-bottom: 10px !important;
+        scrollbar-width: thin !important;
+        scrollbar-color: rgba(255, 255, 255, 0.45) rgba(255, 255, 255, 0.08) !important;
     }
 
     #docy-tocs-mobile ul,
@@ -1875,9 +1883,10 @@ h3, .editor-content h3, .blog_single_item h3, .entry-content h3 {
 
     #docy-tocs-mobile .nav-link,
     .bottom_table_content nav .nav-link {
-        padding: 8px 10px !important;
-        font-size: 14px !important;
-        line-height: 1.4 !important;
+        padding: 10px 12px !important;
+        font-size: 15px !important;
+        font-weight: 600 !important;
+        line-height: 1.55 !important;
         color: #d1d5db !important;
         display: block !important;
     }
@@ -1923,7 +1932,7 @@ h3, .editor-content h3, .blog_single_item h3, .entry-content h3 {
 @media (max-width: 1024px) {
     #docy-tocs-mobile .nav-link,
     .bottom_table_content nav .nav-link {
-        font-weight: 500 !important;
+        font-weight: 600 !important;
         font-size: 15px !important;
         padding: 10px 12px !important;
         line-height: 1.5 !important;
@@ -1940,5 +1949,10 @@ h3, .editor-content h3, .blog_single_item h3, .entry-content h3 {
     .category-left-sidebar-col {
         position: sticky;
         border-right: 1px solid #e2e8f0 !important;
+    }
+
+    .category-left-sidebar-col .modern-sidebar,
+    .modern-sidebar {
+        border: 1px solid #e5e7eb !important;
     }
 }
