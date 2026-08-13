@@ -826,4 +826,48 @@
     * {
         box-sizing: border-box !important;
     }
+
+    /* Mobile Table of Contents (TOC) - Gap from top & Scrollable */
+    aside.bottom_table_content,
+    #docy-tocs,
+    .bottom_table_content {
+        max-height: calc(100vh - 140px) !important;
+        margin-top: 20px !important;
+        border-radius: 16px 16px 0 0 !important;
+        box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.3) !important;
+    }
+
+    #docy-tocs-mobile,
+    .bottom_table_content nav,
+    aside.bottom_table_content nav {
+        max-height: calc(100vh - 220px) !important;
+        overflow-y: auto !important;
+        -webkit-overflow-scrolling: touch !important;
+        padding-right: 8px !important;
+        padding-bottom: 24px !important;
+    }
+
+    /* Custom visible scrollbar for Mobile TOC */
+    #docy-tocs-mobile::-webkit-scrollbar,
+    .bottom_table_content nav::-webkit-scrollbar {
+        width: 6px !important;
+    }
+
+    #docy-tocs-mobile::-webkit-scrollbar-track,
+    .bottom_table_content nav::-webkit-scrollbar-track {
+        background: rgba(255, 255, 255, 0.08) !important;
+        border-radius: 4px !important;
+    }
+
+    #docy-tocs-mobile::-webkit-scrollbar-thumb,
+    .bottom_table_content nav::-webkit-scrollbar-thumb {
+        background: rgba(255, 255, 255, 0.35) !important;
+        border-radius: 4px !important;
+    }
+
+    #docy-toc {
+        max-height: calc(100vh - 160px) !important;
+        overflow-y: auto !important;
+        -webkit-overflow-scrolling: touch !important;
+    }
 }
