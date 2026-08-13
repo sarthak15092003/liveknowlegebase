@@ -510,8 +510,8 @@ get_template_part( 'template-parts/single-post/banner', $banner_type );
                             position: absolute !important;
                             top: 0 !important;
                             bottom: 0 !important;
-                            left: 1px !important;
-                            width: 1px !important;
+                            left: 0 !important;
+                            width: 2px !important;
                             background: #E5E7EB !important;
                             z-index: 1 !important;
                         }
@@ -532,6 +532,13 @@ get_template_part( 'template-parts/single-post/banner', $banner_type );
                             box-shadow: none !important;
                         }
 
+                        .single-post .doc-sidebar #docy-toc ul {
+                            border-left: none !important;
+                            padding-left: 0 !important;
+                            margin-left: 0 !important;
+                            list-style: none !important;
+                        }
+
                         .single-post .doc-sidebar #docy-toc .nav-link {
                             position: relative !important;
                             padding: 6px 0 6px 16px !important;
@@ -539,6 +546,23 @@ get_template_part( 'template-parts/single-post/banner', $banner_type );
                             border: 0 !important;
                             box-shadow: none !important;
                             transition: color 0.2s ease !important;
+                            font-weight: 400 !important;
+                            color: #4B5563 !important;
+                        }
+
+                        .single-post .doc-sidebar #docy-toc .toc-h1 > .nav-link {
+                            padding-left: 16px !important;
+                            font-weight: 400 !important;
+                        }
+
+                        .single-post .doc-sidebar #docy-toc .toc-h2 > .nav-link {
+                            padding-left: 28px !important;
+                            font-weight: 400 !important;
+                        }
+
+                        .single-post .doc-sidebar #docy-toc .toc-h3 > .nav-link {
+                            padding-left: 40px !important;
+                            font-weight: 400 !important;
                         }
 
                         .single-post .doc-sidebar #docy-toc .nav-item.active > .nav-link,
@@ -549,7 +573,9 @@ get_template_part( 'template-parts/single-post/banner', $banner_type );
                         .single-post .doc-sidebar #docy-toc .toc-h2.active > .nav-link,
                         .single-post .doc-sidebar #docy-toc .toc-h3.active > .nav-link {
                             color: #3B82F6 !important;
-                            font-weight: 600 !important;
+                            font-weight: 500 !important;
+                            border-left: none !important;
+                            margin-left: 0 !important;
                         }
 
                         .single-post .doc-sidebar #docy-toc .nav-item.active > .nav-link::before,
@@ -566,9 +592,9 @@ get_template_part( 'template-parts/single-post/banner', $banner_type );
                             left: 0 !important;
                             top: 4px !important;
                             bottom: 4px !important;
-                            width: 3px !important;
+                            width: 2px !important;
                             background: #3B82F6 !important;
-                            border-radius: 3px !important;
+                            border-radius: 2px !important;
                             z-index: 10 !important;
                         }
                     }

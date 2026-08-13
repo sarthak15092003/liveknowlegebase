@@ -482,8 +482,8 @@ article {
     position: absolute !important;
     top: 0 !important;
     bottom: 0 !important;
-    left: 1px !important;
-    width: 1px !important;
+    left: 0 !important;
+    width: 2px !important;
     background: #E5E7EB !important;
     z-index: 1 !important;
 }
