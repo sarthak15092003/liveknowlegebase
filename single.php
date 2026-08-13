@@ -338,6 +338,10 @@ get_template_part( 'template-parts/single-post/banner', $banner_type );
                                     </label>
                                 </div>
 
+                                <div class="cm-feedback-custom-text-wrap" id="cm-custom-text-wrap" style="display: none; margin-top: 14px; margin-bottom: 14px;">
+                                    <textarea id="cm-feedback-custom-text" placeholder="Please specify your feedback..." style="width: 100%; min-height: 80px; padding: 10px 14px; border: 1px solid #d1d5db; border-radius: 8px; font-size: 14px; font-family: inherit; box-sizing: border-box; resize: vertical; outline: none; transition: border-color 0.2s;" onfocus="this.style.borderColor='#3B82F6'" onblur="this.style.borderColor='#d1d5db'"></textarea>
+                                </div>
+
                                 <div class="cm-feedback-actions">
                                     <button type="button" class="cm-btn-cancel" id="cm-feedback-cancel">Cancel</button>
                                     <button type="button" class="cm-btn-submit" id="cm-feedback-submit">Submit feedback</button>
@@ -355,10 +359,18 @@ get_template_part( 'template-parts/single-post/banner', $banner_type );
                             const title = document.getElementById('cm-feedback-title');
                             const optionsYes = document.getElementById('cm-options-yes');
                             const optionsNo = document.getElementById('cm-options-no');
+                            const customWrap = document.getElementById('cm-custom-text-wrap');
+                            const customTextarea = document.getElementById('cm-feedback-custom-text');
+                            
+                            function resetCustomText() {
+                                if (customWrap) customWrap.style.display = 'none';
+                                if (customTextarea) customTextarea.value = '';
+                            }
                             
                             function showForm(vote) {
                                 formArea.style.display = 'block';
                                 document.querySelectorAll('.cm-feedback-radio').forEach(r => r.checked = false);
+                                resetCustomText();
                                 
                                 if (vote === 'yes') {
                                     btnYes.classList.add('active');
@@ -374,6 +386,17 @@ get_template_part( 'template-parts/single-post/banner', $banner_type );
                                     optionsYes.style.display = 'none';
                                 }
                             }
+
+                            document.querySelectorAll('.cm-feedback-radio').forEach(radio => {
+                                radio.addEventListener('change', function() {
+                                    if (this.checked && this.value === 'Something else') {
+                                        if (customWrap) customWrap.style.display = 'block';
+                                        if (customTextarea) customTextarea.focus();
+                                    } else {
+                                        resetCustomText();
+                                    }
+                                });
+                            });
                             
                             if (btnYes) btnYes.addEventListener('click', () => showForm('yes'));
                             if (btnNo) btnNo.addEventListener('click', () => showForm('no'));
@@ -384,6 +407,7 @@ get_template_part( 'template-parts/single-post/banner', $banner_type );
                                     btnYes.classList.remove('active');
                                     btnNo.classList.remove('active');
                                     document.querySelectorAll('.cm-feedback-radio').forEach(r => r.checked = false);
+                                    resetCustomText();
                                 });
                             }
                             
@@ -396,7 +420,13 @@ get_template_part( 'template-parts/single-post/banner', $banner_type );
                                     }
                                     
                                     const vote = btnYes.classList.contains('active') ? 'yes' : 'no';
-                                    const reason = selected.value;
+                                    let reason = selected.value;
+                                    if (reason === 'Something else' && customTextarea) {
+                                        const customVal = customTextarea.value.trim();
+                                        if (customVal) {
+                                            reason = 'Something else: ' + customVal;
+                                        }
+                                    }
                                     const postId = <?php echo get_the_ID(); ?>;
                                     const postTitle = <?php echo json_encode(get_the_title()); ?>;
                                     
@@ -435,6 +465,7 @@ get_template_part( 'template-parts/single-post/banner', $banner_type );
                                         btnYes.classList.remove('active');
                                         btnNo.classList.remove('active');
                                         document.querySelectorAll('.cm-feedback-radio').forEach(r => r.checked = false);
+                                        resetCustomText();
                                     });
                                 });
                             }
