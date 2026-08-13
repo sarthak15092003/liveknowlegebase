@@ -473,16 +473,19 @@ article {
     /* No background on active */
 }
 
-/* Removed vertical track line on the left side of TOC */
-nav::before,
+/* Gray vertical track line behind TOC indicator */
 #docy-toc::before,
 .doc-nav::before,
-.nav-sidebar.doc-nav::before,
-#docy-tocs-mobile::before {
-    display: none !important;
-    content: none !important;
-    background: transparent !important;
-    width: 0 !important;
+.nav-sidebar.doc-nav::before {
+    content: "" !important;
+    display: block !important;
+    position: absolute !important;
+    top: 0 !important;
+    bottom: 0 !important;
+    left: 1px !important;
+    width: 1px !important;
+    background: #E5E7EB !important;
+    z-index: 1 !important;
 }
 
 /* Disabled active indicator line on TOC */

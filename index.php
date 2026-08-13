@@ -527,12 +527,12 @@ if ($blog_layout == 'blog_category' && !$is_category_page) {
 									
 									<h1 class="post-title mb-3" style="font-size: 36px; font-weight: 700; color: #111827; line-height: 1.2; margin-top: 20px;"><?php echo esc_html($cat_title); ?></h1>
 									
-									<div class="post-author-meta-box d-flex align-items-center mb-3 mt-3" style="gap: 15px; padding: 5px;">
-										<div class="author-avatar">
-											<img src="https://docs.cmgalaxy.com/wp-content/uploads/2026/06/cropped-Group-1000004539-300x300-1.png" alt="Author Avatar" class="rounded-circle" style="width: 24px; height: 24px; object-fit: cover; border: none !important;">
+									<div class="post-author-meta-box d-flex align-items-center mb-3 mt-3" style="gap: 8px; padding: 2px 0;">
+										<div class="author-avatar" style="width: 18px; height: 18px; flex-shrink: 0; display: flex; align-items: center; justify-content: center;">
+											<img src="https://docs.cmgalaxy.com/wp-content/uploads/2026/06/cropped-Group-1000004539-300x300-1.png" alt="Author Avatar" class="rounded-circle" style="width: 18px; height: 18px; object-fit: contain; border: none !important; display: block;">
 										</div>
-										<div class="author-info" style="line-height: 1.5; color: #6b7280;">
-											<div style="font-size: 15px;">By <span style="color: #4b5563;">CMGalaxy</span> &nbsp;&middot;&nbsp; <?php echo esc_html($cat_count); ?> articles</div>
+										<div class="author-info" style="line-height: 1.4; color: #6b7280;">
+											<div style="font-size: 14px; display: flex; align-items: center;">By &nbsp;<span style="color: #4b5563; font-weight: 500;">CMGalaxy</span> &nbsp;&middot;&nbsp; <?php echo esc_html($cat_count); ?> articles</div>
 										</div>
 									</div>
 									<?php

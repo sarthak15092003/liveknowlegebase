@@ -78,12 +78,12 @@ get_template_part( 'template-parts/single-post/banner', $banner_type );
                             <h1 class="post-title mb-3" style="font-size: 36px; font-weight: 700; color: #111827; line-height: 1.2; margin-top: 20px;">
                                 <?php the_title(); ?>
                             </h1>
-                            <div class="post-author-meta-box d-flex align-items-center mb-4 mt-2" style="gap: 15px; border-radius: 50px; padding: 5px;">
-                                <div class="author-avatar" style="width: 24px; height: 24px; flex-shrink: 0;">
-                                    <img src="https://docs.cmgalaxy.com/wp-content/uploads/2026/06/cropped-Group-1000004539-300x300-1.png" alt="Author Avatar" style="width: 24px; height: 24px; object-fit: contain; border: none !important; display: block;">
+                            <div class="post-author-meta-box d-flex align-items-center mb-4 mt-2" style="gap: 8px; padding: 2px 0;">
+                                <div class="author-avatar" style="width: 18px; height: 18px; flex-shrink: 0; display: flex; align-items: center; justify-content: center;">
+                                    <img src="https://docs.cmgalaxy.com/wp-content/uploads/2026/06/cropped-Group-1000004539-300x300-1.png" alt="Author Avatar" style="width: 18px; height: 18px; object-fit: contain; border: none !important; display: block;">
                                 </div>
-                                <div class="author-info" style="line-height: 1.5; color: #6b7280; font-family: 'Instrument Sans', sans-serif;">
-                                    <div style="font-size: 15px;">Written by <span style="color: #4b5563;"><?php echo get_the_author(); ?></span></div>
+                                <div class="author-info" style="line-height: 1.4; color: #6b7280; font-family: 'Instrument Sans', sans-serif;">
+                                    <div style="font-size: 14px; display: flex; align-items: center;">Written by &nbsp;<span style="color: #4b5563; font-weight: 500;"><?php echo get_the_author(); ?></span></div>
                                 </div>
                             </div>
                             <?php
@@ -499,10 +499,21 @@ get_template_part( 'template-parts/single-post/banner', $banner_type );
 
                         .single-post .doc-sidebar .left_sidebarlist::before,
                         .single-post .doc-sidebar .left_sidebarlist .nav-sidebar::before,
-                        .single-post .doc-sidebar #docy-toc::before,
                         .single-post .doc-sidebar #docy-toc > ul::before {
                             content: none !important;
                             display: none !important;
+                        }
+
+                        .single-post .doc-sidebar #docy-toc::before {
+                            content: "" !important;
+                            display: block !important;
+                            position: absolute !important;
+                            top: 0 !important;
+                            bottom: 0 !important;
+                            left: 1px !important;
+                            width: 1px !important;
+                            background: #E5E7EB !important;
+                            z-index: 1 !important;
                         }
 
                         .single-post .doc-sidebar .toc-title {

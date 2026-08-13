@@ -435,14 +435,15 @@ article {
 #docy-toc::before,
 .doc-nav::before,
 .nav-sidebar.doc-nav::before {
-    content: '';
-    position: absolute;
-    left: 0;
-    top: 0;
-    bottom: 0;
-    width: 2px;
-    background-color: #e5e7eb;
-    border-radius: 2px;
+    content: '' !important;
+    display: block !important;
+    position: absolute !important;
+    left: 1px !important;
+    top: 0 !important;
+    bottom: 0 !important;
+    width: 1px !important;
+    background-color: #e5e7eb !important;
+    z-index: 1 !important;
 }
 
 /* Blue indicator line - only on active items, no gray track */
