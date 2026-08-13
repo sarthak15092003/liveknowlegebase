@@ -1678,15 +1678,7 @@ h3, .editor-content h3, .blog_single_item h3, .entry-content h3 {
 
   .single-post .doc-sidebar .left_sidebarlist::before,
   .blog_area.tip_doc_area .doc-sidebar .left_sidebarlist::before {
-    content: "" !important;
-    position: absolute !important;
-    top: 0 !important;
-    bottom: 0 !important;
-    left: 0 !important;
-    width: 1px !important;
-    background: #e2e8f0 !important;
-    display: block !important;
-    z-index: 1 !important;
+    display: none !important;
   }
 
   .single-post .doc-sidebar .toc-title,
@@ -1701,6 +1693,7 @@ h3, .editor-content h3, .blog_single_item h3, .entry-content h3 {
     position: relative !important;
     background: transparent !important;
     border: 0 !important;
+    border-left: 1px solid #dbe4f0 !important;
     border-radius: 0 !important;
     box-shadow: none !important;
     padding-left: 0 !important;
@@ -1715,26 +1708,26 @@ h3, .editor-content h3, .blog_single_item h3, .entry-content h3 {
 
   .single-post #docy-toc .nav-link,
   .blog_area.tip_doc_area #docy-toc .nav-link {
-    padding-left: 20px !important;
+    margin-left: -1px !important;
+    padding: 6px 0 6px 20px !important;
     background: transparent !important;
     border: 0 !important;
+    border-left: 2px solid transparent !important;
     box-shadow: none !important;
+  }
+
+  .single-post #docy-toc .nav-item.active > .nav-link,
+  .single-post #docy-toc .nav-link.active,
+  .blog_area.tip_doc_area #docy-toc .nav-item.active > .nav-link,
+  .blog_area.tip_doc_area #docy-toc .nav-link.active {
+    border-left-color: #3B82F6 !important;
   }
 
   .single-post #docy-toc .nav-item.active > .nav-link::before,
   .single-post #docy-toc .nav-link.active::before,
   .blog_area.tip_doc_area #docy-toc .nav-item.active > .nav-link::before,
   .blog_area.tip_doc_area #docy-toc .nav-link.active::before {
-    content: "" !important;
-    display: block !important;
-    position: absolute !important;
-    top: 0 !important;
-    bottom: 0 !important;
-    left: 0 !important;
-    width: 2px !important;
-    background: #3B82F6 !important;
-    border-radius: 2px !important;
-    z-index: 2 !important;
+    display: none !important;
   }
 }
 

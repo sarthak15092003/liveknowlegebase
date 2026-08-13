@@ -486,6 +486,63 @@ get_template_part( 'template-parts/single-post/banner', $banner_type );
             // Render TOC on the right side after the content column
             if ( docy_toc('post') == '1' ) : ?>
                 <div class="col-lg-2 doc-sidebar pe-lg-0 ps-lg-2">
+                    <style>
+                    @media (min-width: 1025px) {
+                        .single-post .doc-sidebar .left_sidebarlist {
+                            margin-left: 0 !important;
+                            padding-left: 0 !important;
+                            background: transparent !important;
+                            border: 0 !important;
+                            border-radius: 0 !important;
+                            box-shadow: none !important;
+                        }
+
+                        .single-post .doc-sidebar .left_sidebarlist::before,
+                        .single-post .doc-sidebar .left_sidebarlist .nav-sidebar::before,
+                        .single-post .doc-sidebar #docy-toc::before,
+                        .single-post .doc-sidebar #docy-toc > ul::before {
+                            content: none !important;
+                            display: none !important;
+                        }
+
+                        .single-post .doc-sidebar .toc-title {
+                            padding-left: 20px !important;
+                            padding-bottom: 0 !important;
+                            border-bottom: 0 !important;
+                        }
+
+                        .single-post .doc-sidebar #docy-toc {
+                            position: relative !important;
+                            padding-left: 0 !important;
+                            background: transparent !important;
+                            border: 0 !important;
+                            border-left: 1px solid #dbe4f0 !important;
+                            border-radius: 0 !important;
+                            box-shadow: none !important;
+                        }
+
+                        .single-post .doc-sidebar #docy-toc .nav-link {
+                            margin-left: -1px !important;
+                            padding: 6px 0 6px 20px !important;
+                            background: transparent !important;
+                            border: 0 !important;
+                            border-left: 2px solid transparent !important;
+                            box-shadow: none !important;
+                        }
+
+                        .single-post .doc-sidebar #docy-toc .nav-item.active > .nav-link,
+                        .single-post .doc-sidebar #docy-toc .nav-link.active {
+                            border-left-color: #3B82F6 !important;
+                            color: #000000 !important;
+                            font-weight: 500 !important;
+                        }
+
+                        .single-post .doc-sidebar #docy-toc .nav-link::before {
+                            content: none !important;
+                            display: none !important;
+                        }
+                    }
+                    </style>
                     
                     <aside class="left_sidebarlist">
                         <h6 class="toc-title mb-3"><?php esc_html_e('On this Page', 'docy'); ?></h6>
