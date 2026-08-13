@@ -515,6 +515,7 @@ function cm_feedback_create_table() {
             post_id mediumint(9) NOT NULL,
             post_title varchar(255) NOT NULL,
             user_id bigint(20) DEFAULT 0 NOT NULL,
+            user_name varchar(255) DEFAULT '' NOT NULL,
             user_email varchar(255) DEFAULT '' NOT NULL,
             ip_address varchar(100) NOT NULL,
             vote varchar(10) NOT NULL,
@@ -531,9 +532,13 @@ function cm_feedback_create_table() {
         if ( empty( $col_user_id ) ) {
             $wpdb->query( "ALTER TABLE `{$table_name}` ADD COLUMN user_id bigint(20) DEFAULT 0 NOT NULL AFTER post_title" );
         }
+        $col_user_name = $wpdb->get_results( "SHOW COLUMNS FROM `{$table_name}` LIKE 'user_name'" );
+        if ( empty( $col_user_name ) ) {
+            $wpdb->query( "ALTER TABLE `{$table_name}` ADD COLUMN user_name varchar(255) DEFAULT '' NOT NULL AFTER user_id" );
+        }
         $col_user_email = $wpdb->get_results( "SHOW COLUMNS FROM `{$table_name}` LIKE 'user_email'" );
         if ( empty( $col_user_email ) ) {
-            $wpdb->query( "ALTER TABLE `{$table_name}` ADD COLUMN user_email varchar(255) DEFAULT '' NOT NULL AFTER user_id" );
+            $wpdb->query( "ALTER TABLE `{$table_name}` ADD COLUMN user_email varchar(255) DEFAULT '' NOT NULL AFTER user_name" );
         }
     }
 }
@@ -556,19 +561,24 @@ function cm_handle_submit_feedback() {
     $reason     = isset( $_POST['reason'] ) ? sanitize_textarea_field( $_POST['reason'] ) : '';
     $ip_address = $_SERVER['REMOTE_ADDR'];
 
-    // Capture User ID and User Email
+    // Capture User ID, User Name, and User Email
     $user_id    = get_current_user_id();
+    $user_name  = '';
     $user_email = '';
 
     if ( $user_id ) {
         $user_obj = wp_get_current_user();
-        if ( $user_obj && ! empty( $user_obj->user_email ) ) {
-            $user_email = $user_obj->user_email;
+        if ( $user_obj ) {
+            $user_name  = ! empty( $user_obj->display_name ) ? $user_obj->display_name : $user_obj->user_login;
+            $user_email = ! empty( $user_obj->user_email ) ? $user_obj->user_email : '';
         }
     }
 
     if ( ! $user_id && ! empty( $_POST['user_id'] ) ) {
         $user_id = intval( $_POST['user_id'] );
+    }
+    if ( empty( $user_name ) && ! empty( $_POST['user_name'] ) ) {
+        $user_name = sanitize_text_field( $_POST['user_name'] );
     }
     if ( empty( $user_email ) && ! empty( $_POST['user_email'] ) ) {
         $user_email = sanitize_email( $_POST['user_email'] );
@@ -586,6 +596,7 @@ function cm_handle_submit_feedback() {
             'post_id'    => $post_id,
             'post_title' => $post_title,
             'user_id'    => $user_id,
+            'user_name'  => $user_name,
             'user_email' => $user_email,
             'ip_address' => $ip_address,
             'vote'       => $vote,
@@ -631,7 +642,7 @@ function cm_feedback_entries_page() {
         echo '<th>ID</th>';
         echo '<th>Date</th>';
         echo '<th>Post Title</th>';
-        echo '<th>User ID</th>';
+        echo '<th>User Name</th>';
         echo '<th>Email</th>';
         echo '<th>IP Address</th>';
         echo '<th>Vote</th>';
@@ -640,14 +651,23 @@ function cm_feedback_entries_page() {
         echo '<tbody>';
         
         foreach ( $results as $row ) {
-            $user_id_val = ( isset( $row->user_id ) && $row->user_id > 0 ) ? esc_html( $row->user_id ) : '—';
+            $user_name_val = '—';
+            if ( isset( $row->user_name ) && ! empty( $row->user_name ) ) {
+                $user_name_val = esc_html( $row->user_name );
+            } elseif ( isset( $row->user_id ) && $row->user_id > 0 ) {
+                $u_info = get_userdata( $row->user_id );
+                if ( $u_info ) {
+                    $user_name_val = esc_html( $u_info->display_name ? $u_info->display_name : $u_info->user_login );
+                }
+            }
+            
             $user_email_val = ( isset( $row->user_email ) && ! empty( $row->user_email ) ) ? esc_html( $row->user_email ) : '—';
 
             echo '<tr>';
             echo '<td>' . esc_html( $row->id ) . '</td>';
             echo '<td>' . esc_html( $row->created_at ) . '</td>';
             echo '<td><a href="' . get_permalink( $row->post_id ) . '" target="_blank">' . esc_html( $row->post_title ) . '</a></td>';
-            echo '<td>' . $user_id_val . '</td>';
+            echo '<td>' . $user_name_val . '</td>';
             echo '<td>' . $user_email_val . '</td>';
             echo '<td>' . esc_html( $row->ip_address ) . '</td>';
             $vote_val = strtolower( $row->vote );

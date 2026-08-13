@@ -431,6 +431,7 @@ get_template_part( 'template-parts/single-post/banner', $banner_type );
                                     const postId = <?php echo get_the_ID(); ?>;
                                     const postTitle = <?php echo json_encode(get_the_title()); ?>;
                                     const userId = <?php echo get_current_user_id(); ?>;
+                                    const userName = <?php $cu = wp_get_current_user(); echo json_encode( $cu->exists() ? ( $cu->display_name ? $cu->display_name : $cu->user_login ) : '' ); ?>;
                                     const userEmail = <?php $cu = wp_get_current_user(); echo json_encode( $cu->exists() ? $cu->user_email : '' ); ?>;
                                     
                                     const formData = new FormData();
@@ -438,6 +439,7 @@ get_template_part( 'template-parts/single-post/banner', $banner_type );
                                     formData.append('post_id', postId);
                                     formData.append('post_title', postTitle);
                                     formData.append('user_id', userId);
+                                    formData.append('user_name', userName);
                                     formData.append('user_email', userEmail);
                                     formData.append('vote', vote);
                                     formData.append('reason', reason);
