@@ -69,9 +69,9 @@
 .breadcrumb .breadcrumb-item.active { color: #484a61 !important; }
 
 /* Modern Sidebar & Left/Right Columns Sticky Styles */
-.modern-sidebar { background: #ffffff; border: 1px solid #e5e7eb !important; border-radius: 8px; padding: 0; margin-bottom: 2rem; position: sticky; top: 110px; max-height: calc(100vh - 120px); overflow-y: auto; }
+.modern-sidebar { background: #ffffff; border: none !important; border-radius: 8px; padding: 0; margin-bottom: 2rem; position: sticky; top: 110px; max-height: calc(100vh - 120px); overflow-y: auto; }
 .cat-title { color: #161c52 !important; font-weight: 500 !important; }
-.category-left-sidebar-col .modern-sidebar { width: 100%; max-width: 100%; margin-top: 5px; margin-left: 0; margin-right: 0; background: #ffffff; border: 1px solid #e5e7eb !important; border-radius: 8px; padding: 0; max-height: calc(100vh - 140px); overflow-y: auto; }
+.category-left-sidebar-col .modern-sidebar { width: 100%; max-width: 100%; margin-top: 5px; margin-left: 0; margin-right: 0; background: #ffffff; border: none !important; border-radius: 8px; padding: 0; max-height: calc(100vh - 140px); overflow-y: auto; }
 .body_wrapper { overflow: visible !important; }
 .category-main-col { position: relative; }
 .category-left-sidebar-col { padding-left: 0 !important; padding-right: 0 !important; position: sticky; top: 130px; align-self: flex-start; }
@@ -1953,6 +1953,6 @@ h3, .editor-content h3, .blog_single_item h3, .entry-content h3 {
 
     .category-left-sidebar-col .modern-sidebar,
     .modern-sidebar {
-        border: 1px solid #e5e7eb !important;
+        border: none !important;
     }
 }

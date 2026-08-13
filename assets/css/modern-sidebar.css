@@ -6,7 +6,7 @@
     margin: 0 0 3rem;
     overflow-x: hidden;
     overflow-y: auto;
-    border: 1px solid #e5e7eb !important;
+    border: none !important;
     box-shadow: none !important;
     width: 100%;
     max-width: 240px;
@@ -78,7 +78,7 @@
     margin-top: 20px;
     margin-left: 0;
     margin-right: 0;
-    border: 1px solid #e5e7eb !important;
+    border: none !important;
 }
 
 /* Right sidebar (Category 3) */

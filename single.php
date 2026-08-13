@@ -516,7 +516,7 @@ get_template_part( 'template-parts/single-post/banner', $banner_type );
                             padding-left: 0 !important;
                             background: transparent !important;
                             border: 0 !important;
-                            border-left: 1px solid #dbe4f0 !important;
+                            border-left: 0 !important;
                             border-radius: 0 !important;
                             box-shadow: none !important;
                         }
