@@ -116,12 +116,22 @@ html, body { scroll-padding-top: 85px !important; }
 /* Apply scrolling to the TOC nav instead of the whole sidebar so the banner stays visible */
 #docy-toc { max-height: calc(100vh - 300px); overflow-y: auto; }
 
-/* Custom scrollbar for TOC */
-#docy-toc::-webkit-scrollbar { width: 5px !important; height: 5px !important; background: transparent !important; }
-#docy-toc::-webkit-scrollbar-track { background: #f1f5f9 !important; border-radius: 4px !important; }
-#docy-toc::-webkit-scrollbar-thumb { background: #cbd5e1 !important; border-radius: 4px !important; }
-#docy-toc::-webkit-scrollbar-thumb:hover { background: #94a3b8 !important; }
-#docy-toc { scrollbar-width: thin !important; scrollbar-color: #cbd5e1 #f1f5f9 !important; }
+/* Hide scrollbar for TOC on Desktop while keeping scroll functionality */
+#docy-toc {
+    scrollbar-width: none !important;
+    -ms-overflow-style: none !important;
+}
+#docy-toc::-webkit-scrollbar {
+    display: none !important;
+    width: 0px !important;
+    height: 0px !important;
+    background: transparent !important;
+}
+#docy-toc::-webkit-scrollbar-track,
+#docy-toc::-webkit-scrollbar-thumb {
+    display: none !important;
+    background: transparent !important;
+}
 #docy-toc .nav-link, #docy-toc a, #docy-tocs-mobile .nav-link, #docy-tocs-mobile a { position: relative !important; display: block !important; transition: color 0.3s ease !important; }
 #docy-toc .nav-item.active > .nav-link::before, #docy-toc .nav-link.active::before, #docy-toc a.active::before, #docy-toc li.active > a::before, #docy-toc li.active > .nav-link::before, #docy-toc .toc-h1.active > .nav-link::before, #docy-toc .toc-h2.active > .nav-link::before, #docy-toc .toc-h3.active > .nav-link::before, #docy-tocs-mobile .nav-item.active > .nav-link::before, #docy-tocs-mobile .nav-link.active::before, #docy-tocs-mobile a.active::before, #docy-tocs-mobile li.active > a::before, #docy-tocs-mobile li.active > .nav-link::before { display: block !important; content: "" !important; width: 3px !important; background: #3B82F6 !important; position: absolute !important; left: 0 !important; top: 4px !important; bottom: 4px !important; border-radius: 3px !important; z-index: 10 !important; }
 
