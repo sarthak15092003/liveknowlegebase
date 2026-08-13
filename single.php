@@ -456,7 +456,11 @@ get_template_part( 'template-parts/single-post/banner', $banner_type );
                                     .then(response => response.json())
                                     .then(data => {
                                         if(data.success) {
-                                            alert('Thank you for your feedback!');
+                                            if (vote === 'dislike' || vote === 'no') {
+                                                alert('Thank you for your feedback! We will get back to you.');
+                                            } else {
+                                                alert('Thank you for your feedback!');
+                                            }
                                         } else {
                                             alert('Something went wrong. Please try again.');
                                         }
