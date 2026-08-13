@@ -164,11 +164,10 @@
                 toc.css({
                     'background-color': '#171a22', // Background color
                     'color': '#fff', // Text color
-                    'padding': '24px 24px 0 24px', // Padding for better appearance
-                    'border-radius': '10px 10px 0 0', // Rounded corners
-                    'box-shadow': 'none', // Remove shadow
-                    'display': 'block' // Ensure it's not hidden by display:none
-                }).hide().slideDown(300); // Show with smooth slide-down effect
+                    'display': 'flex' // Ensure flex display for mobile layout
+                }).hide().slideDown(300, function() {
+                    $(this).css('height', ''); // Clear inline animation height so CSS bounds take over
+                });
 
                 container.css('border-radius', '0'); // Remove border-radius when TOC is visible
                 overlay.fadeIn(300); // Show the overlay
