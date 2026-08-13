@@ -597,6 +597,14 @@ get_template_part( 'template-parts/single-post/banner', $banner_type );
                             border-radius: 2px !important;
                             z-index: 10 !important;
                         }
+
+                        .blog_single_item h1, .blog_single_item h2, .blog_single_item h3, .blog_single_item h4, .blog_single_item h5, .blog_single_item h6,
+                        .main-post h1, .main-post h2, .main-post h3, .main-post h4, .main-post h5, .main-post h6,
+                        .editor-content h1, .editor-content h2, .editor-content h3, .editor-content h4,
+                        article h1, article h2, article h3,
+                        [id^="toc-section-"] {
+                            scroll-margin-top: 140px !important;
+                        }
                     }
                     </style>
                     
@@ -829,19 +837,31 @@ get_template_part( 'template-parts/single-post/banner', $banner_type );
                     }
                 }
 
-                // Smooth click handler
+                // Smooth click handler with top header margin offset
                 $(document).on('click', '#docy-toc a, #docy-tocs-mobile a', function(e) {
                     var href = $(this).attr('href');
                     if (href && href.startsWith('#')) {
                         var id = href.substring(1);
-                        isClickScrolling = true;
-                        lastActiveId = id;
-                        highlightTOC(id);
-                        
-                        if (clickTimeout) clearTimeout(clickTimeout);
-                        clickTimeout = setTimeout(function() {
-                            isClickScrolling = false;
-                        }, 2000);
+                        var $target = $('#' + $.escapeSelector(id));
+                        if ($target.length > 0) {
+                            e.preventDefault();
+                            isClickScrolling = true;
+                            lastActiveId = id;
+                            highlightTOC(id);
+
+                            var adminBarHeight = $('#wpadminbar').length > 0 ? $('#wpadminbar').height() : 0;
+                            var headerOffset = ($(window).width() <= 1024 ? 90 : 140) + adminBarHeight;
+                            var targetPosition = $target.offset().top - headerOffset;
+
+                            $('html, body').stop().animate({
+                                scrollTop: Math.max(0, targetPosition)
+                            }, 450, function() {
+                                if (clickTimeout) clearTimeout(clickTimeout);
+                                clickTimeout = setTimeout(function() {
+                                    isClickScrolling = false;
+                                }, 150);
+                            });
+                        }
                     }
                 });
                 

@@ -48,7 +48,7 @@
             if (target.length) {
                 // Scroll to target with offset for sticky header
                 var adminBarHeight = $('#wpadminbar').length > 0 ? $('#wpadminbar').height() : 0;
-                var scrollOffset = ($(window).width() <= 1024 ? 70 : 120) + adminBarHeight;
+                var scrollOffset = ($(window).width() <= 1024 ? 90 : 140) + adminBarHeight;
 
                 // Fix: Account for body scrolling by adding current scrollTop
                 var currentScroll = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop;
@@ -127,7 +127,7 @@
 
             if (target.length) {
                 var adminBarHeight = $('#wpadminbar').length > 0 ? $('#wpadminbar').height() : 0;
-                var scrollOffset = ($(window).width() <= 1024 ? 70 : 120) + adminBarHeight;
+                var scrollOffset = ($(window).width() <= 1024 ? 90 : 140) + adminBarHeight;
 
                 // Fix: Account for body scrolling by adding current scrollTop
                 var currentScroll = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop;

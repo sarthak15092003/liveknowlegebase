@@ -259,6 +259,15 @@ aside.bottom_table_content nav ul {
 #docy-toc .toc-h2 > .nav-link, #docy-tocs-mobile .toc-h2 > .nav-link { font-weight: 400 !important; font-size: 14px !important; color: #4B5563 !important; padding-left: 28px !important; }
 #docy-toc .toc-h1.active > .nav-link, #docy-toc .toc-h2.active > .nav-link, #docy-toc .nav-link.active, #docy-toc a.active, #docy-toc li.active > a, #docy-tocs-mobile .toc-h1.active > .nav-link, #docy-tocs-mobile .toc-h2.active > .nav-link, #docy-tocs-mobile .nav-link.active, #docy-tocs-mobile a.active, #docy-tocs-mobile li.active > a { color: #2563eb !important; font-weight: 500 !important; border-left: none !important; margin-left: 0 !important; }
 
+/* Heading Scroll Margin Offset for Sticky Header */
+.blog_single_item h1, .blog_single_item h2, .blog_single_item h3, .blog_single_item h4, .blog_single_item h5, .blog_single_item h6,
+.main-post h1, .main-post h2, .main-post h3, .main-post h4, .main-post h5, .main-post h6,
+.editor-content h1, .editor-content h2, .editor-content h3, .editor-content h4,
+article h1, article h2, article h3,
+[id^="toc-section-"] {
+    scroll-margin-top: 140px !important;
+}
+
 
 /* Layout CMGalaxy Header Styles */
 
