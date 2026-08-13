@@ -531,13 +531,24 @@ get_template_part( 'template-parts/single-post/banner', $banner_type );
                         }
 
                         .single-post .doc-sidebar #docy-toc .nav-item.active > .nav-link,
-                        .single-post .doc-sidebar #docy-toc .nav-link.active {
+                        .single-post .doc-sidebar #docy-toc .nav-link.active,
+                        .single-post .doc-sidebar #docy-toc a.active,
+                        .single-post .doc-sidebar #docy-toc li.active > a,
+                        .single-post .doc-sidebar #docy-toc .toc-h1.active > .nav-link,
+                        .single-post .doc-sidebar #docy-toc .toc-h2.active > .nav-link,
+                        .single-post .doc-sidebar #docy-toc .toc-h3.active > .nav-link {
                             color: #3B82F6 !important;
                             font-weight: 600 !important;
                         }
 
                         .single-post .doc-sidebar #docy-toc .nav-item.active > .nav-link::before,
-                        .single-post .doc-sidebar #docy-toc .nav-link.active::before {
+                        .single-post .doc-sidebar #docy-toc .nav-link.active::before,
+                        .single-post .doc-sidebar #docy-toc a.active::before,
+                        .single-post .doc-sidebar #docy-toc li.active > a::before,
+                        .single-post .doc-sidebar #docy-toc li.active > .nav-link::before,
+                        .single-post .doc-sidebar #docy-toc .toc-h1.active > .nav-link::before,
+                        .single-post .doc-sidebar #docy-toc .toc-h2.active > .nav-link::before,
+                        .single-post .doc-sidebar #docy-toc .toc-h3.active > .nav-link::before {
                             content: "" !important;
                             display: block !important;
                             position: absolute !important;
@@ -547,6 +558,7 @@ get_template_part( 'template-parts/single-post/banner', $banner_type );
                             width: 3px !important;
                             background: #3B82F6 !important;
                             border-radius: 3px !important;
+                            z-index: 10 !important;
                         }
                     }
                     </style>
