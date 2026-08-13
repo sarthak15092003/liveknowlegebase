@@ -273,8 +273,6 @@ get_template_part( 'template-parts/single-post/banner', $banner_type );
                             background: #6b7280;
                         }
                         </style>
-
-                        <?php if ( is_user_logged_in() ) : ?>
                         <div class="cm-feedback-wrapper">
                             <div class="cm-feedback-top">
                                 <h4 class="cm-feedback-title">Was this page helpful?</h4>
@@ -289,8 +287,14 @@ get_template_part( 'template-parts/single-post/banner', $banner_type );
                                     </button>
                                 </div>
                             </div>
+
+                            <div class="cm-feedback-login-prompt" id="cm-feedback-login-prompt" style="display: none; padding: 18px 16px; text-align: center; background: #f8fafc; border: 1px dashed #cbd5e1; border-radius: 10px; margin-top: 16px;">
+                                <p style="margin: 0; color: #475569; font-size: 14px; line-height: 1.5;">
+                                    Please <a href="<?php echo esc_url( wp_login_url( get_permalink() ) ); ?>" style="color: #3b82f6; font-weight: 600; text-decoration: underline;">Sign In</a> or <a href="<?php echo esc_url( wp_registration_url() ); ?>" style="color: #3b82f6; font-weight: 600; text-decoration: underline;">Sign Up</a> to leave your feedback.
+                                </p>
+                            </div>
                             
-                            <div class="cm-feedback-form-area" id="cm-feedback-form">
+                            <div class="cm-feedback-form-area" id="cm-feedback-form" style="display: none;">
                                 <h3 class="cm-feedback-form-title" id="cm-feedback-title" style="margin-top: 0px;">How can we improve our product?</h3>
                                 
                                 <div class="cm-feedback-options" id="cm-options-yes" style="display: none;">
@@ -360,9 +364,11 @@ get_template_part( 'template-parts/single-post/banner', $banner_type );
 
                         <script>
                         document.addEventListener('DOMContentLoaded', function() {
+                            const isLoggedIn = <?php echo is_user_logged_in() ? 'true' : 'false'; ?>;
                             const btnYes = document.getElementById('cm-vote-yes');
                             const btnNo = document.getElementById('cm-vote-no');
                             const formArea = document.getElementById('cm-feedback-form');
+                            const loginPrompt = document.getElementById('cm-feedback-login-prompt');
                             const btnCancel = document.getElementById('cm-feedback-cancel');
                             const btnSubmit = document.getElementById('cm-feedback-submit');
                             const title = document.getElementById('cm-feedback-title');
@@ -383,20 +389,33 @@ get_template_part( 'template-parts/single-post/banner', $banner_type );
                             }
                             
                             function showForm(vote) {
-                                formArea.style.display = 'block';
                                 hideSuccess();
+
+                                if (vote === 'like' || vote === 'yes') {
+                                    btnYes.classList.add('active');
+                                    btnNo.classList.remove('active');
+                                } else {
+                                    btnNo.classList.add('active');
+                                    btnYes.classList.remove('active');
+                                }
+
+                                if (!isLoggedIn) {
+                                    if (formArea) formArea.style.display = 'none';
+                                    if (loginPrompt) loginPrompt.style.display = 'block';
+                                    return;
+                                }
+
+                                if (loginPrompt) loginPrompt.style.display = 'none';
+                                if (formArea) formArea.style.display = 'block';
+                                
                                 document.querySelectorAll('.cm-feedback-radio').forEach(r => r.checked = false);
                                 resetCustomText();
                                 
                                 if (vote === 'like' || vote === 'yes') {
-                                    btnYes.classList.add('active');
-                                    btnNo.classList.remove('active');
                                     title.innerText = 'Great! What worked best for you?';
                                     optionsYes.style.display = 'flex';
                                     optionsNo.style.display = 'none';
                                 } else {
-                                    btnNo.classList.add('active');
-                                    btnYes.classList.remove('active');
                                     title.innerText = 'How can we improve our product?';
                                     optionsNo.style.display = 'flex';
                                     optionsYes.style.display = 'none';
@@ -419,7 +438,8 @@ get_template_part( 'template-parts/single-post/banner', $banner_type );
                             
                             if (btnCancel) {
                                 btnCancel.addEventListener('click', () => {
-                                    formArea.style.display = 'none';
+                                    if (formArea) formArea.style.display = 'none';
+                                    if (loginPrompt) loginPrompt.style.display = 'none';
                                     btnYes.classList.remove('active');
                                     btnNo.classList.remove('active');
                                     document.querySelectorAll('.cm-feedback-radio').forEach(r => r.checked = false);
@@ -476,7 +496,7 @@ get_template_part( 'template-parts/single-post/banner', $banner_type );
                                                 ? 'Thank you for your feedback! We will get back to you.'
                                                 : 'Thank you for your feedback!';
                                                 
-                                            formArea.style.display = 'none';
+                                            if (formArea) formArea.style.display = 'none';
                                             if (successText) successText.innerText = thankMsg;
                                             if (successArea) successArea.style.display = 'block';
                                         } else {
@@ -499,14 +519,6 @@ get_template_part( 'template-parts/single-post/banner', $banner_type );
                             }
                         });
                         </script>
-                        <?php else : ?>
-                        <div class="cm-feedback-wrapper" style="text-align: center; padding: 24px 16px; background: #f8fafc; border: 1px dashed #cbd5e1; border-radius: 12px; margin-top: 30px;">
-                            <h4 class="cm-feedback-title" style="margin-bottom: 8px; color: #1e293b; font-size: 16px; font-weight: 600;">Was this page helpful?</h4>
-                            <p style="margin: 0; color: #64748b; font-size: 14px; line-height: 1.5;">
-                                Please <a href="<?php echo esc_url( wp_login_url( get_permalink() ) ); ?>" style="color: #3b82f6; font-weight: 600; text-decoration: underline;">Sign In</a> or <a href="<?php echo esc_url( wp_registration_url() ); ?>" style="color: #3b82f6; font-weight: 600; text-decoration: underline;">Sign Up</a> to leave your feedback.
-                            </p>
-                        </div>
-                        <?php endif; ?>
 
                         <!-- Post Navigation Cards -->
                         <?php
