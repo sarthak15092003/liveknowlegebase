@@ -271,7 +271,7 @@ if ($is_single_post) {
                             <div class="<?php echo esc_attr($subcat_wrapper_class); ?>" style="padding-left: 55px; display: flex; align-items: center; padding-top: 8px; padding-bottom: 8px; cursor: pointer;" data-target="<?php echo esc_attr($subcat_target_id); ?>">
                                 <a href="<?php echo esc_url(get_category_link($subcat->term_id)); ?>" class="subsection-title" style="color:#475569; font-weight:<?php echo $subcat_font_weight; ?>; font-size: 14px; text-decoration: none; flex: 1; padding-right: 10px; display: flex; align-items: center; justify-content: space-between; width: 100%; overflow: hidden;" title="<?php echo esc_attr($subcat->name); ?>">
                                     <span style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis; flex: 1;"><?php echo esc_html($subcat->name); ?></span>
-                                    <span style="font-size: 11px; background: #f1f5f9; padding: 2px 6px; border-radius: 4px; color: #94a3b8; font-weight: 500; margin-left: 8px; flex-shrink: 0;"><?php echo esc_html($subcat->count); ?></span>
+                                    <!-- <span style="font-size: 11px; background: #f1f5f9; padding: 2px 6px; border-radius: 4px; color: #94a3b8; font-weight: 500; margin-left: 8px; flex-shrink: 0;"><?php echo esc_html($subcat->count); ?></span> -->
                                 </a>
                                 <?php if ($has_sub_subcats) : ?>
                                 <span class="expand-icon-subcat" style="color: #64748b; margin-right: 15px; display: inline-flex; transition: transform 0.3s; transform: <?php echo $is_subcat_active ? 'rotate(270deg)' : 'rotate(180deg)'; ?>;">
@@ -296,7 +296,7 @@ if ($is_single_post) {
                                     <?php endif; ?>
                                     <a href="<?php echo esc_url(get_category_link($sub_subcat->term_id)); ?>" style="color: <?php echo $sub_subcat_color; ?>; font-size: 13.5px; text-decoration: none; font-weight: <?php echo $sub_subcat_weight; ?>; display: flex; align-items: center; justify-content: space-between; line-height: 1.4; width: 100%; overflow: hidden;">
                                         <span style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis; flex: 1;"><?php echo esc_html($sub_subcat->name); ?></span>
-                                        <span style="font-size: 11px; background: #f1f5f9; padding: 2px 6px; border-radius: 4px; color: #94a3b8; font-weight: 500; margin-left: 8px; flex-shrink: 0;"><?php echo esc_html($sub_subcat->count); ?></span>
+                                        <!-- <span style="font-size: 11px; background: #f1f5f9; padding: 2px 6px; border-radius: 4px; color: #94a3b8; font-weight: 500; margin-left: 8px; flex-shrink: 0;"><?php echo esc_html($sub_subcat->count); ?></span> -->
                                     </a>
                                 </div>
                                 <?php
