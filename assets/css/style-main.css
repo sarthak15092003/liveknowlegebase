@@ -17171,6 +17171,7 @@ blockquote .author {
 }
 
 @media (max-width: 1024px) {
+
   .jrBzsJ .eYVFtH .bottom_table_content,
   aside.bottom_table_content,
   #docy-tocs,
@@ -17309,7 +17310,7 @@ blockquote .author {
   /* Position above the button */
   left: 0;
   width: 100%;
-  background-color: #171a22;
+  background-color: #ffffff;
   /* Background color */
   color: #fff;
   /* Text color */
