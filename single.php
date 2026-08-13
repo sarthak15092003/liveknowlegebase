@@ -348,6 +348,14 @@ get_template_part( 'template-parts/single-post/banner', $banner_type );
                                     <button type="button" class="cm-btn-submit" id="cm-feedback-submit">Submit feedback</button>
                                 </div>
                             </div>
+
+                            <div class="cm-feedback-success-area" id="cm-feedback-success" style="display: none; padding: 20px 16px; text-align: center; background: #f0fdf4; border: 1px solid #bbf7d0; border-radius: 12px; margin-top: 16px;">
+                                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="margin-bottom: 8px; display: inline-block;">
+                                    <circle cx="12" cy="12" r="10" fill="#22C55E"/>
+                                    <path d="M8 12L11 15L16 9" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                                <div id="cm-feedback-success-text" style="color: #15803d; font-weight: 600; font-size: 15px; line-height: 1.4;">Thank you for your feedback!</div>
+                            </div>
                         </div>
 
                         <script>
@@ -362,14 +370,21 @@ get_template_part( 'template-parts/single-post/banner', $banner_type );
                             const optionsNo = document.getElementById('cm-options-no');
                             const customWrap = document.getElementById('cm-custom-text-wrap');
                             const customTextarea = document.getElementById('cm-feedback-custom-text');
+                            const successArea = document.getElementById('cm-feedback-success');
+                            const successText = document.getElementById('cm-feedback-success-text');
                             
                             function resetCustomText() {
                                 if (customWrap) customWrap.style.display = 'none';
                                 if (customTextarea) customTextarea.value = '';
                             }
+
+                            function hideSuccess() {
+                                if (successArea) successArea.style.display = 'none';
+                            }
                             
                             function showForm(vote) {
                                 formArea.style.display = 'block';
+                                hideSuccess();
                                 document.querySelectorAll('.cm-feedback-radio').forEach(r => r.checked = false);
                                 resetCustomText();
                                 
@@ -409,6 +424,7 @@ get_template_part( 'template-parts/single-post/banner', $banner_type );
                                     btnNo.classList.remove('active');
                                     document.querySelectorAll('.cm-feedback-radio').forEach(r => r.checked = false);
                                     resetCustomText();
+                                    hideSuccess();
                                 });
                             }
                             
@@ -456,13 +472,15 @@ get_template_part( 'template-parts/single-post/banner', $banner_type );
                                     .then(response => response.json())
                                     .then(data => {
                                         if(data.success) {
-                                            if (vote === 'dislike' || vote === 'no') {
-                                                alert('Thank you for your feedback! We will get back to you.');
-                                            } else {
-                                                alert('Thank you for your feedback!');
-                                            }
+                                            const thankMsg = (vote === 'dislike' || vote === 'no')
+                                                ? 'Thank you for your feedback! We will get back to you.'
+                                                : 'Thank you for your feedback!';
+                                                
+                                            formArea.style.display = 'none';
+                                            if (successText) successText.innerText = thankMsg;
+                                            if (successArea) successArea.style.display = 'block';
                                         } else {
-                                            alert('Something went wrong. Please try again.');
+                                            alert(data.data || 'Something went wrong. Please try again.');
                                         }
                                     })
                                     .catch(error => {
@@ -472,7 +490,6 @@ get_template_part( 'template-parts/single-post/banner', $banner_type );
                                     .finally(() => {
                                         btnSubmit.innerText = originalText;
                                         btnSubmit.disabled = false;
-                                        formArea.style.display = 'none';
                                         btnYes.classList.remove('active');
                                         btnNo.classList.remove('active');
                                         document.querySelectorAll('.cm-feedback-radio').forEach(r => r.checked = false);
