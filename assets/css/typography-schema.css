@@ -473,21 +473,19 @@ article {
     /* No background on active */
 }
 
-/* Fixed gray vertical track line on the left side of TOC */
+/* Removed vertical track line on the left side of TOC */
+nav::before,
 #docy-toc::before,
 .doc-nav::before,
-.nav-sidebar.doc-nav::before {
-    content: '';
-    position: absolute;
-    left: 0;
-    top: 0;
-    bottom: 0;
-    width: 2px;
-    background-color: #e5e7eb;
-    border-radius: 2px;
+.nav-sidebar.doc-nav::before,
+#docy-tocs-mobile::before {
+    display: none !important;
+    content: none !important;
+    background: transparent !important;
+    width: 0 !important;
 }
 
-/* Moving indicator that slides along the fixed line */
+/* Disabled active indicator line on TOC */
 #docy-toc .nav-link.active::before,
 #docy-toc li.active>a::before,
 #docy-toc a.active::before,
@@ -500,17 +498,10 @@ article {
 .left_sidebarlist .nav-link.active::before,
 .left_sidebarlist li.active>a::before,
 .left_sidebarlist a.active::before {
-    display: block !important;
-    content: '' !important;
-    width: 2px !important;
-    background: #3B82F6 !important;
-    position: absolute !important;
-    top: 0 !important;
-    left: 0 !important;
-    bottom: 0 !important;
-    z-index: 1 !important;
-    border-radius: 2px;
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    display: none !important;
+    content: none !important;
+    background: transparent !important;
+    width: 0 !important;
 }
 
 /* Hover state - blue color but no background */
