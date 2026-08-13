@@ -509,12 +509,13 @@ function cm_feedback_create_table() {
     $table_name = $wpdb->prefix . 'cm_feedback';
     $charset_collate = $wpdb->get_charset_collate();
 
-    // Only run if the table doesn't exist to avoid performance hit
     if ( $wpdb->get_var( "SHOW TABLES LIKE '{$table_name}'" ) != $table_name ) {
         $sql = "CREATE TABLE $table_name (
             id mediumint(9) NOT NULL AUTO_INCREMENT,
             post_id mediumint(9) NOT NULL,
             post_title varchar(255) NOT NULL,
+            user_id bigint(20) DEFAULT 0 NOT NULL,
+            user_email varchar(255) DEFAULT '' NOT NULL,
             ip_address varchar(100) NOT NULL,
             vote varchar(10) NOT NULL,
             reason text NOT NULL,
@@ -524,6 +525,16 @@ function cm_feedback_create_table() {
 
         require_once( ABSPATH . 'wp-admin/includes/upgrade.php' );
         dbDelta( $sql );
+    } else {
+        // Auto-migration for existing installations
+        $col_user_id = $wpdb->get_results( "SHOW COLUMNS FROM `{$table_name}` LIKE 'user_id'" );
+        if ( empty( $col_user_id ) ) {
+            $wpdb->query( "ALTER TABLE `{$table_name}` ADD COLUMN user_id bigint(20) DEFAULT 0 NOT NULL AFTER post_title" );
+        }
+        $col_user_email = $wpdb->get_results( "SHOW COLUMNS FROM `{$table_name}` LIKE 'user_email'" );
+        if ( empty( $col_user_email ) ) {
+            $wpdb->query( "ALTER TABLE `{$table_name}` ADD COLUMN user_email varchar(255) DEFAULT '' NOT NULL AFTER user_id" );
+        }
     }
 }
 add_action( 'admin_init', 'cm_feedback_create_table' );
@@ -541,6 +552,24 @@ function cm_handle_submit_feedback() {
     $reason     = isset( $_POST['reason'] ) ? sanitize_textarea_field( $_POST['reason'] ) : '';
     $ip_address = $_SERVER['REMOTE_ADDR'];
 
+    // Capture User ID and User Email
+    $user_id    = get_current_user_id();
+    $user_email = '';
+
+    if ( $user_id ) {
+        $user_obj = wp_get_current_user();
+        if ( $user_obj && ! empty( $user_obj->user_email ) ) {
+            $user_email = $user_obj->user_email;
+        }
+    }
+
+    if ( ! $user_id && ! empty( $_POST['user_id'] ) ) {
+        $user_id = intval( $_POST['user_id'] );
+    }
+    if ( empty( $user_email ) && ! empty( $_POST['user_email'] ) ) {
+        $user_email = sanitize_email( $_POST['user_email'] );
+    }
+
     if ( ! $post_id || ! $vote || ! $reason ) {
         wp_send_json_error( 'Missing required fields.' );
     }
@@ -552,6 +581,8 @@ function cm_handle_submit_feedback() {
         array(
             'post_id'    => $post_id,
             'post_title' => $post_title,
+            'user_id'    => $user_id,
+            'user_email' => $user_email,
             'ip_address' => $ip_address,
             'vote'       => $vote,
             'reason'     => $reason,
@@ -596,6 +627,8 @@ function cm_feedback_entries_page() {
         echo '<th>ID</th>';
         echo '<th>Date</th>';
         echo '<th>Post Title</th>';
+        echo '<th>User ID</th>';
+        echo '<th>Email</th>';
         echo '<th>IP Address</th>';
         echo '<th>Vote</th>';
         echo '<th>Reason</th>';
@@ -603,10 +636,15 @@ function cm_feedback_entries_page() {
         echo '<tbody>';
         
         foreach ( $results as $row ) {
+            $user_id_val = ( isset( $row->user_id ) && $row->user_id > 0 ) ? esc_html( $row->user_id ) : '—';
+            $user_email_val = ( isset( $row->user_email ) && ! empty( $row->user_email ) ) ? esc_html( $row->user_email ) : '—';
+
             echo '<tr>';
             echo '<td>' . esc_html( $row->id ) . '</td>';
             echo '<td>' . esc_html( $row->created_at ) . '</td>';
             echo '<td><a href="' . get_permalink( $row->post_id ) . '" target="_blank">' . esc_html( $row->post_title ) . '</a></td>';
+            echo '<td>' . $user_id_val . '</td>';
+            echo '<td>' . $user_email_val . '</td>';
             echo '<td>' . esc_html( $row->ip_address ) . '</td>';
             $vote_val = strtolower( $row->vote );
             if ( $vote_val === 'yes' || $vote_val === 'like' ) {
