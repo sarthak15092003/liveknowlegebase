@@ -1116,7 +1116,11 @@ nav#sticky[style] {
 
 /* Add padding to body to prevent content from hiding under fixed navbar */
 body {
-    padding-top: 140px !important; /* Logged OUT */
+    padding-top: 140px !important; /* Logged OUT default */
+}
+body.home,
+body.front-page {
+    padding-top: 117px !important; /* Home screen only */
 }
 body.single-post {
     padding-top: 117px !important; /* Single post pages use 117px even when logged out */
