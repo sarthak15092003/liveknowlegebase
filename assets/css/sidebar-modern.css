@@ -1848,7 +1848,8 @@ h3, .editor-content h3, .blog_single_item h3, .entry-content h3 {
         max-height: calc(100vh - 148px) !important;
         max-height: calc(100dvh - 148px) !important;
         background-color: #ffffff !important;
-        color: #111827 !important;
+        background: #ffffff !important;
+        color: #000000 !important;
         padding: 20px 16px 16px 20px !important;
         border-radius: 14px !important;
         border: 1px solid #e5e7eb !important;
@@ -1860,20 +1861,44 @@ h3, .editor-content h3, .blog_single_item h3, .entry-content h3 {
         box-sizing: border-box !important;
     }
 
-    /* Remove ::before pseudo elements from TOC */
+    aside.bottom_table_content *,
+    #docy-tocs *,
+    .bottom_table_content *,
+    #docy-tocs-mobile * {
+        color: #000000 !important;
+    }
+
+    /* Absolute suppression of all ::before and ::after pseudo lines for Mobile TOC */
     aside.bottom_table_content::before,
+    aside.bottom_table_content::after,
     #docy-tocs::before,
+    #docy-tocs::after,
     .bottom_table_content::before,
+    .bottom_table_content::after,
     #docy-tocs-mobile::before,
+    #docy-tocs-mobile::after,
     .bottom_table_content nav::before,
+    .bottom_table_content nav::after,
     aside.bottom_table_content nav::before,
-    #docy-tocs-mobile .nav-link::before,
-    .bottom_table_content nav .nav-link::before {
+    aside.bottom_table_content nav::after,
+    .bottom_table_content ul::before,
+    .bottom_table_content ul::after,
+    .bottom_table_content li::before,
+    .bottom_table_content li::after,
+    .bottom_table_content a::before,
+    .bottom_table_content a::after,
+    .bottom_table_content .nav-link::before,
+    .bottom_table_content .nav-link::after,
+    #docy-tocs-mobile *::before,
+    #docy-tocs-mobile *::after {
         display: none !important;
         content: none !important;
         background: transparent !important;
+        background-color: transparent !important;
         width: 0 !important;
+        height: 0 !important;
         border: none !important;
+        box-shadow: none !important;
     }
 
     .bottom_table_content .toc-title {
@@ -1883,7 +1908,7 @@ h3, .editor-content h3, .blog_single_item h3, .entry-content h3 {
         font-size: 17px !important;
         font-weight: 700 !important;
         line-height: 1.35 !important;
-        color: #111827 !important;
+        color: #000000 !important;
         flex-shrink: 0 !important;
     }
 
@@ -1892,7 +1917,7 @@ h3, .editor-content h3, .blog_single_item h3, .entry-content h3 {
         right: 14px !important;
         z-index: 5 !important;
         position: absolute !important;
-        color: #4b5563 !important;
+        color: #000000 !important;
     }
 
     #docy-tocs-mobile,
@@ -1915,26 +1940,42 @@ h3, .editor-content h3, .blog_single_item h3, .entry-content h3 {
     .bottom_table_content nav ul {
         max-height: none !important;
         overflow: visible !important;
+        padding-left: 0 !important;
     }
 
+    #docy-tocs-mobile a,
     #docy-tocs-mobile .nav-link,
+    .bottom_table_content nav a,
     .bottom_table_content nav .nav-link {
         padding: 10px 12px !important;
         font-size: 15px !important;
         font-weight: 600 !important;
         line-height: 1.55 !important;
-        color: #374151 !important;
+        color: #000000 !important;
         display: block !important;
         background: transparent !important;
+        background-color: transparent !important;
+        border: none !important;
     }
 
+    #docy-tocs-mobile a:hover,
+    #docy-tocs-mobile a.active,
     #docy-tocs-mobile .nav-link:hover,
     #docy-tocs-mobile .nav-link.active,
+    #docy-tocs-mobile .nav-item.active > a,
+    #docy-tocs-mobile .nav-item.active > .nav-link,
+    .bottom_table_content nav a:hover,
+    .bottom_table_content nav a.active,
     .bottom_table_content nav .nav-link:hover,
-    .bottom_table_content nav .nav-link.active {
+    .bottom_table_content nav .nav-link.active,
+    .bottom_table_content nav .nav-item.active > a,
+    .bottom_table_content nav .nav-item.active > .nav-link {
         color: #2563eb !important;
         background: #f1f5f9 !important;
+        background-color: #f1f5f9 !important;
         border-radius: 6px !important;
+        font-weight: 700 !important;
+        border: none !important;
     }
 
     /* Custom visible scrollbar for Mobile TOC */
