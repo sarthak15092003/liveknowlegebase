@@ -1549,6 +1549,201 @@ h3, .editor-content h3, .blog_single_item h3, .entry-content h3 {
     pointer-events: none;
     border: 1px solid #e5e7eb;
     opacity: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    color: #94a3b8;
+    transition: transform 0.3s ease, color 0.2s ease;
+    transform: rotate(180deg);
+}
+.single-post-sidebar .active-cat-header .cat-toggle.open {
+    transform: rotate(270deg);
+    color: #1e40af;
+}
+
+/* Active category article list */
+.single-post-sidebar .cat-articles {
+    padding: 4px 0 0 0;
+    max-height: 2500px;
+    overflow: hidden;
+    transition: max-height 0.3s ease, opacity 0.3s ease, padding 0.3s ease;
+    opacity: 1;
+}
+.single-post-sidebar .cat-articles.collapsed {
+    max-height: 0;
+    opacity: 0;
+    padding: 0;
+}
+.single-post-sidebar .cat-article-item {
+    position: relative;
+    padding: 8px 12px 8px 20px;
+    border-left: 2px solid transparent;
+    transition: all 0.2s ease;
+    margin-left: 16px;
+}
+.single-post-sidebar .cat-article-item:hover {
+    border-left-color: #93c5fd;
+    background: #f8fafc;
+    border-radius: 0 6px 6px 0;
+}
+.single-post-sidebar .cat-article-item.active-article {
+    border-left-color: transparent;
+    background: #dbeafe2b;
+    border-radius: 6px;
+}
+.single-post-sidebar .cat-article-item a {
+    display: block;
+    font-size: 13px;
+    font-weight: 400 !important;
+    color: #64748b;
+    text-decoration: none !important;
+    line-height: 1.5;
+    transition: color 0.2s ease;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.single-post-sidebar .cat-article-item:hover a {
+    color: #1e293b;
+}
+.single-post-sidebar .cat-article-item.active-article a {
+    color: #007bff !important;
+}
+
+/* Divider */
+.sidebar-divider {
+    height: 1px;
+    background: #e2e8f0;
+    margin: 12px 16px;
+}
+
+/* Drag & Drop Sortable Styles */
+.cmgalaxy-sortable-top > .sidebar-section,
+.cmgalaxy-sortable-sub > .cmgalaxy-subcat-wrapper,
+.cmgalaxy-sortable-sub-sub > .sidebar-sub-subcat-item {
+    cursor: grab !important;
+}
+.cmgalaxy-sortable-top > .sidebar-section:active,
+.cmgalaxy-sortable-sub > .cmgalaxy-subcat-wrapper:active,
+.cmgalaxy-sortable-sub-sub > .sidebar-sub-subcat-item:active {
+    cursor: grabbing !important;
+}
+.sortable-ghost { opacity: 0.4; }
+
+
+/* Category 3 Column Layout */
+@media (min-width: 992px) {
+  .category-left-sidebar-col { flex: 0 0 20% !important; max-width: 20% !important; }
+  .category-main-with-right { flex: 0 0 55% !important; max-width: 55% !important; }
+  .category-right-sidebar-col { flex: 0 0 25% !important; max-width: 25% !important; }
+
+
+/* Category 3 Column Layout */
+@media (min-width: 992px) {
+  .category-left-sidebar-col { flex: 0 0 20% !important; max-width: 20% !important; }
+  .category-main-with-right { flex: 0 0 55% !important; max-width: 55% !important; }
+  .category-right-sidebar-col { flex: 0 0 25% !important; max-width: 25% !important; }
+}
+@media (max-width: 991px) {
+  .category-left-sidebar-col, .category-main-with-right, .category-right-sidebar-col { flex: 0 0 100% !important; max-width: 100% !important; }
+}
+
+/* Single Post TOC Layout Fix */
+@media (min-width: 992px) {
+  .category-main-col.has-toc-sidebar { flex: 0 0 60% !important; max-width: 60% !important; width: 60% !important; }
+  .doc-sidebar { flex: 0 0 20% !important; max-width: 20% !important; width: 20% !important; padding: 0 !important; }
+}
+/* Fix TOC double padding and track alignment */
+.doc-sidebar .left_sidebarlist .nav-sidebar:before { display: none !important; }
+#docy-toc { position: relative; margin-bottom: 0 !important; padding-bottom: 0 !important; }
+#docy-toc > ul { position: relative; margin-bottom: 0 !important; padding-bottom: 0 !important; }
+#docy-toc > ul:before { content: "" !important; width: 1px !important; background: #e2e8f0 !important; position: absolute !important; top: 0 !important; bottom: 0 !important; left: 0 !important; z-index: 1 !important; display: block !important; }
+#docy-toc .nav-item.active > .nav-link::before { left: 0 !important; width: 2px !important; z-index: 2 !important; }
+@media (max-width: 991px) {
+  .category-main-col.has-toc-sidebar, .doc-sidebar { flex: 0 0 100% !important; max-width: 100% !important; width: 100% !important; }
+}
+
+/* Breadcrumb Styles Global Override */
+.breadcrumb, .breadcrumb li, .breadcrumb .breadcrumb-item, .breadcrumb .breadcrumb-item a, 
+.blog_single_item .breadcrumb, .blog_single_item .breadcrumb li, .blog_single_item .breadcrumb .breadcrumb-item, 
+.blog_single_item .breadcrumb li a, .breadcrumb .breadcrumb-item.active, .blog_single_item .breadcrumb li.active, .blog_single_item .breadcrumb .breadcrumb-item.active {
+    font-size: 12px !important;
+}
+
+/* Specific Gap Adjustments */
+.category .blog_area,
+.archive .blog_area {
+    padding-top: 80px !important; /* Gap on category pages when logged in (admin bar adds 32px) */
+}
+
+/* When logged OUT (no admin bar), add 32px extra gap to match logged-in appearance */
+body.category:not(.admin-bar) .blog_area,
+body.archive:not(.admin-bar) .blog_area {
+    padding-top: 112px !important; /* 80px + 32px to compensate for missing admin bar */
+}
+
+.single .blog_area,
+.single .tip_doc_area,
+.single-post .blog_area,
+.single-post .tip_doc_area,
+section.blog_area.tip_doc_area {
+    padding-top: 0px !important; 
+    margin-top: -20px !important; /* Reduce gap on blog detail (single post) */
+}
+
+/* When logged OUT on single post, add 32px extra gap to match logged-in appearance */
+body:not(.admin-bar).single .blog_area,
+body:not(.admin-bar).single .tip_doc_area,
+body:not(.admin-bar).single-post .blog_area,
+body:not(.admin-bar).single-post .tip_doc_area,
+body:not(.admin-bar) section.blog_area.tip_doc_area {
+    padding-top: 0px !important;
+    margin-top: 12px !important; /* Compensate for missing admin bar */
+}
+
+/* Related Articles Hover Effects */
+.related-article-link {
+    color: #484a61;
+    text-decoration: none;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+}
+
+.related-article-link:hover,
+.related-article-link:hover span {
+    color: #3b82f6 !important;
+}
+
+.related-article-icon {
+    color: #3b82f6;
+    transition: all 0.3s ease;
+}
+
+.related-article-link:hover .related-article-icon {
+    transform: translateX(3px);
+}
+
+/* Force H3 font-size to 18px for all */
+h3, .editor-content h3, .blog_single_item h3, .entry-content h3 {
+    font-size: 18px !important;
+}
+
+/* CM Custom Tooltip */
+.cm-custom-tooltip {
+    position: fixed;
+    background: #ffffff;
+    color: #111827;
+    padding: 8px 12px;
+    border-radius: 6px;
+    font-size: 13px;
+    font-weight: 400;
+    white-space: nowrap;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    z-index: 999999;
+    pointer-events: none;
+    border: 1px solid #e5e7eb;
+    opacity: 0;
     visibility: hidden;
     transition: opacity 0.2s, visibility 0.2s;
     font-family: 'Instrument Sans', sans-serif;
@@ -1564,4 +1759,58 @@ h3, .editor-content h3, .blog_single_item h3, .entry-content h3 {
     border-style: solid;
     border-color: transparent #ffffff transparent transparent;
     filter: drop-shadow(-1px 0px 1px rgba(0,0,0,0.05));
+}
+
+/* Mobile-only fix for extra gap on right side & horizontal scroll (1024px and below) */
+@media (max-width: 1024px) {
+    html,
+    body {
+        overflow-x: hidden !important;
+        max-width: 100% !important;
+        width: 100% !important;
+    }
+
+    .body_wrapper,
+    #page,
+    .doc_documentation_area,
+    .documentation_info,
+    .sec_pad,
+    .container,
+    .container-fluid,
+    .main-content-area,
+    .tw-cat-detail-container,
+    .tw-category-container {
+        max-width: 100% !important;
+        width: 100% !important;
+        overflow-x: hidden !important;
+        box-sizing: border-box !important;
+    }
+
+    .category-main-col {
+        border-left: none !important;
+        padding-left: 12px !important;
+        padding-right: 12px !important;
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+        max-width: 100% !important;
+        width: 100% !important;
+        box-sizing: border-box !important;
+    }
+
+    .category-main-col::before {
+        display: none !important;
+    }
+
+    .row {
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+        max-width: 100% !important;
+        width: 100% !important;
+    }
+
+    .row > [class*="col-"] {
+        padding-left: 8px !important;
+        padding-right: 8px !important;
+        max-width: 100% !important;
+    }
 }
