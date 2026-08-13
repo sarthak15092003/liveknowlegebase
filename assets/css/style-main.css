@@ -17176,14 +17176,14 @@ blockquote .author {
   #docy-tocs,
   .bottom_table_content {
     position: fixed !important;
-    top: 80px !important;
-    bottom: 70px !important;
+    top: 60px !important;
+    bottom: auto !important;
     left: 12px !important;
     right: 12px !important;
     width: auto !important;
     max-width: none !important;
-    height: auto !important;
-    max-height: none !important;
+    height: 85vh !important;
+    max-height: 85vh !important;
     background-color: #171a22 !important;
     color: #fff !important;
     padding: 20px 16px 16px 20px !important;
@@ -17192,7 +17192,7 @@ blockquote .author {
     z-index: 99999 !important;
     display: none;
     flex-direction: column !important;
-    overflow: hidden !important;
+    overflow-y: auto !important;
     box-sizing: border-box !important;
   }
 
@@ -17253,6 +17253,7 @@ blockquote .author {
 .jrBzsJ .eYVFtH .bottom_table_content nav ul li a {
   color: #898d9a;
   text-decoration: none !important;
+  font-weight: 500;
 }
 
 .jrBzsJ .eYVFtH .bottom_table_content nav ul li a:hover {
