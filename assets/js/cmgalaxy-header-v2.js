@@ -88,9 +88,11 @@
                     var regex = new RegExp('(' + escapedQuery + ')', 'gi');
                     var highlightedTitle = res.title.replace(regex, '<mark class="search-highlight">$1</mark>');
 
+                    var categoryMeta = res.category ? res.category : ('Article in ' + res.type);
+
                     var $item = $('<a href="' + res.url + '" class="suggestion-item">' +
                         '<div class="suggestion-content"><div class="suggestion-title">' + highlightedTitle + '</div>' +
-                        '<div class="suggestion-meta">Article in ' + res.type + '</div></div></a>');
+                        '<div class="suggestion-meta">' + categoryMeta + '</div></div></a>');
                     $suggestions.append($item);
                 });
             }

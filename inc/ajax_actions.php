@@ -465,7 +465,7 @@ function lex_live_search_handler() {
         'orderby'                => 'relevance',
         'no_found_rows'          => true,   // skip COUNT(*) query — big speed boost
         'update_post_meta_cache' => false,  // skip loading post meta
-        'update_post_term_cache' => false,  // skip loading terms
+        'update_post_term_cache' => true,   // load terms for fast category retrieval
     ];
 
     $query = new WP_Query($args);
@@ -474,10 +474,48 @@ function lex_live_search_handler() {
     if ($query->have_posts()) {
         while ($query->have_posts()) {
             $query->the_post();
+
+            $category_name = '';
+            $cats = get_the_category();
+            if (!empty($cats) && !is_wp_error($cats)) {
+                // Filter out parent categories if a subcategory is also assigned
+                $filtered_cats = [];
+                foreach ($cats as $cat) {
+                    $is_parent = false;
+                    foreach ($cats as $other_cat) {
+                        if ($other_cat->parent == $cat->term_id) {
+                            $is_parent = true;
+                            break;
+                        }
+                    }
+                    if (!$is_parent) {
+                        $filtered_cats[] = $cat;
+                    }
+                }
+                if (!empty($filtered_cats)) {
+                    $category_name = $filtered_cats[0]->name;
+                } else {
+                    $category_name = $cats[0]->name;
+                }
+            } else {
+                // Check custom taxonomies for custom post types
+                $taxonomies = get_object_taxonomies(get_post_type());
+                if (!empty($taxonomies)) {
+                    foreach ($taxonomies as $tax) {
+                        $terms = get_the_terms(get_the_ID(), $tax);
+                        if (!empty($terms) && !is_wp_error($terms)) {
+                            $category_name = $terms[0]->name;
+                            break;
+                        }
+                    }
+                }
+            }
+
             $results[] = [
-                'title' => get_the_title(),
-                'url'   => get_permalink(),
-                'type'  => get_post_type()
+                'title'    => get_the_title(),
+                'url'      => get_permalink(),
+                'type'     => get_post_type(),
+                'category' => $category_name
             ];
         }
         wp_reset_postdata();
