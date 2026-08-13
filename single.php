@@ -550,18 +550,14 @@ get_template_part( 'template-parts/single-post/banner', $banner_type );
                             color: #4B5563 !important;
                         }
 
-                        .single-post .doc-sidebar #docy-toc .toc-h1 > .nav-link {
+                        .single-post .doc-sidebar #docy-toc .toc-h1 > .nav-link,
+                        .single-post .doc-sidebar #docy-toc .toc-h2 > .nav-link {
                             padding-left: 20px !important;
                             font-weight: 400 !important;
                         }
 
-                        .single-post .doc-sidebar #docy-toc .toc-h2 > .nav-link {
-                            padding-left: 32px !important;
-                            font-weight: 400 !important;
-                        }
-
                         .single-post .doc-sidebar #docy-toc .toc-h3 > .nav-link {
-                            padding-left: 44px !important;
+                            padding-left: 32px !important;
                             font-weight: 400 !important;
                         }
 

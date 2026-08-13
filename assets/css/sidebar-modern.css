@@ -255,8 +255,9 @@ aside.bottom_table_content nav ul {
     list-style: none !important;
 }
 #docy-toc .nav-link, #docy-tocs-mobile .nav-link { font-weight: 400 !important; font-size: 14px !important; color: #4B5563 !important; }
-#docy-toc .toc-h1 > .nav-link, #docy-tocs-mobile .toc-h1 > .nav-link { font-weight: 400 !important; font-size: 14px !important; color: #4B5563 !important; padding-left: 20px !important; }
-#docy-toc .toc-h2 > .nav-link, #docy-tocs-mobile .toc-h2 > .nav-link { font-weight: 400 !important; font-size: 14px !important; color: #4B5563 !important; padding-left: 32px !important; }
+#docy-toc .toc-h1 > .nav-link, #docy-tocs-mobile .toc-h1 > .nav-link,
+#docy-toc .toc-h2 > .nav-link, #docy-tocs-mobile .toc-h2 > .nav-link { font-weight: 400 !important; font-size: 14px !important; color: #4B5563 !important; padding-left: 20px !important; }
+#docy-toc .toc-h3 > .nav-link, #docy-tocs-mobile .toc-h3 > .nav-link { font-weight: 400 !important; font-size: 14px !important; color: #4B5563 !important; padding-left: 32px !important; }
 #docy-toc .toc-h1.active > .nav-link, #docy-toc .toc-h2.active > .nav-link, #docy-toc .nav-link.active, #docy-toc a.active, #docy-toc li.active > a, #docy-tocs-mobile .toc-h1.active > .nav-link, #docy-tocs-mobile .toc-h2.active > .nav-link, #docy-tocs-mobile .nav-link.active, #docy-tocs-mobile a.active, #docy-tocs-mobile li.active > a { color: #2563eb !important; font-weight: 500 !important; border-left: none !important; margin-left: 0 !important; }
 
 /* Prevent CSS smooth-scroll conflict with JS scrolling */
