@@ -200,25 +200,16 @@ if ($is_single_post) {
             }
             $has_main_direct_posts = !empty($main_direct_posts);
             
-            // Fetch subcategories
+            // Fetch subcategories natively
             $subcats_raw = get_categories(array(
                 'parent'     => $cat_id,
-                'hide_empty' => 0 
+                'hide_empty' => 1 
             ));
             
             $subcats = [];
             if (!empty($subcats_raw)) {
                 foreach ($subcats_raw as $subcat) {
-                    $post_count = $wpdb->get_var($wpdb->prepare("
-                        SELECT COUNT(p.ID) FROM {$wpdb->posts} p
-                        INNER JOIN {$wpdb->term_relationships} tr ON p.ID = tr.object_id
-                        INNER JOIN {$wpdb->term_taxonomy} tt ON tr.term_taxonomy_id = tt.term_taxonomy_id
-                        WHERE tt.term_id = %d AND p.post_status = 'publish'
-                    ", $subcat->term_id));
-                    if ($post_count > 0) {
-                        $subcat->count = $post_count;
-                        $subcats[] = $subcat;
-                    }
+                    $subcats[] = $subcat;
                 }
             }
             if (function_exists('cmgalaxy_sort_terms_by_order')) {
@@ -293,25 +284,16 @@ if ($is_single_post) {
 
                 if (!empty($subcats)) {
                     foreach ($subcats as $subcat) {
-                        // Fetch sub-subcategories for this subcategory
+                        // Fetch sub-subcategories natively
                         $sub_subcats_raw = get_categories(array(
                             'parent'     => $subcat->term_id,
-                            'hide_empty' => 0
+                            'hide_empty' => 1
                         ));
                         
                         $sub_subcats = [];
                         if (!empty($sub_subcats_raw)) {
                             foreach ($sub_subcats_raw as $ss) {
-                                $post_count = $wpdb->get_var($wpdb->prepare("
-                                    SELECT COUNT(p.ID) FROM {$wpdb->posts} p
-                                    INNER JOIN {$wpdb->term_relationships} tr ON p.ID = tr.object_id
-                                    INNER JOIN {$wpdb->term_taxonomy} tt ON tr.term_taxonomy_id = tt.term_taxonomy_id
-                                    WHERE tt.term_id = %d AND p.post_status = 'publish'
-                                ", $ss->term_id));
-                                if ($post_count > 0) {
-                                    $ss->count = $post_count;
-                                    $sub_subcats[] = $ss;
-                                }
+                                $sub_subcats[] = $ss;
                             }
                         }
                         
@@ -482,68 +464,74 @@ if ($is_single_post) {
 <script>
 document.addEventListener('DOMContentLoaded', function() {
     // Handle expandable sections
-    const expandableHeaders = document.querySelectorAll('.section-header.expandable');
+    document.addEventListener('click', function(e) {
+        // 1. Top-Level Category Toggle
+        const header = e.target.closest('.section-header.expandable');
+        if (header) {
+            if (e.target.closest('a') && !e.target.closest('.expand-icon')) return;
 
-    expandableHeaders.forEach(header => {
-        header.addEventListener('click', function(e) {
-            if (e.target.tagName === 'A') return;
-
-            const targetId = this.getAttribute('data-target');
-            const content = document.getElementById(targetId);
-            const expandIcon = this.querySelector('.expand-icon');
+            e.preventDefault();
+            const section = header.closest('.sidebar-section');
+            const content = section ? section.querySelector('.section-content') : null;
+            const expandIcon = header.querySelector('.expand-icon');
 
             if (content) {
                 const isExpanding = !content.classList.contains('expanded');
 
-                // If we are opening a section, close all others first
                 if (isExpanding) {
-                    expandableHeaders.forEach(otherHeader => {
-                        if (otherHeader !== this) {
-                            const otherTargetId = otherHeader.getAttribute('data-target');
-                            const otherContent = document.getElementById(otherTargetId);
-                            const otherIcon = otherHeader.querySelector('.expand-icon');
-                            
-                            otherHeader.classList.remove('active');
-                            if (otherContent) otherContent.classList.remove('expanded');
-                            if (otherIcon) {
-                                otherIcon.style.transform = 'rotate(180deg)';
-                                otherIcon.classList.remove('expanded');
+                    const sidebar = header.closest('.modern-sidebar');
+                    if (sidebar) {
+                        sidebar.querySelectorAll('.section-header.expandable').forEach(otherHeader => {
+                            if (otherHeader !== header) {
+                                const otherSection = otherHeader.closest('.sidebar-section');
+                                const otherContent = otherSection ? otherSection.querySelector('.section-content') : null;
+                                const otherIcon = otherHeader.querySelector('.expand-icon');
+                                
+                                otherHeader.classList.remove('active');
+                                if (otherContent) otherContent.classList.remove('expanded');
+                                if (otherIcon) {
+                                    otherIcon.style.transform = 'rotate(180deg)';
+                                    otherIcon.classList.remove('expanded');
+                                }
                             }
-                        }
-                    });
+                        });
+                    }
                 }
 
-                // Toggle the clicked section
                 content.classList.toggle('expanded');
-                this.classList.toggle('active');
+                header.classList.toggle('active');
 
-                if (content.classList.contains('expanded')) {
-                    expandIcon.style.transform = 'rotate(270deg)';
-                    expandIcon.classList.add('expanded');
-                } else {
-                    expandIcon.style.transform = 'rotate(180deg)';
-                    expandIcon.classList.remove('expanded');
+                if (expandIcon) {
+                    if (content.classList.contains('expanded')) {
+                        expandIcon.style.transform = 'rotate(270deg)';
+                        expandIcon.classList.add('expanded');
+                    } else {
+                        expandIcon.style.transform = 'rotate(180deg)';
+                        expandIcon.classList.remove('expanded');
+                    }
                 }
             }
-        });
+        }
     });
 
     // Handle non-expandable sections
-    const nonExpandableHeaders = document.querySelectorAll('.section-header:not(.expandable)');
-    nonExpandableHeaders.forEach(header => {
-        header.addEventListener('click', function() {
-            console.log('Clicked:', this.querySelector('.section-title').textContent);
-        });
+    document.addEventListener('click', function(e) {
+        const header = e.target.closest('.section-header:not(.expandable)');
+        if (header && !e.target.closest('a')) {
+            console.log('Clicked:', header.querySelector('.section-title').textContent);
+        }
     });
 
     // Handle expandable subcategories
-    const expandableSubcats = document.querySelectorAll('.expandable-subcat');
-    expandableSubcats.forEach(subcat => {
-        subcat.addEventListener('click', function(e) {
-            if (e.target.tagName === 'A') return;
-            const targetId = this.getAttribute('data-target');
-            const content = document.getElementById(targetId);
-            const expandIcon = this.querySelector('.expand-icon-subcat');
+    document.addEventListener('click', function(e) {
+        const subcat = e.target.closest('.expandable-subcat');
+        if (subcat) {
+            if (e.target.closest('a') && !e.target.closest('.expand-icon-subcat')) return;
+
+            e.preventDefault();
+            const wrapper = subcat.closest('.cmgalaxy-subcat-wrapper');
+            const content = wrapper ? wrapper.querySelector('.sub-subcategories') : null;
+            const expandIcon = subcat.querySelector('.expand-icon-subcat');
             
             if (content) {
                 const isExpanding = content.style.display === 'none' || content.style.display === '';
@@ -556,21 +544,25 @@ document.addEventListener('DOMContentLoaded', function() {
                     if (expandIcon) expandIcon.style.transform = 'rotate(180deg)';
                 }
             }
-        });
+        }
     });
 
     // Auto-scroll to active item on load
-    const activeItem = document.querySelector('.current-page:not(.expandable-subcat), .active-article');
-    if (activeItem) {
+    const activeItems = document.querySelectorAll('.current-page:not(.expandable-subcat), .active-article');
+    
+    activeItems.forEach(activeItem => {
         // If it's inside a subcategory dropdown, ensure the subcategory is open
         const parentSubcatContent = activeItem.closest('.sub-subcategories');
         if (parentSubcatContent) {
             parentSubcatContent.style.display = 'block';
-            const toggleHeader = document.querySelector(`[data-target="${parentSubcatContent.id}"]`);
-            if (toggleHeader) {
-                const icon = toggleHeader.querySelector('.expand-icon-subcat');
-                if (icon) {
-                    icon.style.transform = 'rotate(270deg)';
+            const wrapper = parentSubcatContent.closest('.cmgalaxy-subcat-wrapper');
+            if (wrapper) {
+                const toggleHeader = wrapper.querySelector('.expandable-subcat');
+                if (toggleHeader) {
+                    const icon = toggleHeader.querySelector('.expand-icon-subcat');
+                    if (icon) {
+                        icon.style.transform = 'rotate(270deg)';
+                    }
                 }
             }
         }
