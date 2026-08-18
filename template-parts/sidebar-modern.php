@@ -153,20 +153,27 @@ if ($is_single_post) {
         $back_url = get_category_link($top_cat->term_id);
     }
 }
+
+$sidebar_instance_id = uniqid('sb_');
 ?>
 
 <!-- ==================== SIDEBAR RENDERING ==================== -->
-<div class="modern-sidebar cmgalaxy-sortable-top">
+<div class="modern-sidebar cmgalaxy-sortable-top" id="<?php echo esc_attr($sidebar_instance_id); ?>">
     <div class="sidebar-content">
-        <?php if ($is_single_post) : ?>
-        <!-- Back Button for Single Posts -->
-        <a href="<?php echo esc_url($back_url); ?>" class="sidebar-back-btn" style="display: flex; align-items: center; padding: 12px 16px; margin-bottom: 15px; background: #f8fafc; border-radius: 8px; color: #475569; font-weight: 500; text-decoration: none; font-size: 14.5px; transition: all 0.2s;">
+        <?php 
+        $back_btn_style = 'display: flex; align-items: center; padding: 12px 16px; margin-bottom: 15px; background: #f8fafc; border-radius: 8px; color: #475569; font-weight: 500; text-decoration: none; font-size: 14.5px; transition: all 0.2s;';
+        $back_btn_class = 'sidebar-back-btn';
+        if (!$is_single_post) {
+            $back_btn_class .= ' d-lg-none';
+        }
+        ?>
+        <!-- Back Button for Single Posts and Mobile Categories -->
+        <a href="<?php echo esc_url($back_url); ?>" class="<?php echo esc_attr($back_btn_class); ?>" style="<?php echo esc_attr($back_btn_style); ?>">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="margin-right: 8px;">
                 <path d="M19 12H5M5 12L12 19M5 12L12 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
             </svg>
             <span>Back to categories</span>
         </a>
-        <?php endif; ?>
         
         <?php foreach ($sidebar_sections as $section) :
             // If we are on a single post, ONLY show the top-level category that matches this post
@@ -242,7 +249,7 @@ if ($is_single_post) {
             $expand_class = 'expand-icon' . ($is_active_cat ? ' expanded' : '');
         ?>
         <div class="sidebar-section" data-term-id="<?php echo esc_attr($cat_id); ?>">
-            <div class="<?php echo esc_attr($header_class); ?>" data-target="<?php echo esc_attr($section['id']); ?>">
+            <div class="<?php echo esc_attr($header_class); ?>" data-target="<?php echo esc_attr($sidebar_instance_id . '_' . $section['id']); ?>">
                 <div class="section-icon">
                     <img src="<?php echo esc_url($section['icon']); ?>" alt="<?php echo esc_attr($section['title']); ?> Icon" style="width: 22px; height: 22px; object-fit: contain;">
                 </div>
@@ -257,7 +264,7 @@ if ($is_single_post) {
             </div>
 
             <?php if ($has_content) : ?>
-            <div class="<?php echo esc_attr($content_class); ?> cmgalaxy-sortable-sub" id="<?php echo esc_attr($section['id']); ?>">
+            <div class="<?php echo esc_attr($content_class); ?> cmgalaxy-sortable-sub" id="<?php echo esc_attr($sidebar_instance_id . '_' . $section['id']); ?>">
                 <?php
                 // Render direct posts of top-level category ONLY if the category has NO subcategories
                 if ($has_main_direct_posts && !$has_subcats) {
@@ -320,6 +327,8 @@ if ($is_single_post) {
                         // Check if any sub-subcat is active to expand the parent subcat
                         $is_any_sub_subcat_active = false;
                         if ($has_sub_subcats) {
+                            $subcat_target_id = $sidebar_instance_id . '_subcat-' . $subcat->term_id;
+                            $subcat_wrapper_class = 'expandable-subcat';
                             foreach ($sub_subcats as $ss) {
                                 if (in_array($ss->slug, $current_categories)) {
                                     $is_any_sub_subcat_active = true;
@@ -348,7 +357,7 @@ if ($is_single_post) {
                         if ($has_children) $subcat_wrapper_class .= ' expandable-subcat';
                         
                         $subcat_font_weight = $is_subcat_active ? 'bold' : '500';
-                        $subcat_target_id = 'subcat-' . $subcat->term_id;
+                        $subcat_target_id = $sidebar_instance_id . '_subcat-' . $subcat->term_id;
                         ?>
                         <div class="cmgalaxy-subcat-wrapper" data-term-id="<?php echo esc_attr($subcat->term_id); ?>">
                             <div class="<?php echo esc_attr($subcat_wrapper_class); ?>" style="padding-left: 55px; display: flex; align-items: center; padding-top: 8px; padding-bottom: 8px; cursor: pointer;" data-target="<?php echo esc_attr($subcat_target_id); ?>">
