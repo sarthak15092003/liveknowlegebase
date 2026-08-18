@@ -695,10 +695,12 @@
     width: 0 !important;
 }
 
-/* Firefox */
-.modern-sidebar {
-    scrollbar-width: thin !important;
-    scrollbar-color: #e2e8f0 transparent !important;
+/* Firefox only */
+@supports (-moz-appearance:none) {
+    .modern-sidebar {
+        scrollbar-width: thin !important;
+        scrollbar-color: #e2e8f0 transparent !important;
+    }
 }
 
 /* Support for mCustomScrollbar (Plugin) */
