@@ -416,8 +416,11 @@ add_action("wp_enqueue_scripts", function() {
             background: transparent !important;
         }
         .modern-sidebar::-webkit-scrollbar-thumb {
-            background: #d1d5db !important;
+            background: transparent !important;
             border-radius: 4px !important;
+        }
+        .modern-sidebar:hover::-webkit-scrollbar-thumb {
+            background: #d1d5db !important;
         }
         .modern-sidebar::-webkit-scrollbar-thumb:hover {
             background: #9ca3af !important;
