@@ -564,7 +564,7 @@ get_template_part( 'template-parts/single-post/banner', $banner_type );
             <?php
             // Render TOC on the right side after the content column
             if ( docy_toc('post') == '1' ) : ?>
-                <div class="col-lg-2 doc-sidebar pe-lg-0 ps-lg-2">
+                <div class="col-lg-2 doc-sidebar pe-lg-0 ps-lg-2 d-none d-lg-block">
                     <style>
                     @media (min-width: 1025px) {
                         .single-post .doc-sidebar .left_sidebarlist {
