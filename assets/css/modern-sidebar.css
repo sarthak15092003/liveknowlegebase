@@ -668,14 +668,12 @@
 
 /* Scrollbar Styling - Visible only on hover */
 .modern-sidebar::-webkit-scrollbar {
-    width: 5px !important;
-    height: 5px !important;
+    width: 4px !important;
     background: transparent !important;
 }
 
 .modern-sidebar::-webkit-scrollbar-track {
     background: transparent !important;
-    border-radius: 4px !important;
 }
 
 .modern-sidebar::-webkit-scrollbar-thumb {
@@ -689,6 +687,12 @@
 
 .modern-sidebar::-webkit-scrollbar-thumb:hover {
     background: #94a3b8 !important;
+}
+
+.modern-sidebar::-webkit-scrollbar-button {
+    display: none !important;
+    height: 0 !important;
+    width: 0 !important;
 }
 
 /* Firefox */

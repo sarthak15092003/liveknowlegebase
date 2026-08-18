@@ -11,6 +11,7 @@ $opt = get_option( 'docy_opt' );
             </div>
         </div>
         <div class="mobile_menu_right">
+            <?php if (!is_front_page() && !is_home()): ?>
             <button type="button" class="navbar-toggler mobile_menu_btn">
                 <span class="menu_toggle ">
                     <span class="hamburger">
@@ -20,6 +21,7 @@ $opt = get_option( 'docy_opt' );
                     </span>
                 </span>
             </button>
+            <?php endif; ?>
         </div>
     </div>
 </div>
