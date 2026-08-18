@@ -4,6 +4,13 @@ $opt = get_option( 'docy_opt' );
 <div class="mobile_main_menu <?php Docy_helper()->navbar_type(); ?>" id="<?php docy_sticky_navbar('id', 'mobile') ?>">
     <div class="container">
         <div class="mobile_menu_left">
+            <div class="cmgalaxy-mobile-logo">
+                <a href="<?php echo esc_url(home_url('/')); ?>">
+                    <img src="<?php echo get_template_directory_uri(); ?>/assets/img/kblogo.svg" alt="CMGALAXY Knowledge Base" style="height: 51px !important; width: 90% !important; max-width: none !important;">
+                </a>
+            </div>
+        </div>
+        <div class="mobile_menu_right">
             <button type="button" class="navbar-toggler mobile_menu_btn">
                 <span class="menu_toggle ">
                     <span class="hamburger">
@@ -13,14 +20,6 @@ $opt = get_option( 'docy_opt' );
                     </span>
                 </span>
             </button>
-            <div class="cmgalaxy-mobile-logo">
-                <a href="<?php echo esc_url(home_url('/')); ?>">
-                    <img src="<?php echo get_template_directory_uri(); ?>/assets/img/kblogo.svg" alt="CMGALAXY Knowledge Base" style="height: 51px !important; width: 90% !important; max-width: none !important;">
-                </a>
-            </div>
-        </div>
-        <div class="mobile_menu_right">
-            <!-- Left hamburger is main nav -->
         </div>
     </div>
 </div>
@@ -37,16 +36,7 @@ $opt = get_option( 'docy_opt' );
     <div class="mobile_nav_wrapper">
         <nav class="mobile_nav_bottom">
             <?php
-            if ( has_nav_menu('main_menu') ) {
-                wp_nav_menu( array (
-                    'menu' => 'main_menu',
-                    'theme_location' => 'main_menu',
-                    'container' => null,
-                    'menu_class' => "navbar-nav menu ml-auto",
-                    'walker' => new Docy_Mobile_Nav_Walker(),
-                    'depth' => 4
-                ));
-            }
+            // Main menu removed as per request
             ?>
             
             <?php if (!is_front_page() && !is_home()): ?>
