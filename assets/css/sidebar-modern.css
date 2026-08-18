@@ -76,13 +76,12 @@ section:first-of-type {
 .breadcrumb .breadcrumb-item.active { color: #484a61 !important; }
 
 /* Modern Sidebar & Left/Right Columns Sticky Styles */
-.modern-sidebar { background: #ffffff; border: none !important; border-radius: 8px; padding: 0; margin-bottom: 2rem; position: sticky; top: 110px; max-height: calc(100vh - 120px); overflow-y: auto; scrollbar-width: none; }
-.modern-sidebar:hover { scrollbar-width: thin; scrollbar-color: #cbd5e1 transparent; }
-.modern-sidebar::-webkit-scrollbar { width: 6px; background: transparent; }
-.modern-sidebar::-webkit-scrollbar-track { background: transparent; }
-.modern-sidebar::-webkit-scrollbar-thumb { background: transparent; border-radius: 10px; }
-.modern-sidebar:hover::-webkit-scrollbar-thumb { background: #cbd5e1; }
-.modern-sidebar::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
+.modern-sidebar { background: #ffffff; border: none !important; border-radius: 8px; padding: 0; margin-bottom: 2rem; position: sticky; top: 110px; max-height: calc(100vh - 120px); overflow-y: scroll; scrollbar-width: thin !important; scrollbar-color: #e2e8f0 transparent !important; }
+.modern-sidebar::-webkit-scrollbar { width: 4px !important; background: transparent !important; }
+.modern-sidebar::-webkit-scrollbar-track { background: transparent !important; }
+.modern-sidebar::-webkit-scrollbar-thumb { background: #e2e8f0 !important; border-radius: 4px !important; }
+.modern-sidebar::-webkit-scrollbar-thumb:hover { background: #94a3b8 !important; }
+.modern-sidebar::-webkit-scrollbar-button { display: none !important; }
 
 .cat-title { color: #161c52 !important; font-weight: 500 !important; }
 .category-left-sidebar-col .modern-sidebar { width: 100%; max-width: 100%; margin-top: 5px; margin-left: 0; margin-right: 0; background: #ffffff; border: none !important; border-radius: 8px; padding: 0; max-height: calc(100vh - 140px); overflow-y: auto; }
