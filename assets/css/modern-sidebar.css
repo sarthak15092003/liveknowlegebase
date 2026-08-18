@@ -666,9 +666,9 @@
     animation: slideDown 0.3s ease;
 }
 
-/* Scrollbar Styling - Visible only on hover */
+/* Scrollbar Styling - Thin and elegant */
 .modern-sidebar::-webkit-scrollbar {
-    width: 4px !important;
+    width: 3px !important;
     background: transparent !important;
 }
 
@@ -677,7 +677,7 @@
 }
 
 .modern-sidebar::-webkit-scrollbar-thumb {
-    background: transparent !important;
+    background: #e2e8f0 !important;
     border-radius: 4px !important;
 }
 
@@ -697,12 +697,8 @@
 
 /* Firefox */
 .modern-sidebar {
-    scrollbar-width: none !important;
-}
-
-.modern-sidebar:hover {
     scrollbar-width: thin !important;
-    scrollbar-color: #cbd5e1 transparent !important;
+    scrollbar-color: #e2e8f0 transparent !important;
 }
 
 /* Support for mCustomScrollbar (Plugin) */
