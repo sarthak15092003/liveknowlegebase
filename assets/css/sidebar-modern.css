@@ -1190,35 +1190,82 @@ nav#sticky[style] {
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12) !important;
 }
 
-/* Add padding to body to prevent content from hiding under fixed navbar */
-body {
-    padding-top: 140px !important; /* Logged OUT default */
-}
-body.home,
-body.front-page {
-    padding-top: 117px !important; /* Home screen only */
-}
-body.single-post {
-    padding-top: 117px !important; /* Single post pages use 117px even when logged out */
-}
-body.admin-bar {
-    padding-top: 117px !important; /* Logged IN: admin bar already adds 32px */
-}
-
-/* Adjust for mobile */
-@media (max-width: 1024px) {
+/* Desktop body padding to prevent content from hiding under fixed navbar */
+@media (min-width: 1025px) {
     body {
-        padding-top: 70px !important; /* Smaller space for mobile header */
+        padding-top: 140px !important; /* Logged OUT default */
+    }
+    body.home,
+    body.front-page {
+        padding-top: 117px !important; /* Home screen only */
+    }
+    body.single-post {
+        padding-top: 117px !important; /* Single post pages */
     }
     body.admin-bar {
-        padding-top: 102px !important; /* Mobile header + WP Admin bar */
+        padding-top: 117px !important; /* Logged IN: admin bar already adds 32px */
+    }
+}
+
+/* Adjust for mobile & tablets (max-width: 1024px) */
+@media (max-width: 1024px) {
+    body,
+    body.home,
+    body.front-page,
+    body.single,
+    body.single-post,
+    body.category,
+    body.archive {
+        padding-top: 65px !important; /* Clear mobile header (~60px) */
+    }
+    body.admin-bar,
+    body.admin-bar.home,
+    body.admin-bar.front-page,
+    body.admin-bar.single,
+    body.admin-bar.single-post,
+    body.admin-bar.category,
+    body.admin-bar.archive {
+        padding-top: 111px !important; /* Mobile header (65px) + Mobile WP Admin bar (46px) */
     }
     
     .body_wrapper {
         margin-top: 0 !important;
         padding-top: 0 !important;
     }
+
+    /* Unified content top spacing on mobile */
+    .doc_banner_area,
+    .doc_banner_area.search-banner-light,
+    .doc_banner_area.banner_creative1,
+    .banner-bg .doc_banner_area {
+        padding-top: 20px !important;
+        padding-bottom: 20px !important;
+    }
+
+    .doc_banner_area .container {
+        padding-top: 0 !important;
+        padding-bottom: 0 !important;
+    }
+
+    .category .blog_area,
+    .archive .blog_area,
+    body.category:not(.admin-bar) .blog_area,
+    body.archive:not(.admin-bar) .blog_area,
+    .single .blog_area,
+    .single .tip_doc_area,
+    .single-post .blog_area,
+    .single-post .tip_doc_area,
+    section.blog_area.tip_doc_area,
+    body:not(.admin-bar).single .blog_area,
+    body:not(.admin-bar).single .tip_doc_area,
+    body:not(.admin-bar).single-post .blog_area,
+    body:not(.admin-bar).single-post .tip_doc_area,
+    body:not(.admin-bar) section.blog_area.tip_doc_area {
+        padding-top: 20px !important;
+        margin-top: 0 !important;
+    }
 }
+
 
 /* Logo is now visible in navbar */
 
