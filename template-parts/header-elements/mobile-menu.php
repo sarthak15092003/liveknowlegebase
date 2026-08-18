@@ -48,13 +48,13 @@ $opt = get_option( 'docy_opt' );
                 ));
             }
             ?>
+            
+            <?php if (!is_front_page() && !is_home()): ?>
+            <div class="mobile-sidebar-container" style="margin-top: 20px;">
+                <?php get_template_part('template-parts/sidebar-modern'); ?>
+            </div>
+            <?php endif; ?>
         </nav>
-        
-        <?php if (!is_front_page() && !is_home()): ?>
-        <div class="mobile-sidebar-container" style="margin-top: 20px;">
-            <?php get_template_part('template-parts/sidebar-modern'); ?>
-        </div>
-        <?php endif; ?>
     </div>
 </div>
 

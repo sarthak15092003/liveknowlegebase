@@ -61,8 +61,9 @@ function docy_scripts() {
 	// CMGALAXY Custom Header Styles
 	wp_enqueue_style( 'cmgalaxy-header', DOCY_DIR_CSS . '/cmgalaxy-header.css', array(), DOCY_VERSION . '.1' );
 	
-	// Modern Sidebar Styles
-	wp_enqueue_style( 'modern-sidebar', DOCY_DIR_CSS . '/modern-sidebar.css', array(), DOCY_VERSION . '.99' );
+	// Modern sidebar stylesheet
+	wp_enqueue_style( 'modern-sidebar', DOCY_DIR_CSS . '/modern-sidebar.css', array(), time() );
+	wp_enqueue_script( 'modern-sidebar-js', DOCY_DIR_JS . '/modern-sidebar.js', array(), time(), true );
 	
 	// Simple Post Card Styles
 	wp_enqueue_style( 'simple-post-card', DOCY_DIR_CSS . '/simple-post-card.css', array(), DOCY_VERSION );

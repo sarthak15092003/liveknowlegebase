@@ -551,12 +551,16 @@
     }
 
     /* Disable sticky on mobile */
-    .category-left-sidebar-col .modern-sidebar {
+    .category-left-sidebar-col .modern-sidebar,
+    .side_menu .modern-sidebar {
         position: static !important;
         top: auto !important;
         max-height: none !important;
         overflow-y: visible !important;
         margin-top: 0 !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        box-shadow: none !important;
     }
 
     .category-right-sidebar-col .cat-3-right-sidebar {

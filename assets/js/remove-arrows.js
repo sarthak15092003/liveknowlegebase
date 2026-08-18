@@ -3,11 +3,8 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Function to remove blue and white arrow elements
     function removeBlueWhiteArrows() {
-        console.log('Removing blue and white arrows...'); // Debug log
-        
         // Remove all SVG elements (blue/white arrows)
         const svgElements = document.querySelectorAll('.doc_accordion svg, .card-header svg, button[data-bs-toggle="collapse"] svg, button[aria-expanded] svg');
-        console.log('Found SVG elements:', svgElements.length); // Debug log
         svgElements.forEach(svg => {
             svg.style.display = 'none';
             svg.style.visibility = 'hidden';
@@ -76,15 +73,23 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }, 500);
     
-    // Watch for DOM changes
+    // Watch for DOM changes with a simple debounce
+    let mutationTimeout = null;
     const observer = new MutationObserver(function(mutations) {
-        mutations.forEach(function(mutation) {
-            if (mutation.addedNodes.length > 0) {
-                removeBlueWhiteArrows();
-                setTimeout(removeBlueWhiteArrows, 50);
-                setTimeout(removeBlueWhiteArrows, 100);
+        let hasNewNodes = false;
+        for (let i = 0; i < mutations.length; i++) {
+            if (mutations[i].addedNodes.length > 0) {
+                hasNewNodes = true;
+                break;
             }
-        });
+        }
+        
+        if (hasNewNodes) {
+            if (mutationTimeout) clearTimeout(mutationTimeout);
+            mutationTimeout = setTimeout(function() {
+                removeBlueWhiteArrows();
+            }, 100);
+        }
     });
     
     observer.observe(document.body, {
