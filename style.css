@@ -205,7 +205,30 @@ Text Domain: docy
   transition: color 0.2s ease;
 }
 
-/* Category Card Title Hover State */
+/* Category Card Hover States */
+.category-card:hover,
+.tw-category-card:hover {
+  border-color: #0d6efd !important;
+  color: inherit !important;
+}
+
+.category-card .card-text,
+.category-card:hover .card-text,
+.category-card p,
+.category-card:hover p,
+.tw-category-card .tw-category-desc,
+.tw-category-card:hover .tw-category-desc {
+  color: #484A61 !important;
+}
+
+.category-card .category-card__meta,
+.category-card:hover .category-card__meta,
+.category-card:hover .category-card__meta span,
+.category-card:hover .category-card__byline {
+  color: #6c757d !important;
+}
+
+/* Category Card Title Hover State (Only title turns blue) */
 .category-card:hover .card-title,
 .category-card:hover h5,
 .category-card .card-title:hover,
@@ -354,11 +377,17 @@ article .h4 {
   }
 }
 
-/* === Home CTA Banner Secondary Button === */
+/* === Home CTA Banner Buttons === */
+.home-cta-banner__primary,
+.home-cta-banner__primary:hover,
+.home-cta-banner__primary:focus {
+  color: #ffffff !important;
+}
+
 .home-cta-banner__secondary {
   background-color: #34c759 !important;
   color: #ffffff !important;
-  padding: 14px 28px !important;
+  padding: 14px 24px !important;
   border-radius: 999px !important;
   font-weight: 600 !important;
   text-decoration: none !important;
@@ -369,7 +398,8 @@ article .h4 {
   transition: all 0.2s ease !important;
 }
 
-.home-cta-banner__secondary:hover {
+.home-cta-banner__secondary:hover,
+.home-cta-banner__secondary:focus {
   background-color: #3a7dff !important;
   color: #ffffff !important;
   transform: translateY(-2px) !important;

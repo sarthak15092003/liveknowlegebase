@@ -15709,11 +15709,12 @@ body.category .doc_blog_grid_area {
 .home-cta-banner__primary {
   padding: 14px 32px;
   background: linear-gradient(135deg, #4f8cff 0%, #2d6cf8 100%);
-  color: #ffffff;
+  color: #ffffff !important;
 }
 
 .home-cta-banner__primary:hover {
   transform: translateY(-2px);
+  color: #ffffff !important;
 }
 
 .home-cta-banner__secondary {
@@ -19923,9 +19924,7 @@ footer {
 
 .category-card:hover {
   border-color: #0d6efd !important;
-  /* blue on hover */
-  color: #0d6efd !important;
-  /* make text links blue on hover */
+  color: inherit !important;
 }
 
 .category-card:hover .card-title,
