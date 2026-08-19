@@ -108,14 +108,14 @@ get_template_part( 'template-parts/single-post/banner', $banner_type );
                     <?php endif; ?>
 
                     <!-- CMGalaxy Engagement Block -->
-                    <div class="cmgalaxy-engagement-block mt-5 p-4" style=" border-radius: 12px; background: #ffffff;">
+                    <div class="cmgalaxy-engagement-block mt-5" style=" border-radius: 12px; background: #ffffff;">
                         <p class="lead mb-4" style="color: #484a61 !important; font-size: 1.125rem; line-height: 1.75;">
                             Thanks for being here with us! We are beyond excited to see how you'll use CMGalaxy to drive growth for your business.
                         </p>
 
                         <div class="related-articles-section" style="margin-top: 3.0rem; margin-bottom: 1.5rem;">
                             <h5 class="fw-semibold mb-3" style="color: #484a61 !important; font-size: 1.125rem;">Related Articles</h5>
-                            <ul class="list-unstyled mb-0" style="border: 1px solid #e5e7eb; border-radius: 8px; padding: 1.5rem !important;">
+                            <ul class="list-unstyled mb-0" style="border: 1px solid #e5e7eb; border-radius: 8px;">
                                 <?php
                                 $categories = get_the_category();
                                 if ($categories) {
@@ -135,7 +135,7 @@ get_template_part( 'template-parts/single-post/banner', $banner_type );
                                         while ($related_query->have_posts()) {
                                             $related_query->the_post();
                                             ?>
-                                            <li class="mb-3">
+                                            <li class="">
                                                 <a href="<?php the_permalink(); ?>" class="d-flex justify-content-between align-items-center related-article-link">
                                                     <span><?php the_title(); ?></span>
                                                     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="related-article-icon">

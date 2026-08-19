@@ -118,14 +118,60 @@ html, body { scroll-padding-top: 85px !important; }
     html, body { scroll-padding-top: 70px !important; }
     .admin-bar html, .admin-bar body { scroll-padding-top: 116px !important; }
 }
-.related-article-link { padding: 12px 16px !important; border-radius: 8px !important; background-color: #f8f9fa !important; color: #1f2937 !important; text-decoration: none !important; transition: all 0.2s ease !important; }
-.related-article-link span { color: #1f2937 !important; transition: color 0.2s ease !important; }
-.related-article-link .related-article-icon { color: #4b5563 !important; stroke: #4b5563 !important; transition: all 0.2s ease !important; }
-.related-article-link .related-article-icon path { stroke: currentColor !important; transition: stroke 0.2s ease !important; }
-.related-article-link:hover { background-color: rgba(59, 130, 246, 0.08) !important; color: #3b82f6 !important; transform: translateX(4px) !important; }
-.related-article-link:hover span { color: #3b82f6 !important; }
-.related-article-link:hover .related-article-icon { color: #3b82f6 !important; stroke: #3b82f6 !important; transform: translateX(3px) !important; }
-.related-article-link:hover .related-article-icon path { stroke: #3b82f6 !important; }
+/* Related Articles Section */
+.related-articles-section ul.list-unstyled {
+    border: 1px solid #e5e7eb !important;
+    border-radius: 8px !important;
+    overflow: hidden !important;
+}
+.related-articles-section .list-unstyled li {
+    border-bottom: 1px solid #e5e7eb !important;
+    margin: 0 !important;
+    padding: 0 !important;
+}
+.related-articles-section .list-unstyled li:last-child {
+    border-bottom: none !important;
+}
+.related-article-link {
+    padding: 12px 16px !important;
+    color: #484A61 !important;
+    font-size: 14px !important;
+    text-decoration: none !important;
+    transition: all 0.2s ease !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+}
+.related-article-link span {
+    color: #484A61 !important;
+    font-size: 14px !important;
+    line-height: 1.5 !important;
+    transition: color 0.2s ease !important;
+}
+.related-article-link .related-article-icon {
+    color: #3A7DFF !important;
+    stroke: #3A7DFF !important;
+    transition: all 0.2s ease !important;
+}
+.related-article-link .related-article-icon path {
+    stroke: currentColor !important;
+    transition: stroke 0.2s ease !important;
+}
+.related-article-link:hover {
+    background-color: rgba(58, 125, 255, 0.06) !important;
+    color: #3A7DFF !important;
+}
+.related-article-link:hover span {
+    color: #3A7DFF !important;
+}
+.related-article-link:hover .related-article-icon {
+    color: #3A7DFF !important;
+    stroke: #3A7DFF !important;
+    transform: translateX(3px) !important;
+}
+.related-article-link:hover .related-article-icon path {
+    stroke: #3A7DFF !important;
+}
 .cmgalaxy-engagement-block a:hover { border-color: #3b82f6 !important; }
 /* Post Navigation Cards (Previous / Next Post) */
 .post-navigation-cards {
