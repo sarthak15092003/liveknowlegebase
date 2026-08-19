@@ -361,6 +361,14 @@ article .h4 {
     padding: 0 !important;
   }
 
+  h1.post-title,
+  .blog_single_item h1.post-title,
+  .category-main-col h1.post-title {
+    font-size: 26px !important;
+    line-height: 1.25 !important;
+    margin-top: 10px !important;
+  }
+
   .post-navigation-cards {
     flex-direction: column !important;
     gap: 12px !important;
@@ -475,5 +483,83 @@ article .h4 {
 .related-article-link:hover .related-article-icon path {
   stroke: #3A7DFF !important;
 }
+
+/* === Breadcrumb: Single Line (No Wrap) with Ellipsis === */
+nav[aria-label="breadcrumb"],
+.blog_single_item nav[aria-label="breadcrumb"] {
+  display: block !important;
+  visibility: visible !important;
+  width: 100% !important;
+  margin-bottom: 16px !important;
+  padding: 0 !important;
+}
+
+.breadcrumb,
+.blog_single_item .breadcrumb {
+  list-style: none !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  display: flex !important;
+  align-items: center !important;
+  flex-wrap: nowrap !important;
+  overflow: hidden !important;
+  white-space: nowrap !important;
+  font-size: 12px !important;
+  line-height: 1.4 !important;
+  background: transparent !important;
+  width: 100% !important;
+}
+
+.breadcrumb .breadcrumb-item,
+.breadcrumb li,
+.blog_single_item .breadcrumb .breadcrumb-item,
+.blog_single_item .breadcrumb li {
+  display: inline-flex !important;
+  align-items: center !important;
+  font-size: 12px !important;
+  font-weight: 400 !important;
+  white-space: nowrap !important;
+  flex-shrink: 0 !important;
+}
+
+.breadcrumb .breadcrumb-item a,
+.blog_single_item .breadcrumb .breadcrumb-item a {
+  color: #1E2B5B !important;
+  text-decoration: none !important;
+  font-size: 12px !important;
+  font-weight: 400 !important;
+}
+
+.breadcrumb .breadcrumb-item a:hover,
+.blog_single_item .breadcrumb .breadcrumb-item a:hover {
+  color: #3b82f6 !important;
+  text-decoration: underline !important;
+}
+
+.breadcrumb .breadcrumb-item + .breadcrumb-item::before,
+.blog_single_item .breadcrumb .breadcrumb-item + .breadcrumb-item::before {
+  content: "/" !important;
+  padding: 0 6px !important;
+  color: #3B82F6 !important;
+  font-size: 12px !important;
+  font-weight: 400 !important;
+  display: inline-block !important;
+  flex-shrink: 0 !important;
+}
+
+.breadcrumb .breadcrumb-item.active,
+.breadcrumb li.active,
+.blog_single_item .breadcrumb .breadcrumb-item.active,
+.blog_single_item .breadcrumb li.active {
+  color: #5B6B8C !important;
+  font-size: 12px !important;
+  font-weight: 400 !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+  white-space: nowrap !important;
+  flex-shrink: 1 !important;
+  min-width: 0 !important;
+}
+
 
 

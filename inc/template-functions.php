@@ -299,11 +299,9 @@ function docy_post_breadcrumbs(): void
 		?>
         <ol class="breadcrumb <?php echo get_post_type( get_the_ID() ) ?>">
 
-            <?php if ( ! is_singular('post') ) : ?>
             <li class="breadcrumb-item">
-                <a href="<?php echo esc_url( home_url( '/' ) ) ?>"> <?php echo esc_html( $breadcrumb_home ) ?> </a>
+                <a href="<?php echo esc_url( home_url( '/' ) ) ?>"><?php echo esc_html( $breadcrumb_home ) ?></a>
             </li>
-            <?php endif; ?>
 
             <?php
             // Is Search Result page
