@@ -20004,8 +20004,6 @@ footer {
 
 .category-card:hover .card-title,
 .category-card:hover h5,
-.category-card:hover .card-text,
-.category-card:hover p,
 .category-card:hover .category-card__icon {
   color: #0d6efd !important;
 }

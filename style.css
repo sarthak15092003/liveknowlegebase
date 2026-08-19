@@ -205,17 +205,11 @@ Text Domain: docy
   transition: color 0.2s ease;
 }
 
-/* Category Card Title & Description Hover State */
+/* Category Card Title Hover State */
 .category-card:hover .card-title,
 .category-card:hover h5,
-.category-card:hover .card-text,
-.category-card:hover p,
-.category-card:hover .card-text.text-muted,
 .category-card .card-title:hover,
-.category-card .card-text:hover,
-.tw-category-card:hover .tw-category-title,
-.tw-category-card:hover .tw-category-desc,
-.tw-category-card:hover p {
+.tw-category-card:hover .tw-category-title {
   color: #0d6efd !important;
 }
 
@@ -358,4 +352,4 @@ article .h4 {
     font-size: 0.95rem !important;
     margin-bottom: 0.5rem !important;
   }
-}
+}
