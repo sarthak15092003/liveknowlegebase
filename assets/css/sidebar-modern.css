@@ -1238,6 +1238,22 @@ nav#sticky[style] {
 }
 
 /* Desktop body padding to prevent content from hiding under fixed navbar */
+@media (min-width: 768px) {
+    body {
+        padding-top: 140px !important; /* Logged OUT default */
+    }
+    body.home,
+    body.front-page {
+        padding-top: 117px !important; /* Home screen only */
+    }
+    body.single-post {
+        padding-top: 90px !important; /* Single post pages */
+    }
+    body.admin-bar {
+        padding-top: 117px !important; /* Logged IN: admin bar already adds 32px */
+    }
+
+}
 @media (min-width: 1025px) {
     body {
         padding-top: 140px !important; /* Logged OUT default */
@@ -1310,6 +1326,13 @@ nav#sticky[style] {
     body:not(.admin-bar) section.blog_area.tip_doc_area {
         padding-top: 20px !important;
         margin-top: 0 !important;
+    }
+
+    /* Main Post Container: 0 Padding on Mobile */
+    .main-post,
+    .single-post .main-post,
+    .blog_single_info .main-post {
+        padding: 0 !important;
     }
 
     /* Post Navigation Cards on Mobile & Tablet */

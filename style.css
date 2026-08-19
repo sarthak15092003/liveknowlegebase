@@ -355,6 +355,12 @@ article .h4 {
 }
 
 @media (max-width: 768px) {
+  .main-post,
+  .single-post .main-post,
+  .blog_single_info .main-post {
+    padding: 0 !important;
+  }
+
   .post-navigation-cards {
     flex-direction: column !important;
     gap: 12px !important;

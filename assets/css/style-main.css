@@ -552,13 +552,16 @@ button:focus {
 
   .bbp-shortcode fieldset.bbp-form,
   .blog_info .blog_body,
-  .main-post,
   .all-answers,
   .forum-single-content .bbp-reply-form,
   .search-main,
   .comment_inner#comments,
   .blog_comment_box {
     padding: 0px 20px !important;
+  }
+
+  .main-post {
+    padding: 0 !important;
   }
 }
 
