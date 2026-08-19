@@ -15717,12 +15717,15 @@ body.category .doc_blog_grid_area {
 }
 
 .home-cta-banner__secondary {
-  padding: 12px 24px;
+  padding: 14px 28px;
   gap: 10px;
-  color: #ffffff;
+  background-color: #34c759 !important;
+  color: #ffffff !important;
 }
 
 .home-cta-banner__secondary:hover {
+  background-color: #3a7dff !important;
+  color: #ffffff !important;
   transform: translateY(-2px);
 }
 
