@@ -97,7 +97,7 @@ function docy_scripts() {
 		}
 	}
 
-	wp_enqueue_style( 'docy-root', get_stylesheet_uri() );
+	wp_enqueue_style( 'docy-root', get_stylesheet_uri(), array(), DOCY_VERSION . '.11' );
 
 	if ( is_singular( 'post' ) ) {
 		wp_enqueue_style( 'docy-responsive', DOCY_DIR_CSS . '/responsive.css', array( 'docy-blog-single' ) );
