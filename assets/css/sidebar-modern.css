@@ -54,7 +54,7 @@ section:first-of-type {
 }
 @media (min-width: 768px) {
     .category-left-sidebar-col { -ms-flex: 0 0 20% !important; flex: 0 0 20% !important; max-width: 20% !important; width: 20% !important; float: left; }
-    .category-main-col { position: relative; border-left: 1px solid #e2e8f0 !important; border-top: none !important; border-right: none !important; border-bottom: none !important; padding-left: 24px !important; }
+    .category-main-col, #category-posts-container, .category-main-with-right { position: relative; border-left: 1px solid #e2e8f0 !important; border-top: none !important; border-right: none !important; border-bottom: none !important; padding: 1rem !important; box-sizing: border-box !important; }
     .category-main-col::before { content: '' !important; display: block !important; position: absolute !important; left: -1px !important; top: -300px !important; width: 1px !important; height: 300px !important; background-color: #e2e8f0 !important; z-index: 1 !important; }
     .category-main-col:not(.category-main-with-right):not(.has-toc-sidebar) { -ms-flex: 0 0 80% !important; flex: 0 0 80% !important; max-width: 80% !important; width: 80% !important; float: left; }
     .category-main-col.category-main-with-right { -ms-flex: 0 0 55% !important; flex: 0 0 55% !important; max-width: 55% !important; width: 55% !important; float: left; }
