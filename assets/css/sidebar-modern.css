@@ -345,8 +345,9 @@ html { scroll-padding-top: 85px !important; }
 
 /* Mobile Menu & Drawer Styles */
 .mobile-post-item.active-post { color: #007bff; font-weight: 600; }
-.side_menu.dark_menu { position: fixed !important; top: 0 !important; left: -320px !important; width: 300px !important; height: 100% !important; background: #ffffff !important; z-index: 100002 !important; transition: left 0.3s ease !important; box-shadow: 2px 0 10px rgba(0,0,0,0.1) !important; overflow-y: auto !important; }
-.side_menu.dark_menu.menu-opened { left: 0 !important; box-shadow: 5px 0 25px rgba(0,0,0,0.15) !important; }
+.side_menu.dark_menu { position: fixed !important; top: 0 !important; left: -320px !important; width: 300px !important; height: 100% !important; background: #ffffff !important; z-index: 100002 !important; transition: left 0.3s ease !important; box-shadow: 2px 0 10px rgba(0,0,0,0.1) !important; overflow-y: auto !important; padding: 0 !important; }
+.side_menu.dark_menu.menu-opened, .side_menu.menu-opened, .side_menu { left: 0 !important; box-shadow: 5px 0 25px rgba(0,0,0,0.15) !important; padding: 0 !important; }
+.side_menu .mobile_nav_wrapper, .side_menu .mobile_nav_bottom, .side_menu .mobile-sidebar-container, .side_menu.menu-opened .mobile_nav_wrapper, .side_menu.menu-opened .mobile_nav_bottom, .side_menu.menu-opened .mobile-sidebar-container { padding: 0 !important; margin: 0 !important; }
 .side_menu .mobile_menu_header { position: sticky !important; top: 0 !important; background: #ffffff !important; z-index: 1000 !important; display: flex !important; justify-content: space-between !important; align-items: center !important; padding: 14px 20px !important; border-bottom: 1px solid #e5e7eb !important; margin: 0 !important; }
 .side_menu .mobile_menu_header img { height: 30px !important; width: auto !important; object-fit: contain !important; display: block !important; }
 .cmgalaxy-mobile-logo img { height: 38px !important; width: auto !important; object-fit: contain !important; display: block !important; }
