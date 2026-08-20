@@ -23,6 +23,7 @@
 .sidebar-subcat-post-item:hover, .sidebar-sub-subcat-item:hover { background-color: #f1f5f9 !important; }
 .sidebar-subcat-post-item:hover a, .sidebar-subcat-post-item:hover a span, .sidebar-sub-subcat-item:hover a, .sidebar-sub-subcat-item:hover a span { color: #1d4ed8 !important; }
 .sidebar-subcat-post-item.active-article:hover a, .sidebar-subcat-post-item.active-article:hover a span { color: #3B82F6 !important; }
+.subsection-item { padding-top: 10px !important; padding-bottom: 10px !important; }
 .sidebar-divider { height: 1px; background: #e2e8f0; margin: 12px 16px; }
 .cmgalaxy-sortable-top > .sidebar-section, .cmgalaxy-sortable-sub > .cmgalaxy-subcat-wrapper, .cmgalaxy-sortable-sub-sub > .sidebar-sub-subcat-item { cursor: grab !important; }
 .cmgalaxy-sortable-top > .sidebar-section:active, .cmgalaxy-sortable-sub > .cmgalaxy-subcat-wrapper:active, .cmgalaxy-sortable-sub-sub > .sidebar-sub-subcat-item:active { cursor: grabbing !important; }
