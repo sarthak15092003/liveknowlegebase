@@ -20578,3 +20578,18 @@ article .h4 {
         max-width: 100%;
     }
 }
+
+/* Prevent description text from turning blue on card hover */
+.tw-category-card:hover .tw-category-desc,
+.tw-category-card:hover p,
+.category-card:hover p,
+.category-card:hover .card-text,
+.ezd-grid:hover p,
+a:hover p.tw-category-desc,
+a.tw-category-card:hover p,
+a.tw-category-card:hover .tw-category-desc,
+.doc_tag_item a:hover p,
+.doc_category_item a:hover p,
+a:hover p {
+    color: #484A61 !important;
+}
