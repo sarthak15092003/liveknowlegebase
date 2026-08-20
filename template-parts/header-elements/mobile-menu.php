@@ -5,8 +5,8 @@ $opt = get_option( 'docy_opt' );
     <div class="container">
         <div class="mobile_menu_left">
             <div class="cmgalaxy-mobile-logo">
-                <a href="<?php echo esc_url(home_url('/')); ?>">
-                    <img src="<?php echo get_template_directory_uri(); ?>/assets/img/kblogo.svg" alt="CMGALAXY Knowledge Base" style="height: 51px !important; width: 90% !important; max-width: none !important;">
+                <a href="<?php echo esc_url(home_url('/')); ?>" style="display: flex; align-items: center; text-decoration: none;">
+                    <img src="https://docs.cmgalaxy.com/wp-content/uploads/2026/06/cropped-Group-1000004539-300x300-1.png" alt="CMGALAXY Logo" style="height: 38px !important; width: auto !important; max-width: none !important; object-fit: contain;">
                 </a>
             </div>
         </div>
@@ -26,10 +26,12 @@ $opt = get_option( 'docy_opt' );
 
 <!-- Left Side Menu (Main Navigation) -->
 <div class="side_menu dark_menu">
-    <div class="mobile_menu_header">
-            <img src="<?php echo get_template_directory_uri(); ?>/assets/img/kblogo.svg" alt="CMGalaxy Logo" style="height: 25px;">
-        <div class="close_nav">
-            <i class="icon_close"></i>
+    <div class="mobile_menu_header" style="position: sticky !important; top: 0 !important; background: #ffffff !important; z-index: 1000 !important; display: flex !important; justify-content: space-between !important; align-items: center !important; padding: 14px 20px !important; border-bottom: 1px solid #e5e7eb !important; margin: 0 !important;">
+        <a href="<?php echo esc_url(home_url('/')); ?>" style="display: flex; align-items: center; text-decoration: none;">
+            <img src="https://docs.cmgalaxy.com/wp-content/uploads/2026/06/cropped-Group-1000004539-300x300-1.png" alt="CMGalaxy Logo" style="height: 30px !important; width: auto !important; object-fit: contain;">
+        </a>
+        <div class="close_nav" style="cursor: pointer; display: flex; align-items: center; justify-content: center;">
+            <i class="icon_close" style="font-size: 22px; color: #374151;"></i>
         </div>
     </div>
 
