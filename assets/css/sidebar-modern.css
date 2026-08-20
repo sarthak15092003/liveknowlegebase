@@ -164,11 +164,11 @@ html.no-smooth-scroll { scroll-behavior: auto !important; }
 .info-list li i { color: #10b981; font-size: 0.75rem; }
 
 /* Single Post TOC Anchor Scrolling & Layout */
-html, body { scroll-padding-top: 85px !important; }
-.admin-bar html, .admin-bar body { scroll-padding-top: 117px !important; }
+html { scroll-padding-top: 85px !important; }
+.admin-bar html { scroll-padding-top: 117px !important; }
 @media (max-width: 1024px) {
-    html, body { scroll-padding-top: 70px !important; }
-    .admin-bar html, .admin-bar body { scroll-padding-top: 116px !important; }
+    html { scroll-padding-top: 70px !important; }
+    .admin-bar html { scroll-padding-top: 116px !important; }
 }
 /* Related Articles Section */
 .related-articles-section ul.list-unstyled {
@@ -1985,6 +1985,8 @@ h3, .editor-content h3, .blog_single_item h3, .entry-content h3 {
         padding: 0 !important;
         margin: 0 !important;
         box-sizing: border-box !important;
+        overflow: visible !important;
+        touch-action: pan-y !important;
     }
 
     .category-main-col {

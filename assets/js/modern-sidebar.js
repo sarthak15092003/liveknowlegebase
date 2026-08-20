@@ -103,9 +103,15 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         }
         
-        // Scroll into view (centered to avoid sticky headers)
-        setTimeout(() => {
-            activeItem.scrollIntoView({ behavior: 'smooth', block: 'center' });
-        }, 300);
+        // Scroll inside sidebar ONLY on desktop (never hijack window scroll on mobile/page)
+        if (window.innerWidth > 1024) {
+            const sidebar = activeItem.closest('.modern-sidebar');
+            if (sidebar) {
+                setTimeout(() => {
+                    const itemTop = activeItem.offsetTop;
+                    sidebar.scrollTop = itemTop - (sidebar.clientHeight / 2);
+                }, 300);
+            }
+        }
     });
 });
