@@ -56,10 +56,40 @@ $opt = get_option( 'docy_opt' );
 
 
 <script>
-(function($) {
+(function() {
     'use strict';
-    $(document).ready(function() {
-        // No extra custom JS needed for mobile sidebar as sidebar-modern.php handles itself now.
+    try {
+        localStorage.removeItem('docy_side_menu_open');
+        sessionStorage.removeItem('docy_side_menu_open');
+    } catch(e) {}
+
+    function closeSideMenu() {
+        var sideMenus = document.querySelectorAll('.side_menu');
+        sideMenus.forEach(function(sm) {
+            sm.classList.remove('menu-opened');
+        });
+        document.body.classList.remove('menu-is-opened');
+        document.body.classList.add('menu-is-closed');
+        try { localStorage.removeItem('docy_side_menu_open'); } catch(e) {}
+    }
+
+    document.addEventListener('DOMContentLoaded', function() {
+        closeSideMenu();
+
+        // When any navigation link inside side_menu is clicked, immediately close the drawer
+        document.addEventListener('click', function(e) {
+            var link = e.target.closest('.side_menu a');
+            if (link && !link.closest('.expand-icon') && !link.closest('.expand-icon-subcat')) {
+                var href = link.getAttribute('href');
+                if (href && !href.startsWith('#') && !href.startsWith('javascript:')) {
+                    closeSideMenu();
+                }
+            }
+        });
     });
-})(jQuery);
+
+    window.addEventListener('pageshow', function() {
+        closeSideMenu();
+    });
+})();
 </script>
