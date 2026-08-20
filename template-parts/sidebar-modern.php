@@ -164,7 +164,7 @@ $sidebar_instance_id = uniqid('sb_');
         $back_btn_style = 'display: flex; align-items: center; padding: 12px 16px; margin-bottom: 15px; background: #f8fafc; border-radius: 8px; color: #475569; font-weight: 500; text-decoration: none; font-size: 14.5px; transition: all 0.2s;';
         $back_btn_class = 'sidebar-back-btn';
         if (!$is_single_post) {
-            $back_btn_class .= ' d-lg-none';
+            $back_btn_class .= ' d-none';
         }
         ?>
         <!-- Back Button for Single Posts and Mobile Categories -->
@@ -366,7 +366,7 @@ $sidebar_instance_id = uniqid('sb_');
                                     <!-- <span style="font-size: 11px; background: #f1f5f9; padding: 2px 6px; border-radius: 4px; color: #94a3b8; font-weight: 500; margin-left: 8px; flex-shrink: 0; pointer-events: none;"><?php echo esc_html($subcat->count); ?></span> -->
                                 </a>
                                 <?php if ($has_children) : ?>
-                                <span class="expand-icon-subcat" style="color: #64748b; margin-right: 15px; display: inline-flex; transition: transform 0.3s; transform: <?php echo $is_subcat_active ? 'rotate(270deg)' : 'rotate(180deg)'; ?>;">
+                                <span class="expand-icon-subcat" style="color: #64748b; margin-left: 12px; margin-right: 0; display: inline-flex; transition: transform 0.3s; transform: <?php echo $is_subcat_active ? 'rotate(270deg)' : 'rotate(180deg)'; ?>;">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none">
                                         <path d="M15 6L9 12.0001L15 18" stroke="currentColor" stroke-width="1.5" stroke-miterlimit="16" stroke-linecap="round" stroke-linejoin="round"/>
                                     </svg>
