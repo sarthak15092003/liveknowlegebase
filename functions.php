@@ -479,6 +479,15 @@ function cm_sidebar_tooltip_script() {
         border-color: transparent #ffffff transparent transparent;
         filter: drop-shadow(-2px 0 1px rgba(0,0,0,0.04));
     }
+    @media (max-width: 1024px) {
+        .cm-custom-tooltip,
+        .cm-custom-tooltip.cm-tooltip-visible {
+            display: none !important;
+            visibility: hidden !important;
+            opacity: 0 !important;
+            pointer-events: none !important;
+        }
+    }
     </style>
     <script>
     (function() {
@@ -490,6 +499,9 @@ function cm_sidebar_tooltip_script() {
         var hideTimer = null;
 
         document.addEventListener('mouseover', function(e) {
+            // Never show tooltip on mobile/tablets
+            if (window.innerWidth <= 1024) return;
+
             var link = e.target.closest('.cm-tooltip-target');
             if (!link) return;
 
@@ -510,6 +522,8 @@ function cm_sidebar_tooltip_script() {
         }, true);
 
         document.addEventListener('mouseout', function(e) {
+            if (window.innerWidth <= 1024) return;
+
             var link = e.target.closest('.cm-tooltip-target');
             if (!link) return;
 
