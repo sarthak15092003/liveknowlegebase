@@ -402,7 +402,7 @@ add_action( 'wp_ajax_cmgalaxy_update_category_order', 'cmgalaxy_update_category_
 add_action("wp_enqueue_scripts", function() {
     // Version .67 = fix scrollbar always visible + remove conflict
     // Depends on 'docy-root' (style.css) so our overrides load last and win
-    wp_enqueue_style("cmgalaxy-sidebar-modern", get_template_directory_uri() . "/assets/css/sidebar-modern.css", array('docy-root'), DOCY_VERSION . '.68');
+    wp_enqueue_style("cmgalaxy-sidebar-modern", get_template_directory_uri() . "/assets/css/sidebar-modern.css", array('docy-root'), time());
 
     // Inject scrollbar CSS inline (always wins over any other CSS)
     $scrollbar_css = "

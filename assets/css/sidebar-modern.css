@@ -1377,7 +1377,7 @@ nav#sticky[style] {
     body.single-post,
     body.category,
     body.archive {
-        padding-top: 65px !important; /* Clear mobile header (~60px) */
+        padding-top: 90px !important; /* Clear mobile header */
     }
     body.admin-bar,
     body.admin-bar.home,
@@ -1386,7 +1386,7 @@ nav#sticky[style] {
     body.admin-bar.single-post,
     body.admin-bar.category,
     body.admin-bar.archive {
-        padding-top: 111px !important; /* Mobile header (65px) + Mobile WP Admin bar (46px) */
+        padding-top: 136px !important; /* Mobile header (90px) + Mobile WP Admin bar (46px) */
     }
     
     .body_wrapper {
