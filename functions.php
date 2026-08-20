@@ -420,10 +420,10 @@ add_action("wp_enqueue_scripts", function() {
             border-radius: 4px !important;
         }
         .modern-sidebar:hover::-webkit-scrollbar-thumb {
-            background: #d1d5db !important;
+            background: #9ca3af !important; /* Darker gray so it's clearly visible */
         }
         .modern-sidebar::-webkit-scrollbar-thumb:hover {
-            background: #9ca3af !important;
+            background: #6b7280 !important;
         }
         .modern-sidebar::-webkit-scrollbar-button {
             display: none !important;

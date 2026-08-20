@@ -25,7 +25,7 @@ $footer_visibility = docy_meta('footer_visibility', '1');
                 <div class="footer-social">
                     <p>Follow on Social Media</p>
                     <div class="social-icons">
-                        <a href="https://www.linkedin.com/company/cmgalaxy" target="_blank" rel="noopener noreferrer" class="social-icon"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="https://www.linkedin.com/company/cmgalaxy" target="_blank" rel="noopener noreferrer" class="social-icon"><i class="fab fa-linkedin"></i></a>
                         <a href="https://www.facebook.com/CMGalaxy" target="_blank" rel="noopener noreferrer" class="social-icon"><i class="fab fa-facebook-f"></i></a>
                         <a href="https://www.instagram.com/cmgalaxyhq" target="_blank" rel="noopener noreferrer" class="social-icon"><i class="fab fa-instagram"></i></a>
                         <a href="https://www.youtube.com/@CMGalaxyHQ" target="_blank" rel="noopener noreferrer" class="social-icon"><i class="fab fa-youtube"></i></a>
