@@ -839,6 +839,51 @@ get_template_part( 'template-parts/single-post/banner', $banner_type );
                         </div>
                     </div>
                 </div>
+                <script>
+                (function() {
+                    function initFooterHideBar() {
+                        var bar = document.getElementById('cm-bottom-action-bar') || document.querySelector('.jrBzsJ');
+                        if (!bar) return;
+
+                        var footers = document.querySelectorAll('footer, .footer_area, .doc_footer_top, .footer-copyright');
+                        if (!footers.length) return;
+
+                        if ('IntersectionObserver' in window) {
+                            var observer = new IntersectionObserver(function(entries) {
+                                var isAnyVisible = entries.some(function(e) { return e.isIntersecting; });
+                                if (isAnyVisible) {
+                                    bar.classList.add('hidden-by-footer');
+                                } else {
+                                    bar.classList.remove('hidden-by-footer');
+                                }
+                            }, {
+                                rootMargin: '0px 0px 50px 0px',
+                                threshold: 0
+                            });
+                            footers.forEach(function(f) { observer.observe(f); });
+                        }
+
+                        function onScrollCheck() {
+                            var footer = document.querySelector('footer, .footer_area, .doc_footer_top');
+                            if (!footer) return;
+                            var rect = footer.getBoundingClientRect();
+                            if (rect.top <= window.innerHeight) {
+                                bar.classList.add('hidden-by-footer');
+                            } else {
+                                bar.classList.remove('hidden-by-footer');
+                            }
+                        }
+                        window.addEventListener('scroll', onScrollCheck, { passive: true });
+                        window.addEventListener('resize', onScrollCheck, { passive: true });
+                        onScrollCheck();
+                    }
+                    if (document.readyState === 'loading') {
+                        document.addEventListener('DOMContentLoaded', initFooterHideBar);
+                    } else {
+                        initFooterHideBar();
+                    }
+                })();
+                </script>
             <?php endif; ?>
         </div>
 

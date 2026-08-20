@@ -2288,9 +2288,12 @@ h3, .editor-content h3, .blog_single_item h3, .entry-content h3 {
 @media (max-width: 1024px) {
     .jrBzsJ,
     .sc-jtXEFf.jrBzsJ,
-    #cm-bottom-action-bar {
+    #cm-bottom-action-bar,
+    div.jrBzsJ {
         background: #111827 !important;
         border-radius: 0 !important;
+        -webkit-border-radius: 0 !important;
+        -moz-border-radius: 0 !important;
         z-index: 9999 !important;
         position: fixed !important;
         bottom: 0 !important;
@@ -2302,15 +2305,17 @@ h3, .editor-content h3, .blog_single_item h3, .entry-content h3 {
         align-items: center !important;
         justify-content: center !important;
         box-shadow: 0 -2px 12px rgba(0, 0, 0, 0.25) !important;
-        transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s ease !important;
+        transition: opacity 0.25s ease, transform 0.25s cubic-bezier(0.4, 0, 0.2, 1), visibility 0.25s ease !important;
     }
 
     .jrBzsJ.hidden-by-footer,
-    #cm-bottom-action-bar.hidden-by-footer {
+    #cm-bottom-action-bar.hidden-by-footer,
+    .sc-jtXEFf.jrBzsJ.hidden-by-footer,
+    div.jrBzsJ.hidden-by-footer {
         opacity: 0 !important;
         visibility: hidden !important;
         pointer-events: none !important;
-        transform: translateY(100%) !important;
+        transform: translateY(120%) !important;
     }
 
     .jrBzsJ .eYVFtH {
