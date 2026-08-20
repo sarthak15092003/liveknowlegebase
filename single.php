@@ -114,7 +114,7 @@ get_template_part( 'template-parts/single-post/banner', $banner_type );
                         </p>
 
                         <div class="related-articles-section" style="margin-top: 3.0rem; margin-bottom: 1.5rem;">
-                            <h5 class="fw-semibold mb-3" style="color: #484a61 !important; font-size: 1.125rem;">Related Articles</h5>
+                            <h5 class="fw-semibold mb-3" id="related-articles" style="color: #484A61 !important; font-size: 20px !important; font-weight: 600 !important;">Related Articles</h5>
                             <ul class="list-unstyled mb-0" style="border: 1px solid #e5e7eb; border-radius: 8px;">
                                 <?php
                                 $categories = get_the_category();

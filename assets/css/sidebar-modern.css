@@ -178,6 +178,12 @@ html { scroll-padding-top: 85px !important; }
     .admin-bar html { scroll-padding-top: 116px !important; }
 }
 /* Related Articles Section */
+.related-articles-section h5,
+#related-articles {
+    color: #484A61 !important;
+    font-size: 20px !important;
+    font-weight: 600 !important;
+}
 .related-articles-section ul.list-unstyled {
     border: 1px solid #e5e7eb !important;
     border-radius: 8px !important;
