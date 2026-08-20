@@ -248,6 +248,11 @@ Text Domain: docy
   box-shadow: none !important;
 }
 
+.sidebar-subcat-post-item, .sidebar-sub-subcat-item { transition: background-color 0.2s ease, color 0.2s ease !important; border-radius: 6px !important; }
+.sidebar-subcat-post-item:hover, .sidebar-sub-subcat-item:hover { background-color: #f1f5f9 !important; }
+.sidebar-subcat-post-item:hover a, .sidebar-subcat-post-item:hover a span, .sidebar-sub-subcat-item:hover a, .sidebar-sub-subcat-item:hover a span { color: #1d4ed8 !important; }
+.sidebar-subcat-post-item.active-article:hover a, .sidebar-subcat-post-item.active-article:hover a span { color: #3B82F6 !important; }
+
 /* === Heading Font Size Overrides (h3: 20px, h4: 18px) === */
 h3,
 .h3,

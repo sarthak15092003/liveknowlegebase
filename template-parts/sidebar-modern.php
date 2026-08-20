@@ -277,7 +277,7 @@ $sidebar_instance_id = uniqid('sb_');
                             $post_wrapper_class .= ' active-article';
                         }
                         ?>
-                        <div class="<?php echo esc_attr($post_wrapper_class); ?>" style="padding: 6px 0 6px 35px; position: relative;">
+                        <div class="<?php echo esc_attr($post_wrapper_class); ?>" style="padding: 10px 0 10px 35px; position: relative;">
                             <?php if ($is_current_post): ?>
                                 <div style="position: absolute; left: 20px; top: 0; bottom: 0; width: 2px; background: #3B82F6;"></div>
                             <?php endif; ?>
@@ -398,7 +398,7 @@ $sidebar_instance_id = uniqid('sb_');
                                         ", $sub_subcat->term_id));
                                         $has_sub_subcat_posts = !empty($sub_subcat_posts);
                                         ?>
-                                        <div class="sidebar-sub-subcat-item" data-term-id="<?php echo esc_attr($sub_subcat->term_id); ?>" style="padding: 6px 0 6px 8px; position: relative;">
+                                        <div class="sidebar-sub-subcat-item" data-term-id="<?php echo esc_attr($sub_subcat->term_id); ?>" style="padding: 10px 0 10px 8px; position: relative;">
                                         <?php if ($is_sub_subcat_active): ?>
                                             <div style="position: absolute; left: -1px; top: 0; bottom: 0; width: 2px; background: #3B82F6;"></div>
                                         <?php endif; ?>
@@ -418,7 +418,7 @@ $sidebar_instance_id = uniqid('sb_');
                                                     $post_wrapper_class .= ' active-article';
                                                 }
                                                 ?>
-                                                <div class="<?php echo esc_attr($post_wrapper_class); ?>" style="padding: 6px 0 6px 20px; position: relative;">
+                                                <div class="<?php echo esc_attr($post_wrapper_class); ?>" style="padding: 10px 0 10px 20px; position: relative;">
                                                     <?php if ($is_current_post): ?>
                                                         <div style="position: absolute; left: 10px; top: 0; bottom: 0; width: 2px; background: #3B82F6;"></div>
                                                     <?php endif; ?>
@@ -442,7 +442,7 @@ $sidebar_instance_id = uniqid('sb_');
                                             $post_wrapper_class .= ' active-article';
                                         }
                                         ?>
-                                        <div class="<?php echo esc_attr($post_wrapper_class); ?>" style="padding: 6px 0 6px 15px; position: relative;">
+                                        <div class="<?php echo esc_attr($post_wrapper_class); ?>" style="padding: 10px 0 10px 15px; position: relative;">
                                             <?php if ($is_current_post): ?>
                                                 <div style="position: absolute; left: -1px; top: 0; bottom: 0; width: 2px; background: #3B82F6;"></div>
                                             <?php endif; ?>
