@@ -558,7 +558,7 @@ if ($blog_layout == 'blog_category' && !$is_category_page) {
 
 							<!-- Content Column for Cat 3 -->
 							<div class="category-main-col category-main-with-right" id="category-posts-container"
-								style="padding: 0px !important;"
+								style="padding: 8px !important;"
 								data-current-cat="<?php echo esc_attr($current_cat_id); ?>"
 								data-cat-slug="<?php echo esc_attr(get_category($current_cat_id)->slug); ?>">
 								<!-- Top Loading Indicator -->
