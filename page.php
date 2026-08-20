@@ -45,74 +45,79 @@ while ( have_posts() ) : the_post();
                     </aside>
                 </div>
 
-                <div class="sc-jtXEFf jrBzsJ">
+                <div class="sc-jtXEFf jrBzsJ" id="cm-bottom-action-bar">
                     <div class="sc-eldieg eYVFtH">
                         <div class="overlay" id="toc-overlay"></div>
-                        <!-- Button to toggle the Table of Contents -->
                         <button class="sc-kiIyQV fqmceZ table_content" aria-expanded="false" aria-controls="docy-toc">
-                            <?php esc_html_e('Table of Contents', 'docy'); ?>
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-right: 6px; flex-shrink: 0;">
+                                <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
+                                <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
+                            </svg>
+                            <span><?php esc_html_e('On this Page', 'docy'); ?></span>
                         </button>
-
-                        <!-- Hidden Table of Contents, will appear above the button -->
                         <aside class="bottom_table_content" id="docy-tocs" aria-hidden="true">
                             <button class="close-toc">
-                                <svg aria-hidden="true" tabindex="-1" disabled="" class="___SIcon_pchrv_gg_" data-ui-name="Close" width="24" height="24"
-                                     viewBox="0 0 24 24" data-name="Close" data-group="l" title="Close">
-                                    <path d="M20.707
-                                     4.707a1 1 0 0 0-1.414-1.414L12 10.586 4.707 3.293a1 1 0 0 0-1.414 1.414L10.586 12l-7.293 7.293a1 1 0 1 0 1.414 1.414L12
-                                     13.414l7.293 7.293a1 1 0 0 0 1.414-1.414L13.414 12l7.293-7.293Z" shape-rendering="geometricPrecision">
-                                    </path>
+                                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <line x1="18" y1="6" x2="6" y2="18"></line>
+                                    <line x1="6" y1="6" x2="18" y2="18"></line>
                                 </svg>
                             </button>
-                            <nav data-toggle="toc" class="nav-sidebar doc-nav">
-                                <!-- You can dynamically generate your TOC items here -->
-                            </nav>
+                            <h6 class="toc-title mb-3"><?php esc_html_e('On this Page', 'docy'); ?></h6>
+                            <nav class="nav-sidebar doc-nav" id="docy-tocs-mobile"></nav>
                         </aside>
-
-                        <!-- Button to show Share modal -->
                         <button class="sc-kiIyQV fqmceZ table_share_btn">
-                            <svg aria-hidden="true" tabindex="-1" disabled="" class="___SIcon_pchrv_gg_ sc-cLpAjG cfZGuc"
-                                 data-ui-name="Share" width="16" height="16" viewBox="0 0 16 16" data-name="Share" data-group="m">
-                                <path d="M11.707 1.293a1 1 0 1 0-1.414 1.414L12.586 5H7a6 6 0 0 0-6 6v3a1 1 0 1 0 2
-                                0v-3a4 4 0 0 1 4-4h5.586l-2.293 2.293a1 1 0 1 0 1.414 1.414l4-4a1 1 0 0 0 0-1.414l-4-4Z"
-                                      shape-rendering="geometricPrecision"></path>
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-right: 6px; flex-shrink: 0;">
+                                <path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"></path>
+                                <polyline points="16 6 12 2 8 6"></polyline>
+                                <line x1="12" y1="2" x2="12" y2="15"></line>
                             </svg>
-                            <?php esc_html_e('Share', 'docy'); ?>
+                            <span><?php esc_html_e('Share', 'docy'); ?></span>
                         </button>
-
-                        <!-- Hidden Share Modal -->
                         <div class="docy-modal-content" id="share-modal" aria-hidden="true">
-
                             <button class="close docy-close" aria-label="Close Share Modal">
-                                <svg aria-hidden="true" tabindex="-1" disabled="" class="___SIcon_pchrv_gg_" data-ui-name="Close" width="24" height="24"
-                                     viewBox="0 0 24 24" data-name="Close" data-group="l" title="Close">
-                                    <path d="M20.707
-                                     4.707a1 1 0 0 0-1.414-1.414L12 10.586 4.707 3.293a1 1 0 0 0-1.414 1.414L10.586 12l-7.293 7.293a1 1 0 1 0 1.414 1.414L12
-                                     13.414l7.293 7.293a1 1 0 0 0 1.414-1.414L13.414 12l7.293-7.293Z" shape-rendering="geometricPrecision">
-                                    </path>
+                                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <line x1="18" y1="6" x2="6" y2="18"></line>
+                                    <line x1="6" y1="6" x2="18" y2="18"></line>
                                 </svg>
                             </button>
+                            <div class="docy-share-wrap" style="padding: 10px 5px;">
+                                <p class="share-modal-title" style="text-align: center; font-size: 16px; font-weight: 600; color: #1e293b; margin-bottom: 16px;">Copy link</p>
+                                
+                                <div class="docy-copy-url-wrap" style="margin-bottom: 20px;">
+                                    <div class="share-this-docs" style="display: flex; align-items: center; background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 8px; padding: 8px 12px; gap: 8px; cursor: pointer;">
+                                        <input readonly type="text" value="<?php the_permalink(); ?>" class="word-wrap cm-share-input" style="flex: 1; border: none; background: transparent; font-size: 13.5px; color: #475569; outline: none; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; cursor: pointer;">
+                                        <button type="button" class="cm-copy-action-btn" title="Copy link" style="border: none; background: transparent; cursor: pointer; display: flex; align-items: center; color: #3b82f6; padding: 0;">
+                                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#3b82f6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                                <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                                                <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                                            </svg>
+                                        </button>
+                                    </div>
+                                    <div class="cm-copy-toast" style="display: none; color: #10b981; font-size: 12px; text-align: center; margin-top: 6px; font-weight: 500;">Link copied to clipboard!</div>
+                                </div>
 
-                            <div class="docy-share-wrap">
-                                <div class="social-links">
-                                    <a href="mailto:?subject=<?php the_title(); ?>&amp;body= <?php esc_html_e( 'Check out this doc', 'docy' );
-                                    the_permalink(); ?>" target="_blank">
-                                        <i class="icon_mail"></i>
+                                <div class="social-links" style="display: flex; align-items: center; justify-content: center; gap: 14px;">
+                                    <!-- WhatsApp -->
+                                    <a href="https://api.whatsapp.com/send?text=<?php echo urlencode(get_the_title() . ' ' . get_permalink()); ?>" target="_blank" title="WhatsApp" style="width: 42px; height: 42px; border-radius: 50%; background: #25D366; display: inline-flex; align-items: center; justify-content: center; color: #ffffff; text-decoration: none;">
+                                        <i class="fab fa-whatsapp" style="font-size: 20px;"></i>
                                     </a>
-                                    <a href="https://www.facebook.com/share.php?u=<?php the_permalink(); ?>">
-                                        <i class="social_facebook_circle"></i>
+                                    <!-- Facebook -->
+                                    <a href="https://www.facebook.com/sharer/sharer.php?u=<?php the_permalink(); ?>" target="_blank" title="Facebook" style="width: 42px; height: 42px; border-radius: 50%; background: #1877F2; display: inline-flex; align-items: center; justify-content: center; color: #ffffff; text-decoration: none;">
+                                        <i class="fab fa-facebook-f" style="font-size: 18px;"></i>
                                     </a>
-                                    <a href="https://www.linkedin.com/shareArticle?mini=true&url=<?php the_permalink(); ?>">
-                                        <i class="social_linkedin_square"></i>
+                                    <!-- LinkedIn -->
+                                    <a href="https://www.linkedin.com/sharing/share-offsite/?url=<?php the_permalink(); ?>" target="_blank" title="LinkedIn" style="width: 42px; height: 42px; border-radius: 50%; background: #0A66C2; display: inline-flex; align-items: center; justify-content: center; color: #ffffff; text-decoration: none;">
+                                        <i class="fab fa-linkedin-in" style="font-size: 18px;"></i>
                                     </a>
-                                    <a href="https://twitter.com/share?url=<?php the_permalink(); ?>&amp;text=<?php the_title(); ?> &amp;hashtags=<?php echo esc_url(site_url()); ?>">
-                                        <i class="social_twitter"></i>
+                                    <!-- Twitter/X -->
+                                    <a href="https://twitter.com/intent/tweet?url=<?php the_permalink(); ?>&text=<?php echo urlencode(get_the_title()); ?>" target="_blank" title="X" style="width: 42px; height: 42px; border-radius: 50%; background: #000000; display: inline-flex; align-items: center; justify-content: center; color: #ffffff; text-decoration: none;">
+                                        <i class="fab fa-x-twitter" style="font-size: 18px;"></i>
                                     </a>
                                 </div>
-                                <p>Copy link</p>
-                                <div class="docy-copy-url-wrap">
-                                    <div class="share-this-docs">
-                                        <input readonly type="text" value="<?php the_permalink(); ?>" class="word-wrap">
+                            </div>
+                        </div>
+                    </div>
+                </div>
                                         <img src="<?php echo get_template_directory_uri(); ?>/assets/img/clone.svg" alt="<?php esc_attr_e( 'Docy theme', 'docy' ); ?>">
                                     </div>
                                 </div>

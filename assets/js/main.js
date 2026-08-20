@@ -177,102 +177,93 @@
 
         // Close TOC when the close button is clicked
         $('.close-toc').on('click', function () {
-            let toc = $(this).closest('aside.bottom_table_content'); // Select the parent TOC
-            let container = toc.closest('.jrBzsJ'); // Select the .jrBzsJ container
-            let overlay = $('#toc-overlay'); // Select the overlay
-
-            toc.slideUp(300, function () {
-                container.css('border-radius', '10px 10px 0 0'); // Reset border-radius after TOC is hidden
-            });
-            overlay.fadeOut(300); // Hide the overlay
-            tocVisible = false; // Update the visibility status
+            let toc = $(this).closest('aside.bottom_table_content');
+            let overlay = $('#toc-overlay');
+            toc.slideUp(300);
+            overlay.fadeOut(300);
+            tocVisible = false;
         });
 
         // Toggle the visibility of the Share modal when the share button is clicked.
-        $('.table_share_btn').on('click', function () {
-            let shareModal = $('#share-modal'); // Select the share modal
-            let container = $(this).closest('.jrBzsJ'); // Select the .jrBzsJ container
-            let overlay = $('#toc-overlay'); // Use the same overlay for simplicity
+        $('.table_share_btn').on('click', function (e) {
+            e.preventDefault();
+            let shareModal = $('#share-modal');
+            let overlay = $('#toc-overlay');
 
             if (shareModalVisible) {
-                shareModal.slideUp(300, function () {
-                    container.css('border-radius', '10px 10px 0 0'); // Reset border-radius after modal is hidden
-                });
-                overlay.fadeOut(300); // Hide the overlay
+                shareModal.slideUp(300);
+                overlay.fadeOut(300);
                 shareModalVisible = false;
             } else {
-                shareModal.css({
-                    'background-color': '#ffffff', // Background color
-                    'color': '#000000', // Text color
-                    'padding': '24px 24px 12px 24px', // Padding for better appearance
-                    'border-radius': '10px 10px 0 0', // Rounded corners
-                    'box-shadow': 'none' // Removed shadow
-                }).slideDown(300); // Show with smooth slide-down effect
-
-                container.css('border-radius', '0'); // Remove border-radius when modal is visible
-                overlay.fadeIn(300); // Show the overlay
+                $('aside.bottom_table_content').slideUp(300);
+                tocVisible = false;
+                shareModal.slideDown(300);
+                overlay.fadeIn(300);
                 shareModalVisible = true;
             }
         });
 
         // Close Share modal when the close button is clicked
-        $('.docy-close').on('click', function () {
-            let shareModal = $(this).closest('#share-modal'); // Select the parent modal
-            let overlay = $('#toc-overlay'); // Select the overlay
-            let container = shareModal.closest('.jrBzsJ'); // Select the container
+        $('.docy-close').on('click', function (e) {
+            e.preventDefault();
+            let shareModal = $('#share-modal');
+            let overlay = $('#toc-overlay');
 
-            shareModal.slideUp(300, function () {
-                container.css('border-radius', '10px 10px 0 0'); // Reset border-radius after modal is hidden
-            });
-            overlay.fadeOut(300); // Hide the overlay
-            shareModalVisible = false; // Update the visibility status
+            shareModal.slideUp(300);
+            overlay.fadeOut(300);
+            shareModalVisible = false;
         });
 
         // Close TOC and Share modal when clicking outside (on the overlay)
         $('#toc-overlay').on('click', function () {
-            let toc = $('aside.bottom_table_content'); // Select the TOC element
-            let shareModal = $('#share-modal'); // Select the Share modal
-            let container = toc.closest('.jrBzsJ'); // Select the container
+            let toc = $('aside.bottom_table_content');
+            let shareModal = $('#share-modal');
 
-            toc.slideUp(300, function () {
-                container.css('border-radius', '10px 10px 0 0'); // Reset border-radius after TOC is hidden
-            });
-            shareModal.slideUp(300); // Hide the share modal
-            $(this).fadeOut(300); // Hide the overlay
-            tocVisible = false; // Update the TOC visibility status
-            shareModalVisible = false; // Update the Share modal visibility status
+            toc.slideUp(300);
+            shareModal.slideUp(300);
+            $(this).fadeOut(300);
+            tocVisible = false;
+            shareModalVisible = false;
         });
 
-        // Copy link functionality with popup notification
-        $('.share-this-docs img').on('click', function () {
-            let input = $(this).siblings('input'); // Select the input with the link
-            input.select();
-            document.execCommand("copy");
+        // Copy link functionality
+        $(document).on('click', '.cm-copy-action-btn, .share-this-docs, .share-this-docs img', function (e) {
+            e.preventDefault();
+            let $wrap = $(this).closest('.docy-copy-url-wrap');
+            let $input = $wrap.find('input');
+            let url = $input.val();
 
-            // Show popup with checkmark
-            let popup = $('<div class="copy-popup"><span>✓</span> URL copied to clipboard</div>');
-            $('body').append(popup);
-            popup.css({
-                width: 'max-content',
-                position: 'fixed',
-                top: '10%',
-                left: '50%',
-                transform: 'translateX(-50%)',
-                background: '#ffffff',
-                color: '#000000',
-                padding: '8px 18px',
-                'border-radius': '5px',
-                'z-index': '9999',
-                'box-shadow': '0px 4px 8px rgba(0, 0, 0, 0.1)'
-            });
+            if (navigator.clipboard && window.isSecureContext) {
+                navigator.clipboard.writeText(url);
+            } else {
+                $input.select();
+                document.execCommand("copy");
+            }
 
-            // Fade out popup after 2 seconds
-            setTimeout(function () {
-                popup.fadeOut(300, function () {
-                    popup.remove(); // Remove popup after fade out
-                });
-            }, 2000);
+            let $toast = $wrap.find('.cm-copy-toast');
+            if ($toast.length) {
+                $toast.stop().fadeIn(200).delay(1500).fadeOut(300);
+            }
         });
+
+        // Hide floating bottom bar when reaching footer
+        function checkFooterHideBar() {
+            var $bar = $('.jrBzsJ, #cm-bottom-action-bar');
+            var $footer = $('.footer_area, footer, .doc_footer_top, .footer-copyright').first();
+            if (!$bar.length || !$footer.length) return;
+
+            var footerTop = $footer.offset().top;
+            var windowBottom = $(window).scrollTop() + $(window).height();
+
+            if (windowBottom >= footerTop + 20) {
+                $bar.addClass('hidden-by-footer');
+            } else {
+                $bar.removeClass('hidden-by-footer');
+            }
+        }
+
+        $(window).on('scroll resize', checkFooterHideBar);
+        checkFooterHideBar();
     }
 
     // mobileTable() call removed from here, moved inside $(document).ready above
