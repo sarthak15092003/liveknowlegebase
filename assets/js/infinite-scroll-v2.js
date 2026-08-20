@@ -159,23 +159,28 @@ jQuery(document).ready(function ($) {
         }
     });
 
-    // 3. Detect INTENT to scroll up at the very top (where scroll event doesn't fire)
-    $(window).on('wheel', function (e) {
-        if ($(window).scrollTop() <= 5 && e.originalEvent.deltaY < 0) {
+    // 3. Detect INTENT to scroll up at the very top (using passive listeners to prevent scroll jank)
+    window.addEventListener('wheel', function (e) {
+        if ($(window).scrollTop() <= 5 && e.deltaY < 0) {
             loadPrevCategory();
         }
-    });
+    }, { passive: true });
 
     var touchStartY = 0;
-    $(window).on('touchstart', function (e) {
-        touchStartY = e.originalEvent.touches[0].pageY;
-    });
-    $(window).on('touchmove', function (e) {
-        var touchY = e.originalEvent.touches[0].pageY;
-        if ($(window).scrollTop() <= 5 && touchY > touchStartY + 20) {
-            loadPrevCategory();
+    window.addEventListener('touchstart', function (e) {
+        if (e.touches && e.touches[0]) {
+            touchStartY = e.touches[0].pageY;
         }
-    });
+    }, { passive: true });
+
+    window.addEventListener('touchmove', function (e) {
+        if (e.touches && e.touches[0]) {
+            var touchY = e.touches[0].pageY;
+            if ($(window).scrollTop() <= 5 && touchY > touchStartY + 20) {
+                loadPrevCategory();
+            }
+        }
+    }, { passive: true });
 
     /**
      * Sidebar Syncing & Highlight Updating
