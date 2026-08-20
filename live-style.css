@@ -20407,3 +20407,14 @@ a.tw-category-card:hover .tw-category-desc,
 a:hover p {
     color: #484A61 !important;
 }
+
+/* Center original footer social icons on mobile */
+@media (max-width: 767px) {
+    .footer-social {
+        text-align: center;
+    }
+    .footer-social .social-icons {
+        justify-content: center;
+        display: flex;
+    }
+}
