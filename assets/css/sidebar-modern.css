@@ -396,10 +396,9 @@ footer { background-color: #041543 !important; color: rgba(250, 250, 250, 0.5) !
 @media (max-width: 768px) {
     .footer-row { flex-direction: column !important; text-align: center !important; gap: 20px !important; }
     .footer-links, .footer-social { width: 100% !important; justify-content: center !important; }
-    .footer-social p { text-align: center !important; }
-    .cm-feedback-top { flex-direction: column !important; align-items: center !important; text-align: center !important; gap: 14px !important; }
-    .cm-feedback-title { text-align: center !important; width: 100% !important; }
-    .cm-feedback-buttons { width: 100% !important; gap: 12px !important; justify-content: center !important; }
+    .cm-feedback-top { flex-direction: column !important; align-items: flex-start !important; text-align: left !important; gap: 14px !important; }
+    .cm-feedback-title { text-align: left !important; width: 100% !important; }
+    .cm-feedback-buttons { width: 100% !important; gap: 12px !important; }
     .cm-btn-vote { flex: 1 !important; justify-content: center !important; }
 }
 .pagination { margin-top: 0 !important; }
