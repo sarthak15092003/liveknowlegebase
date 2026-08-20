@@ -64,10 +64,13 @@ if ( ! $current_cat_id ) {
 			
 			// Subcategory Header (acts as accordion toggle)
 			echo '<div class="tw-subcategory-header" onclick="this.nextElementSibling.style.display = this.nextElementSibling.style.display === \'none\' ? \'block\' : \'none\';" style="cursor: pointer; padding: 16px; background-color: #dbeafe2b;">';
-			echo '<h3 class="tw-subcategory-title" style="display: flex; align-items: center; margin-bottom: 8px;">';
+			echo '<h3 class="tw-subcategory-title" style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 0; width: 100%;">';
+			echo '<div class="tw-subcategory-name-wrap" style="display: flex; align-items: center; gap: 8px;">';
 			// Add a folder icon to differentiate from articles
-			echo '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#3b82f6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-right: 8px; flex-shrink: 0;"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path></svg>';
-			echo '<span>' . esc_html( $subcat->name ) . '</span> <span style="font-size: 14px; color: #6b7280; font-weight: normal; margin-left: 5px;">(' . intval($subcat->count) . ' articles)</span>';
+			echo '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#3b82f6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink: 0;"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path></svg>';
+			echo '<span>' . esc_html( $subcat->name ) . '</span>';
+			echo '</div>';
+			echo '<span class="tw-subcategory-count" style="font-size: 14px; color: #6b7280; font-weight: normal; margin-left: auto; white-space: nowrap;">(' . intval($subcat->count) . ' articles)</span>';
 			echo '</h3>';
 			echo '</div>'; // End Header
 
