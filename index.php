@@ -347,6 +347,61 @@ if ($blog_layout == 'blog_category' && !$is_category_page) {
 		}
 		?>
 		<section class="home-cta-banner" style="padding: 80px 0 80px !important;">
+			<style>
+				.home-cta-banner__primary,
+				.home-cta-banner__secondary {
+					height: 52px !important;
+					display: inline-flex !important;
+					align-items: center !important;
+					justify-content: center !important;
+					border-radius: 999px !important;
+					font-weight: 600 !important;
+					text-decoration: none !important;
+					box-sizing: border-box !important;
+					line-height: 1 !important;
+					transition: all 0.2s ease !important;
+				}
+				.home-cta-banner__primary {
+					padding: 0 32px !important;
+					background: #ffffff !important;
+					background-color: #ffffff !important;
+					background-image: none !important;
+					color: #2d6cf8 !important;
+				}
+				.home-cta-banner__primary:hover,
+				.home-cta-banner__primary:focus {
+					background: #2d6cf8 !important;
+					background-color: #2d6cf8 !important;
+					background-image: none !important;
+					color: #ffffff !important;
+					transform: translateY(-2px) !important;
+				}
+				.home-cta-banner__secondary {
+					padding: 0 28px !important;
+					background-color: #34c759 !important;
+					color: #ffffff !important;
+					gap: 10px !important;
+				}
+				.home-cta-banner__secondary:hover,
+				.home-cta-banner__secondary:focus {
+					background-color: #28a745 !important;
+					color: #ffffff !important;
+					transform: translateY(-2px) !important;
+				}
+				.home-cta-banner__icon {
+					display: inline-flex !important;
+					align-items: center !important;
+					justify-content: center !important;
+					width: 24px !important;
+					height: 24px !important;
+					line-height: 1 !important;
+				}
+				.home-cta-banner__icon img {
+					width: 20px !important;
+					height: 20px !important;
+					display: block !important;
+				}
+			</style>
 			<div class="container">
 				<div class="home-cta-banner__inner">
 					<div class="home-cta-banner__copy">
