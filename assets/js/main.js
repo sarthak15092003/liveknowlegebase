@@ -227,22 +227,23 @@
         });
 
         // Copy link functionality
-        $(document).on('click', '.cm-copy-action-btn, .share-this-docs, .share-this-docs img', function (e) {
+        $(document).on('click', '.cm-copy-action-btn', function (e) {
             e.preventDefault();
-            let $wrap = $(this).closest('.docy-copy-url-wrap');
-            let $input = $wrap.find('input');
-            let url = $input.val();
+            let url = $(this).attr('data-url') || window.location.href;
 
             if (navigator.clipboard && window.isSecureContext) {
                 navigator.clipboard.writeText(url);
             } else {
-                $input.select();
+                let $temp = $('<input>');
+                $('body').append($temp);
+                $temp.val(url).select();
                 document.execCommand("copy");
+                $temp.remove();
             }
 
-            let $toast = $wrap.find('.cm-copy-toast');
+            let $toast = $('#share-modal .cm-copy-toast');
             if ($toast.length) {
-                $toast.stop().fadeIn(200).delay(1500).fadeOut(300);
+                $toast.stop().fadeIn(200).delay(1800).fadeOut(300);
             }
         });
 
