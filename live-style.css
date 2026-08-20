@@ -20391,3 +20391,190 @@ article h4,
 article .h4 {
   font-size: 18px !important;
 }
+
+/* ==========================================================================
+   CMGalaxy Main Footer Styles
+   ========================================================================== */
+.cmgalaxy-main-footer {
+    background-color: #0b1120;
+    color: #e2e8f0;
+    padding: 60px 0 20px;
+    font-family: 'Onest', sans-serif;
+}
+
+.cmgalaxy-main-footer a {
+    color: #e2e8f0;
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+.cmgalaxy-main-footer a:hover {
+    color: #3b82f6;
+}
+
+.cmgalaxy-main-footer .footer-top-row {
+    padding-bottom: 40px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.cmgalaxy-main-footer .footer-col {
+    margin-bottom: 30px;
+}
+
+/* Brand Column */
+.cmgalaxy-main-footer .footer-logo img {
+    height: 40px;
+    margin-bottom: 20px;
+}
+
+.cmgalaxy-main-footer .footer-description {
+    font-size: 14px;
+    line-height: 1.6;
+    color: #94a3b8;
+    margin-bottom: 25px;
+    max-width: 300px;
+}
+
+.cmgalaxy-main-footer .social-heading {
+    font-size: 14px;
+    font-weight: 500;
+    margin-bottom: 15px;
+}
+
+.cmgalaxy-main-footer .social-icons {
+    display: flex;
+    gap: 15px;
+}
+
+.cmgalaxy-main-footer .social-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: #e2e8f0;
+    font-size: 16px;
+    transition: all 0.3s ease;
+}
+
+.cmgalaxy-main-footer .social-icon:hover {
+    background: #3b82f6;
+    border-color: #3b82f6;
+    color: #ffffff;
+    transform: translateY(-2px);
+}
+
+/* Links Columns */
+.cmgalaxy-main-footer .footer-widget-title {
+    color: #ffffff;
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 25px;
+}
+
+.cmgalaxy-main-footer .footer-menu {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.cmgalaxy-main-footer .footer-menu li {
+    margin-bottom: 15px;
+}
+
+.cmgalaxy-main-footer .footer-menu a {
+    font-size: 14px;
+    color: #cbd5e1;
+}
+
+/* Contact Column */
+.cmgalaxy-main-footer .contact-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 15px;
+}
+
+.cmgalaxy-main-footer .contact-icon {
+    font-size: 20px;
+    color: #cbd5e1;
+}
+
+.cmgalaxy-main-footer .contact-details {
+    display: flex;
+    flex-direction: column;
+}
+
+.cmgalaxy-main-footer .contact-label {
+    font-size: 13px;
+    color: #94a3b8;
+    margin-bottom: 4px;
+}
+
+.cmgalaxy-main-footer .contact-text {
+    font-size: 14px;
+    color: #e2e8f0;
+    line-height: 1.5;
+}
+
+/* Bottom Row */
+.cmgalaxy-main-footer .footer-bottom-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 20px;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.cmgalaxy-main-footer .copyright-text {
+    font-size: 13px;
+    color: #94a3b8;
+}
+
+.cmgalaxy-main-footer .footer-legal-links {
+    display: flex;
+    gap: 20px;
+}
+
+.cmgalaxy-main-footer .footer-legal-links a {
+    font-size: 13px;
+    color: #94a3b8;
+}
+
+/* Responsive */
+@media (max-width: 991px) {
+    .cmgalaxy-main-footer .footer-col-contact {
+        margin-top: 20px;
+    }
+}
+
+@media (max-width: 767px) {
+    .cmgalaxy-main-footer {
+        padding: 40px 0 20px;
+    }
+    
+    .cmgalaxy-main-footer .footer-bottom-row {
+        flex-direction: column;
+        justify-content: center;
+        text-align: center;
+    }
+    
+    .cmgalaxy-main-footer .footer-legal-links {
+        justify-content: center;
+    }
+
+    /* Center brand column on mobile */
+    .cmgalaxy-main-footer .footer-col-brand {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+    
+    .cmgalaxy-main-footer .footer-description {
+        max-width: 100%;
+    }
+}
