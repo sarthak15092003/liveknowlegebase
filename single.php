@@ -205,12 +205,18 @@ get_template_part( 'template-parts/single-post/banner', $banner_type );
                         @media (max-width: 768px) {
                             .cm-feedback-top {
                                 flex-direction: column !important;
-                                align-items: flex-start !important;
+                                align-items: center !important;
+                                text-align: center !important;
                                 gap: 14px !important;
+                            }
+                            .cm-feedback-title {
+                                text-align: center !important;
+                                width: 100% !important;
                             }
                             .cm-feedback-buttons {
                                 width: 100% !important;
                                 gap: 12px !important;
+                                justify-content: center !important;
                             }
                             .cm-btn-vote {
                                 flex: 1 !important;
