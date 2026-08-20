@@ -402,12 +402,15 @@ add_action( 'wp_ajax_cmgalaxy_update_category_order', 'cmgalaxy_update_category_
 add_action("wp_enqueue_scripts", function() {
     // Version .67 = fix scrollbar always visible + remove conflict
     // Depends on 'docy-root' (style.css) so our overrides load last and win
-    wp_enqueue_style("cmgalaxy-sidebar-modern", get_template_directory_uri() . "/assets/css/sidebar-modern.css", array('docy-root'), DOCY_VERSION . '.67');
+    wp_enqueue_style("cmgalaxy-sidebar-modern", get_template_directory_uri() . "/assets/css/sidebar-modern.css", array('docy-root'), DOCY_VERSION . '.68');
 
     // Inject scrollbar CSS inline (always wins over any other CSS)
     $scrollbar_css = "
         .modern-sidebar {
-            overflow-y: scroll !important;
+            overflow-y: hidden !important;
+        }
+        .modern-sidebar:hover {
+            overflow-y: auto !important;
         }
         .modern-sidebar::-webkit-scrollbar {
             width: 4px !important;
@@ -416,11 +419,8 @@ add_action("wp_enqueue_scripts", function() {
             background: transparent !important;
         }
         .modern-sidebar::-webkit-scrollbar-thumb {
-            background: transparent !important;
+            background: #9ca3af !important;
             border-radius: 4px !important;
-        }
-        .modern-sidebar:hover::-webkit-scrollbar-thumb {
-            background: #9ca3af !important; /* Darker gray so it's clearly visible */
         }
         .modern-sidebar::-webkit-scrollbar-thumb:hover {
             background: #6b7280 !important;
