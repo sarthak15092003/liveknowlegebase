@@ -200,6 +200,22 @@ get_template_part( 'template-parts/single-post/banner', $banner_type );
                         .cm-btn-vote svg {
                             width: 16px;
                             height: 16px;
+                            flex-shrink: 0;
+                        }
+                        @media (max-width: 768px) {
+                            .cm-feedback-top {
+                                flex-direction: column !important;
+                                align-items: flex-start !important;
+                                gap: 14px !important;
+                            }
+                            .cm-feedback-buttons {
+                                width: 100% !important;
+                                gap: 12px !important;
+                            }
+                            .cm-btn-vote {
+                                flex: 1 !important;
+                                justify-content: center !important;
+                            }
                         }
                         .cm-feedback-form-area {
                             display: none;
