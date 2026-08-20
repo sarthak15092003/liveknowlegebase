@@ -1989,10 +1989,13 @@ h3, .editor-content h3, .blog_single_item h3, .entry-content h3 {
         touch-action: pan-y !important;
     }
 
-    .category-main-col {
+    .category-main-col,
+    #category-posts-container,
+    .category-main-with-right {
         border-left: none !important;
-        padding-left: 12px !important;
-        padding-right: 12px !important;
+        padding-left: 0 !important;
+        padding-right: 0 !important;
+        padding: 0 !important;
         margin-left: 0 !important;
         margin-right: 0 !important;
         max-width: 100% !important;
