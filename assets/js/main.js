@@ -406,8 +406,7 @@
 
     bodyScrollAnimation();
 
-    // Persist left sidebar state across page loads
-    var docySideMenuKey = "docy_side_menu_open";
+    // Left sidebar / Mobile menu state
     function setSideMenuState(isOpen) {
         if (!$('.side_menu').length) {
             return;
@@ -421,47 +420,31 @@
         }
     }
 
+    // Always ensure menu starts closed on new page load
+    setSideMenuState(false);
     try {
-        var storedSideMenu = localStorage.getItem(docySideMenuKey);
-        if (storedSideMenu === "1") {
-            setSideMenuState(true);
-        } else if (storedSideMenu === "0") {
-            setSideMenuState(false);
-        }
-    } catch (e) {
-        // Ignore storage errors (private mode, disabled storage)
-    }
+        localStorage.removeItem("docy_side_menu_open");
+    } catch (e) {}
 
-    // Global mobile menu
+    // Global mobile menu open button
     $(".mobile_menu_btn").on("click", function () {
-        $("body").removeClass("menu-is-closed").addClass("menu-is-opened");
-        $(".side_menu").addClass("menu-opened");
-        try {
-            localStorage.setItem(docySideMenuKey, "1");
-        } catch (e) {
-            // Ignore storage errors
-        }
+        setSideMenuState(true);
     });
 
+    // Close button
     $(".close_nav").on("click", function (e) {
-        if ($(".side_menu").hasClass("menu-opened")) {
-            $(".side_menu").removeClass("menu-opened");
-            $("body").removeClass("menu-is-opened");
-            try {
-                localStorage.setItem(docySideMenuKey, "0");
-            } catch (e) {
-                // Ignore storage errors
-            }
-        }
+        setSideMenuState(false);
     });
 
+    // Overlay click
     $(".click_capture").on("click", function () {
-        $("body").removeClass("menu-is-opened").addClass("menu-is-closed");
-        $(".side_menu").removeClass("menu-opened");
-        try {
-            localStorage.setItem(docySideMenuKey, "0");
-        } catch (e) {
-            // Ignore storage errors
+        setSideMenuState(false);
+    });
+
+    // Close mobile drawer when clicking any link inside it
+    $(document).on("click", ".side_menu a", function () {
+        if (!$(this).hasClass("expandable-subcat") && !$(this).closest(".section-header.expandable").length) {
+            setSideMenuState(false);
         }
     });
 
