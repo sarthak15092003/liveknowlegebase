@@ -740,9 +740,9 @@ get_template_part( 'template-parts/single-post/banner', $banner_type );
                                     const tocRect = toc.getBoundingClientRect();
                                     const elRect = activeEl.getBoundingClientRect();
                                     
-                                    // If active element is out of the scrollable area, scroll it into view
+                                    // If active element is out of the scrollable area, scroll ONLY the TOC container
                                     if (elRect.top < tocRect.top || elRect.bottom > tocRect.bottom) {
-                                        activeEl.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+                                        toc.scrollTop = activeEl.offsetTop - (toc.clientHeight / 2);
                                     }
                                 }
                             });
