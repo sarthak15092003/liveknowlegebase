@@ -232,7 +232,7 @@ function docy_scripts() {
 	
 	// Enqueue TOC click fix script (NOT on single posts — single.php has its own custom TOC handler)
 	if ( ! is_singular('post') ) {
-		wp_enqueue_script( 'docy-toc-click-fix', DOCY_DIR_JS . '/toc-click-fix.js', array( 'jquery' ), '1.0.2', true );
+		wp_enqueue_script( 'docy-toc-click-fix', DOCY_DIR_JS . '/toc-click-fix.js', array( 'jquery' ), time(), true );
 	}
 
 	// Localize the script with new data

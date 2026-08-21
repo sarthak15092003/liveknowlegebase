@@ -766,8 +766,8 @@ get_template_part( 'template-parts/single-post/banner', $banner_type );
                     <div class="sc-eldieg eYVFtH">
                         <div class="overlay" id="toc-overlay"></div>
                         <button class="sc-kiIyQV fqmceZ table_content" aria-expanded="false" aria-controls="docy-toc">
-                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-right: 6px; flex-shrink: 0; display: inline-block !important;">
-                                <path d="M4 6h16M4 12h16M4 18h16"></path>
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" style="margin-right: 6px; flex-shrink: 0; display: inline-block !important; vertical-align: middle !important;">
+                                <path d="M4 6h16M4 12h16M4 18h16" stroke="#ffffff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"></path>
                             </svg>
                             <span><?php esc_html_e('On this Page', 'docy'); ?></span>
                         </button>
@@ -1048,7 +1048,8 @@ get_template_part( 'template-parts/single-post/banner', $banner_type );
                         if (targetEl) {
                             var adminBarHeight = $('#wpadminbar').length > 0 ? $('#wpadminbar').outerHeight() : 0;
                             var headerOffset = ($(window).width() <= 1024 ? 75 : 120) + adminBarHeight;
-                            var targetPosition = Math.max(0, $(targetEl).offset().top - headerOffset);
+                            var currentScroll = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0;
+                            var targetPosition = Math.max(0, targetEl.getBoundingClientRect().top + currentScroll - headerOffset);
 
                             $('html, body').stop().animate({
                                 scrollTop: targetPosition
