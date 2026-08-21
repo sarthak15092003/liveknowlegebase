@@ -80,9 +80,9 @@ while ( have_posts() ) : the_post();
                                 </svg>
                             </button>
                             <div class="docy-share-wrap" style="padding: 12px 0 6px 0;">
-                                <p class="share-modal-title" style="text-align: center; font-size: 16px; font-weight: 700; color: #111827; margin: 0 0 28px 0; line-height: 1.2;">Share</p>
+                                <p class="share-modal-title" style="text-align: center; font-size: 16px; font-weight: 700; color: #111827; margin: 0 0 16px 0 !important; line-height: 1.2;">Share</p>
                                 
-                                <div class="social-links" style="display: flex; align-items: center; justify-content: center; gap: 14px; flex-wrap: nowrap;">
+                                <div class="social-links" style="display: flex; align-items: center; justify-content: center; flex-wrap: nowrap;">
                                     <!-- Copy Link Button -->
                                     <button type="button" class="share-social-icon cm-copy-action-btn" data-url="<?php the_permalink(); ?>" title="Copy link" style="width: 46px; height: 46px; border-radius: 50%; background: #f1f5f9; border: 1px solid #e2e8f0; display: inline-flex; align-items: center; justify-content: center; color: #3b82f6; cursor: pointer; padding: 0; flex-shrink: 0;">
                                         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#3b82f6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
