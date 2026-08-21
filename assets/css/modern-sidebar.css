@@ -796,8 +796,90 @@
         box-sizing: border-box !important;
     }
 
-    * {
+    /* Mobile Floating Bottom Action Bar & Share Modal */
+    .jrBzsJ,
+    .sc-jtXEFf.jrBzsJ,
+    #cm-bottom-action-bar,
+    div.jrBzsJ {
+        background: #111827 !important;
+        border-radius: 0 !important;
+        -webkit-border-radius: 0 !important;
+        -moz-border-radius: 0 !important;
+        z-index: 9999 !important;
+        position: fixed !important;
+        bottom: 0 !important;
+        left: 0 !important;
+        right: 0 !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        padding: 12px 16px !important;
+        margin: 0 !important;
         box-sizing: border-box !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        box-shadow: 0 -2px 12px rgba(0, 0, 0, 0.25) !important;
+        transition: opacity 0.25s ease, transform 0.25s cubic-bezier(0.4, 0, 0.2, 1), visibility 0.25s ease !important;
+    }
+
+    .jrBzsJ.hidden-by-footer,
+    #cm-bottom-action-bar.hidden-by-footer,
+    .sc-jtXEFf.jrBzsJ.hidden-by-footer,
+    div.jrBzsJ.hidden-by-footer {
+        opacity: 0 !important;
+        visibility: hidden !important;
+        pointer-events: none !important;
+        transform: translateY(120%) !important;
+    }
+
+    .jrBzsJ .eYVFtH {
+        display: flex !important;
+        justify-content: center !important;
+        align-items: center !important;
+        gap: 12px !important;
+        width: 100% !important;
+        margin: 0 !important;
+        padding: 0 !important;
+    }
+
+    .jrBzsJ .eYVFtH .fqmceZ,
+    .jrBzsJ .eYVFtH .table_content,
+    .jrBzsJ .eYVFtH .table_share_btn,
+    .sc-kiIyQV.fqmceZ {
+        flex: 1 !important;
+        background: #111827 !important;
+        border: 1px solid #374151 !important;
+        border-radius: 50px !important;
+        -webkit-border-radius: 50px !important;
+        -moz-border-radius: 50px !important;
+        color: #ffffff !important;
+        padding: 10px 16px !important;
+        font-size: 14px !important;
+        font-weight: 500 !important;
+        display: inline-flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        gap: 6px !important;
+        cursor: pointer !important;
+        transition: all 0.2s ease !important;
+        outline: none !important;
+        text-decoration: none !important;
+        line-height: 1.4 !important;
+        box-sizing: border-box !important;
+    }
+
+    .jrBzsJ .eYVFtH .fqmceZ:hover,
+    .jrBzsJ .eYVFtH .table_content:hover,
+    .jrBzsJ .eYVFtH .table_share_btn:hover {
+        background: #1f2937 !important;
+        border-color: #6b7280 !important;
+    }
+
+    .jrBzsJ .eYVFtH .fqmceZ svg,
+    .jrBzsJ .eYVFtH .table_content svg,
+    .jrBzsJ .eYVFtH .table_share_btn svg {
+        color: #ffffff !important;
+        stroke: #ffffff !important;
     }
 
     /* Mobile Table of Contents (TOC) - tall fixed sheet with scrollable inner list */
