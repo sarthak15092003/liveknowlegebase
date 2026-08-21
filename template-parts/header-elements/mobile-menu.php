@@ -5,8 +5,9 @@ $opt = get_option( 'docy_opt' );
     <div class="container">
         <div class="mobile_menu_left">
             <div class="cmgalaxy-mobile-logo">
-                <a href="<?php echo esc_url(home_url('/')); ?>" style="display: flex; align-items: center; text-decoration: none;">
-                    <img src="https://docs.cmgalaxy.com/wp-content/uploads/2026/08/mobile-logo.png" alt="CMGALAXY Logo" style="height: 38px !important; width: auto !important; max-width: none !important; object-fit: contain;">
+                <a href="<?php echo esc_url(home_url('/')); ?>" style="display: flex; align-items: center; gap: 8px; text-decoration: none;">
+                    <img src="https://docs.cmgalaxy.com/wp-content/uploads/2026/06/cropped-Group-1000004539-300x300-1.png" alt="CMGalaxy Logo" style="height: 32px !important; width: 32px !important; object-fit: contain; flex-shrink: 0;">
+                    <span class="cmgalaxy-mobile-logo-text" style="font-size: 16px; font-weight: 700; color: #111827; letter-spacing: -0.2px; white-space: nowrap;">Knowledge Base</span>
                 </a>
             </div>
         </div>
@@ -27,8 +28,9 @@ $opt = get_option( 'docy_opt' );
 <!-- Left Side Menu (Main Navigation) -->
 <div class="side_menu dark_menu">
     <div class="mobile_menu_header" style="position: sticky !important; top: 0 !important; background: #ffffff !important; z-index: 1000 !important; display: flex !important; justify-content: space-between !important; align-items: center !important; padding: 14px 20px !important; border-bottom: 1px solid #e5e7eb !important; margin: 0 !important;">
-        <a href="<?php echo esc_url(home_url('/')); ?>" style="display: flex; align-items: center; text-decoration: none;">
-            <img src="https://docs.cmgalaxy.com/wp-content/uploads/2026/08/mobile-logo.png" alt="CMGalaxy Logo" style="height: 30px !important; width: auto !important; object-fit: contain;">
+        <a href="<?php echo esc_url(home_url('/')); ?>" style="display: flex; align-items: center; gap: 8px; text-decoration: none;">
+            <img src="https://docs.cmgalaxy.com/wp-content/uploads/2026/06/cropped-Group-1000004539-300x300-1.png" alt="CMGalaxy Logo" style="height: 28px !important; width: 28px !important; object-fit: contain; flex-shrink: 0;">
+            <span class="cmgalaxy-mobile-logo-text" style="font-size: 15px; font-weight: 700; color: #111827; letter-spacing: -0.2px; white-space: nowrap;">Knowledge Base</span>
         </a>
         <div class="close_nav" style="cursor: pointer; display: flex; align-items: center; justify-content: center;">
             <i class="icon_close" style="font-size: 22px; color: #374151;"></i>
