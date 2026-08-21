@@ -146,31 +146,25 @@
         let shareModalVisible = false; // Track visibility of Share modal
 
         // Toggle the visibility of the Table of Contents when the button is clicked.
-        $('.table_content').on('click', function () {
-            console.log('TOC Button Clicked');
-            let toc = $(this).siblings('aside.bottom_table_content'); // Use siblings instead of next for better reliability
-            let container = $(this).closest('.jrBzsJ'); // Select the .jrBzsJ container
-            let overlay = $('#toc-overlay'); // Select the overlay
+        $('.table_content').on('click', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+            let toc = $('aside.bottom_table_content, #docy-tocs');
+            let overlay = $('#toc-overlay');
 
             if (toc.is(':visible')) {
-                console.log('Hiding TOC');
-                toc.slideUp(300, function () {
-                    container.css('border-radius', '10px 10px 0 0'); // Reset border-radius after TOC is hidden
-                });
-                overlay.fadeOut(300); // Hide the overlay
+                toc.slideUp(250);
+                overlay.fadeOut(250);
                 tocVisible = false;
             } else {
-                console.log('Showing TOC');
+                $('#share-modal').hide();
+                shareModalVisible = false;
                 toc.css({
-                    'background-color': '#ffffff', // Background color
-                    'color': '#000000', // Text color
-                    'display': 'flex' // Ensure flex display for mobile layout
-                }).hide().slideDown(300, function() {
-                    $(this).css('height', ''); // Clear inline animation height so CSS bounds take over
-                });
-
-                container.css('border-radius', '0'); // Remove border-radius when TOC is visible
-                overlay.fadeIn(300); // Show the overlay
+                    'background-color': '#ffffff',
+                    'color': '#000000',
+                    'display': 'flex'
+                }).hide().fadeIn(250);
+                overlay.fadeIn(250);
                 tocVisible = true;
             }
         });

@@ -42,26 +42,29 @@
             // Immediately set active state
             setActiveTocItem(targetId);
 
-            // Get the target element
-            var target = $(href);
+            // Get the target element safely
+            var target = document.getElementById(targetId);
+            if (!target) {
+                try {
+                    target = document.querySelector('[id="' + CSS.escape(targetId) + '"]');
+                } catch(err) {}
+            }
 
-            if (target.length) {
-                // Scroll to target with offset for sticky header
-                var adminBarHeight = $('#wpadminbar').length > 0 ? $('#wpadminbar').height() : 0;
-                var scrollOffset = ($(window).width() <= 1024 ? 90 : 140) + adminBarHeight;
+            if (target) {
+                var adminBarHeight = $('#wpadminbar').length > 0 ? $('#wpadminbar').outerHeight() : 0;
+                var scrollOffset = ($(window).width() <= 1024 ? 80 : 120) + adminBarHeight;
+                var targetPosition = Math.max(0, $(target).offset().top - scrollOffset);
 
-                // Fix: Account for body scrolling by adding current scrollTop
-                var currentScroll = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop;
-                var targetPosition = target[0].getBoundingClientRect().top + currentScroll - scrollOffset;
-
-                window.scrollTo({
-                    top: Math.max(0, targetPosition),
-                    behavior: 'smooth'
-                });
-                setTimeout(function () {
+                $('html, body').stop().animate({
+                    scrollTop: targetPosition
+                }, 350, function () {
                     setActiveTocItem(targetId);
-                    isManualScroll = false;
-                }, 300);
+                    setTimeout(function() {
+                        isManualScroll = false;
+                    }, 100);
+                });
+            } else {
+                isManualScroll = false;
             }
         });
 
@@ -76,8 +79,7 @@
             // Find all headings with IDs
             $('.blog_single_item h1[id], .blog_single_item h2[id], .blog_single_item h3[id], .blog_single_item h4[id], .blog_single_item h5[id]').each(function () {
                 var $heading = $(this);
-                var currentScroll = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop;
-                var headingTop = $heading[0].getBoundingClientRect().top + currentScroll;
+                var headingTop = $heading.offset().top;
 
                 if (scrollPos >= headingTop) {
                     currentSection = $heading.attr('id');
@@ -99,7 +101,7 @@
         updateTocOnScroll();
 
         // Also handle clicks on the mobile TOC
-        $(document).on('click', '#docy-tocs a, .bottom_table_content a', function (e) {
+        $(document).on('click', '#docy-tocs a, #docy-tocs-mobile a, .bottom_table_content a', function (e) {
             var $clickedLink = $(this);
             var href = $clickedLink.attr('href');
 
@@ -115,34 +117,38 @@
             var targetId = href.substring(1);
 
             // Remove active from all
-            $('#docy-tocs a, .bottom_table_content a').removeClass('active');
-            $('#docy-tocs li, .bottom_table_content li').removeClass('active');
+            $('#docy-tocs a, #docy-tocs-mobile a, .bottom_table_content a').removeClass('active');
+            $('#docy-tocs li, #docy-tocs-mobile li, .bottom_table_content li').removeClass('active');
 
             // Add to clicked and all its parent list items
             $clickedLink.addClass('active');
             $clickedLink.parents('li').addClass('active');
 
-            var target = $(href);
+            // Close mobile TOC if open
+            $('.bottom_table_content, #docy-tocs').slideUp(250);
+            $('#toc-overlay').fadeOut(250);
 
-            if (target.length) {
-                var adminBarHeight = $('#wpadminbar').length > 0 ? $('#wpadminbar').height() : 0;
-                var scrollOffset = ($(window).width() <= 1024 ? 90 : 140) + adminBarHeight;
+            var target = document.getElementById(targetId);
+            if (!target) {
+                try {
+                    target = document.querySelector('[id="' + CSS.escape(targetId) + '"]');
+                } catch(err) {}
+            }
 
-                // Fix: Account for body scrolling by adding current scrollTop
-                var currentScroll = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop;
-                var targetPosition = target[0].getBoundingClientRect().top + currentScroll - scrollOffset;
+            if (target) {
+                var adminBarHeight = $('#wpadminbar').length > 0 ? $('#wpadminbar').outerHeight() : 0;
+                var scrollOffset = ($(window).width() <= 1024 ? 80 : 120) + adminBarHeight;
+                var targetPosition = Math.max(0, $(target).offset().top - scrollOffset);
 
-                window.scrollTo({
-                    top: Math.max(0, targetPosition),
-                    behavior: 'smooth'
+                $('html, body').stop().animate({
+                    scrollTop: targetPosition
+                }, 350, function () {
+                    setTimeout(function () {
+                        isManualScroll = false;
+                    }, 100);
                 });
-                setTimeout(function () {
-                    isManualScroll = false;
-                }, 300);
-
-                // Close mobile TOC if open
-                $('.bottom_table_content').slideUp(300);
-                $('#toc-overlay').fadeOut(300);
+            } else {
+                isManualScroll = false;
             }
         });
     });
