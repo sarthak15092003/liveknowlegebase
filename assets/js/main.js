@@ -250,21 +250,22 @@
         // Hide floating bottom bar when reaching footer
         function checkFooterHideBar() {
             var $bar = $('.jrBzsJ, #cm-bottom-action-bar');
-            var $footer = $('.footer_area, footer, .doc_footer_top, .footer-copyright').first();
+            var $footer = $('footer, .footer_area, .doc_footer_top, .footer-content, .footer-copyright').first();
             if (!$bar.length || !$footer.length) return;
 
-            var footerTop = $footer.offset().top;
-            var windowBottom = $(window).scrollTop() + $(window).height();
+            var footerRect = $footer[0].getBoundingClientRect();
+            var viewportHeight = window.innerHeight || document.documentElement.clientHeight;
 
-            if (windowBottom >= footerTop + 20) {
+            if (footerRect.top <= viewportHeight + 15) {
                 $bar.addClass('hidden-by-footer');
             } else {
                 $bar.removeClass('hidden-by-footer');
             }
         }
 
-        $(window).on('scroll resize', checkFooterHideBar);
-        checkFooterHideBar();
+        $(window).on('scroll resize touchmove orientationchange', checkFooterHideBar);
+        $(document).ready(checkFooterHideBar);
+        setTimeout(checkFooterHideBar, 300);
     }
 
     // mobileTable() call removed from here, moved inside $(document).ready above

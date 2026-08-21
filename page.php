@@ -127,7 +127,7 @@ while ( have_posts() ) : the_post();
                         var bar = document.getElementById('cm-bottom-action-bar') || document.querySelector('.jrBzsJ');
                         if (!bar) return;
 
-                        var footers = document.querySelectorAll('footer, .footer_area, .doc_footer_top, .footer-copyright');
+                        var footers = document.querySelectorAll('footer, .footer_area, .doc_footer_top, .footer-content, .footer-copyright');
                         if (!footers.length) return;
 
                         if ('IntersectionObserver' in window) {
@@ -139,24 +139,27 @@ while ( have_posts() ) : the_post();
                                     bar.classList.remove('hidden-by-footer');
                                 }
                             }, {
-                                rootMargin: '0px 0px 50px 0px',
+                                rootMargin: '0px 0px 30px 0px',
                                 threshold: 0
                             });
                             footers.forEach(function(f) { observer.observe(f); });
                         }
 
                         function onScrollCheck() {
-                            var footer = document.querySelector('footer, .footer_area, .doc_footer_top');
+                            var footer = document.querySelector('footer, .footer_area, .doc_footer_top, .footer-content, .footer-copyright');
                             if (!footer) return;
                             var rect = footer.getBoundingClientRect();
-                            if (rect.top <= window.innerHeight) {
+                            var vh = window.innerHeight || document.documentElement.clientHeight;
+                            if (rect.top <= vh + 15) {
                                 bar.classList.add('hidden-by-footer');
                             } else {
                                 bar.classList.remove('hidden-by-footer');
                             }
                         }
                         window.addEventListener('scroll', onScrollCheck, { passive: true });
+                        window.addEventListener('touchmove', onScrollCheck, { passive: true });
                         window.addEventListener('resize', onScrollCheck, { passive: true });
+                        window.addEventListener('orientationchange', onScrollCheck, { passive: true });
                         onScrollCheck();
                     }
                     if (document.readyState === 'loading') {
