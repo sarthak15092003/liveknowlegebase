@@ -17367,9 +17367,19 @@ div.jrBzsJ.hidden-by-footer {
 
 .jrBzsJ .eYVFtH .fqmceZ svg,
 .jrBzsJ .eYVFtH .table_content svg,
-.jrBzsJ .eYVFtH .table_share_btn svg {
+.jrBzsJ .eYVFtH .table_share_btn svg,
+#cm-bottom-action-bar .table_content svg,
+#cm-bottom-action-bar .table_share_btn svg {
+  display: inline-block !important;
+  width: 17px !important;
+  height: 17px !important;
+  min-width: 17px !important;
+  min-height: 17px !important;
   color: #ffffff !important;
   stroke: #ffffff !important;
+  margin-right: 6px !important;
+  flex-shrink: 0 !important;
+  vertical-align: middle !important;
 }
 
 .jrBzsJ .eYVFtH .docy-modal-content {

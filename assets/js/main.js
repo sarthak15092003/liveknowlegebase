@@ -145,6 +145,17 @@
         let tocVisible = false; // Track visibility of TOC
         let shareModalVisible = false; // Track visibility of Share modal
 
+        // Ensure burger icon exists in .table_content
+        function ensureBurgerIcon() {
+            $('.table_content').each(function() {
+                if ($(this).find('svg').length === 0) {
+                    $(this).prepend('<svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" style="margin-right: 6px; flex-shrink: 0; display: inline-block !important;"><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>');
+                }
+            });
+        }
+        ensureBurgerIcon();
+        setTimeout(ensureBurgerIcon, 500);
+
         // Toggle the visibility of the Table of Contents when the button is clicked.
         $('.table_content').on('click', function (e) {
             e.preventDefault();
