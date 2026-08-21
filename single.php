@@ -797,7 +797,7 @@ get_template_part( 'template-parts/single-post/banner', $banner_type );
                                 </svg>
                             </button>
                             <div class="docy-share-wrap" style="padding: 12px 0 6px 0;">
-                                <p class="share-modal-title" style="text-align: center; font-size: 16px; font-weight: 700; color: #111827; margin: 0 0 28px 0; line-height: 1.2;">Share</p>
+                                <p class="share-modal-title" style="text-align: center; font-size: 16px; font-weight: 700; color: #111827; margin: 0 0 16px 0 !important; line-height: 1.2;">Share</p>
                                 
                                 <div class="social-links" style="display: flex; align-items: center; justify-content: center; gap: 14px; flex-wrap: nowrap;">
                                     <!-- Copy Link Button -->

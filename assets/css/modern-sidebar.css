@@ -795,6 +795,33 @@
         box-sizing: border-box !important;
     }
 
+    .nav-card,
+    .nav-card.prev-card,
+    .nav-card.next-card {
+        flex: 1 1 100% !important;
+        max-width: 100% !important;
+        width: 100% !important;
+        margin-left: 0 !important;
+        padding: 16px 18px !important;
+    }
+
+    .nav-card h5,
+    .nav-card .nav-card-content h5 {
+        font-size: 0.95rem !important;
+        margin-bottom: 0.5rem !important;
+        text-align: left !important;
+    }
+
+    .nav-card.next-card .nav-card-content,
+    .nav-card-content.text-end {
+        text-align: left !important;
+    }
+
+    .nav-card.next-card .nav-direction,
+    .nav-direction.justify-content-end {
+        justify-content: flex-start !important;
+    }
+
     /* Mobile Floating Bottom Action Bar & Share Modal */
     .jrBzsJ,
     .sc-jtXEFf.jrBzsJ,

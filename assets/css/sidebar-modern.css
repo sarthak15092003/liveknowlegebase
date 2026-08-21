@@ -1511,6 +1511,17 @@ nav#sticky[style] {
     .nav-card .nav-card-content h5 {
         font-size: 0.95rem !important;
         margin-bottom: 0.5rem !important;
+        text-align: left !important;
+    }
+
+    .nav-card.next-card .nav-card-content,
+    .nav-card-content.text-end {
+        text-align: left !important;
+    }
+
+    .nav-card.next-card .nav-direction,
+    .nav-direction.justify-content-end {
+        justify-content: flex-start !important;
     }
 }
 
