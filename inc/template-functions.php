@@ -395,9 +395,8 @@ function docy_post_breadcrumbs(): void
  * Has scrollspy
  */
 function docy_has_scrollspy() {
-	if ( docy_toc( 'post' ) == '1' || docy_toc( 'page' ) == '1' ) {
-		echo 'data-bs-spy="scroll" data-bs-target="#docy-toc" data-bs-offset="150" data-bs-scroll-animation="true"';
-	}
+	// Disabled Bootstrap ScrollSpy in favor of custom high-performance smooth scroll handler
+	return;
 }
 
 /**

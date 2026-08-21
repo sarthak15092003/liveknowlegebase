@@ -227,9 +227,11 @@
                 }
 
                 if (targetEl) {
-                    var adminBarHeight = $('#wpadminbar').length ? $('#wpadminbar').outerHeight() : 0;
+                    var adminBar = document.getElementById('wpadminbar');
+                    var adminBarHeight = adminBar ? adminBar.offsetHeight : 0;
                     var headerOffset = ($(window).width() <= 1024 ? 75 : 120) + adminBarHeight;
-                    var targetPosition = Math.max(0, $(targetEl).offset().top - headerOffset);
+                    var currentScroll = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0;
+                    var targetPosition = Math.max(0, targetEl.getBoundingClientRect().top + currentScroll - headerOffset);
 
                     $('html, body').stop().animate({
                         scrollTop: targetPosition
