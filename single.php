@@ -766,10 +766,8 @@ get_template_part( 'template-parts/single-post/banner', $banner_type );
                     <div class="sc-eldieg eYVFtH">
                         <div class="overlay" id="toc-overlay"></div>
                         <button class="sc-kiIyQV fqmceZ table_content" aria-expanded="false" aria-controls="docy-toc">
-                            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" style="margin-right: 6px; flex-shrink: 0; display: inline-block !important;">
-                                <line x1="3" y1="6" x2="21" y2="6"></line>
-                                <line x1="3" y1="12" x2="21" y2="12"></line>
-                                <line x1="3" y1="18" x2="21" y2="18"></line>
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-right: 6px; flex-shrink: 0; display: inline-block !important;">
+                                <path d="M4 6h16M4 12h16M4 18h16"></path>
                             </svg>
                             <span><?php esc_html_e('On this Page', 'docy'); ?></span>
                         </button>
@@ -1018,34 +1016,49 @@ get_template_part( 'template-parts/single-post/banner', $banner_type );
                     var href = $(this).attr('href');
                     if (href && href.startsWith('#')) {
                         var id = href.substring(1);
+                        if (!id) return;
+
+                        e.preventDefault();
+
+                        // 1. Immediately close mobile TOC sheet and overlay instantly
+                        $('aside.bottom_table_content, #docy-tocs').hide();
+                        $('#toc-overlay').hide();
+
+                        isClickScrolling = true;
+                        lastActiveId = id;
+                        highlightTOC(id);
+
                         var targetEl = document.getElementById(id);
                         if (!targetEl) {
                             try {
                                 targetEl = document.querySelector('[id="' + CSS.escape(id) + '"]');
                             } catch(err) {}
                         }
+
+                        if (!targetEl) {
+                            var linkText = $(this).text().trim();
+                            $('.blog_single_item, .main-post, .editor-content, article').find('h1, h2, h3, h4').each(function() {
+                                if ($(this).text().trim() === linkText) {
+                                    targetEl = this;
+                                    return false;
+                                }
+                            });
+                        }
+
                         if (targetEl) {
-                            e.preventDefault();
-
-                            // 1. Immediately close mobile TOC sheet and overlay
-                            $('aside.bottom_table_content, #docy-tocs').slideUp(250);
-                            $('#toc-overlay').fadeOut(250);
-
-                            isClickScrolling = true;
-                            lastActiveId = id;
-                            highlightTOC(id);
-
                             var adminBarHeight = $('#wpadminbar').length > 0 ? $('#wpadminbar').outerHeight() : 0;
-                            var headerOffset = ($(window).width() <= 1024 ? 80 : 120) + adminBarHeight;
+                            var headerOffset = ($(window).width() <= 1024 ? 75 : 120) + adminBarHeight;
                             var targetPosition = Math.max(0, $(targetEl).offset().top - headerOffset);
 
                             $('html, body').stop().animate({
                                 scrollTop: targetPosition
-                            }, 350, function() {
+                            }, 300, function() {
                                 setTimeout(function() {
                                     isClickScrolling = false;
                                 }, 100);
                             });
+                        } else {
+                            isClickScrolling = false;
                         }
                     }
                 });

@@ -148,15 +148,16 @@
         // Ensure burger icon exists in .table_content
         function ensureBurgerIcon() {
             $('.table_content').each(function() {
-                if ($(this).find('svg').length === 0) {
-                    $(this).prepend('<svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" style="margin-right: 6px; flex-shrink: 0; display: inline-block !important;"><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>');
+                var $btn = $(this);
+                if ($btn.find('svg').length === 0) {
+                    $btn.prepend('<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-right: 6px; flex-shrink: 0; display: inline-block !important;"><path d="M4 6h16M4 12h16M4 18h16"></path></svg>');
                 }
             });
         }
         ensureBurgerIcon();
-        setTimeout(ensureBurgerIcon, 500);
+        setTimeout(ensureBurgerIcon, 400);
 
-        // Toggle the visibility of the Table of Contents when the button is clicked.
+        // Toggle the visibility of the Table of Contents when the button is clicked (instant, NO opacity animation)
         $('.table_content').on('click', function (e) {
             e.preventDefault();
             e.stopPropagation();
@@ -164,8 +165,8 @@
             let overlay = $('#toc-overlay');
 
             if (toc.is(':visible')) {
-                toc.slideUp(250);
-                overlay.fadeOut(250);
+                toc.hide();
+                overlay.hide();
                 tocVisible = false;
             } else {
                 $('#share-modal').hide();
@@ -174,66 +175,85 @@
                     'background-color': '#ffffff',
                     'color': '#000000',
                     'display': 'flex'
-                }).hide().fadeIn(250);
-                overlay.fadeIn(250);
+                }).show();
+                overlay.show();
                 tocVisible = true;
             }
         });
 
         // Close TOC when the close button is clicked
-        $('.close-toc').on('click', function () {
-            let toc = $(this).closest('aside.bottom_table_content');
-            let overlay = $('#toc-overlay');
-            toc.slideUp(300);
-            overlay.fadeOut(300);
+        $('.close-toc').on('click', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+            $('aside.bottom_table_content, #docy-tocs').hide();
+            $('#toc-overlay').hide();
             tocVisible = false;
         });
 
-        // Close TOC and smooth scroll on link click
+        // Close TOC and smooth scroll on link click (never jumps to top)
         $(document).on('click', '.bottom_table_content a, #docy-tocs a, #docy-tocs-mobile a', function (e) {
-            let href = $(this).attr('href');
+            var href = $(this).attr('href');
             if (href && href.startsWith('#')) {
-                let targetId = href.substring(1);
-                let $target = $(document.getElementById(targetId));
-                if (!$target.length) {
+                var targetId = href.substring(1);
+                if (!targetId) return;
+
+                e.preventDefault();
+                e.stopPropagation();
+
+                // Close modal and overlay instantly
+                $('aside.bottom_table_content, #docy-tocs').hide();
+                $('#toc-overlay').hide();
+                tocVisible = false;
+
+                // Highlight active link
+                $('#docy-tocs a, #docy-tocs-mobile a, .bottom_table_content a').removeClass('active');
+                $(this).addClass('active');
+
+                var targetEl = document.getElementById(targetId);
+                if (!targetEl) {
                     try {
-                        $target = $('[id="' + CSS.escape(targetId) + '"]');
+                        targetEl = document.querySelector('[id="' + CSS.escape(targetId) + '"]');
                     } catch(err) {}
                 }
 
-                // Close modal and overlay
-                $('aside.bottom_table_content, #docy-tocs').slideUp(250);
-                $('#toc-overlay').fadeOut(250);
-                tocVisible = false;
+                if (!targetEl) {
+                    var linkText = $(this).text().trim();
+                    $('.blog_single_item, .main-post, .editor-content, article').find('h1, h2, h3, h4').each(function() {
+                        if ($(this).text().trim() === linkText) {
+                            targetEl = this;
+                            return false;
+                        }
+                    });
+                }
 
-                if ($target.length) {
-                    e.preventDefault();
-                    let adminBarHeight = $('#wpadminbar').length ? $('#wpadminbar').outerHeight() : 0;
-                    let headerOffset = ($(window).width() <= 1024 ? 80 : 120) + adminBarHeight;
-                    let targetPosition = Math.max(0, $target.offset().top - headerOffset);
+                if (targetEl) {
+                    var adminBarHeight = $('#wpadminbar').length ? $('#wpadminbar').outerHeight() : 0;
+                    var headerOffset = ($(window).width() <= 1024 ? 75 : 120) + adminBarHeight;
+                    var targetPosition = Math.max(0, $(targetEl).offset().top - headerOffset);
 
                     $('html, body').stop().animate({
                         scrollTop: targetPosition
-                    }, 350);
+                    }, 300);
                 }
             }
         });
 
-        // Toggle the visibility of the Share modal when the share button is clicked.
+        // Toggle the visibility of the Share modal when the share button is clicked (instant)
         $('.table_share_btn').on('click', function (e) {
             e.preventDefault();
+            e.stopPropagation();
             let shareModal = $('#share-modal');
             let overlay = $('#toc-overlay');
 
             if (shareModalVisible) {
-                shareModal.slideUp(300);
-                overlay.fadeOut(300);
+                shareModal.hide();
+                overlay.hide();
                 shareModalVisible = false;
             } else {
-                $('aside.bottom_table_content').slideUp(300);
+                $('aside.bottom_table_content, #docy-tocs').hide();
                 tocVisible = false;
-                shareModal.slideDown(300);
-                overlay.fadeIn(300);
+                shareModal.show();
+                overlay.show();
                 shareModalVisible = true;
             }
         });
@@ -241,22 +261,21 @@
         // Close Share modal when the close button is clicked
         $('.docy-close').on('click', function (e) {
             e.preventDefault();
+            e.stopPropagation();
             let shareModal = $('#share-modal');
             let overlay = $('#toc-overlay');
 
-            shareModal.slideUp(300);
-            overlay.fadeOut(300);
+            shareModal.hide();
+            overlay.hide();
             shareModalVisible = false;
         });
 
         // Close TOC and Share modal when clicking outside (on the overlay)
-        $('#toc-overlay').on('click', function () {
-            let toc = $('aside.bottom_table_content');
-            let shareModal = $('#share-modal');
-
-            toc.slideUp(300);
-            shareModal.slideUp(300);
-            $(this).fadeOut(300);
+        $('#toc-overlay').on('click', function (e) {
+            e.preventDefault();
+            $('aside.bottom_table_content, #docy-tocs').hide();
+            $('#share-modal').hide();
+            $(this).hide();
             tocVisible = false;
             shareModalVisible = false;
         });

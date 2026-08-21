@@ -99,58 +99,6 @@
 
         // Initial check
         updateTocOnScroll();
-
-        // Also handle clicks on the mobile TOC
-        $(document).on('click', '#docy-tocs a, #docy-tocs-mobile a, .bottom_table_content a', function (e) {
-            var $clickedLink = $(this);
-            var href = $clickedLink.attr('href');
-
-            if (!href || !href.startsWith('#')) {
-                return;
-            }
-
-            e.preventDefault();
-            e.stopPropagation();
-
-            isManualScroll = true;
-
-            var targetId = href.substring(1);
-
-            // Remove active from all
-            $('#docy-tocs a, #docy-tocs-mobile a, .bottom_table_content a').removeClass('active');
-            $('#docy-tocs li, #docy-tocs-mobile li, .bottom_table_content li').removeClass('active');
-
-            // Add to clicked and all its parent list items
-            $clickedLink.addClass('active');
-            $clickedLink.parents('li').addClass('active');
-
-            // Close mobile TOC if open
-            $('.bottom_table_content, #docy-tocs').slideUp(250);
-            $('#toc-overlay').fadeOut(250);
-
-            var target = document.getElementById(targetId);
-            if (!target) {
-                try {
-                    target = document.querySelector('[id="' + CSS.escape(targetId) + '"]');
-                } catch(err) {}
-            }
-
-            if (target) {
-                var adminBarHeight = $('#wpadminbar').length > 0 ? $('#wpadminbar').outerHeight() : 0;
-                var scrollOffset = ($(window).width() <= 1024 ? 80 : 120) + adminBarHeight;
-                var targetPosition = Math.max(0, $(target).offset().top - scrollOffset);
-
-                $('html, body').stop().animate({
-                    scrollTop: targetPosition
-                }, 350, function () {
-                    setTimeout(function () {
-                        isManualScroll = false;
-                    }, 100);
-                });
-            } else {
-                isManualScroll = false;
-            }
-        });
     });
 
 })(jQuery);
