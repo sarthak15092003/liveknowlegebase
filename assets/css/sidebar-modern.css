@@ -2369,6 +2369,8 @@ h3, .editor-content h3, .blog_single_item h3, .entry-content h3 {
     .jrBzsJ .eYVFtH .table_share_btn svg {
         color: #ffffff !important;
         stroke: #ffffff !important;
+        margin-right: 8px !important;
+        display: inline-block !important;
     }
 
     /* Share Modal Popup */

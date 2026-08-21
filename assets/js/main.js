@@ -145,17 +145,24 @@
         let tocVisible = false; // Track visibility of TOC
         let shareModalVisible = false; // Track visibility of Share modal
 
-        // Ensure burger icon exists in .table_content
-        function ensureBurgerIcon() {
+        // Ensure burger icon and share icon spacing
+        function ensureActionBarIcons() {
             $('.table_content').each(function() {
                 var $btn = $(this);
                 if ($btn.find('svg').length === 0) {
-                    $btn.prepend('<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-right: 6px; flex-shrink: 0; display: inline-block !important;"><path d="M4 6h16M4 12h16M4 18h16"></path></svg>');
+                    $btn.prepend('<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" style="margin-right: 8px !important; flex-shrink: 0; display: inline-block !important; vertical-align: middle !important;"><path d="M4 6h16M4 12h16M4 18h16" stroke="#ffffff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"></path></svg>');
+                } else {
+                    $btn.find('svg').css({'margin-right': '8px', 'display': 'inline-block'});
                 }
             });
+            $('.table_share_btn').each(function() {
+                var $btn = $(this);
+                $btn.find('svg').css({'margin-right': '8px', 'display': 'inline-block'});
+            });
         }
-        ensureBurgerIcon();
-        setTimeout(ensureBurgerIcon, 400);
+        ensureActionBarIcons();
+        setTimeout(ensureActionBarIcons, 100);
+        setTimeout(ensureActionBarIcons, 500);
 
         // Toggle the visibility of the Table of Contents when the button is clicked (instant, NO opacity animation)
         $('.table_content').on('click', function (e) {

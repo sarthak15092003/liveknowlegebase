@@ -48,8 +48,8 @@ while ( have_posts() ) : the_post();
                 <div class="sc-jtXEFf jrBzsJ" id="cm-bottom-action-bar">
                     <div class="sc-eldieg eYVFtH">
                         <div class="overlay" id="toc-overlay"></div>
-                        <button class="sc-kiIyQV fqmceZ table_content" aria-expanded="false" aria-controls="docy-toc">
-                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" style="margin-right: 6px; flex-shrink: 0; display: inline-block !important; vertical-align: middle !important;">
+                        <button class="sc-kiIyQV fqmceZ table_content" aria-expanded="false" aria-controls="docy-toc" style="gap: 8px !important; display: inline-flex !important; align-items: center !important; justify-content: center !important;">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" style="margin-right: 8px !important; flex-shrink: 0; display: inline-block !important; vertical-align: middle !important;">
                                 <path d="M4 6h16M4 12h16M4 18h16" stroke="#ffffff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"></path>
                             </svg>
                             <span><?php esc_html_e('On this Page', 'docy'); ?></span>
@@ -64,8 +64,8 @@ while ( have_posts() ) : the_post();
                             <h6 class="toc-title mb-3"><?php esc_html_e('On this Page', 'docy'); ?></h6>
                             <nav class="nav-sidebar doc-nav" id="docy-tocs-mobile"></nav>
                         </aside>
-                        <button class="sc-kiIyQV fqmceZ table_share_btn">
-                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-right: 6px; flex-shrink: 0;">
+                        <button class="sc-kiIyQV fqmceZ table_share_btn" style="gap: 8px !important; display: inline-flex !important; align-items: center !important; justify-content: center !important;">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-right: 8px !important; flex-shrink: 0; display: inline-block !important; vertical-align: middle !important;">
                                 <path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"></path>
                                 <polyline points="16 6 12 2 8 6"></polyline>
                                 <line x1="12" y1="2" x2="12" y2="15"></line>

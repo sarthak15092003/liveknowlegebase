@@ -879,6 +879,8 @@
     .jrBzsJ .eYVFtH .table_share_btn svg {
         color: #ffffff !important;
         stroke: #ffffff !important;
+        margin-right: 8px !important;
+        display: inline-block !important;
     }
 
     /* Mobile Table of Contents (TOC) - tall fixed sheet with scrollable inner list */
