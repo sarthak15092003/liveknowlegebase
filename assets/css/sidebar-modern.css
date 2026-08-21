@@ -2397,19 +2397,30 @@ h3, .editor-content h3, .blog_single_item h3, .entry-content h3 {
         background: transparent !important;
         border: none !important;
         cursor: pointer !important;
-        color: #94a3b8 !important;
-        padding: 4px !important;
+        color: #374151 !important;
+        padding: 6px !important;
         display: flex !important;
         align-items: center !important;
         justify-content: center !important;
+        z-index: 10 !important;
     }
 
     #share-modal .docy-close svg {
-        stroke: #94a3b8 !important;
+        stroke: #374151 !important;
+        color: #374151 !important;
     }
 
     #share-modal .docy-close:hover svg {
-        stroke: #1e293b !important;
+        stroke: #111827 !important;
+    }
+
+    #share-modal .share-modal-title {
+        margin-top: 4px !important;
+        margin-bottom: 24px !important;
+        font-size: 16px !important;
+        font-weight: 700 !important;
+        color: #111827 !important;
+        text-align: center !important;
     }
 
     .share-social-icon {

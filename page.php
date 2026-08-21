@@ -49,14 +49,15 @@ while ( have_posts() ) : the_post();
                     <div class="sc-eldieg eYVFtH">
                         <div class="overlay" id="toc-overlay"></div>
                         <button class="sc-kiIyQV fqmceZ table_content" aria-expanded="false" aria-controls="docy-toc">
-                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-right: 6px; flex-shrink: 0;">
-                                <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
-                                <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
+                            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" style="margin-right: 6px; flex-shrink: 0;">
+                                <line x1="3" y1="6" x2="21" y2="6"></line>
+                                <line x1="3" y1="12" x2="21" y2="12"></line>
+                                <line x1="3" y1="18" x2="21" y2="18"></line>
                             </svg>
                             <span><?php esc_html_e('On this Page', 'docy'); ?></span>
                         </button>
                         <aside class="bottom_table_content" id="docy-tocs" aria-hidden="true">
-                            <button class="close-toc">
+                            <button class="close-toc" aria-label="Close Table of Contents">
                                 <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                                     <line x1="18" y1="6" x2="6" y2="18"></line>
                                     <line x1="6" y1="6" x2="18" y2="18"></line>
@@ -74,14 +75,14 @@ while ( have_posts() ) : the_post();
                             <span><?php esc_html_e('Share', 'docy'); ?></span>
                         </button>
                         <div class="docy-modal-content" id="share-modal" aria-hidden="true">
-                            <button class="close docy-close" aria-label="Close Share Modal">
-                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <button class="close docy-close" aria-label="Close Share Modal" style="position: absolute !important; top: 16px !important; right: 16px !important; background: transparent !important; border: none !important; cursor: pointer !important; padding: 6px !important; z-index: 10 !important; display: flex !important; align-items: center !important; justify-content: center !important;">
+                                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#374151" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
                                     <line x1="18" y1="6" x2="6" y2="18"></line>
                                     <line x1="6" y1="6" x2="18" y2="18"></line>
                                 </svg>
                             </button>
                             <div class="docy-share-wrap" style="padding: 10px 0;">
-                                <p class="share-modal-title" style="text-align: center; font-size: 16px; font-weight: 600; color: #1e293b; margin-bottom: 20px;">Share</p>
+                                <p class="share-modal-title" style="text-align: center; font-size: 16px; font-weight: 700; color: #111827; margin-top: 4px; margin-bottom: 24px;">Share</p>
                                 
                                 <div class="social-links" style="display: flex; align-items: center; justify-content: center; gap: 14px; flex-wrap: wrap;">
                                     <!-- Copy Link Button -->

@@ -184,6 +184,36 @@
             tocVisible = false;
         });
 
+        // Close TOC and smooth scroll on link click
+        $(document).on('click', '.bottom_table_content a, #docy-tocs a, #docy-tocs-mobile a', function (e) {
+            let href = $(this).attr('href');
+            if (href && href.startsWith('#')) {
+                let targetId = href.substring(1);
+                let $target = $(document.getElementById(targetId));
+                if (!$target.length) {
+                    try {
+                        $target = $('[id="' + CSS.escape(targetId) + '"]');
+                    } catch(err) {}
+                }
+
+                // Close modal and overlay
+                $('aside.bottom_table_content, #docy-tocs').slideUp(250);
+                $('#toc-overlay').fadeOut(250);
+                tocVisible = false;
+
+                if ($target.length) {
+                    e.preventDefault();
+                    let adminBarHeight = $('#wpadminbar').length ? $('#wpadminbar').outerHeight() : 0;
+                    let headerOffset = ($(window).width() <= 1024 ? 80 : 120) + adminBarHeight;
+                    let targetPosition = Math.max(0, $target.offset().top - headerOffset);
+
+                    $('html, body').stop().animate({
+                        scrollTop: targetPosition
+                    }, 350);
+                }
+            }
+        });
+
         // Toggle the visibility of the Share modal when the share button is clicked.
         $('.table_share_btn').on('click', function (e) {
             e.preventDefault();

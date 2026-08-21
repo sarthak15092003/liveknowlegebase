@@ -766,14 +766,15 @@ get_template_part( 'template-parts/single-post/banner', $banner_type );
                     <div class="sc-eldieg eYVFtH">
                         <div class="overlay" id="toc-overlay"></div>
                         <button class="sc-kiIyQV fqmceZ table_content" aria-expanded="false" aria-controls="docy-toc">
-                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-right: 6px; flex-shrink: 0;">
-                                <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
-                                <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
+                            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" style="margin-right: 6px; flex-shrink: 0;">
+                                <line x1="3" y1="6" x2="21" y2="6"></line>
+                                <line x1="3" y1="12" x2="21" y2="12"></line>
+                                <line x1="3" y1="18" x2="21" y2="18"></line>
                             </svg>
                             <span><?php esc_html_e('On this Page', 'docy'); ?></span>
                         </button>
                         <aside class="bottom_table_content" id="docy-tocs" aria-hidden="true">
-                            <button class="close-toc">
+                            <button class="close-toc" aria-label="Close Table of Contents">
                                 <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                                     <line x1="18" y1="6" x2="6" y2="18"></line>
                                     <line x1="6" y1="6" x2="18" y2="18"></line>
@@ -791,14 +792,14 @@ get_template_part( 'template-parts/single-post/banner', $banner_type );
                             <span><?php esc_html_e('Share', 'docy'); ?></span>
                         </button>
                         <div class="docy-modal-content" id="share-modal" aria-hidden="true">
-                            <button class="close docy-close" aria-label="Close Share Modal">
-                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <button class="close docy-close" aria-label="Close Share Modal" style="position: absolute !important; top: 16px !important; right: 16px !important; background: transparent !important; border: none !important; cursor: pointer !important; padding: 6px !important; z-index: 10 !important; display: flex !important; align-items: center !important; justify-content: center !important;">
+                                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#374151" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
                                     <line x1="18" y1="6" x2="6" y2="18"></line>
                                     <line x1="6" y1="6" x2="18" y2="18"></line>
                                 </svg>
                             </button>
                             <div class="docy-share-wrap" style="padding: 10px 0;">
-                                <p class="share-modal-title" style="text-align: center; font-size: 16px; font-weight: 600; color: #1e293b; margin-bottom: 20px;">Share</p>
+                                <p class="share-modal-title" style="text-align: center; font-size: 16px; font-weight: 700; color: #111827; margin-top: 4px; margin-bottom: 24px;">Share</p>
                                 
                                 <div class="social-links" style="display: flex; align-items: center; justify-content: center; gap: 14px; flex-wrap: wrap;">
                                     <!-- Copy Link Button -->
@@ -1013,33 +1014,38 @@ get_template_part( 'template-parts/single-post/banner', $banner_type );
                 }
 
                 // Smooth click handler with zero jerk and zero delay
-                $(document).on('click', '#docy-toc a, #docy-tocs-mobile a', function(e) {
+                $(document).on('click', '#docy-toc a, #docy-tocs-mobile a, aside.bottom_table_content a', function(e) {
                     var href = $(this).attr('href');
                     if (href && href.startsWith('#')) {
                         var id = href.substring(1);
-                        var $target = $('#' + $.escapeSelector(id));
-                        if ($target.length > 0) {
+                        var targetEl = document.getElementById(id);
+                        if (!targetEl) {
+                            try {
+                                targetEl = document.querySelector('[id="' + CSS.escape(id) + '"]');
+                            } catch(err) {}
+                        }
+                        if (targetEl) {
                             e.preventDefault();
-                            e.stopPropagation();
-                            e.stopImmediatePropagation();
+
+                            // 1. Immediately close mobile TOC sheet and overlay
+                            $('aside.bottom_table_content, #docy-tocs').slideUp(250);
+                            $('#toc-overlay').fadeOut(250);
 
                             isClickScrolling = true;
                             lastActiveId = id;
                             highlightTOC(id);
 
                             var adminBarHeight = $('#wpadminbar').length > 0 ? $('#wpadminbar').outerHeight() : 0;
-                            var headerOffset = ($(window).width() <= 1024 ? 90 : 140) + adminBarHeight;
-                            var targetPosition = Math.max(0, $target.offset().top - headerOffset);
+                            var headerOffset = ($(window).width() <= 1024 ? 80 : 120) + adminBarHeight;
+                            var targetPosition = Math.max(0, $(targetEl).offset().top - headerOffset);
 
-                            window.scrollTo({
-                                top: targetPosition,
-                                behavior: 'smooth'
+                            $('html, body').stop().animate({
+                                scrollTop: targetPosition
+                            }, 350, function() {
+                                setTimeout(function() {
+                                    isClickScrolling = false;
+                                }, 100);
                             });
-
-                            if (clickTimeout) clearTimeout(clickTimeout);
-                            clickTimeout = setTimeout(function() {
-                                isClickScrolling = false;
-                            }, 400);
                         }
                     }
                 });
