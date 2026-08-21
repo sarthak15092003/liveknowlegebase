@@ -757,7 +757,6 @@
     .tw-category-container {
         max-width: 100% !important;
         width: 100% !important;
-        overflow-x: hidden !important;
         box-sizing: border-box !important;
     }
 
