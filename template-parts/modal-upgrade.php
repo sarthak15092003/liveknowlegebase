@@ -137,7 +137,7 @@ $is_popup    = isset($args['is_popup']) && $args['is_popup'];
 }
 
 .cmg-upgrade-title {
-    font-size: 26px !important;
+    font-size: 32px !important;
     font-weight: 700 !important;
     line-height: 1.3 !important;
     color: #0f172a !important;
@@ -369,9 +369,9 @@ $is_popup    = isset($args['is_popup']) && $args['is_popup'];
     </h2>
 
     <!-- Subheading -->
-    <h3 class="cmg-upgrade-subtitle">
+    <p class="cmg-upgrade-desc">
         Get full access to premium CMGalaxy documentation, guides and resources.
-    </h3>
+    </p>
 
     <!-- Primary Action Button -->
     <a href="<?php echo esc_url($upgrade_url); ?>" class="cmg-upgrade-btn">
