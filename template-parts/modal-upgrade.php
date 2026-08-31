@@ -169,6 +169,7 @@ h2.cmg-upgrade-title,
     line-height: 1.5 !important;
     color: #64748b !important;
     margin: 0 0 20px 0 !important;
+    margin-bottom: 20px !important;
     padding: 0 !important;
     max-width: 460px !important;
     text-align: center !important;
@@ -372,7 +373,7 @@ h2.cmg-upgrade-title,
     </h2>
 
     <!-- Subheading -->
-    <p class="cmg-upgrade-desc">
+    <p class="cmg-upgrade-desc" style="margin-bottom: 20px !important;">
         Get full access to premium CMGalaxy documentation, guides and resources.
     </p>
 
