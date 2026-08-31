@@ -107,7 +107,7 @@ $is_popup    = isset($args['is_popup']) && $args['is_popup'];
     background: rgba(255, 255, 255, 0.98) !important;
     backdrop-filter: blur(16px) !important;
     -webkit-backdrop-filter: blur(16px) !important;
-    border: 1px solid #3b82f6 !important;
+    border: 1px solid #3b82f603 !important;
     border-radius: 28px !important;
     max-width: 580px !important;
     width: 100% !important;
