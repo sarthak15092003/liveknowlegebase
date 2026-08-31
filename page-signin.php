@@ -121,42 +121,50 @@ $ajax_url    = admin_url( 'admin-ajax.php' );
     }
 
     .cmg-input-wrapper {
-        position: relative;
-        width: 100%;
-        display: flex;
-        align-items: center;
+        position: relative !important;
+        width: 100% !important;
+        display: flex !important;
+        align-items: center !important;
     }
 
+    .cmg-signin-wrapper input.cmg-input,
     .cmg-input {
-        width: 100%;
-        height: 48px;
-        padding: 10px 42px 10px 16px;
-        background-color: #ebf3fe;
-        border: 1.5px solid transparent;
-        border-radius: 8px;
-        font-size: 15px;
-        color: #0f172a;
-        font-weight: 500;
-        transition: all 0.2s ease;
-        box-sizing: border-box;
-        outline: none;
-        font-family: inherit;
+        width: 100% !important;
+        height: 48px !important;
+        line-height: normal !important;
+        padding: 12px 42px 12px 16px !important;
+        background-color: #ebf3fe !important;
+        border: 1.5px solid transparent !important;
+        border-radius: 8px !important;
+        -webkit-border-radius: 8px !important;
+        -moz-border-radius: 8px !important;
+        font-size: 15px !important;
+        color: #0f172a !important;
+        font-weight: 500 !important;
+        transition: all 0.2s ease !important;
+        box-sizing: border-box !important;
+        outline: none !important;
+        font-family: inherit !important;
+        box-shadow: none !important;
     }
 
+    .cmg-signin-wrapper input.cmg-input::placeholder,
     .cmg-input::placeholder {
-        color: #94a3b8;
-        font-weight: 400;
+        color: #94a3b8 !important;
+        font-weight: 400 !important;
     }
 
+    .cmg-signin-wrapper input.cmg-input:focus,
     .cmg-input:focus {
-        background-color: #f0f6ff;
-        border-color: #3b82f6;
-        box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.15);
+        background-color: #eef5fe !important;
+        border-color: #3b82f6 !important;
+        box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.15) !important;
     }
 
+    .cmg-signin-wrapper input.cmg-input.has-error,
     .cmg-input.has-error {
-        border-color: #ef4444;
-        background-color: #fef2f2;
+        border-color: #ef4444 !important;
+        background-color: #fef2f2 !important;
     }
 
     /* Right Action Icons in Input (Clear & Eye) */
@@ -348,7 +356,7 @@ $ajax_url    = admin_url( 'admin-ajax.php' );
         <div class="cmg-signin-header">
             <div class="cmg-signin-title-row">
                 <h1 class="cmg-signin-title">Welcome to</h1>
-                <img src="<?php echo esc_url( get_template_directory_uri() . '/assets/img/cmgalaxy-logo.svg' ); ?>" alt="CMGALAXY" class="cmg-brand-logo">
+                <img src="<?php echo esc_url( get_template_directory_uri() . '/assets/img/kblogo.svg' ); ?>" alt="CMGALAXY" class="cmg-brand-logo">
             </div>
             <p class="cmg-signin-subtitle">Please sign-in to your account</p>
         </div>
