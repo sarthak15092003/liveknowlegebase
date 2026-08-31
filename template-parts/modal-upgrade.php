@@ -107,7 +107,7 @@ $is_popup    = isset($args['is_popup']) && $args['is_popup'];
     background: rgba(255, 255, 255, 0.98) !important;
     backdrop-filter: blur(16px) !important;
     -webkit-backdrop-filter: blur(16px) !important;
-    border: 1.5px solid #3b82f6 !important;
+    border: 1px solid #3b82f6 !important;
     border-radius: 28px !important;
     max-width: 580px !important;
     width: 100% !important;
@@ -168,7 +168,7 @@ h2.cmg-upgrade-title,
     font-weight: 400 !important;
     line-height: 1.5 !important;
     color: #64748b !important;
-    margin: 0 0 24px 0 !important;
+    margin: 0 0 20px 0 !important;
     padding: 0 !important;
     max-width: 460px !important;
     text-align: center !important;
@@ -181,7 +181,7 @@ h2.cmg-upgrade-title,
     justify-content: center !important;
     background-color: #2f73f6 !important;
     color: #ffffff !important;
-    font-size: 15px !important;
+    font-size: 16px !important;
     font-weight: 500 !important;
     text-decoration: none !important;
     padding: 12px 24px !important;
@@ -193,7 +193,7 @@ h2.cmg-upgrade-title,
     margin: 0 0 14px 0 !important;
     font-family: inherit !important;
     width: 100% !important;
-    max-width: 290px !important;
+    max-width: 300px !important;
     box-sizing: border-box !important;
 }
 
@@ -225,7 +225,7 @@ h2.cmg-upgrade-title,
     border: 1.5px solid #2f73f6 !important;
     border-radius: 8px !important;
     padding: 12px 24px !important;
-    font-size: 15px !important;
+    font-size: 16px !important;
     font-weight: 500 !important;
     text-decoration: none !important;
     transition: all 0.2s ease !important;
@@ -233,7 +233,7 @@ h2.cmg-upgrade-title,
     background: transparent !important;
     font-family: inherit !important;
     width: 100% !important;
-    max-width: 290px !important;
+    max-width: 300px !important;
     box-sizing: border-box !important;
 }
 
