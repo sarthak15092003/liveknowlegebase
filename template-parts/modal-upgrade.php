@@ -211,15 +211,23 @@ $is_popup    = isset($args['is_popup']) && $args['is_popup'];
 }
 
 .cmg-signin-link {
-    color: #475569 !important;
-    text-decoration: underline !important;
-    text-underline-offset: 3px !important;
-    transition: color 0.15s ease !important;
+    display: inline-block !important;
+    color: #2f73f6 !important;
+    border: 1.5px solid #2f73f6 !important;
+    border-radius: 8px !important;
+    padding: 10px 24px !important;
+    font-size: 14px !important;
+    font-weight: 500 !important;
+    text-decoration: none !important;
+    transition: all 0.2s ease !important;
     cursor: pointer !important;
+    background: transparent !important;
 }
 
 .cmg-signin-link:hover {
-    color: #1e293b !important;
+    background-color: rgba(47, 115, 246, 0.08) !important;
+    color: #1d5ed8 !important;
+    border-color: #1d5ed8 !important;
 }
 
 /* Popup Overlay */
@@ -313,6 +321,12 @@ $is_popup    = isset($args['is_popup']) && $args['is_popup'];
         width: 100% !important;
         padding: 12px 20px !important;
     }
+
+    .cmg-signin-link {
+        width: 100% !important;
+        box-sizing: border-box !important;
+        padding: 11px 20px !important;
+    }
 }
 </style>
 
@@ -341,27 +355,22 @@ $is_popup    = isset($args['is_popup']) && $args['is_popup'];
 
     <!-- Main Heading -->
     <h2 class="cmg-upgrade-title">
-        Access everything. Upgrade<br>to a paid account.
+        Access everything. Become <br>to a paid account.
     </h2>
 
     <!-- Subheading -->
     <h3 class="cmg-upgrade-subtitle">
-        Unlock the complete CMGalaxy Knowledge Base.
+        Unlock the complete CMGalaxy Knowledge Base
     </h3>
-
-    <!-- Description -->
-    <p class="cmg-upgrade-desc">
-        Get full access to premium CMGalaxy documentation, guides and resources.
-    </p>
 
     <!-- Primary Action Button -->
     <a href="<?php echo esc_url($upgrade_url); ?>" class="cmg-upgrade-btn">
-        Upgrade to Paid Account
+        Sign up to CMGalaxy
     </a>
 
     <!-- Sign-in Link -->
     <div class="cmg-signin-text">
-        <a href="<?php echo esc_url($signin_url); ?>" class="cmg-signin-link">Already paid? Sign in</a>
+        <a href="<?php echo esc_url($signin_url); ?>" class="cmg-signin-link">Already a customer? Sign in</a>
     </div>
 </div>
 
