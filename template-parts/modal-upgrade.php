@@ -136,13 +136,16 @@ $is_popup    = isset($args['is_popup']) && $args['is_popup'];
     display: block !important;
 }
 
+.cmg-upgrade-card .cmg-upgrade-title,
+.cmg-paywall-container .cmg-upgrade-title,
+h2.cmg-upgrade-title,
 .cmg-upgrade-title {
     font-size: 32px !important;
     font-weight: 700 !important;
-    line-height: 1.3 !important;
+    line-height: 1.25 !important;
     color: #0f172a !important;
     letter-spacing: -0.02em !important;
-    margin: 0 0 12px 0 !important;
+    margin: 0 0 14px 0 !important;
     padding: 0 !important;
     text-align: center !important;
     font-family: inherit !important;
@@ -364,7 +367,7 @@ $is_popup    = isset($args['is_popup']) && $args['is_popup'];
     </div>
 
     <!-- Main Heading -->
-    <h2 class="cmg-upgrade-title">
+    <h2 class="cmg-upgrade-title" style="font-size: 32px !important; font-weight: 700 !important; line-height: 1.25 !important;">
         Access everything. Become <br> a customer today!
     </h2>
 
