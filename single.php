@@ -92,25 +92,11 @@ get_template_part( 'template-parts/single-post/banner', $banner_type );
                             $is_restricted_post = function_exists('cmg_is_post_restricted_to_logged_in') && cmg_is_post_restricted_to_logged_in(get_the_ID()) && !is_user_logged_in();
 
                             if ($is_restricted_post) {
-                                // Render Teaser preview (first few paragraphs with gradient fade)
-                                $raw_content = get_post_field('post_content', get_the_ID());
-                                $paragraphs = explode("
-", trim(strip_tags($raw_content)));
-                                $teaser_text = !empty($paragraphs[0]) ? $paragraphs[0] : '';
-                                if (!empty($paragraphs[1])) {
-                                    $teaser_text .= "
-
-" . $paragraphs[1];
+                                if (function_exists('cmg_render_paywall_gate')) {
+                                    echo cmg_render_paywall_gate(get_the_ID());
+                                } else {
+                                    get_template_part('template-parts/modal-upgrade');
                                 }
-                                ?>
-                                <div class="cmg-teaser-wrapper" style="position: relative; margin-bottom: 24px;">
-                                    <div class="cmg-teaser-content" style="color: #374151; font-size: 16px; line-height: 1.7; max-height: 140px; overflow: hidden; position: relative;">
-                                        <?php echo wpautop(esc_html($teaser_text)); ?>
-                                        <div style="position: absolute; bottom: 0; left: 0; right: 0; height: 90px; background: linear-gradient(to bottom, rgba(255,255,255,0) 0%, #ffffff 100%); pointer-events: none;"></div>
-                                    </div>
-                                </div>
-                                <?php
-                                get_template_part('template-parts/modal-upgrade');
                             } else {
                                 the_content();
                             }
