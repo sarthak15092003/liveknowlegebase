@@ -111,9 +111,8 @@ body {
 /* Content area spacing */
 .blog_area,
 .tip_doc_area {
-    padding-top: 50px !important;
+    padding-top: 0 !important;
     margin-top: 0 !important;
-    padding-bottom: 20px !important;
 }
 
 /* Fix any overlapping issues */
@@ -652,7 +651,7 @@ section:first-of-type {
 
     .blog_area,
     .tip_doc_area {
-        padding-top: 30px !important;
+        padding-top: 0rem !important;
     }
 
     /* Mobile admin bar adjustments */
@@ -1211,7 +1210,7 @@ footer {
     color: rgba(250, 250, 250, 0.5) !important;
     padding: 40px 0px !important;
     font-family: var(--font-family-primary) !important;
-    margin-top: 0px;
+    margin-top: 50px;
 }
 
 /* Hide header logo on mobile and tablet devices */
@@ -1290,13 +1289,209 @@ mark.search-highlight {
     padding: 0 !important;
 }
 
-/* Fix author avatar icon clipping on single post pages */
-.post-author-meta-box .author-avatar img {
-    border-radius: 0 !important;
-    object-fit: contain !important;
-    width: 24px !important;
-    height: 24px !important;
-    max-width: none !important;
+/* =============================================
+   CMGalaxy Upgrade / Paywall Modal Component
+   ============================================= */
+.cmg-upgrade-card {
+    background: #ffffff !important;
+    border: 1.5px solid #3b82f6 !important;
+    border-radius: 28px !important;
+    max-width: 580px !important;
+    width: 100% !important;
+    padding: 52px 36px 44px !important;
+    text-align: center !important;
+    box-shadow: 0 10px 30px -10px rgba(59, 130, 246, 0.08), 0 20px 40px -15px rgba(0, 0, 0, 0.05) !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    box-sizing: border-box !important;
+    margin: 30px auto !important;
+    position: relative !important;
 }
-. d o c - s i d e b a r   {   t o p :   u n s e t   ! i m p o r t a n t ;   }   . c a t e g o r y - m a i n - c o l   {   p a d d i n g - t o p :   0 p x   ! i m p o r t a n t ;   }  
- 
+
+.cmg-lock-icon-wrap {
+    margin-bottom: 24px !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+}
+
+.cmg-lock-icon {
+    width: 44px !important;
+    height: 48px !important;
+    display: block !important;
+}
+
+.cmg-upgrade-title {
+    font-size: 32px !important;
+    font-weight: 700 !important;
+    line-height: 1.25 !important;
+    color: #0f172a !important;
+    letter-spacing: -0.025em !important;
+    margin-bottom: 18px !important;
+    text-align: center !important;
+}
+
+.cmg-upgrade-subtitle {
+    font-size: 20px !important;
+    font-weight: 600 !important;
+    line-height: 1.35 !important;
+    color: #1e293b !important;
+    letter-spacing: -0.015em !important;
+    margin-bottom: 12px !important;
+    text-align: center !important;
+}
+
+.cmg-upgrade-desc {
+    font-size: 15px !important;
+    font-weight: 400 !important;
+    line-height: 1.5 !important;
+    color: #64748b !important;
+    margin-bottom: 28px !important;
+    max-width: 460px !important;
+    text-align: center !important;
+}
+
+.cmg-upgrade-btn {
+    display: inline-block !important;
+    background-color: #2f73f6 !important;
+    color: #ffffff !important;
+    font-size: 15px !important;
+    font-weight: 500 !important;
+    text-decoration: none !important;
+    padding: 13px 32px !important;
+    border-radius: 8px !important;
+    border: 1px solid transparent !important;
+    cursor: pointer !important;
+    transition: all 0.2s ease !important;
+    box-shadow: 0 2px 6px rgba(47, 115, 246, 0.25) !important;
+    margin-bottom: 20px !important;
+}
+
+.cmg-upgrade-btn:hover {
+    background-color: #1d5ed8 !important;
+    box-shadow: 0 4px 12px rgba(47, 115, 246, 0.35) !important;
+    transform: translateY(-1px) !important;
+    color: #ffffff !important;
+}
+
+.cmg-upgrade-btn:active {
+    transform: translateY(0) !important;
+    box-shadow: 0 1px 3px rgba(47, 115, 246, 0.2) !important;
+}
+
+.cmg-signin-text {
+    font-size: 14px !important;
+    color: #475569 !important;
+    text-align: center !important;
+}
+
+.cmg-signin-link {
+    color: #475569 !important;
+    text-decoration: underline !important;
+    text-underline-offset: 3px !important;
+    transition: color 0.15s ease !important;
+    cursor: pointer !important;
+}
+
+.cmg-signin-link:hover {
+    color: #1e293b !important;
+}
+
+@media (max-width: 600px) {
+    .cmg-upgrade-card {
+        padding: 36px 20px 30px !important;
+        border-radius: 20px !important;
+    }
+
+    .cmg-upgrade-title {
+        font-size: 24px !important;
+        margin-bottom: 14px !important;
+    }
+
+    .cmg-upgrade-subtitle {
+        font-size: 17px !important;
+        margin-bottom: 10px !important;
+    }
+
+    .cmg-upgrade-desc {
+        font-size: 14px !important;
+        margin-bottom: 24px !important;
+    }
+
+    .cmg-upgrade-btn {
+        width: 100% !important;
+        padding: 12px 20px !important;
+    }
+}
+
+/* =============================================
+   CMGalaxy Upgrade Modal Overlay (Popup)
+   ============================================= */
+.cmg-modal-overlay {
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100vw !important;
+    height: 100vh !important;
+    background: rgba(15, 23, 42, 0.65) !important;
+    backdrop-filter: blur(8px) !important;
+    -webkit-backdrop-filter: blur(8px) !important;
+    z-index: 999999 !important;
+    display: none !important;
+    align-items: center !important;
+    justify-content: center !important;
+    padding: 20px !important;
+    box-sizing: border-box !important;
+}
+
+.cmg-modal-overlay.active {
+    display: flex !important;
+    animation: cmgFadeIn 0.25s ease forwards !important;
+}
+
+.cmg-modal-overlay .cmg-upgrade-card {
+    position: relative !important;
+    max-height: 90vh !important;
+    overflow-y: auto !important;
+    animation: cmgModalPop 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards !important;
+    margin: 0 !important;
+}
+
+@keyframes cmgFadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes cmgModalPop {
+    from {
+        opacity: 0;
+        transform: scale(0.92) translateY(12px);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+    }
+}
+
+.cmg-modal-close {
+    position: absolute !important;
+    top: 18px !important;
+    right: 22px !important;
+    background: transparent !important;
+    border: none !important;
+    font-size: 30px !important;
+    line-height: 1 !important;
+    color: #94a3b8 !important;
+    cursor: pointer !important;
+    transition: color 0.15s ease, transform 0.15s ease !important;
+    padding: 4px 8px !important;
+    z-index: 10 !important;
+}
+
+.cmg-modal-close:hover {
+    color: #0f172a !important;
+    transform: scale(1.1) !important;
+}
+
+

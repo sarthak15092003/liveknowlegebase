@@ -16,8 +16,7 @@ if ( docy_toc('post') == '1' ) {
     wp_enqueue_script('anchor');
     // Custom H2 TOC is built inline below — bootstrap-toc is NOT needed here
 }
-$has_toc = docy_toc('post') == '1';
-$blog_column = $has_toc ? '7' : '9'; // 3+7+2=12 (with TOC), 3+9=12 (no TOC)
+$blog_column = '8'; // Main content fixed at 8 columns for 2-8-2 layout
 
 $banner_type_page = docy_meta('banner_type','default');
 $banner_type_page = docy_meta('banner_type','default');
@@ -40,13 +39,271 @@ get_template_part( 'template-parts/single-post/banner', $banner_type );
 //     get_template_part( 'template-parts/header-elements/search-banner/breadcrumb' );
 // }
 ?>
-<section class="blog_area tip_doc_area" id="toc_stick" style="padding-top: 0px !important;">
+<section class="blog_area tip_doc_area" id="toc_stick">
+    <style>
+        /* Fix TOC anchor scrolling - prevent content from going under header */
+        html, body {
+            scroll-padding-top: 85px !important;
+        }
+        .admin-bar html, .admin-bar body {
+            scroll-padding-top: 117px !important;
+        }
+        @media (max-width: 1024px) {
+            html, body {
+                scroll-padding-top: 70px !important;
+            }
+            .admin-bar html, .admin-bar body {
+                scroll-padding-top: 116px !important;
+            }
+        }
+        
+        /* Add scroll margin to headings for better scrollspy accuracy */
+        .blog_single_item h1, 
+        .blog_single_item h2, 
+        .blog_single_item h3, 
+        .blog_single_item h4, 
+        .blog_single_item h5 {
+            scroll-margin-top: 85px !important;
+        }
+        .admin-bar .blog_single_item h1, 
+        .admin-bar .blog_single_item h2, 
+        .admin-bar .blog_single_item h3, 
+        .admin-bar .blog_single_item h4, 
+        .admin-bar .blog_single_item h5 {
+            scroll-margin-top: 117px !important;
+        }
+        @media (max-width: 1024px) {
+            .blog_single_item h1, 
+            .blog_single_item h2, 
+            .blog_single_item h3, 
+            .blog_single_item h4, 
+            .blog_single_item h5 {
+                scroll-margin-top: 70px !important;
+            }
+            .admin-bar .blog_single_item h1, 
+            .admin-bar .blog_single_item h2, 
+            .admin-bar .blog_single_item h3, 
+            .admin-bar .blog_single_item h4, 
+            .admin-bar .blog_single_item h5 {
+                scroll-margin-top: 116px !important;
+            }
+        }
+        
+        /* Prevent TOC from showing active state when at page top */
+        body:not(.scrolled) .doc-sidebar #docy-toc .nav-link.active,
+        body:not(.scrolled) .doc-sidebar #docy-toc li.active > a,
+        body:not(.scrolled) .doc-sidebar .doc-nav .nav-link.active,
+        body:not(.scrolled) #docy-toc .nav-link.active,
+        body:not(.scrolled) #docy-toc li.active > a,
+        body:not(.scrolled) .doc-nav .nav-link.active {
+            color: #64748b !important; /* Default gray color */
+            font-weight: normal !important;
+            /* padding-left: 0 !important; Reset padding to match inactive items - REMOVED */
+        }
+        
+        /* Hide the blue indicator line when at page top */
+        body:not(.scrolled) .doc-sidebar #docy-toc .nav-link.active::before,
+        body:not(.scrolled) .doc-sidebar #docy-toc li.active > a::before,
+        body:not(.scrolled) .doc-sidebar .doc-nav .nav-link.active::before,
+        body:not(.scrolled) #docy-toc .nav-link.active::before,
+        body:not(.scrolled) #docy-toc li.active > a::before,
+        body:not(.scrolled) .doc-nav .nav-link.active::before {
+            display: none !important;
+        }
 
+        /* Show and style the blue indicator line when scrolled - TOP LEVEL ONLY */
+        body.scrolled .doc-sidebar #docy-toc > ul > li.active > a::before,
+        body.scrolled #docy-toc > ul > li.active > a::before,
+        body.scrolled .doc-nav > ul > li.active > a::before {
+            display: block !important;
+            content: "" !important;
+            width: 2px !important;
+            background: #3B82F6 !important;
+            position: absolute !important;
+            top: 0 !important;
+            left: 0 !important;
+            bottom: 0 !important;
+            z-index: 1 !important;
+        }
+
+        /* Hide indicator for any nested links */
+        #docy-toc ul ul .nav-link::before,
+        .doc-nav ul ul .nav-link::before {
+            display: none !important;
+        }
+
+        /* Adjust spacing between TOC items */
+        #docy-toc li, .doc-nav li {
+            margin-bottom: 5px !important;
+        }
+        #docy-toc .nav-link, .doc-nav .nav-link {
+            padding-top: 5px !important;
+            padding-bottom: 5px !important;
+            font-size: 14px !important;
+        }
+        
+        /* Ensure the active TOC item is always visible and correctly highlighted */
+        #docy-toc .nav-link.active,
+        #docy-toc li.active > a,
+        .doc-nav .nav-link.active {
+            color: #000000 !important;
+        }
+        
+        /* Remove bottom padding from section to eliminate gap */
+        .blog_area.tip_doc_area {
+            padding-bottom: 0 !important;
+        }
+        
+        /* Make the sidebar column extend to full viewport height */
+        .category-left-sidebar-col {
+            align-self: flex-start;
+            min-height: 100vh !important;
+        }
+        
+        /* Keep internal scrolling but ensure proper height */
+        .category-left-sidebar-col .modern-sidebar {
+            max-height: calc(100vh - 140px) !important;
+            overflow-y: auto !important;
+        }
+        
+        /* Remove right padding from col-lg-3 on all screen sizes */
+        .col-lg-3 {
+            padding-right: 0 !important;
+        }
+        
+        /* Override max-width, flex, and width constraints to allow full column widths */
+        @media (min-width: 992px) {
+            .category-left-sidebar-col {
+                max-width: none !important;
+                flex: 0 0 20% !important;
+                width: 20% !important;
+            }
+            .category-left-sidebar-col .modern-sidebar {
+                max-width: none !important;
+            }
+            .doc-sidebar {
+                max-width: none !important;
+                flex: 0 0 25% !important;
+                width: 25% !important;
+            }
+            .blog_single_info {
+                flex: 0 0 55% !important;
+                width: 55% !important;
+            }
+            .blog_area.tip_doc_area .container {
+                padding-left: 20px !important;
+                padding-right: 20px !important;
+                max-width: 100% !important;
+            }
+        }
+        
+        /* Mobile Optimization */
+        @media (max-width: 1024px) {
+            /* Specifically target the desktop sidebars to hide them, avoiding conflicts with mobile TOC */
+            .col-lg-3.category-left-sidebar-col,
+            .col-lg-2.doc-sidebar {
+                display: none !important;
+            }
+            
+            .blog_single_info {
+                flex: 0 0 100% !important;
+                max-width: 100% !important;
+                width: 100% !important;
+                padding-left: 0 !important;
+                padding-right: 0 !important;
+            }
+            .blog_area.tip_doc_area .container {
+                padding-left: 15px !important;
+                padding-right: 15px !important;
+            }
+            
+            /* Ensure the mobile TOC bar and its content are above everything */
+            .jrBzsJ {
+                z-index: 9999 !important;
+                overflow: visible !important; /* Prevent clipping of slide-up menu */
+                box-shadow: none !important; /* Remove shadow */
+            }
+            .bottom_table_content {
+                z-index: 10000 !important;
+                box-shadow: none !important; /* Remove shadow */
+            }
+            .bottom_table_content .toc-title {
+                color: #ffffff !important;
+            }
+            /* Apply white color to all TOC related links on mobile */
+            #docy-toc .nav-link, 
+            #docy-toc a, 
+            .doc-nav .nav-link, 
+            .doc-nav a, 
+            .nav-sidebar.doc-nav .nav-link, 
+            .nav-sidebar.doc-nav a, 
+            .left_sidebarlist .nav-link, 
+            .left_sidebarlist a {
+                position: relative !important;
+                transition: all 0.3s ease !important;
+                padding-left: 15px !important;
+                color: #ffffff !important;
+                background-color: transparent !important;
+                font-size: 14px !important;
+            }
+            .bottom_table_content nav ul li a:hover {
+                color: #ffffff !important;
+                opacity: 1;
+            }
+
+            /* Responsive Width Fixes */
+            .blog_single_info,
+            .doc-sidebar {
+                max-width: 100% !important;
+                flex: 0 0 100% !important;
+                width: 100% !important;
+            }
+
+            /* Remove shadow from share part */
+            #share-modal {
+                box-shadow: none !important;
+            }
+
+            /* Requested TOC Overlay Styles */
+            .jrBzsJ .eYVFtH #toc-overlay {
+                display: none;
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background-color: rgba(0, 0, 0, 0.5);
+                z-index: 10;
+            }
+        }
+    </style>
     <div class="container">
-        <div class="row align-items-start">
+        <div class="row">
             <!-- Left Modern Sidebar (20%) -->
-            <div class="col-lg-3 category-left-sidebar-col" style="background: #ffffff !important;">
+            <div class="col-lg-3 category-left-sidebar-col" style="border-right: 1px solid #e5e7eb; background: #ffffff !important; position: sticky; top: 110px;">
+                <style>
+                    /* Align single-post sidebar with category layout */
+                    .modern-sidebar {
+                        background: #ffffff;
+                        
+                        border-radius: 8px;
+                        padding: 0 0px 0 0;
+                        margin-bottom: 0;
+                        position: sticky;
+                        top: 110px;
+                        width: 100%;
+                        max-width: 240px;
+                        margin-top: 5px;
+                    }
 
+                    @media (max-width: 1199.98px) {
+                        .category-left-sidebar-col {
+                            border-right: none !important;
+                            max-width: 100% !important;
+                            flex: 0 0 100% !important;
+                        }
+                    }
+                </style>
                 <?php get_template_part( 'template-parts/sidebar-modern' ); ?>
             </div>
             <?php
@@ -55,17 +312,65 @@ get_template_part( 'template-parts/single-post/banner', $banner_type );
             endif; ?>
             <?php // TOC will render after the content column ?>
 
-
-            <?php 
-            $main_col_extra_class = $has_toc ? 'has-toc-sidebar' : '';
-            ?>
-            <div class="col-lg-<?php echo esc_attr( $blog_column ) ?> blog_single_info category-main-col <?php echo esc_attr($main_col_extra_class); ?> pe-lg-3" style="">
-                <div class="main-post <?php echo $has_toc ? 'anchor-enabled' : ''; ?>">
-                    <div class="blog_single_item editor-content">
+            <div class="col-lg-<?php echo esc_attr( $blog_column ) ?> blog_single_info pe-lg-3" style="">
+                <div class="main-post <?php echo docy_toc('post') == '1' ? 'anchor-enabled' : ''; ?>">
+                    <div class="blog_single_item editor-content" style=" margin-top:20px; ">
                         <?php
                         // Add breadcrumb inside blog single item
                         if ( function_exists('docy_post_breadcrumbs') ) {
-                            echo '';
+                            echo '<style>
+                                .blog_single_item .breadcrumb {
+                                    list-style: none !important;
+                                    padding-left: 0 !important;
+                                    display: flex !important;
+                                    flex-wrap: wrap !important;
+                                    font-size: 12px !important;
+                                }
+                                .blog_single_item .breadcrumb li {
+                                    list-style: none !important;
+                                    font-size: 12px !important;
+                                }
+                                .blog_single_item .breadcrumb li a {
+                                    color: #161c52 !important;
+                                    text-decoration: none;
+                                    font-size: 12px !important;
+                                }
+                                .blog_single_item .breadcrumb li a:hover {
+                                    text-decoration: underline;
+                                }
+                                .blog_single_item .breadcrumb li.active {
+                                    color: #484a61 !important;
+                                }
+                                /* Mobile breadcrumb visibility */
+                                @media (max-width: 1024px) {
+                                    .blog_single_item nav[aria-label="breadcrumb"] {
+                                        display: block !important;
+                                        visibility: visible !important;
+                                        margin-bottom: 15px !important;
+                                        padding: 0 !important;
+                                    }
+                                    .blog_single_item .breadcrumb {
+                                        font-size: 12px !important;
+                                        gap: 5px !important;
+                                        display: flex !important;
+                                        flex-wrap: wrap !important;
+                                    }
+                                    .blog_single_item .breadcrumb li,
+                                    .blog_single_item .breadcrumb .breadcrumb-item {
+                                        display: inline-flex !important;
+                                        visibility: visible !important;
+                                    }
+                                    .blog_single_item .breadcrumb .breadcrumb-item+.breadcrumb-item {
+                                        padding-left: 0 !important;
+                                    }
+                                    .blog_single_item .breadcrumb li.active,
+                                    .blog_single_item .breadcrumb .breadcrumb-item.active {
+                                        display: inline-flex !important;
+                                        visibility: visible !important;
+                                        color: #484a61 !important;
+                                    }
+                                }
+                            </style>';
                             echo '<nav aria-label="breadcrumb" class="mb-4">';
                             docy_post_breadcrumbs();
                             echo '</nav>';
@@ -74,21 +379,62 @@ get_template_part( 'template-parts/single-post/banner', $banner_type );
                         <?php
                         while ( have_posts() ) : the_post();
                             $user_desc = get_the_author_meta( 'description' );
-                            ?>
-                            <h1 class="post-title mb-3" style="font-size: 36px; font-weight: 700; color: #111827; line-height: 1.2; margin-top: 20px;">
-                                <?php the_title(); ?>
-                            </h1>
-                            <div class="post-author-meta-box d-flex align-items-center mb-4 mt-2" style="gap: 8px; padding: 2px 0;">
-                                <div class="author-avatar" style="width: 18px; height: 18px; flex-shrink: 0; display: flex; align-items: center; justify-content: center;">
-                                    <img src="https://docs.cmgalaxy.com/wp-content/uploads/2026/06/cropped-Group-1000004539-300x300-1.png" alt="Author Avatar" style="width: 18px; height: 18px; object-fit: contain; border: none !important; display: block;">
-                                </div>
-                                <div class="author-info" style="line-height: 1.4; color: #6b7280; font-family: 'Instrument Sans', sans-serif;">
-                                    <div style="font-size: 14px; display: flex; align-items: center;">Written by &nbsp;<span style="color: #4b5563; font-weight: 500;"><?php echo get_the_author(); ?></span></div>
-                                </div>
-                            </div>
-                            <?php
                             the_post_thumbnail('full', array( 'class' => 'mb-4 featured-image' ) );
-                            the_content();
+                            
+                            if ( ! is_user_logged_in() && cmg_is_post_restricted_to_logged_in( get_the_ID() ) ) {
+                                $raw_post_content = get_post_field( 'post_content', get_the_ID() );
+                                $formatted_content = wpautop( $raw_post_content );
+                                
+                                // Split content into block elements for teaser
+                                $blocks = preg_split( '/(<\/p>|<\/h[1-6]>|<\/div>|<\/ul>|<\/ol>)/i', $formatted_content, -1, PREG_SPLIT_DELIM_CAPTURE );
+                                
+                                $teaser_html = '';
+                                $blurred_html = '';
+                                $block_count = 0;
+                                $max_teaser = 4; // ~2-3 paragraphs
+
+                                if ( is_array( $blocks ) && count( $blocks ) > 1 ) {
+                                    for ( $k = 0; $k < count( $blocks ) - 1; $k += 2 ) {
+                                        $chunk = $blocks[$k] . ( isset( $blocks[$k + 1] ) ? $blocks[$k + 1] : '' );
+                                        if ( empty( trim( strip_tags( $chunk ) ) ) ) continue;
+                                        
+                                        $block_count++;
+                                        if ( $block_count <= $max_teaser ) {
+                                            $teaser_html .= $chunk;
+                                        } else if ( $block_count <= $max_teaser + 3 ) {
+                                            $blurred_html .= $chunk;
+                                        }
+                                    }
+                                }
+
+                                if ( empty( $teaser_html ) ) {
+                                    $teaser_html = '<p>' . wp_trim_words( strip_tags( $raw_post_content ), 50 ) . '</p>';
+                                }
+                                ?>
+                                <div class="cmg-paywall-container">
+                                    <!-- Top Teaser (Visible) -->
+                                    <div class="cmg-teaser-content">
+                                        <?php echo wp_kses_post( $teaser_html ); ?>
+                                    </div>
+
+                                    <!-- Faded Ghost Text & Upgrade Modal Card -->
+                                    <div class="cmg-paywall-gate">
+                                        <?php if ( ! empty( $blurred_html ) ) : ?>
+                                        <div class="cmg-blurred-backdrop" aria-hidden="true">
+                                            <?php echo wp_kses_post( $blurred_html ); ?>
+                                        </div>
+                                        <?php endif; ?>
+
+                                        <div class="cmg-paywall-card-wrap">
+                                            <?php get_template_part('template-parts/modal-upgrade'); ?>
+                                        </div>
+                                    </div>
+                                </div>
+                                <?php
+                            } else {
+                                the_content();
+                            }
+
                             wp_link_pages( array(
                                 'before'      => '<div class="page-links"><span class="page-links-title">' . esc_html__( 'Pages:', 'docy' ) . '</span>',
                                 'after'       => '</div>',
@@ -108,14 +454,14 @@ get_template_part( 'template-parts/single-post/banner', $banner_type );
                     <?php endif; ?>
 
                     <!-- CMGalaxy Engagement Block -->
-                    <div class="cmgalaxy-engagement-block mt-5" style=" border-radius: 12px; background: #ffffff;">
+                    <div class="cmgalaxy-engagement-block mt-5 p-4" style=" border-radius: 12px; background: #ffffff;">
                         <p class="lead mb-4" style="color: #484a61 !important; font-size: 1.125rem; line-height: 1.75;">
                             Thanks for being here with us! We are beyond excited to see how you'll use CMGalaxy to drive growth for your business.
                         </p>
 
-                        <div class="related-articles-section" style="margin-top: 3.0rem; margin-bottom: 1.5rem;">
-                            <h5 class="fw-semibold mb-3" id="related-articles" style="color: #484A61 !important; font-size: 20px !important; font-weight: 600 !important;">Related Articles</h5>
-                            <ul class="list-unstyled mb-0" style="border: 1px solid #e5e7eb; border-radius: 8px;">
+                        <div class="related-articles-section" style="margin-top: 5rem; margin-bottom: 1.5rem;">
+                            <h5 class="fw-semibold mb-3" style="color: #484a61 !important; font-size: 1.125rem;">Related Articles</h5>
+                            <ul class="list-unstyled mb-0">
                                 <?php
                                 $categories = get_the_category();
                                 if ($categories) {
@@ -135,10 +481,10 @@ get_template_part( 'template-parts/single-post/banner', $banner_type );
                                         while ($related_query->have_posts()) {
                                             $related_query->the_post();
                                             ?>
-                                            <li class="">
-                                                <a href="<?php the_permalink(); ?>" class="d-flex justify-content-between align-items-center related-article-link">
+                                            <li class="mb-3">
+                                                <a href="<?php the_permalink(); ?>" class="d-flex justify-content-between align-items-center p-3" style="border: 1px solid #e5e7eb; border-radius: 8px; color: #374151; text-decoration: none; transition: all 0.2s ease;">
                                                     <span><?php the_title(); ?></span>
-                                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="related-article-icon">
+                                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="color: #3b82f6;">
                                                         <path d="M7 17L17 7M17 7H9M17 7V15" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
                                                     </svg>
                                                 </a>
@@ -154,404 +500,28 @@ get_template_part( 'template-parts/single-post/banner', $banner_type );
                             </ul>
                         </div>
 
-                        <style>
-                        .cm-feedback-wrapper {
-                            margin-top: 40px;
-                            margin-bottom: 40px;
-                            font-family: 'Instrument Sans', sans-serif;
-                        }
-                        .cm-feedback-top {
-                            display: flex;
-                            justify-content: space-between;
-                            align-items: center;
-                            padding-bottom: 20px;
-                        }
-                        .cm-feedback-title {
-                            font-size: 16px;
-                            color: #4b5563;
-                            margin: 0;
-                        }
-                        .cm-feedback-buttons {
-                            display: flex;
-                            gap: 12px;
-                        }
-                        .cm-btn-vote {
-                            display: flex;
-                            align-items: center;
-                            gap: 8px;
-                            padding: 8px 16px;
-                            border: 1px solid #d1d5db;
-                            background: #ffffff;
-                            border-radius: 999px;
-                            color: #374151;
-                            font-size: 14px;
-                            font-weight: 500;
-                            cursor: pointer;
-                            transition: all 0.2s;
-                        }
-                        .cm-btn-vote:hover {
-                            background: #f9fafb;
-                            border-color: #9ca3af;
-                        }
-                        .cm-btn-vote.active {
-                            background: #f3f4f6;
-                            border-color: #6b7280;
-                        }
-                        .cm-btn-vote svg {
-                            width: 16px;
-                            height: 16px;
-                            flex-shrink: 0;
-                        }
-                        @media (max-width: 768px) {
-                            .cm-feedback-top {
-                                flex-direction: column !important;
-                                align-items: flex-start !important;
-                                text-align: left !important;
-                                gap: 14px !important;
-                            }
-                            .cm-feedback-title {
-                                text-align: left !important;
-                                width: 100% !important;
-                            }
-                            .cm-feedback-buttons {
-                                width: 100% !important;
-                                gap: 12px !important;
-                            }
-                            .cm-btn-vote {
-                                flex: 1 !important;
-                                justify-content: center !important;
-                            }
-                        }
-                        .cm-feedback-form-area {
-                            display: none;
-                            padding-top: 24px;
-                            border-top: 1px solid #e5e7eb;
-                        }
-                        .cm-feedback-form-title {
-                            font-size: 18px;
-                            font-weight: 600;
-                            color: #111827;
-                            margin-bottom: 16px;
-                        }
-                        .cm-feedback-options {
-                            display: flex;
-                            flex-direction: column;
-                            gap: 12px;
-                            margin-bottom: 24px;
-                        }
-                        .cm-feedback-option {
-                            display: flex;
-                            align-items: center;
-                            gap: 12px;
-                            cursor: pointer;
-                            color: #4b5563;
-                            font-size: 15px;
-                        }
-                        .cm-feedback-radio {
-                            appearance: none;
-                            width: 20px;
-                            height: 20px;
-                            border: 1px solid #d1d5db;
-                            border-radius: 50%;
-                            margin: 0;
-                            cursor: pointer;
-                            position: relative;
-                        }
-                        .cm-feedback-radio:checked {
-                            border-color: #808080;
-                            border-width: 5px;
-                        }
-                        .cm-feedback-actions {
-                            display: flex;
-                            gap: 12px;
-                        }
-                        .cm-btn-cancel {
-                            padding: 10px 20px;
-                            border: 1px solid #d1d5db;
-                            background: #ffffff;
-                            border-radius: 12px;
-                            color: #374151;
-                            font-size: 14px;
-                            font-weight: 500;
-                            cursor: pointer;
-                            transition: all 0.2s;
-                        }
-                        .cm-btn-cancel:hover {
-                            background: #f9fafb;
-                        }
-                        .cm-btn-submit {
-                            padding: 10px 20px;
-                            border: none;
-                            background: #808080;
-                            border-radius: 12px;
-                            color: #ffffff;
-                            font-size: 14px;
-                            font-weight: 500;
-                            cursor: pointer;
-                            transition: all 0.2s;
-                        }
-                        .cm-btn-submit:hover {
-                            background: #6b7280;
-                        }
-                        </style>
-                        <div class="cm-feedback-wrapper">
-                            <div class="cm-feedback-top">
-                                <h4 class="cm-feedback-title">Was this page helpful?</h4>
-                                <div class="cm-feedback-buttons">
-                                    <button class="cm-btn-vote" id="cm-vote-yes">
-                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3zM7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3"></path></svg>
-                                        Like
-                                    </button>
-                                    <button class="cm-btn-vote" id="cm-vote-no">
-                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 15v4a3 3 0 0 0 3 3l4-9V2H5.72a2 2 0 0 0-2 1.7l-1.38 9a2 2 0 0 0 2 2.3zm7-13h3a2 2 0 0 1 2 2v7a2 2 0 0 1-2 2h-3"></path></svg>
-                                        Dislike
-                                    </button>
-                                </div>
+                        <div class="feedback-section">
+                            <p class="fw-semibold mb-2" style="color: #484a61 !important;">Was this helpful?</p>
+                            <div class="d-flex gap-2 mb-3">
+                                <button type="button" class="btn btn-primary">Yes</button>
+                                <button type="button" class="btn btn-outline-secondary">No</button>
                             </div>
-
-                            <div class="cm-feedback-login-prompt" id="cm-feedback-login-prompt" style="display: none; padding: 18px 16px; text-align: center; background: #f8fafc; border: 1px dashed #cbd5e1; border-radius: 10px; margin-top: 16px;">
-                                <p style="margin: 0; color: #475569; font-size: 14px; line-height: 1.5;">
-                                    Please <a href="<?php echo esc_url( wp_login_url( get_permalink() ) ); ?>" style="color: #3b82f6; font-weight: 600; text-decoration: underline;">Sign In</a> or <a href="<?php echo esc_url( wp_registration_url() ); ?>" style="color: #3b82f6; font-weight: 600; text-decoration: underline;">Sign Up</a> to leave your feedback.
-                                </p>
-                            </div>
-                            
-                            <div class="cm-feedback-form-area" id="cm-feedback-form" style="display: none;">
-                                <h3 class="cm-feedback-form-title" id="cm-feedback-title" style="margin-top: 0px;">How can we improve our product?</h3>
-                                
-                                <div class="cm-feedback-options" id="cm-options-yes" style="display: none;">
-                                    <label class="cm-feedback-option">
-                                        <input type="radio" name="cm_feedback_reason_yes" class="cm-feedback-radio" value="The guide worked as expected">
-                                        The guide worked as expected
-                                    </label>
-                                    <label class="cm-feedback-option">
-                                        <input type="radio" name="cm_feedback_reason_yes" class="cm-feedback-radio" value="It was easy to find the information I needed">
-                                        It was easy to find the information I needed
-                                    </label>
-                                    <label class="cm-feedback-option">
-                                        <input type="radio" name="cm_feedback_reason_yes" class="cm-feedback-radio" value="It was easy to understand the product and features">
-                                        It was easy to understand the product and features
-                                    </label>
-                                    <label class="cm-feedback-option">
-                                        <input type="radio" name="cm_feedback_reason_yes" class="cm-feedback-radio" value="The documentation is up to date">
-                                        The documentation is up to date
-                                    </label>
-                                    <label class="cm-feedback-option">
-                                        <input type="radio" name="cm_feedback_reason_yes" class="cm-feedback-radio" value="Something else">
-                                        Something else
-                                    </label>
-                                </div>
-
-                                <div class="cm-feedback-options" id="cm-options-no" style="display: none;">
-                                    <label class="cm-feedback-option">
-                                        <input type="radio" name="cm_feedback_reason_no" class="cm-feedback-radio" value="Help me get started faster">
-                                        Help me get started faster
-                                    </label>
-                                    <label class="cm-feedback-option">
-                                        <input type="radio" name="cm_feedback_reason_no" class="cm-feedback-radio" value="Make it easier to find what I'm looking for">
-                                        Make it easier to find what I'm looking for
-                                    </label>
-                                    <label class="cm-feedback-option">
-                                        <input type="radio" name="cm_feedback_reason_no" class="cm-feedback-radio" value="Make it easy to understand the product and features">
-                                        Make it easy to understand the product and features
-                                    </label>
-                                    <label class="cm-feedback-option">
-                                        <input type="radio" name="cm_feedback_reason_no" class="cm-feedback-radio" value="Update this documentation">
-                                        Update this documentation
-                                    </label>
-                                    <label class="cm-feedback-option">
-                                        <input type="radio" name="cm_feedback_reason_no" class="cm-feedback-radio" value="Something else">
-                                        Something else
-                                    </label>
-                                </div>
-
-                                <div class="cm-feedback-custom-text-wrap" id="cm-custom-text-wrap" style="display: none; margin-top: 14px; margin-bottom: 14px;">
-                                    <textarea id="cm-feedback-custom-text" placeholder="Please specify your feedback..." style="width: 100%; min-height: 80px; padding: 10px 14px; border: 1px solid #d1d5db; border-radius: 8px; font-size: 14px; font-family: inherit; box-sizing: border-box; resize: vertical; outline: none; transition: border-color 0.2s;" onfocus="this.style.borderColor='#3B82F6'" onblur="this.style.borderColor='#d1d5db'"></textarea>
-                                </div>
-
-                                <div class="cm-feedback-actions">
-                                    <button type="button" class="cm-btn-cancel" id="cm-feedback-cancel">Cancel</button>
-                                    <button type="button" class="cm-btn-submit" id="cm-feedback-submit">Submit feedback</button>
-                                </div>
-                            </div>
-
-                            <div class="cm-feedback-success-area" id="cm-feedback-success" style="display: none; padding: 20px 16px; text-align: center; background: #f0fdf4; border: 1px solid #bbf7d0; border-radius: 12px; margin-top: 16px;">
-                                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="margin-bottom: 8px; display: inline-block;">
-                                    <circle cx="12" cy="12" r="10" fill="#22C55E"/>
-                                    <path d="M8 12L11 15L16 9" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                                </svg>
-                                <div id="cm-feedback-success-text" style="color: #15803d; font-weight: 600; font-size: 15px; line-height: 1.4;">Thank you for your feedback!</div>
-                            </div>
+                            <p class="small text-muted mb-0">
+                                This form is used for documentation feedback only. Learn how to get help with <a href="#" style="color: #3b82f6;">CMGalaxy</a>.
+                            </p>
                         </div>
-
-                        <script>
-                        document.addEventListener('DOMContentLoaded', function() {
-                            const isLoggedIn = <?php echo is_user_logged_in() ? 'true' : 'false'; ?>;
-                            const btnYes = document.getElementById('cm-vote-yes');
-                            const btnNo = document.getElementById('cm-vote-no');
-                            const formArea = document.getElementById('cm-feedback-form');
-                            const loginPrompt = document.getElementById('cm-feedback-login-prompt');
-                            const btnCancel = document.getElementById('cm-feedback-cancel');
-                            const btnSubmit = document.getElementById('cm-feedback-submit');
-                            const title = document.getElementById('cm-feedback-title');
-                            const optionsYes = document.getElementById('cm-options-yes');
-                            const optionsNo = document.getElementById('cm-options-no');
-                            const customWrap = document.getElementById('cm-custom-text-wrap');
-                            const customTextarea = document.getElementById('cm-feedback-custom-text');
-                            const successArea = document.getElementById('cm-feedback-success');
-                            const successText = document.getElementById('cm-feedback-success-text');
-                            
-                            function resetCustomText() {
-                                if (customWrap) customWrap.style.display = 'none';
-                                if (customTextarea) customTextarea.value = '';
-                            }
-
-                            function hideSuccess() {
-                                if (successArea) successArea.style.display = 'none';
-                            }
-                            
-                            function showForm(vote) {
-                                hideSuccess();
-
-                                if (vote === 'like' || vote === 'yes') {
-                                    btnYes.classList.add('active');
-                                    btnNo.classList.remove('active');
-                                } else {
-                                    btnNo.classList.add('active');
-                                    btnYes.classList.remove('active');
-                                }
-
-                                if (!isLoggedIn) {
-                                    if (formArea) formArea.style.display = 'none';
-                                    if (loginPrompt) loginPrompt.style.display = 'block';
-                                    return;
-                                }
-
-                                if (loginPrompt) loginPrompt.style.display = 'none';
-                                if (formArea) formArea.style.display = 'block';
-                                
-                                document.querySelectorAll('.cm-feedback-radio').forEach(r => r.checked = false);
-                                resetCustomText();
-                                
-                                if (vote === 'like' || vote === 'yes') {
-                                    title.innerText = 'Great! What worked best for you?';
-                                    optionsYes.style.display = 'flex';
-                                    optionsNo.style.display = 'none';
-                                } else {
-                                    title.innerText = 'How can we improve our product?';
-                                    optionsNo.style.display = 'flex';
-                                    optionsYes.style.display = 'none';
-                                }
-                            }
-
-                            document.querySelectorAll('.cm-feedback-radio').forEach(radio => {
-                                radio.addEventListener('change', function() {
-                                    if (this.checked && this.value === 'Something else') {
-                                        if (customWrap) customWrap.style.display = 'block';
-                                        if (customTextarea) customTextarea.focus();
-                                    } else {
-                                        resetCustomText();
-                                    }
-                                });
-                            });
-                            
-                            if (btnYes) btnYes.addEventListener('click', () => showForm('like'));
-                            if (btnNo) btnNo.addEventListener('click', () => showForm('dislike'));
-                            
-                            if (btnCancel) {
-                                btnCancel.addEventListener('click', () => {
-                                    if (formArea) formArea.style.display = 'none';
-                                    if (loginPrompt) loginPrompt.style.display = 'none';
-                                    btnYes.classList.remove('active');
-                                    btnNo.classList.remove('active');
-                                    document.querySelectorAll('.cm-feedback-radio').forEach(r => r.checked = false);
-                                    resetCustomText();
-                                    hideSuccess();
-                                });
-                            }
-                            
-                            if (btnSubmit) {
-                                btnSubmit.addEventListener('click', () => {
-                                    const selected = document.querySelector('.cm-feedback-radio:checked');
-                                    if (!selected) {
-                                        alert('Please select an option first.');
-                                        return;
-                                    }
-                                    
-                                    const vote = btnYes.classList.contains('active') ? 'like' : 'dislike';
-                                    let reason = selected.value;
-                                    if (reason === 'Something else' && customTextarea) {
-                                        const customVal = customTextarea.value.trim();
-                                        if (customVal) {
-                                            reason = 'Something else: ' + customVal;
-                                        }
-                                    }
-                                    const postId = <?php echo get_the_ID(); ?>;
-                                    const postTitle = <?php echo json_encode(get_the_title()); ?>;
-                                    const userId = <?php echo get_current_user_id(); ?>;
-                                    const userName = <?php $cu = wp_get_current_user(); echo json_encode( $cu->exists() ? ( $cu->display_name ? $cu->display_name : $cu->user_login ) : '' ); ?>;
-                                    const userEmail = <?php $cu = wp_get_current_user(); echo json_encode( $cu->exists() ? $cu->user_email : '' ); ?>;
-                                    
-                                    const formData = new FormData();
-                                    formData.append('action', 'cm_submit_feedback');
-                                    formData.append('post_id', postId);
-                                    formData.append('post_title', postTitle);
-                                    formData.append('user_id', userId);
-                                    formData.append('user_name', userName);
-                                    formData.append('user_email', userEmail);
-                                    formData.append('vote', vote);
-                                    formData.append('reason', reason);
-                                    
-                                    // Disable submit button while saving
-                                    const originalText = btnSubmit.innerText;
-                                    btnSubmit.innerText = 'Saving...';
-                                    btnSubmit.disabled = true;
-
-                                    fetch('<?php echo admin_url("admin-ajax.php"); ?>', {
-                                        method: 'POST',
-                                        body: formData
-                                    })
-                                    .then(response => response.json())
-                                    .then(data => {
-                                        if(data.success) {
-                                            const thankMsg = (vote === 'dislike' || vote === 'no')
-                                                ? 'Thank you for your feedback! We will get back to you.'
-                                                : 'Thank you for your feedback!';
-                                                
-                                            if (formArea) formArea.style.display = 'none';
-                                            if (successText) successText.innerText = thankMsg;
-                                            if (successArea) successArea.style.display = 'block';
-                                        } else {
-                                            alert(data.data || 'Something went wrong. Please try again.');
-                                        }
-                                    })
-                                    .catch(error => {
-                                        alert('Error saving feedback.');
-                                        console.error(error);
-                                    })
-                                    .finally(() => {
-                                        btnSubmit.innerText = originalText;
-                                        btnSubmit.disabled = false;
-                                        btnYes.classList.remove('active');
-                                        btnNo.classList.remove('active');
-                                        document.querySelectorAll('.cm-feedback-radio').forEach(r => r.checked = false);
-                                        resetCustomText();
-                                    });
-                                });
-                            }
-                        });
-                        </script>
 
                         <!-- Post Navigation Cards -->
                         <?php
-                        $prev_post = get_next_post();
-                        $next_post = get_previous_post();
+                        $prev_post = get_previous_post();
+                        $next_post = get_next_post();
                         if ( $prev_post || $next_post ) : ?>
                             <div class="post-navigation-cards mt-4 d-flex gap-3">
                                 <?php if ( $prev_post ) : ?>
-                                    <a href="<?php echo esc_url( get_permalink( $prev_post ) ); ?>" class="nav-card prev-card">
+                                    <a href="<?php echo esc_url( get_permalink( $prev_post ) ); ?>" class="nav-card prev-card p-4" style="border: 1px solid #e5e7eb; border-radius: 16px; text-decoration: none; background: #ffffff; transition: all 0.2s ease; flex: 1 1 45%; max-width: 48%;">
                                         <div class="nav-card-content">
-                                            <h5 class="mb-3"><?php echo esc_html( get_the_title( $prev_post ) ); ?></h5>
-                                            <div class="nav-direction d-flex align-items-center">
+                                            <h5 class="mb-3" style="color: #1f2937; font-weight: 600; font-size: 1rem;"><?php echo esc_html( get_the_title( $prev_post ) ); ?></h5>
+                                            <div class="nav-direction d-flex align-items-center" style="color: #3b82f6; font-size: 0.875rem; font-weight: 500;">
                                                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="me-2">
                                                     <path d="M15 6L9 12L15 18" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
                                                 </svg>
@@ -562,10 +532,10 @@ get_template_part( 'template-parts/single-post/banner', $banner_type );
                                 <?php endif; ?>
 
                                 <?php if ( $next_post ) : ?>
-                                    <a href="<?php echo esc_url( get_permalink( $next_post ) ); ?>" class="nav-card next-card">
+                                    <a href="<?php echo esc_url( get_permalink( $next_post ) ); ?>" class="nav-card next-card p-4" style="border: 1px solid #e5e7eb; border-radius: 16px; text-decoration: none; background: #ffffff; transition: all 0.2s ease; flex: 1 1 45%; max-width: 48%; margin-left: auto;">
                                         <div class="nav-card-content text-end">
-                                            <h5 class="mb-3"><?php echo esc_html( get_the_title( $next_post ) ); ?></h5>
-                                            <div class="nav-direction d-flex align-items-center justify-content-end">
+                                            <h5 class="mb-3" style="color: #1f2937; font-weight: 600; font-size: 1rem;"><?php echo esc_html( get_the_title( $next_post ) ); ?></h5>
+                                            <div class="nav-direction d-flex align-items-center justify-content-end" style="color: #3b82f6; font-size: 0.875rem; font-weight: 500;">
                                                 Next
                                                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="ms-2">
                                                     <path d="M9 6L15 12L9 18" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
@@ -577,7 +547,40 @@ get_template_part( 'template-parts/single-post/banner', $banner_type );
                             </div>
                         <?php endif; ?>
 
+                        <style>
+                            .cmgalaxy-engagement-block a:hover {
+                                background-color: rgba(59, 130, 246, 0.05) !important;
+                                border-color: #3b82f6 !important;
+                                transform: translateY(-1px);
+                            }
 
+                            .feedback-section .btn {
+                                min-width: 88px;
+                                padding: 0.45rem 0.9rem;
+                                border-radius: 999px;
+                            }
+
+                            .nav-card:hover {
+                                box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1) !important;
+                                transform: translateY(-2px) !important;
+                                border-color: #cbd5e1 !important;
+                            }
+
+                            .nav-card h5 {
+                                line-height: 1.4;
+                                margin-bottom: 1rem;
+                            }
+
+                            .nav-card .nav-direction {
+                                margin-top: auto;
+                            }
+
+                            @media (max-width: 768px) {
+                                .post-navigation-cards {
+                                    flex-direction: column !important;
+                                }
+                            }
+                        </style>
                     </div>
                 </div>
             </div>
@@ -585,133 +588,145 @@ get_template_part( 'template-parts/single-post/banner', $banner_type );
             <?php
             // Render TOC on the right side after the content column
             if ( docy_toc('post') == '1' ) : ?>
-                <div class="col-lg-2 doc-sidebar pe-lg-0 ps-lg-2 d-none d-lg-block">
+                <div class="col-lg-2 doc-sidebar pe-lg-0 ps-lg-2" style="margin-top:20px;">
                     <style>
-                    @media (min-width: 1025px) {
-                        .single-post .doc-sidebar .left_sidebarlist {
-                            margin-left: 0 !important;
-                            padding-left: 0 !important;
-                            background: transparent !important;
-                            border: 0 !important;
-                            border-radius: 0 !important;
-                            box-shadow: none !important;
+                        /* Make right sidebar (TOC) sticky like left sidebar */
+                        .doc-sidebar {
+                            position: sticky;
+                            top: 130px;
+                            align-self: flex-start;
+                            max-height: 100%;
+                            overflow-y: auto;
+                            margin-top: 50px; /* Align with left sidebar */
+                            padding: 0 20px 0 25px !important; /* Added left padding for indicator */
                         }
-
-                        .single-post .doc-sidebar .left_sidebarlist::before,
-                        .single-post .doc-sidebar .left_sidebarlist .nav-sidebar::before,
-                        .single-post .doc-sidebar #docy-toc > ul::before {
-                            content: none !important;
+                        
+                        /* Keep TOC title visible on scroll */
+                        body.scrolled .doc-sidebar .toc-title,
+                        body.scrolled .left_sidebarlist .toc-title,
+                        body.scrolled .toc-title,
+                        body.scrolled .table_content {
+                            display: block !important;
+                            height: auto !important;
+                            opacity: 1 !important;
+                        }
+                        
+                        /* Adjust sidebar margin and padding on scroll */
+                        body.scrolled .doc-sidebar {
+                            margin-top: 0px !important;
+                            top: 140px !important; /* Move below the 119px sticky header */
+                        }
+                        
+                        body.scrolled .left_sidebarlist {
+                            padding-top: 0px !important;
+                        }
+                        
+                        .doc-sidebar .left_sidebarlist {
+                            background: #ffffff;
+                            border-radius: 8px;
+                            width: 100%;
+                        }
+                        
+                        /* TOC Active Section Color */
+                        #docy-toc .nav-link.active,
+                        #docy-toc li.active > a,
+                        #docy-toc li.active,
+                        #docy-toc li:has(li.active) > a,
+                        #docy-toc li:has(.nav-link.active) > a {
+                            color: #000000 !important;
+                            font-weight: 500 !important;
+                        }
+                        
+                        /* Smooth scrollbar for right sidebar */
+                        .doc-sidebar::-webkit-scrollbar {
+                            width: 6px;
+                        }
+                        
+                        .doc-sidebar::-webkit-scrollbar-track {
+                            background: #f1f1f1;
+                            border-radius: 3px;
+                        }
+                        
+                        .doc-sidebar::-webkit-scrollbar-thumb {
+                            background: #888;
+                            border-radius: 3px;
+                        }
+                        
+                        .doc-sidebar::-webkit-scrollbar-thumb:hover {
+                            background: #555;
+                        }
+                        
+                        /* TOC Active Item - Blue Color with High Specificity */
+                        .doc-sidebar #docy-toc .nav-link.active,
+                        .doc-sidebar #docy-toc li.active > a,
+                        .doc-sidebar #docy-toc a.active,
+                        .doc-sidebar .doc-nav .nav-link.active,
+                        .doc-sidebar .doc-nav li.active > a,
+                        .doc-sidebar .doc-nav a.active,
+                        #docy-toc .nav-link.active,
+                        #docy-toc li.active > a,
+                        #docy-toc a.active,
+                        .nav-sidebar.doc-nav .nav-link.active,
+                        .nav-sidebar.doc-nav li.active > a,
+                        .nav-sidebar.doc-nav a.active {
+                            color: #000000 !important;
+                            text-decoration: none !important;
+                            font-weight: normal !important;
+                        }
+                        
+                        /* Remove underline and bold on hover for all TOC links */
+                        .doc-sidebar #docy-toc a:hover,
+                        .doc-sidebar .doc-nav a:hover,
+                        #docy-toc a:hover,
+                        .nav-sidebar.doc-nav a:hover {
+                            text-decoration: none !important;
+                            font-weight: normal !important;
+                            color: #000000 !important;
+                        }
+                        
+                        /* Hide nested sub-items in TOC - show only main steps */
+                        #docy-toc .nav .nav,
+                        .doc-nav .nav .nav,
+                        .nav-sidebar.doc-nav .nav .nav {
                             display: none !important;
                         }
-
-                        .single-post .doc-sidebar #docy-toc::before {
-                            content: "" !important;
-                            display: block !important;
-                            position: absolute !important;
-                            top: 0 !important;
-                            bottom: 0 !important;
-                            left: 0 !important;
-                            width: 2px !important;
-                            background: #E5E7EB !important;
-                            z-index: 1 !important;
+                        
+                        /* Add padding to TOC container for consistent spacing */
+                        .left_sidebarlist {
+                            padding: 0 0 0 10px !important; /* Space for the blue indicator */
                         }
-
-                        .single-post .doc-sidebar .toc-title {
-                            padding-left: 20px !important;
-                            padding-bottom: 0 !important;
-                            border-bottom: 0 !important;
+                        
+                        /* Ensure indicator is correctly sized in SCSS context as well */
+                        .left_sidebarlist .nav-link.active::before {
+                            top: 10px !important;
+                            bottom: 10px !important;
                         }
-
-                        .single-post .doc-sidebar #docy-toc {
+                        
+                        .left_sidebarlist #docy-toc,
+                        .left_sidebarlist .doc-nav {
+                            /* padding-right: 0 !important; */
                             position: relative !important;
-                            padding-left: 0 !important;
-                            background: transparent !important;
-                            border: 0 !important;
-                            border-left: 0 !important;
-                            border-radius: 0 !important;
-                            box-shadow: none !important;
                         }
-
-                        .single-post .doc-sidebar #docy-toc ul {
-                            border-left: none !important;
-                            padding-left: 0 !important;
-                            margin-left: 0 !important;
-                            list-style: none !important;
+                        
+                        /* Disable sticky on mobile/tablet */
+                        @media (max-width: 1024px) {
+                            .doc-sidebar {
+                                position: static !important;
+                                max-height: none !important;
+                                overflow-y: visible !important;
+                                max-width: 100% !important;
+                                width: 100% !important;
+                                flex: 0 0 100% !important;
+                                display: none !important; /* Hide TOC on mobile */
+                            }
                         }
-
-                        .single-post .doc-sidebar #docy-toc .nav-link {
-                            position: relative !important;
-                            padding: 6px 0 6px 20px !important;
-                            background: transparent !important;
-                            border: 0 !important;
-                            box-shadow: none !important;
-                            transition: color 0.2s ease !important;
-                            font-weight: 400 !important;
-                            color: #4B5563 !important;
-                        }
-
-                        .single-post .doc-sidebar #docy-toc .toc-h1 > .nav-link,
-                        .single-post .doc-sidebar #docy-toc .toc-h2 > .nav-link {
-                            padding-left: 20px !important;
-                            font-weight: 400 !important;
-                        }
-
-                        .single-post .doc-sidebar #docy-toc .toc-h3 > .nav-link {
-                            padding-left: 32px !important;
-                            font-weight: 400 !important;
-                        }
-
-                        .single-post .doc-sidebar #docy-toc .nav-item.active > .nav-link,
-                        .single-post .doc-sidebar #docy-toc .nav-link.active,
-                        .single-post .doc-sidebar #docy-toc a.active,
-                        .single-post .doc-sidebar #docy-toc li.active > a,
-                        .single-post .doc-sidebar #docy-toc .toc-h1.active > .nav-link,
-                        .single-post .doc-sidebar #docy-toc .toc-h2.active > .nav-link,
-                        .single-post .doc-sidebar #docy-toc .toc-h3.active > .nav-link {
-                            color: #3B82F6 !important;
-                            font-weight: 500 !important;
-                            border-left: none !important;
-                            margin-left: 0 !important;
-                        }
-
-                        .single-post .doc-sidebar #docy-toc .nav-item.active > .nav-link::before,
-                        .single-post .doc-sidebar #docy-toc .nav-link.active::before,
-                        .single-post .doc-sidebar #docy-toc a.active::before,
-                        .single-post .doc-sidebar #docy-toc li.active > a::before,
-                        .single-post .doc-sidebar #docy-toc li.active > .nav-link::before,
-                        .single-post .doc-sidebar #docy-toc .toc-h1.active > .nav-link::before,
-                        .single-post .doc-sidebar #docy-toc .toc-h2.active > .nav-link::before,
-                        .single-post .doc-sidebar #docy-toc .toc-h3.active > .nav-link::before {
-                            content: "" !important;
-                            display: block !important;
-                            position: absolute !important;
-                            left: 0 !important;
-                            top: 4px !important;
-                            bottom: 4px !important;
-                            width: 2px !important;
-                            background: #3B82F6 !important;
-                            border-radius: 2px !important;
-                            z-index: 10 !important;
-                        }
-
-                        .blog_single_item h1, .blog_single_item h2, .blog_single_item h3, .blog_single_item h4, .blog_single_item h5, .blog_single_item h6,
-                        .main-post h1, .main-post h2, .main-post h3, .main-post h4, .main-post h5, .main-post h6,
-                        .editor-content h1, .editor-content h2, .editor-content h3, .editor-content h4,
-                        article h1, article h2, article h3,
-                        [id^="toc-section-"] {
-                            scroll-margin-top: 140px !important;
-                        }
-                    }
                     </style>
-                    
                     <aside class="left_sidebarlist">
                         <h6 class="toc-title mb-3"><?php esc_html_e('On this Page', 'docy'); ?></h6>
                         <nav class="list-unstyled nav-sidebar doc-nav" id="docy-toc"> </nav>
-                        <!-- <div class="toc-sidebar-image mt-4">
-                            <a href="https://cmgalaxy.com/book-a-demo" target="_blank" rel="noopener noreferrer">
-                                <img src="<?php echo esc_url( get_template_directory_uri() . '/assets/img/sidebarimg.png' ); ?>" alt="Book a Demo - CMGalaxy" class="img-fluid rounded-3" style="width: 100%;">
-                            </a>
-                        </div> -->
+                        <div class="toc-sidebar-image mt-4">
+                            <img src="<?php echo esc_url( get_template_directory_uri() . '/assets/img/sidebarimg.png' ); ?>" alt="Sidebar CTA" class="img-fluid rounded-3" style="width: 100%;">
+                        </div>
                         <?php /* Sidebar CTA Card - commented out
                         <div class="sidebar-cta-card" style="display: flex; align-items: center; gap: 16px; margin-top: 20px; padding: 1px 2px; border: 2px solid #3B82F6; border-radius: 18px; background: #f4f8ff; width: 100%; box-sizing: border-box;">
                             <div class="sidebar-cta-icon" aria-hidden="true">
@@ -732,164 +747,57 @@ get_template_part( 'template-parts/single-post/banner', $banner_type );
                         </div>
                         */ ?>
                     </aside>
-                    <script>
-                    document.addEventListener('DOMContentLoaded', function() {
-                        const toc = document.getElementById('docy-toc');
-                        if (!toc) return;
-                        
-                        // Observe class changes on nav links to detect when they become active
-                        const observer = new MutationObserver(function(mutations) {
-                            mutations.forEach(function(mutation) {
-                                if (mutation.attributeName === 'class' && mutation.target.classList.contains('active')) {
-                                    const activeEl = mutation.target;
-                                    const tocRect = toc.getBoundingClientRect();
-                                    const elRect = activeEl.getBoundingClientRect();
-                                    
-                                    // If active element is out of the scrollable area, scroll ONLY the TOC container
-                                    if (elRect.top < tocRect.top || elRect.bottom > tocRect.bottom) {
-                                        toc.scrollTop = activeEl.offsetTop - (toc.clientHeight / 2);
-                                    }
-                                }
-                            });
-                        });
-                        
-                        // Wait for the TOC script to populate the links, then observe them
-                        setTimeout(function() {
-                            const links = toc.querySelectorAll('.nav-link, .nav-item');
-                            links.forEach(link => observer.observe(link, { attributes: true }));
-                        }, 1000);
-                    });
-                    </script>
                 </div>
 
-                <div class="sc-jtXEFf jrBzsJ" id="cm-bottom-action-bar">
+                <div class="sc-jtXEFf jrBzsJ">
                     <div class="sc-eldieg eYVFtH">
                         <div class="overlay" id="toc-overlay"></div>
-                        <button class="sc-kiIyQV fqmceZ table_content" aria-expanded="false" aria-controls="docy-toc" style="gap: 8px !important; display: inline-flex !important; align-items: center !important; justify-content: center !important;">
-                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" style="margin-right: 8px !important; flex-shrink: 0; display: inline-block !important; vertical-align: middle !important;">
-                                <path d="M4 6h16M4 12h16M4 18h16" stroke="#ffffff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"></path>
-                            </svg>
-                            <span><?php esc_html_e('On this Page', 'docy'); ?></span>
+                        <button class="sc-kiIyQV fqmceZ table_content" aria-expanded="false" aria-controls="docy-toc">
+                            <?php esc_html_e('On this Page', 'docy'); ?>
                         </button>
                         <aside class="bottom_table_content" id="docy-tocs" aria-hidden="true">
-                            <button class="close-toc" aria-label="Close Table of Contents">
-                                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                    <line x1="18" y1="6" x2="6" y2="18"></line>
-                                    <line x1="6" y1="6" x2="18" y2="18"></line>
+                            <button class="close-toc">
+                                <svg aria-hidden="true" tabindex="-1" disabled="" class="___SIcon_pchrv_gg_" data-ui-name="Close" width="24" height="24" viewBox="0 0 24 24" data-name="Close" data-group="l" title="Close">
+                                    <path d="M20.707 4.707a1 1 0 0 0-1.414-1.414L12 10.586 4.707 3.293a1 1 0 0 0-1.414 1.414L10.586 12l-7.293 7.293a1 1 0 1 0 1.414 1.414L12 13.414l7.293 7.293a1 1 0 0 0 1.414-1.414L13.414 12l7.293-7.293Z" shape-rendering="geometricPrecision"></path>
                                 </svg>
                             </button>
                             <h6 class="toc-title mb-3"><?php esc_html_e('On this Page', 'docy'); ?></h6>
                             <nav class="nav-sidebar doc-nav" id="docy-tocs-mobile"></nav>
                         </aside>
-                        <button class="sc-kiIyQV fqmceZ table_share_btn" style="gap: 8px !important; display: inline-flex !important; align-items: center !important; justify-content: center !important;">
-                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-right: 8px !important; flex-shrink: 0; display: inline-block !important; vertical-align: middle !important;">
-                                <path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"></path>
-                                <polyline points="16 6 12 2 8 6"></polyline>
-                                <line x1="12" y1="2" x2="12" y2="15"></line>
+                        <button class="sc-kiIyQV fqmceZ table_share_btn">
+                            <svg aria-hidden="true" tabindex="-1" disabled="" class="___SIcon_pchrv_gg_ sc-cLpAjG cfZGuc" data-ui-name="Share" width="16" height="16" viewBox="0 0 16 16" data-name="Share" data-group="m">
+                                <path d="M11.707 1.293a1 1 0 1 0-1.414 1.414L12.586 5H7a6 6 0 0 0-6 6v3a1 1 0 1 0 2 0v-3a4 4 0 0 1 4-4h5.586l-2.293 2.293a1 1 0 1 0 1.414 1.414l4-4a1 1 0 0 0 0-1.414l-4-4Z" shape-rendering="geometricPrecision"></path>
                             </svg>
-                            <span><?php esc_html_e('Share', 'docy'); ?></span>
+                            <?php esc_html_e('Share', 'docy'); ?>
                         </button>
                         <div class="docy-modal-content" id="share-modal" aria-hidden="true">
-                            <button class="close docy-close" aria-label="Close Share Modal" style="position: absolute !important; top: 16px !important; right: 16px !important; background: transparent !important; border: none !important; cursor: pointer !important; padding: 6px !important; z-index: 10 !important; display: flex !important; align-items: center !important; justify-content: center !important;">
-                                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#374151" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-                                    <line x1="18" y1="6" x2="6" y2="18"></line>
-                                    <line x1="6" y1="6" x2="18" y2="18"></line>
+                            <button class="close docy-close" aria-label="Close Share Modal">
+                                <svg aria-hidden="true" tabindex="-1" disabled="" class="___SIcon_pchrv_gg_" data-ui-name="Close" width="24" height="24" viewBox="0 0 24 24" data-name="Close" data-group="l" title="Close">
+                                    <path d="M20.707 4.707a1 1 0 0 0-1.414-1.414L12 10.586 4.707 3.293a1 1 0 0 0-1.414 1.414L10.586 12l-7.293 7.293a1 1 0 1 0 1.414 1.414L12 13.414l7.293 7.293a1 1 0 0 0 1.414-1.414L13.414 12l7.293-7.293Z" shape-rendering="geometricPrecision"></path>
                                 </svg>
                             </button>
-                            <div class="docy-share-wrap" style="padding: 12px 0 6px 0;">
-                                <p class="share-modal-title" style="text-align: center; font-size: 16px; font-weight: 700; color: #111827; margin: 0 0 16px 0 !important; line-height: 1.2;">Share</p>
-                                
-                                <div class="social-links" style="display: flex; align-items: center; justify-content: center; gap: 14px; flex-wrap: nowrap;">
-                                    <!-- Copy Link Button -->
-                                    <button type="button" class="share-social-icon cm-copy-action-btn" data-url="<?php the_permalink(); ?>" title="Copy link" style="width: 46px; height: 46px; border-radius: 50%; background: #f1f5f9; border: 1px solid #e2e8f0; display: inline-flex; align-items: center; justify-content: center; color: #3b82f6; cursor: pointer; padding: 0; flex-shrink: 0;">
-                                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#3b82f6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                            <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
-                                            <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
-                                        </svg>
-                                    </button>
-                                    <!-- WhatsApp -->
-                                    <a href="https://api.whatsapp.com/send?text=<?php echo urlencode(get_the_title() . ' ' . get_permalink()); ?>" target="_blank" class="share-social-icon" title="WhatsApp" style="width: 46px; height: 46px; border-radius: 50%; background: #25D366; display: inline-flex; align-items: center; justify-content: center; color: #ffffff; text-decoration: none; flex-shrink: 0;">
-                                        <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
-                                            <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/>
-                                        </svg>
-                                    </a>
-                                    <!-- Facebook -->
-                                    <a href="https://www.facebook.com/sharer/sharer.php?u=<?php the_permalink(); ?>" target="_blank" class="share-social-icon" title="Facebook" style="width: 46px; height: 46px; border-radius: 50%; background: #1877F2; display: inline-flex; align-items: center; justify-content: center; color: #ffffff; text-decoration: none; flex-shrink: 0;">
-                                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-                                            <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
-                                        </svg>
-                                    </a>
-                                    <!-- LinkedIn -->
-                                    <a href="https://www.linkedin.com/sharing/share-offsite/?url=<?php the_permalink(); ?>" target="_blank" class="share-social-icon" title="LinkedIn" style="width: 46px; height: 46px; border-radius: 50%; background: #0A66C2; display: inline-flex; align-items: center; justify-content: center; color: #ffffff; text-decoration: none; flex-shrink: 0;">
-                                        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
-                                            <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
-                                        </svg>
-                                    </a>
-                                    <!-- Twitter/X -->
-                                    <a href="https://twitter.com/intent/tweet?url=<?php the_permalink(); ?>&text=<?php echo urlencode(get_the_title()); ?>" target="_blank" class="share-social-icon" title="X" style="width: 46px; height: 46px; border-radius: 50%; background: #000000; display: inline-flex; align-items: center; justify-content: center; color: #ffffff; text-decoration: none; flex-shrink: 0;">
-                                        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
-                                            <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
-                                        </svg>
-                                    </a>
+                            <div class="docy-share-wrap">
+                                <div class="social-links">
+                                    <a href="mailto:?subject=<?php the_title(); ?>&amp;body= <?php esc_html_e( 'Check out this doc', 'docy' ); the_permalink(); ?>" target="_blank"><i class="icon_mail"></i></a>
+                                    <a href="https://www.facebook.com/share.php?u=<?php the_permalink(); ?>"><i class="social_facebook_circle"></i></a>
+                                    <a href="https://www.linkedin.com/shareArticle?mini=true&url=<?php the_permalink(); ?>"><i class="social_linkedin_square"></i></a>
+                                    <a href="https://twitter.com/share?url=<?php the_permalink(); ?>&amp;text=<?php the_title(); ?> &amp;hashtags=<?php echo esc_url(site_url()); ?>"><i class="social_twitter"></i></a>
                                 </div>
-                                <div class="cm-copy-toast" style="display: none; color: #10b981; font-size: 13px; text-align: center; margin-top: 16px; font-weight: 500;">Link copied to clipboard!</div>
+                                <p>Copy link</p>
+                                <div class="docy-copy-url-wrap">
+                                    <div class="share-this-docs">
+                                        <input readonly type="text" value="<?php the_permalink(); ?>" class="word-wrap">
+                                        <img src="<?php echo get_template_directory_uri(); ?>/assets/img/clone.svg" alt="<?php esc_attr_e( 'Docy theme', 'docy' ); ?>">
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-                <script>
-                (function() {
-                    function initFooterHideBar() {
-                        var bar = document.getElementById('cm-bottom-action-bar') || document.querySelector('.jrBzsJ');
-                        if (!bar) return;
-
-                        var footers = document.querySelectorAll('footer, .footer_area, .doc_footer_top, .footer-content, .footer-copyright');
-                        if (!footers.length) return;
-
-                        if ('IntersectionObserver' in window) {
-                            var observer = new IntersectionObserver(function(entries) {
-                                var isAnyVisible = entries.some(function(e) { return e.isIntersecting; });
-                                if (isAnyVisible) {
-                                    bar.classList.add('hidden-by-footer');
-                                } else {
-                                    bar.classList.remove('hidden-by-footer');
-                                }
-                            }, {
-                                rootMargin: '0px 0px 30px 0px',
-                                threshold: 0
-                            });
-                            footers.forEach(function(f) { observer.observe(f); });
-                        }
-
-                        function onScrollCheck() {
-                            var footer = document.querySelector('footer, .footer_area, .doc_footer_top, .footer-content, .footer-copyright');
-                            if (!footer) return;
-                            var rect = footer.getBoundingClientRect();
-                            var vh = window.innerHeight || document.documentElement.clientHeight;
-                            if (rect.top <= vh + 15) {
-                                bar.classList.add('hidden-by-footer');
-                            } else {
-                                bar.classList.remove('hidden-by-footer');
-                            }
-                        }
-                        window.addEventListener('scroll', onScrollCheck, { passive: true });
-                        window.addEventListener('touchmove', onScrollCheck, { passive: true });
-                        window.addEventListener('resize', onScrollCheck, { passive: true });
-                        window.addEventListener('orientationchange', onScrollCheck, { passive: true });
-                        onScrollCheck();
-                    }
-                    if (document.readyState === 'loading') {
-                        document.addEventListener('DOMContentLoaded', initFooterHideBar);
-                    } else {
-                        initFooterHideBar();
-                    }
-                })();
-                </script>
             <?php endif; ?>
         </div>
 
         <!-- Secondary row: Related posts and comments below, without TOC on the side -->
-        <!--
         <div class="row mt-5">
             <div class="col-lg-<?php echo esc_attr( $blog_column ) ?> blog_single_info m-auto">
                 <?php
@@ -901,24 +809,8 @@ get_template_part( 'template-parts/single-post/banner', $banner_type );
                 ?>
             </div>
         </div>
-        -->
     </div>
-</section>
-    <script>
-        // Remove empty &nbsp; spacer paragraphs from article content
-        document.addEventListener('DOMContentLoaded', function() {
-            var content = document.querySelector('.blog_single_item, .editor-content, article');
-            if (content) {
-                var paras = content.querySelectorAll('p');
-                paras.forEach(function(p) {
-                    var text = p.textContent.replace(/\u00a0/g, '').trim();
-                    if (text === '') {
-                        p.remove();
-                    }
-                });
-            }
-        });
-    </script>
+    
     <script>
         (function($) {
             "use strict";
@@ -1011,56 +903,19 @@ get_template_part( 'template-parts/single-post/banner', $banner_type );
                     }
                 }
 
-                // Smooth click handler with zero jerk and zero delay
-                $(document).on('click', '#docy-toc a, #docy-tocs-mobile a, aside.bottom_table_content a', function(e) {
+                // Smooth click handler
+                $(document).on('click', '#docy-toc a, #docy-tocs-mobile a', function(e) {
                     var href = $(this).attr('href');
                     if (href && href.startsWith('#')) {
                         var id = href.substring(1);
-                        if (!id) return;
-
-                        e.preventDefault();
-
-                        // 1. Immediately close mobile TOC sheet and overlay instantly
-                        $('aside.bottom_table_content, #docy-tocs').hide();
-                        $('#toc-overlay').hide();
-
                         isClickScrolling = true;
                         lastActiveId = id;
                         highlightTOC(id);
-
-                        var targetEl = document.getElementById(id);
-                        if (!targetEl) {
-                            try {
-                                targetEl = document.querySelector('[id="' + CSS.escape(id) + '"]');
-                            } catch(err) {}
-                        }
-
-                        if (!targetEl) {
-                            var linkText = $(this).text().trim();
-                            $('.blog_single_item, .main-post, .editor-content, article').find('h1, h2, h3, h4').each(function() {
-                                if ($(this).text().trim() === linkText) {
-                                    targetEl = this;
-                                    return false;
-                                }
-                            });
-                        }
-
-                        if (targetEl) {
-                            var adminBarHeight = $('#wpadminbar').length > 0 ? $('#wpadminbar').outerHeight() : 0;
-                            var headerOffset = ($(window).width() <= 1024 ? 75 : 120) + adminBarHeight;
-                            var currentScroll = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0;
-                            var targetPosition = Math.max(0, targetEl.getBoundingClientRect().top + currentScroll - headerOffset);
-
-                            $('html, body').stop().animate({
-                                scrollTop: targetPosition
-                            }, 300, function() {
-                                setTimeout(function() {
-                                    isClickScrolling = false;
-                                }, 100);
-                            });
-                        } else {
+                        
+                        if (clickTimeout) clearTimeout(clickTimeout);
+                        clickTimeout = setTimeout(function() {
                             isClickScrolling = false;
-                        }
+                        }, 2000);
                     }
                 });
                 
@@ -1069,32 +924,60 @@ get_template_part( 'template-parts/single-post/banner', $banner_type );
         })(jQuery);
     </script>
 
-
-
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            var cols = document.querySelectorAll('.category-left-sidebar-col');
-            cols.forEach(function(col) {
-                var sidebar = col.querySelector('.modern-sidebar');
-                if (sidebar) {
-                    col.addEventListener('mouseenter', function() {
-                        sidebar.classList.add('sidebar-hovered');
-                        sidebar.style.overflowY = 'hidden';
-                        requestAnimationFrame(function() {
-                            sidebar.style.overflowY = 'auto';
-                        });
-                    });
-                    col.addEventListener('mouseleave', function() {
-                        sidebar.classList.remove('sidebar-hovered');
-                        sidebar.style.overflowY = 'hidden';
-                        requestAnimationFrame(function() {
-                            sidebar.style.overflowY = 'auto';
-                        });
-                    });
-                }
-            });
-        });
-    </script>
+    <style>
+        /* Force indicator visibility and smooth transition */
+        #docy-toc .nav-link, #docy-tocs-mobile .nav-link {
+            position: relative !important;
+            display: block !important;
+            transition: color 0.3s ease !important;
+        }
+        
+        /* The blue line indicator - Always show when active, regardless of scroll-class */
+        #docy-toc .nav-item.active > .nav-link::before,
+        #docy-tocs-mobile .nav-item.active > .nav-link::before {
+            display: block !important;
+            content: "" !important;
+            width: 2px !important;
+            background: #3B82F6 !important;
+            position: absolute !important;
+            top: 0 !important;
+            left: 0 !important;
+            bottom: 0 !important;
+            z-index: 10 !important;
+            transition: all 0.3s ease !important;
+        }
+        
+        /* Ensure the sidebar nav itself has proper spacing for the indicator */
+        #docy-toc, #docy-tocs-mobile {
+            padding-left: 0 !important;
+        }
+        
+        /* H1 items in TOC - top-level style */
+        #docy-toc .toc-h1 > .nav-link,
+        #docy-tocs-mobile .toc-h1 > .nav-link {
+            font-weight: 400 !important;
+            font-size: 14px !important;
+            color: #64748b !important;
+            padding-left: 24px !important;
+        }
+        
+        /* H2 items in TOC - indented sub-level style */
+        #docy-toc .toc-h2 > .nav-link,
+        #docy-tocs-mobile .toc-h2 > .nav-link {
+            font-weight: 400 !important;
+            font-size: 14px !important;
+            color: #64748b !important;
+            padding-left: 24px !important;
+        }
+        
+        /* Active state override for both H1 and H2 */
+        #docy-toc .toc-h1.active > .nav-link,
+        #docy-toc .toc-h2.active > .nav-link,
+        #docy-tocs-mobile .toc-h1.active > .nav-link,
+        #docy-tocs-mobile .toc-h2.active > .nav-link {
+            color: #000000 !important;
+            font-weight: 500 !important;
+        }
+    </style>
 <?php
 get_footer();
-
