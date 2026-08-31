@@ -137,24 +137,24 @@ $is_popup    = isset($args['is_popup']) && $args['is_popup'];
 }
 
 .cmg-upgrade-title {
-    font-size: 30px !important;
+    font-size: 26px !important;
     font-weight: 700 !important;
-    line-height: 1.25 !important;
+    line-height: 1.3 !important;
     color: #0f172a !important;
-    letter-spacing: -0.025em !important;
-    margin: 0 0 16px 0 !important;
+    letter-spacing: -0.02em !important;
+    margin: 0 0 12px 0 !important;
     padding: 0 !important;
     text-align: center !important;
     font-family: inherit !important;
 }
 
 .cmg-upgrade-subtitle {
-    font-size: 19px !important;
-    font-weight: 600 !important;
-    line-height: 1.35 !important;
-    color: #1e293b !important;
-    letter-spacing: -0.015em !important;
-    margin: 0 0 12px 0 !important;
+    font-size: 17px !important;
+    font-weight: 500 !important;
+    line-height: 1.4 !important;
+    color: #334155 !important;
+    letter-spacing: -0.01em !important;
+    margin: 0 0 24px 0 !important;
     padding: 0 !important;
     text-align: center !important;
     font-family: inherit !important;
@@ -165,7 +165,7 @@ $is_popup    = isset($args['is_popup']) && $args['is_popup'];
     font-weight: 400 !important;
     line-height: 1.5 !important;
     color: #64748b !important;
-    margin: 0 0 26px 0 !important;
+    margin: 0 0 24px 0 !important;
     padding: 0 !important;
     max-width: 460px !important;
     text-align: center !important;
@@ -173,20 +173,25 @@ $is_popup    = isset($args['is_popup']) && $args['is_popup'];
 }
 
 .cmg-upgrade-btn {
-    display: inline-block !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
     background-color: #2f73f6 !important;
     color: #ffffff !important;
     font-size: 15px !important;
     font-weight: 500 !important;
     text-decoration: none !important;
-    padding: 13px 32px !important;
+    padding: 12px 24px !important;
     border-radius: 8px !important;
-    border: 1px solid transparent !important;
+    border: 1.5px solid transparent !important;
     cursor: pointer !important;
     transition: all 0.2s ease !important;
     box-shadow: 0 2px 6px rgba(47, 115, 246, 0.25) !important;
-    margin: 0 0 18px 0 !important;
+    margin: 0 0 14px 0 !important;
     font-family: inherit !important;
+    width: 100% !important;
+    max-width: 290px !important;
+    box-sizing: border-box !important;
 }
 
 .cmg-upgrade-btn:hover {
@@ -202,26 +207,31 @@ $is_popup    = isset($args['is_popup']) && $args['is_popup'];
 }
 
 .cmg-signin-text {
-    font-size: 14px !important;
-    color: #475569 !important;
-    text-align: center !important;
+    width: 100% !important;
+    display: flex !important;
+    justify-content: center !important;
     margin: 0 !important;
     padding: 0 !important;
-    font-family: inherit !important;
 }
 
 .cmg-signin-link {
-    display: inline-block !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
     color: #2f73f6 !important;
     border: 1.5px solid #2f73f6 !important;
     border-radius: 8px !important;
-    padding: 10px 24px !important;
-    font-size: 14px !important;
+    padding: 12px 24px !important;
+    font-size: 15px !important;
     font-weight: 500 !important;
     text-decoration: none !important;
     transition: all 0.2s ease !important;
     cursor: pointer !important;
     background: transparent !important;
+    font-family: inherit !important;
+    width: 100% !important;
+    max-width: 290px !important;
+    box-sizing: border-box !important;
 }
 
 .cmg-signin-link:hover {
@@ -355,12 +365,12 @@ $is_popup    = isset($args['is_popup']) && $args['is_popup'];
 
     <!-- Main Heading -->
     <h2 class="cmg-upgrade-title">
-        Access everything. Become <br>to a paid account.
+        Access everything. Become <br> a customer today!
     </h2>
 
     <!-- Subheading -->
     <h3 class="cmg-upgrade-subtitle">
-        Unlock the complete CMGalaxy Knowledge Base
+        Get full access to premium CMGalaxy documentation, guides and resources.
     </h3>
 
     <!-- Primary Action Button -->
