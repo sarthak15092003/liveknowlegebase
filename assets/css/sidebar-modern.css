@@ -31,7 +31,7 @@
 
 section:first-of-type {
     margin-top: 0 !important;
-    margin-bottom: 100px;
+    margin-bottom: 0 !important;
 }
 
 /* Category Page Container Width & Layout Styles */

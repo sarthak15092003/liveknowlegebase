@@ -269,7 +269,7 @@ get_template_part( 'template-parts/single-post/banner', $banner_type );
                             position: relative;
                         }
                         .cm-feedback-radio:checked {
-                            border-color: #808080;
+                            border-color: #2f73f6;
                             border-width: 5px;
                         }
                         .cm-feedback-actions {
@@ -293,16 +293,24 @@ get_template_part( 'template-parts/single-post/banner', $banner_type );
                         .cm-btn-submit {
                             padding: 10px 20px;
                             border: none;
-                            background: #808080;
+                            background: #9ca3af;
                             border-radius: 12px;
                             color: #ffffff;
                             font-size: 14px;
                             font-weight: 500;
-                            cursor: pointer;
-                            transition: all 0.2s;
+                            cursor: not-allowed;
+                            opacity: 0.65;
+                            transition: all 0.2s ease;
                         }
-                        .cm-btn-submit:hover {
-                            background: #6b7280;
+                        .cm-btn-submit.active {
+                            background: #2f73f6 !important;
+                            cursor: pointer !important;
+                            opacity: 1 !important;
+                            box-shadow: 0 2px 6px rgba(47, 115, 246, 0.3) !important;
+                        }
+                        .cm-btn-submit.active:hover {
+                            background: #1d5ed8 !important;
+                            box-shadow: 0 4px 12px rgba(47, 115, 246, 0.4) !important;
                         }
                         </style>
                         <div class="cm-feedback-wrapper">
@@ -322,7 +330,7 @@ get_template_part( 'template-parts/single-post/banner', $banner_type );
 
                             <div class="cm-feedback-login-prompt" id="cm-feedback-login-prompt" style="display: none; padding: 18px 16px; text-align: center; background: #f8fafc; border: 1px dashed #cbd5e1; border-radius: 10px; margin-top: 16px;">
                                 <p style="margin: 0; color: #475569; font-size: 14px; line-height: 1.5;">
-                                    Please <a href="<?php echo esc_url( wp_login_url( get_permalink() ) ); ?>" style="color: #3b82f6; font-weight: 600; text-decoration: underline;">Sign In</a> or <a href="<?php echo esc_url( wp_registration_url() ); ?>" style="color: #3b82f6; font-weight: 600; text-decoration: underline;">Sign Up</a> to leave your feedback.
+                                    Please <a href="<?php echo esc_url( add_query_arg('redirect_to', urlencode(get_permalink()), home_url('/signin/')) ); ?>" style="color: #3b82f6; font-weight: 600; text-decoration: underline;">Sign In</a> or <a href="<?php echo esc_url( 'https://cmgalaxy.com/book-a-demo' ); ?>" target="_blank" rel="noopener noreferrer" style="color: #3b82f6; font-weight: 600; text-decoration: underline;">Sign Up</a> to leave your feedback.
                                 </p>
                             </div>
                             
@@ -411,9 +419,34 @@ get_template_part( 'template-parts/single-post/banner', $banner_type );
                             const successArea = document.getElementById('cm-feedback-success');
                             const successText = document.getElementById('cm-feedback-success-text');
                             
+                            function updateSubmitButtonState() {
+                                if (!btnSubmit) return;
+                                const selected = document.querySelector('.cm-feedback-radio:checked');
+                                if (!selected) {
+                                    btnSubmit.classList.remove('active');
+                                    btnSubmit.disabled = true;
+                                    return;
+                                }
+
+                                if (selected.value === 'Something else') {
+                                    const textVal = customTextarea ? customTextarea.value.trim() : '';
+                                    if (textVal.length > 0) {
+                                        btnSubmit.classList.add('active');
+                                        btnSubmit.disabled = false;
+                                    } else {
+                                        btnSubmit.classList.remove('active');
+                                        btnSubmit.disabled = true;
+                                    }
+                                } else {
+                                    btnSubmit.classList.add('active');
+                                    btnSubmit.disabled = false;
+                                }
+                            }
+
                             function resetCustomText() {
                                 if (customWrap) customWrap.style.display = 'none';
                                 if (customTextarea) customTextarea.value = '';
+                                updateSubmitButtonState();
                             }
 
                             function hideSuccess() {
@@ -442,6 +475,7 @@ get_template_part( 'template-parts/single-post/banner', $banner_type );
                                 
                                 document.querySelectorAll('.cm-feedback-radio').forEach(r => r.checked = false);
                                 resetCustomText();
+                                updateSubmitButtonState();
                                 
                                 if (vote === 'like' || vote === 'yes') {
                                     title.innerText = 'Great! What worked best for you?';
@@ -460,10 +494,16 @@ get_template_part( 'template-parts/single-post/banner', $banner_type );
                                         if (customWrap) customWrap.style.display = 'block';
                                         if (customTextarea) customTextarea.focus();
                                     } else {
-                                        resetCustomText();
+                                        if (customWrap) customWrap.style.display = 'none';
                                     }
+                                    updateSubmitButtonState();
                                 });
                             });
+
+                            if (customTextarea) {
+                                customTextarea.addEventListener('input', updateSubmitButtonState);
+                                customTextarea.addEventListener('keyup', updateSubmitButtonState);
+                            }
                             
                             if (btnYes) btnYes.addEventListener('click', () => showForm('like'));
                             if (btnNo) btnNo.addEventListener('click', () => showForm('dislike'));
@@ -476,6 +516,7 @@ get_template_part( 'template-parts/single-post/banner', $banner_type );
                                     btnNo.classList.remove('active');
                                     document.querySelectorAll('.cm-feedback-radio').forEach(r => r.checked = false);
                                     resetCustomText();
+                                    updateSubmitButtonState();
                                     hideSuccess();
                                 });
                             }
@@ -484,7 +525,10 @@ get_template_part( 'template-parts/single-post/banner', $banner_type );
                                 btnSubmit.addEventListener('click', () => {
                                     const selected = document.querySelector('.cm-feedback-radio:checked');
                                     if (!selected) {
-                                        alert('Please select an option first.');
+                                        return;
+                                    }
+                                    if (selected.value === 'Something else' && customTextarea && !customTextarea.value.trim()) {
+                                        customTextarea.focus();
                                         return;
                                     }
                                     
