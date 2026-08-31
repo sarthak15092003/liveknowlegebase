@@ -10,294 +10,336 @@ if ( is_user_logged_in() && ! isset( $_GET['action'] ) ) {
     exit;
 }
 
-get_header( 'empty' );
-
 $redirect_to = ! empty( $_GET['redirect_to'] ) ? esc_url( $_GET['redirect_to'] ) : home_url( '/' );
 $ajax_url    = admin_url( 'admin-ajax.php' );
 ?>
+<!DOCTYPE html>
+<html <?php language_attributes(); ?>>
+<head>
+    <meta charset="<?php bloginfo( 'charset' ); ?>">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><?php esc_html_e( 'Sign in - CMGALAXY Knowledge Base', 'docy' ); ?></title>
+    <?php wp_head(); ?>
+    <style>
+    /* =============================================
+       CMGalaxy Dedicated Sign-in Page Styles
+       ============================================= */
+    html, body {
+        margin: 0 !important;
+        padding: 0 !important;
+        height: 100% !important;
+        min-height: 100% !important;
+        background-color: #ffffff !important;
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif !important;
+        -webkit-font-smoothing: antialiased;
+    }
 
-<style>
-/* =============================================
-   CMGalaxy Dedicated Sign-in Page Styles
-   ============================================= */
-.cmg-signin-wrapper {
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: #ffffff;
-    padding: 30px 20px;
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-    box-sizing: border-box;
-}
+    /* Hide any lingering theme header/footer elements if injected */
+    .header, header, footer, .body_wrapper, #docy-header, .doc_banner_area {
+        margin: 0 !important;
+        padding: 0 !important;
+    }
 
-.cmg-signin-card {
-    max-width: 440px;
-    width: 100%;
-    margin: 0 auto;
-    padding: 20px 10px;
-    box-sizing: border-box;
-}
+    .cmg-signin-wrapper {
+        min-height: 100vh;
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: #ffffff;
+        padding: 24px 20px;
+        box-sizing: border-box;
+    }
 
-/* Header */
-.cmg-signin-header {
-    margin-bottom: 28px;
-    text-align: left;
-}
+    .cmg-signin-card {
+        max-width: 420px;
+        width: 100%;
+        margin: 0 auto;
+        padding: 10px;
+        box-sizing: border-box;
+    }
 
-.cmg-signin-title-row {
-    display: flex;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: 8px;
-    margin-bottom: 8px;
-}
+    /* Header & Brand */
+    .cmg-signin-header {
+        margin-bottom: 28px;
+        text-align: left;
+    }
 
-.cmg-signin-title {
-    font-size: 30px;
-    font-weight: 800;
-    color: #0f172a;
-    letter-spacing: -0.03em;
-    margin: 0;
-    line-height: 1.2;
-}
+    .cmg-signin-title-row {
+        display: flex;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 10px;
+        margin-bottom: 8px;
+    }
 
-.cmg-brand-logo {
-    height: 32px;
-    width: auto;
-    display: inline-block;
-    vertical-align: middle;
-}
-
-.cmg-signin-subtitle {
-    font-size: 16px;
-    color: #64748b;
-    font-weight: 400;
-    margin: 0;
-}
-
-/* Form Styles */
-.cmg-signin-form {
-    width: 100%;
-}
-
-.cmg-form-group {
-    margin-bottom: 22px;
-    text-align: left;
-}
-
-.cmg-form-label {
-    display: block;
-    font-size: 15px;
-    font-weight: 700;
-    color: #0f172a;
-    margin-bottom: 8px;
-}
-
-.cmg-form-label.has-error {
-    color: #ef4444;
-}
-
-.cmg-input-wrapper {
-    position: relative;
-    width: 100%;
-}
-
-.cmg-input {
-    width: 100%;
-    height: 48px;
-    padding: 10px 16px;
-    background-color: #f8fafc;
-    border: 1.5px solid #e2e8f0;
-    border-radius: 8px;
-    font-size: 15px;
-    color: #0f172a;
-    transition: all 0.2s ease;
-    box-sizing: border-box;
-    outline: none;
-    font-family: inherit;
-}
-
-.cmg-input::placeholder {
-    color: #94a3b8;
-}
-
-.cmg-input:focus {
-    background-color: #ffffff;
-    border-color: #3b82f6;
-    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.15);
-}
-
-.cmg-input.has-error {
-    border-color: #ef4444;
-    background-color: #fef2f2;
-}
-
-/* Password Eye Toggle */
-.cmg-password-toggle {
-    position: absolute;
-    right: 14px;
-    top: 50%;
-    transform: translateY(-50%);
-    background: none;
-    border: none;
-    color: #64748b;
-    cursor: pointer;
-    padding: 4px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: color 0.15s ease;
-}
-
-.cmg-password-toggle:hover {
-    color: #0f172a;
-}
-
-.cmg-error-msg {
-    font-size: 13px;
-    color: #ef4444;
-    margin-top: 6px;
-    display: none;
-    font-weight: 500;
-}
-
-.cmg-error-msg.active {
-    display: block;
-}
-
-/* Global Alert Error */
-.cmg-alert-error {
-    background-color: #fef2f2;
-    border: 1px solid #fecaca;
-    color: #b91c1c;
-    padding: 12px 16px;
-    border-radius: 8px;
-    font-size: 14px;
-    margin-bottom: 20px;
-    font-weight: 500;
-    display: none;
-}
-
-.cmg-alert-error.active {
-    display: block;
-}
-
-.cmg-alert-success {
-    background-color: #f0fdf4;
-    border: 1px solid #bbf7d0;
-    color: #15803d;
-    padding: 12px 16px;
-    border-radius: 8px;
-    font-size: 14px;
-    margin-bottom: 20px;
-    font-weight: 600;
-    display: none;
-}
-
-.cmg-alert-success.active {
-    display: block;
-}
-
-/* Submit Button */
-.cmg-submit-btn {
-    width: 100%;
-    height: 48px;
-    background-color: #3b82f6;
-    color: #ffffff;
-    border: none;
-    border-radius: 8px;
-    font-size: 16px;
-    font-weight: 600;
-    cursor: pointer;
-    transition: all 0.2s ease;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-top: 26px;
-    box-shadow: 0 2px 6px rgba(59, 130, 246, 0.25);
-    font-family: inherit;
-}
-
-.cmg-submit-btn:hover {
-    background-color: #2563eb;
-    box-shadow: 0 4px 12px rgba(59, 130, 246, 0.35);
-    transform: translateY(-1px);
-}
-
-.cmg-submit-btn:active {
-    transform: translateY(0);
-}
-
-.cmg-submit-btn:disabled {
-    opacity: 0.7;
-    cursor: not-allowed;
-    transform: none;
-}
-
-/* Footer Links */
-.cmg-signin-footer {
-    margin-top: 24px;
-    text-align: center;
-    font-size: 14px;
-    color: #475569;
-}
-
-.cmg-signup-link {
-    color: #2563eb;
-    font-weight: 700;
-    text-decoration: none;
-    transition: color 0.15s ease;
-}
-
-.cmg-signup-link:hover {
-    color: #1d4ed8;
-    text-decoration: underline;
-}
-
-.cmg-forgot-wrap {
-    margin-top: 10px;
-    text-align: center;
-}
-
-.cmg-forgot-link {
-    color: #2563eb;
-    font-size: 14px;
-    font-weight: 700;
-    text-decoration: none;
-    transition: color 0.15s ease;
-}
-
-.cmg-forgot-link:hover {
-    color: #1d4ed8;
-    text-decoration: underline;
-}
-
-/* Spinner */
-.cmg-spinner {
-    width: 20px;
-    height: 20px;
-    border: 2.5px solid rgba(255, 255, 255, 0.3);
-    border-radius: 50%;
-    border-top-color: #ffffff;
-    animation: cmgSpin 0.7s linear infinite;
-    display: inline-block;
-    margin-right: 8px;
-}
-
-@keyframes cmgSpin {
-    to { transform: rotate(360deg); }
-}
-
-@media (max-width: 480px) {
     .cmg-signin-title {
-        font-size: 26px;
+        font-size: 32px;
+        font-weight: 800;
+        color: #000000;
+        letter-spacing: -0.03em;
+        margin: 0;
+        line-height: 1.15;
     }
+
     .cmg-brand-logo {
-        height: 28px;
+        height: 34px;
+        width: auto;
+        display: inline-block;
+        vertical-align: middle;
     }
-}
-</style>
+
+    .cmg-signin-subtitle {
+        font-size: 16px;
+        color: #4b5563;
+        font-weight: 500;
+        margin: 0;
+        letter-spacing: -0.01em;
+    }
+
+    /* Form Styles */
+    .cmg-signin-form {
+        width: 100%;
+    }
+
+    .cmg-form-group {
+        margin-bottom: 20px;
+        text-align: left;
+    }
+
+    .cmg-form-label {
+        display: block;
+        font-size: 15px;
+        font-weight: 700;
+        color: #111827;
+        margin-bottom: 8px;
+        letter-spacing: -0.01em;
+    }
+
+    .cmg-form-label.has-error {
+        color: #ef4444;
+    }
+
+    .cmg-input-wrapper {
+        position: relative;
+        width: 100%;
+        display: flex;
+        align-items: center;
+    }
+
+    .cmg-input {
+        width: 100%;
+        height: 48px;
+        padding: 10px 42px 10px 16px;
+        background-color: #ebf3fe;
+        border: 1.5px solid transparent;
+        border-radius: 8px;
+        font-size: 15px;
+        color: #0f172a;
+        font-weight: 500;
+        transition: all 0.2s ease;
+        box-sizing: border-box;
+        outline: none;
+        font-family: inherit;
+    }
+
+    .cmg-input::placeholder {
+        color: #94a3b8;
+        font-weight: 400;
+    }
+
+    .cmg-input:focus {
+        background-color: #f0f6ff;
+        border-color: #3b82f6;
+        box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.15);
+    }
+
+    .cmg-input.has-error {
+        border-color: #ef4444;
+        background-color: #fef2f2;
+    }
+
+    /* Right Action Icons in Input (Clear & Eye) */
+    .cmg-input-action-btn {
+        position: absolute;
+        right: 12px;
+        top: 50%;
+        transform: translateY(-50%);
+        background: none;
+        border: none;
+        color: #64748b;
+        cursor: pointer;
+        padding: 4px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: color 0.15s ease;
+        border-radius: 50%;
+        outline: none;
+    }
+
+    .cmg-input-action-btn:hover {
+        color: #0f172a;
+    }
+
+    .cmg-clear-btn {
+        display: none;
+    }
+
+    .cmg-clear-btn.visible {
+        display: flex;
+    }
+
+    .cmg-error-msg {
+        font-size: 13px;
+        color: #ef4444;
+        margin-top: 6px;
+        display: none;
+        font-weight: 500;
+    }
+
+    .cmg-error-msg.active {
+        display: block;
+    }
+
+    /* Global Alerts */
+    .cmg-alert-error {
+        background-color: #fef2f2;
+        border: 1px solid #fecaca;
+        color: #b91c1c;
+        padding: 12px 16px;
+        border-radius: 8px;
+        font-size: 14px;
+        margin-bottom: 20px;
+        font-weight: 500;
+        display: none;
+    }
+
+    .cmg-alert-error.active {
+        display: block;
+    }
+
+    .cmg-alert-success {
+        background-color: #f0fdf4;
+        border: 1px solid #bbf7d0;
+        color: #15803d;
+        padding: 12px 16px;
+        border-radius: 8px;
+        font-size: 14px;
+        margin-bottom: 20px;
+        font-weight: 600;
+        display: none;
+    }
+
+    .cmg-alert-success.active {
+        display: block;
+    }
+
+    /* Submit Button */
+    .cmg-submit-btn {
+        width: 100%;
+        height: 48px;
+        background-color: #3b82f6;
+        color: #ffffff;
+        border: none;
+        border-radius: 8px;
+        font-size: 16px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.2s ease;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-top: 24px;
+        box-shadow: 0 2px 6px rgba(59, 130, 246, 0.25);
+        font-family: inherit;
+    }
+
+    .cmg-submit-btn:hover {
+        background-color: #2563eb;
+        box-shadow: 0 4px 12px rgba(59, 130, 246, 0.35);
+        transform: translateY(-1px);
+    }
+
+    .cmg-submit-btn:active {
+        transform: translateY(0);
+    }
+
+    .cmg-submit-btn:disabled {
+        opacity: 0.7;
+        cursor: not-allowed;
+        transform: none;
+    }
+
+    /* Footer Links */
+    .cmg-signin-footer {
+        margin-top: 22px;
+        text-align: center;
+        font-size: 15px;
+        color: #4b5563;
+        font-weight: 500;
+    }
+
+    .cmg-signup-link {
+        color: #2563eb;
+        font-weight: 700;
+        text-decoration: none;
+        transition: color 0.15s ease;
+    }
+
+    .cmg-signup-link:hover {
+        color: #1d4ed8;
+        text-decoration: underline;
+    }
+
+    .cmg-forgot-wrap {
+        margin-top: 8px;
+        text-align: center;
+    }
+
+    .cmg-forgot-link {
+        color: #2563eb;
+        font-size: 15px;
+        font-weight: 700;
+        text-decoration: none;
+        transition: color 0.15s ease;
+    }
+
+    .cmg-forgot-link:hover {
+        color: #1d4ed8;
+        text-decoration: underline;
+    }
+
+    /* Loading Spinner */
+    .cmg-spinner {
+        width: 20px;
+        height: 20px;
+        border: 2.5px solid rgba(255, 255, 255, 0.3);
+        border-radius: 50%;
+        border-top-color: #ffffff;
+        animation: cmgSpin 0.7s linear infinite;
+        display: inline-block;
+        margin-right: 8px;
+    }
+
+    @keyframes cmgSpin {
+        to { transform: rotate(360deg); }
+    }
+
+    @media (max-width: 480px) {
+        .cmg-signin-title {
+            font-size: 28px;
+        }
+        .cmg-brand-logo {
+            height: 30px;
+        }
+        .cmg-signin-card {
+            padding: 0;
+        }
+    }
+    </style>
+</head>
+<body>
 
 <div class="cmg-signin-wrapper">
     <div class="cmg-signin-card">
@@ -306,7 +348,7 @@ $ajax_url    = admin_url( 'admin-ajax.php' );
         <div class="cmg-signin-header">
             <div class="cmg-signin-title-row">
                 <h1 class="cmg-signin-title">Welcome to</h1>
-                <img src="<?php echo esc_url( get_template_directory_uri() . '/assets/img/kblogo.svg' ); ?>" alt="CMGALAXY" class="cmg-brand-logo">
+                <img src="<?php echo esc_url( get_template_directory_uri() . '/assets/img/cmgalaxy-logo.svg' ); ?>" alt="CMGALAXY" class="cmg-brand-logo">
             </div>
             <p class="cmg-signin-subtitle">Please sign-in to your account</p>
         </div>
@@ -319,19 +361,26 @@ $ajax_url    = admin_url( 'admin-ajax.php' );
             
             <input type="hidden" id="cmg_redirect_to" value="<?php echo esc_attr( $redirect_to ); ?>">
 
-            <!-- Email Field -->
+            <!-- Email / Account Name Field -->
             <div class="cmg-form-group">
-                <label for="cmg_email" class="cmg-form-label" id="emailLabel">Email</label>
+                <label for="cmg_email" class="cmg-form-label" id="emailLabel">Email / Account Name</label>
                 <div class="cmg-input-wrapper">
-                    <input type="email" 
+                    <input type="text" 
                            id="cmg_email" 
                            name="email" 
                            class="cmg-input" 
-                           placeholder="Enter your email address" 
+                           placeholder="Enter your email or account name" 
                            autocomplete="username" 
                            required>
+                    <button type="button" class="cmg-input-action-btn cmg-clear-btn" id="clearEmailBtn" aria-label="Clear field">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="12" cy="12" r="10"></circle>
+                            <line x1="15" y1="9" x2="9" y2="15"></line>
+                            <line x1="9" y1="9" x2="15" y2="15"></line>
+                        </svg>
+                    </button>
                 </div>
-                <div class="cmg-error-msg" id="emailError">Email is required.</div>
+                <div class="cmg-error-msg" id="emailError">Email or Account Name is required.</div>
             </div>
 
             <!-- Password Field -->
@@ -345,8 +394,8 @@ $ajax_url    = admin_url( 'admin-ajax.php' );
                            placeholder="Enter password" 
                            autocomplete="current-password" 
                            required>
-                    <button type="button" class="cmg-password-toggle" id="togglePasswordBtn" aria-label="Show password">
-                        <svg id="eyeIcon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <button type="button" class="cmg-input-action-btn" id="togglePasswordBtn" aria-label="Show password">
+                        <svg id="eyeIcon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                             <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
                             <circle cx="12" cy="12" r="3"></circle>
                         </svg>
@@ -378,6 +427,7 @@ document.addEventListener('DOMContentLoaded', function() {
     var passwordInput = document.getElementById('cmg_password');
     var toggleBtn = document.getElementById('togglePasswordBtn');
     var emailInput = document.getElementById('cmg_email');
+    var clearEmailBtn = document.getElementById('clearEmailBtn');
     var form = document.getElementById('cmgLoginForm');
     var emailError = document.getElementById('emailError');
     var passwordError = document.getElementById('passwordError');
@@ -396,10 +446,30 @@ document.addEventListener('DOMContentLoaded', function() {
             passwordInput.setAttribute('type', type);
             
             if (type === 'text') {
-                toggleBtn.innerHTML = '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"></path><line x1="1" y1="1" x2="23" y2="23"></line></svg>';
+                toggleBtn.innerHTML = '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"></path><line x1="1" y1="1" x2="23" y2="23"></line></svg>';
             } else {
-                toggleBtn.innerHTML = '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg>';
+                toggleBtn.innerHTML = '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg>';
             }
+        });
+    }
+
+    // Clear Email Input Button
+    if (emailInput && clearEmailBtn) {
+        function checkClearVisibility() {
+            if (emailInput.value.length > 0) {
+                clearEmailBtn.classList.add('visible');
+            } else {
+                clearEmailBtn.classList.remove('visible');
+            }
+        }
+
+        emailInput.addEventListener('input', checkClearVisibility);
+        checkClearVisibility();
+
+        clearEmailBtn.addEventListener('click', function() {
+            emailInput.value = '';
+            clearEmailBtn.classList.remove('visible');
+            emailInput.focus();
         });
     }
 
@@ -468,7 +538,6 @@ document.addEventListener('DOMContentLoaded', function() {
             })
             .then(function(res) { return res.json(); })
             .then(function(data) {
-                console.log('🔐 CMGalaxy Login Response:', data);
                 if (data && data.success) {
                     globalSuccess.innerText = data.data.message || 'Signed in successfully! Redirecting...';
                     globalSuccess.classList.add('active');
@@ -479,9 +548,6 @@ document.addEventListener('DOMContentLoaded', function() {
                     }, 500);
                 } else {
                     var errorMsg = (data && data.data && data.data.message) ? data.data.message : 'Invalid email or password. Please try again.';
-                    if (data && data.data && data.data.debug) {
-                        console.warn('⚠️ API Debug Diagnostics:', data.data.debug);
-                    }
                     globalError.innerText = errorMsg;
                     globalError.classList.add('active');
                     submitBtn.disabled = false;
@@ -501,5 +567,6 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 </script>
 
-<?php
-get_footer( 'empty' );
+<?php wp_footer(); ?>
+</body>
+</html>

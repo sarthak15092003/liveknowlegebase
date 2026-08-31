@@ -1322,6 +1322,7 @@ mark.search-highlight {
     outline: none;
 }
 
+.cmg-user-profile-dropdown:hover .cmg-profile-trigger,
 .cmg-profile-trigger:hover,
 .cmg-profile-trigger.active {
     background: #f8fafc;
@@ -1359,13 +1360,15 @@ mark.search-highlight {
     flex-shrink: 0;
 }
 
+.cmg-user-profile-dropdown:hover .cmg-chevron-icon,
 .cmg-profile-trigger.active .cmg-chevron-icon {
     transform: rotate(180deg);
 }
 
 .cmg-dropdown-menu {
     position: absolute;
-    top: calc(100% + 8px);
+    top: 100%;
+    margin-top: 6px;
     right: 0;
     width: 220px;
     background: #ffffff;
@@ -1378,6 +1381,18 @@ mark.search-highlight {
     animation: cmgDropdownFadeIn 0.15s ease-out forwards;
 }
 
+/* Invisible bridge above dropdown to keep hover active between trigger and menu */
+.cmg-dropdown-menu::before {
+    content: '';
+    position: absolute;
+    top: -10px;
+    left: 0;
+    right: 0;
+    height: 10px;
+}
+
+.cmg-user-profile-dropdown:hover .cmg-dropdown-menu,
+.cmg-user-profile-dropdown:focus-within .cmg-dropdown-menu,
 .cmg-dropdown-menu.show {
     display: block;
 }
