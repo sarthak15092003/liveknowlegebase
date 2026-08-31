@@ -35,7 +35,7 @@ if ($has_cat_sidebar) {
                     <?php 
                     $excerpt = get_the_excerpt();
                     if (empty($excerpt)) {
-                        $excerpt = wp_strip_all_tags(get_the_content());
+                        $excerpt = wp_strip_all_tags(get_post_field('post_content', get_the_ID()));
                     }
                     echo esc_html(wp_trim_words($excerpt, 20, '…'));
                     ?>

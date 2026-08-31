@@ -151,6 +151,8 @@ require get_template_directory() . '/inc/filter_actions.php';
 require get_template_directory() . '/inc/woo_config.php';
 require get_template_directory() . '/inc/ajax_actions.php';
 require get_template_directory() . '/inc/reg_process.php';
+require get_template_directory() . '/inc/cmgalaxy-api-auth.php';
+require get_template_directory() . '/inc/cmgalaxy-sso.php';
 
 /**
  * Classes
@@ -732,3 +734,203 @@ function cm_feedback_entries_page() {
     
     echo '</div>';
 }
+
+
+/**
+ * =========================================================================
+ * CMGalaxy Post Restriction & Paywall Gate
+ * =========================================================================
+ */
+function cmg_is_post_restricted_to_logged_in($post_id = null) {
+    if (!$post_id) {
+        $post_id = get_the_ID();
+    }
+    if (!$post_id) {
+        return false;
+    }
+
+    $rbcr_logged_in_only = get_post_meta($post_id, '_rbcr_logged_in_only', true);
+    if ($rbcr_logged_in_only === '1' || $rbcr_logged_in_only === 1 || $rbcr_logged_in_only === true) {
+        return true;
+    }
+
+    $rbcr_login_status = get_post_meta($post_id, '_rbcr_login_status', true);
+    if (!empty($rbcr_login_status) && (strpos($rbcr_login_status, 'logged_in') !== false || $rbcr_login_status === 'logged_in_only')) {
+        return true;
+    }
+
+    if (function_exists('content_control_user_can_view_post')) {
+        if (!content_control_user_can_view_post($post_id)) {
+            return true;
+        }
+    }
+
+    $meta_keys = array(
+        '_rbcr_logged_in_only',
+        '_rbcr_login_status',
+        '_content_control_restriction_type',
+        '_content_control_user_status',
+        '_content_control_who',
+        'content_control_restriction_type',
+        '_ca_content_control_settings',
+        '_content_control_settings',
+        'content_control_settings',
+        '_content_control_post_restricted',
+        'content_control',
+        '_content_control',
+        'restrict_access_type',
+        '_restrict_access_type',
+        '_restriction_type',
+        'restriction_type'
+    );
+
+    foreach ($meta_keys as $key) {
+        $val = get_post_meta($post_id, $key, true);
+        if (!empty($val)) {
+            if (is_string($val)) {
+                $val_lower = strtolower($val);
+                if (strpos($val_lower, 'logged_in') !== false || strpos($val_lower, 'logged-in') !== false || $val_lower === 'users' || $val_lower === 'loggedin') {
+                    return true;
+                }
+            } elseif (is_array($val)) {
+                $serialized = strtolower(serialize($val));
+                if (strpos($serialized, 'logged_in') !== false || strpos($serialized, 'logged-in') !== false || strpos($serialized, 'logged_in_only') !== false) {
+                    return true;
+                }
+            }
+        }
+    }
+
+    $all_meta = get_post_meta($post_id);
+    if (!empty($all_meta) && is_array($all_meta)) {
+        foreach ($all_meta as $m_key => $m_values) {
+            if (strpos($m_key, 'content_control') !== false || strpos($m_key, 'restrict') !== false) {
+                foreach ((array)$m_values as $m_val) {
+                    $m_val_lower = strtolower(is_string($m_val) ? $m_val : serialize($m_val));
+                    if (strpos($m_val_lower, 'logged_in') !== false || strpos($m_val_lower, 'logged-in') !== false) {
+                        return true;
+                    }
+                }
+            }
+        }
+    }
+
+    return false;
+}
+
+add_filter('the_content', function($content) {
+    if (is_admin() || !is_singular() || is_user_logged_in()) {
+        return $content;
+    }
+    if (cmg_is_post_restricted_to_logged_in(get_the_ID())) {
+        ob_start();
+        get_template_part('template-parts/modal-upgrade');
+        return ob_get_clean();
+    }
+    return $content;
+}, 999);
+
+add_filter('the_excerpt', function($excerpt) {
+    $post_id = get_the_ID();
+    if ($post_id && !is_user_logged_in() && cmg_is_post_restricted_to_logged_in($post_id)) {
+        return 'Unlock full access to this premium guide and resource by upgrading to a paid account.';
+    }
+    return $excerpt;
+}, 1);
+
+add_filter('content_control/content/replacement_content', function($replacement, $post_id) {
+    if (!is_user_logged_in()) {
+        ob_start();
+        get_template_part('template-parts/modal-upgrade');
+        return ob_get_clean();
+    }
+    return $replacement;
+}, 999, 2);
+
+add_filter('content_control_restriction_message', function($message) {
+    if (!is_user_logged_in()) {
+        ob_start();
+        get_template_part('template-parts/modal-upgrade');
+        return ob_get_clean();
+    }
+    return $message;
+}, 999);
+
+add_filter('content_control/prevent_redirect', '__return_true', 999);
+add_filter('content_control/do_redirect', '__return_false', 999);
+add_filter('rbcr_do_redirect', '__return_false', 999);
+add_filter('rbcr_redirect_url', '__return_false', 999);
+add_filter('rbcr_allow_redirect', '__return_false', 999);
+
+add_action('template_redirect', function() {
+    if (is_singular() && !is_user_logged_in() && cmg_is_post_restricted_to_logged_in(get_the_ID())) {
+        global $wp_filter;
+        if (isset($wp_filter['template_redirect']) && isset($wp_filter['template_redirect']->callbacks)) {
+            foreach ($wp_filter['template_redirect']->callbacks as $priority => $callbacks) {
+                foreach ($callbacks as $idx => $callback) {
+                    $func_name = '';
+                    if (is_array($callback['function'])) {
+                        $class = is_object($callback['function'][0]) ? get_class($callback['function'][0]) : $callback['function'][0];
+                        $method = $callback['function'][1];
+                        $func_name = $class . '::' . $method;
+                    } elseif (is_string($callback['function'])) {
+                        $func_name = $callback['function'];
+                    }
+
+                    if (stripos($func_name, 'rbcr') !== false || stripos($func_name, 'content_control') !== false || stripos($func_name, 'restrict') !== false) {
+                        unset($wp_filter['template_redirect']->callbacks[$priority][$idx]);
+                    }
+                }
+            }
+        }
+    }
+}, 0);
+
+add_shortcode('cmg_upgrade_modal', function($atts) {
+    if (is_user_logged_in()) {
+        return '';
+    }
+    ob_start();
+    get_template_part('template-parts/modal-upgrade');
+    return ob_get_clean();
+});
+
+add_filter('show_admin_bar', function($show) {
+    if (!current_user_can('administrator')) {
+        return false;
+    }
+    return $show;
+});
+
+add_action('admin_init', function() {
+    if (is_user_logged_in() && !current_user_can('administrator') && !wp_doing_ajax()) {
+        wp_safe_redirect(home_url('/'));
+        exit;
+    }
+});
+
+add_filter('login_redirect', function($redirect_to, $request, $user) {
+    if (isset($user->roles) && is_array($user->roles)) {
+        if (!in_array('administrator', $user->roles)) {
+            return !empty($request) ? $request : home_url('/');
+        }
+    }
+    return $redirect_to;
+}, 10, 3);
+
+add_filter('template_include', function($template) {
+    $request_uri = isset($_SERVER['REQUEST_URI']) ? $_SERVER['REQUEST_URI'] : '';
+    $path = trim(parse_url($request_uri, PHP_URL_PATH), '/');
+
+    if ($path === 'signin' || $path === 'login') {
+        $signin_template = get_template_directory() . '/page-signin.php';
+        if (file_exists($signin_template)) {
+            global $wp_query;
+            $wp_query->is_404 = false;
+            status_header(200);
+            return $signin_template;
+        }
+    }
+
+    return $template;
+}, 99);
