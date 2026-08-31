@@ -24,7 +24,7 @@ if ($has_cat_sidebar) {
                         <?php
                     }
                     ?>
-                    <span class="post-date">
+                    <span class="post-date" style="display: none;">
                         <i class="fa fa-calendar"></i> <?php the_time(get_option('date_format')); ?>
                     </span>
                 </div>
@@ -35,7 +35,7 @@ if ($has_cat_sidebar) {
                     <?php 
                     $excerpt = get_the_excerpt();
                     if (empty($excerpt)) {
-                        $excerpt = wp_strip_all_tags(get_post_field('post_content', get_the_ID()));
+                        $excerpt = wp_strip_all_tags(get_the_content());
                     }
                     echo esc_html(wp_trim_words($excerpt, 20, '…'));
                     ?>
