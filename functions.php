@@ -599,9 +599,9 @@ function cm_handle_submit_feedback() {
     }
 
     $post_id    = isset( $_POST['post_id'] ) ? intval( $_POST['post_id'] ) : 0;
-    $post_title = isset( $_POST['post_title'] ) ? sanitize_text_field( $_POST['post_title'] ) : '';
-    $vote       = isset( $_POST['vote'] ) ? sanitize_text_field( $_POST['vote'] ) : '';
-    $reason     = isset( $_POST['reason'] ) ? sanitize_textarea_field( $_POST['reason'] ) : '';
+    $post_title = isset( $_POST['post_title'] ) ? sanitize_text_field( wp_unslash( $_POST['post_title'] ) ) : '';
+    $vote       = isset( $_POST['vote'] ) ? sanitize_text_field( wp_unslash( $_POST['vote'] ) ) : '';
+    $reason     = isset( $_POST['reason'] ) ? sanitize_textarea_field( wp_unslash( $_POST['reason'] ) ) : '';
     $ip_address = $_SERVER['REMOTE_ADDR'];
 
     // Capture User ID, User Name, and User Email
@@ -621,10 +621,10 @@ function cm_handle_submit_feedback() {
         $user_id = intval( $_POST['user_id'] );
     }
     if ( empty( $user_name ) && ! empty( $_POST['user_name'] ) ) {
-        $user_name = sanitize_text_field( $_POST['user_name'] );
+        $user_name = sanitize_text_field( wp_unslash( $_POST['user_name'] ) );
     }
     if ( empty( $user_email ) && ! empty( $_POST['user_email'] ) ) {
-        $user_email = sanitize_email( $_POST['user_email'] );
+        $user_email = sanitize_email( wp_unslash( $_POST['user_email'] ) );
     }
 
     if ( ! $post_id || ! $vote || ! $reason ) {
@@ -696,11 +696,11 @@ function cm_feedback_entries_page() {
         foreach ( $results as $row ) {
             $user_name_val = '—';
             if ( isset( $row->user_name ) && ! empty( $row->user_name ) ) {
-                $user_name_val = esc_html( $row->user_name );
+                $user_name_val = esc_html( stripslashes( $row->user_name ) );
             } elseif ( isset( $row->user_id ) && $row->user_id > 0 ) {
                 $u_info = get_userdata( $row->user_id );
                 if ( $u_info ) {
-                    $user_name_val = esc_html( $u_info->display_name ? $u_info->display_name : $u_info->user_login );
+                    $user_name_val = esc_html( stripslashes( $u_info->display_name ? $u_info->display_name : $u_info->user_login ) );
                 }
             }
             
@@ -709,7 +709,7 @@ function cm_feedback_entries_page() {
             echo '<tr>';
             echo '<td>' . esc_html( $row->id ) . '</td>';
             echo '<td>' . esc_html( $row->created_at ) . '</td>';
-            echo '<td><a href="' . get_permalink( $row->post_id ) . '" target="_blank">' . esc_html( $row->post_title ) . '</a></td>';
+            echo '<td><a href="' . get_permalink( $row->post_id ) . '" target="_blank">' . esc_html( stripslashes( $row->post_title ) ) . '</a></td>';
             echo '<td>' . $user_name_val . '</td>';
             echo '<td>' . $user_email_val . '</td>';
             echo '<td>' . esc_html( $row->ip_address ) . '</td>';
@@ -722,7 +722,7 @@ function cm_feedback_entries_page() {
                 $vote_display = ucfirst( $row->vote );
             }
             echo '<td>' . esc_html( $vote_display ) . '</td>';
-            echo '<td>' . esc_html( $row->reason ) . '</td>';
+            echo '<td>' . esc_html( stripslashes( $row->reason ) ) . '</td>';
             echo '</tr>';
         }
         

@@ -59,6 +59,157 @@ $s_value = get_search_query() ? get_search_query() : '';
                 $plan_status = get_user_meta($current_user->ID, 'plan_status', true);
                 if (empty($plan_status)) $plan_status = 'paid';
             ?>
+                <style>
+                /* User Profile Pill Button - Styled exactly like Ask Lex */
+                .cmg-user-profile-dropdown {
+                    position: relative;
+                    display: inline-block;
+                }
+                .cmg-profile-trigger {
+                    background: #ffffff !important;
+                    color: #484A61 !important;
+                    height: 40px !important;
+                    padding: 0 14px 0 8px !important;
+                    border-radius: 50px !important;
+                    border: 1px solid #e2e8f0 !important;
+                    display: inline-flex !important;
+                    align-items: center !important;
+                    gap: 8px !important;
+                    cursor: pointer !important;
+                    font-size: 0.875rem !important;
+                    font-weight: 500 !important;
+                    text-decoration: none !important;
+                    transition: all 0.2s ease !important;
+                    outline: none !important;
+                    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04) !important;
+                    box-sizing: border-box !important;
+                    font-family: inherit !important;
+                }
+                .cmg-profile-trigger:hover,
+                .cmg-user-profile-dropdown:hover .cmg-profile-trigger {
+                    border-color: #cbd5e1 !important;
+                    background: #f8fafc !important;
+                    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.08) !important;
+                }
+                .cmg-avatar-circle {
+                    width: 26px !important;
+                    height: 26px !important;
+                    border-radius: 50% !important;
+                    background: #059669 !important;
+                    color: #ffffff !important;
+                    font-size: 13px !important;
+                    font-weight: 600 !important;
+                    display: inline-flex !important;
+                    align-items: center !important;
+                    justify-content: center !important;
+                    flex-shrink: 0 !important;
+                    line-height: 1 !important;
+                    text-transform: uppercase !important;
+                }
+                .cmg-user-name {
+                    color: #484A61 !important;
+                    font-size: 14px !important;
+                    font-weight: 500 !important;
+                    max-width: 150px !important;
+                    white-space: nowrap !important;
+                    overflow: hidden !important;
+                    text-overflow: ellipsis !important;
+                    line-height: 1.2 !important;
+                }
+                .cmg-chevron-icon {
+                    width: 14px !important;
+                    height: 14px !important;
+                    color: #64748b !important;
+                    transition: transform 0.2s ease !important;
+                    flex-shrink: 0 !important;
+                }
+                .cmg-user-profile-dropdown:hover .cmg-chevron-icon,
+                .cmg-profile-trigger.active .cmg-chevron-icon {
+                    transform: rotate(180deg) !important;
+                }
+                /* Dropdown Menu (Opens on Hover & Click) */
+                .cmg-dropdown-menu {
+                    position: absolute !important;
+                    top: 100% !important;
+                    right: 0 !important;
+                    min-width: 220px !important;
+                    background: #ffffff !important;
+                    border: 1px solid #e2e8f0 !important;
+                    border-radius: 14px !important;
+                    box-shadow: 0 12px 30px -6px rgba(15, 23, 42, 0.15), 0 0 0 1px rgba(0, 0, 0, 0.04) !important;
+                    padding: 8px 0 !important;
+                    z-index: 99999 !important;
+                    display: none !important;
+                    opacity: 0 !important;
+                    transform: translateY(6px) !important;
+                    transition: opacity 0.2s ease, transform 0.2s ease !important;
+                    pointer-events: none !important;
+                    margin-top: 6px !important;
+                    box-sizing: border-box !important;
+                }
+                .cmg-user-profile-dropdown::after {
+                    content: '' !important;
+                    position: absolute !important;
+                    top: 100% !important;
+                    left: 0 !important;
+                    right: 0 !important;
+                    height: 12px !important;
+                    display: block !important;
+                }
+                .cmg-user-profile-dropdown:hover .cmg-dropdown-menu,
+                .cmg-dropdown-menu.show {
+                    display: block !important;
+                    opacity: 1 !important;
+                    transform: translateY(0) !important;
+                    pointer-events: auto !important;
+                }
+                .cmg-dropdown-header {
+                    padding: 10px 16px 8px 16px !important;
+                }
+                .cmg-dropdown-user-name {
+                    font-size: 14px !important;
+                    font-weight: 600 !important;
+                    color: #0f172a !important;
+                    line-height: 1.3 !important;
+                    margin-bottom: 2px !important;
+                }
+                .cmg-dropdown-user-email {
+                    font-size: 12px !important;
+                    color: #64748b !important;
+                    white-space: nowrap !important;
+                    overflow: hidden !important;
+                    text-overflow: ellipsis !important;
+                    line-height: 1.3 !important;
+                }
+                .cmg-dropdown-divider {
+                    height: 1px !important;
+                    background: #f1f5f9 !important;
+                    margin: 6px 0 !important;
+                }
+                .cmg-dropdown-item {
+                    display: flex !important;
+                    align-items: center !important;
+                    gap: 10px !important;
+                    padding: 9px 16px !important;
+                    font-size: 13.5px !important;
+                    font-weight: 500 !important;
+                    color: #334155 !important;
+                    text-decoration: none !important;
+                    transition: background 0.15s ease, color 0.15s ease !important;
+                }
+                .cmg-dropdown-item:hover {
+                    background: #f8fafc !important;
+                    color: #1d4ed8 !important;
+                    text-decoration: none !important;
+                }
+                .cmg-dropdown-item.cmg-logout-item {
+                    color: #ef4444 !important;
+                }
+                .cmg-dropdown-item.cmg-logout-item:hover {
+                    background: #fef2f2 !important;
+                    color: #dc2626 !important;
+                }
+                </style>
                 <!-- User Profile Dropdown -->
                 <div class="cmg-user-profile-dropdown position-relative">
                     <button type="button" class="cmg-profile-trigger" id="cmgProfileTrigger" aria-expanded="false" aria-haspopup="true">
