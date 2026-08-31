@@ -934,3 +934,36 @@ add_filter('template_include', function($template) {
 
     return $template;
 }, 99);
+
+/**
+ * Diagnostic Debugger for Single Post Restriction in Browser Console
+ */
+add_action('wp_footer', function() {
+    if (!is_singular()) {
+        return;
+    }
+
+    $is_logged_in = is_user_logged_in();
+    $post_id = get_the_ID();
+    $all_meta = $post_id ? get_post_meta($post_id) : array();
+    $is_restricted = $post_id && function_exists('cmg_is_post_restricted_to_logged_in') ? cmg_is_post_restricted_to_logged_in($post_id) : false;
+    $post_title = $post_id ? get_the_title($post_id) : '';
+    ?>
+    <script>
+        console.group('%c🔐 CMGalaxy Single Post Restriction Debugger', 'color: #2563eb; font-size: 14px; font-weight: bold;');
+        console.log('📌 Post ID:', <?php echo json_encode($post_id); ?>);
+        console.log('📄 Post Title:', <?php echo json_encode($post_title); ?>);
+        console.log('👤 User Logged In:', <?php echo $is_logged_in ? 'true' : 'false'; ?>);
+        console.log('🚫 Is Restricted to Logged-in:', <?php echo $is_restricted ? 'true' : 'false'; ?>);
+        console.log('📦 All Meta Keys for this Post:', <?php echo json_encode($all_meta); ?>);
+        <?php if ($is_restricted && !$is_logged_in): ?>
+        console.log('%c✅ Status: Restricted Post - Paywall Modal is Active!', 'color: green; font-weight: bold; font-size: 12px;');
+        <?php elseif ($is_logged_in): ?>
+        console.log('%cℹ️ Status: User is logged in, full content displayed.', 'color: #64748b;');
+        <?php else: ?>
+        console.log('%cℹ️ Status: This post is not restricted (public article).', 'color: #64748b;');
+        <?php endif; ?>
+        console.groupEnd();
+    </script>
+    <?php
+}, 9999);
