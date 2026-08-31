@@ -377,13 +377,13 @@ h2.cmg-upgrade-title,
     </p>
 
     <!-- Primary Action Button -->
-    <a href="<?php echo esc_url($upgrade_url); ?>" class="cmg-upgrade-btn">
+    <a href="<?php echo esc_url($upgrade_url); ?>" class="cmg-upgrade-btn" style="font-size: 16px !important;">
         Sign up to CMGalaxy
     </a>
 
     <!-- Sign-in Link -->
     <div class="cmg-signin-text">
-        <a href="<?php echo esc_url($signin_url); ?>" class="cmg-signin-link">Already a customer? Sign in</a>
+        <a href="<?php echo esc_url($signin_url); ?>" class="cmg-signin-link" style="font-size: 16px !important;">Already a customer? Sign in</a>
     </div>
 </div>
 

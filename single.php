@@ -962,7 +962,7 @@ get_template_part( 'template-parts/single-post/banner', $banner_type );
 
                 function buildTOC() {
                     var $content = $('.blog_single_item, .main-post, .editor-content, article').first();
-                    var $headings = $content.find('h1, h2').not('.cmg-upgrade-title, .cmg-paywall-container h1, .cmg-paywall-container h2, .cmg-blurred-backdrop h1, .cmg-blurred-backdrop h2, .post-title');
+                    var $headings = $content.find('h1, h2');
                     
                     if ($headings.length > 0) {
                         var tocHtml = '<ul class="nav flex-column">';
@@ -986,7 +986,7 @@ get_template_part( 'template-parts/single-post/banner', $banner_type );
                                 if (isClickScrolling) return;
                                 
                                 var scrollPos = (overriddenScroll !== undefined ? overriddenScroll : $(window).scrollTop()) + 175;
-                                var $headings = $content.find('h1, h2').not('.cmg-upgrade-title, .cmg-paywall-container h1, .cmg-paywall-container h2, .cmg-blurred-backdrop h1, .cmg-blurred-backdrop h2, .post-title');
+                                var $headings = $content.find('h1, h2');
                                 var currentId = '';
                                 
                                 if ($headings.length > 0) {
