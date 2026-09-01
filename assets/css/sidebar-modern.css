@@ -494,14 +494,25 @@ article h1, article h2, article h3,
     scroll-margin-top: 140px !important;
 }
 
-/* Remove margin-bottom from main-post anchor-enabled */
+/* Remove margin from main-post, blog_single_item and editor-content */
 .main-post,
 .main-post.anchor-enabled,
 .single-post .main-post,
 .single .main-post,
 .blog_single_info .main-post {
+    margin-top: 0 !important;
     margin-bottom: 0 !important;
+    padding-top: 0 !important;
     padding-bottom: 0 !important;
+}
+
+.blog_single_item,
+.editor-content,
+.blog_single_item.editor-content,
+.main-post .blog_single_item,
+.blog_single_info .blog_single_item {
+    margin-top: 0 !important;
+    padding-top: 0 !important;
 }
 
 /* Layout CMGalaxy Header Styles */
