@@ -40,7 +40,7 @@ get_template_part( 'template-parts/single-post/banner', $banner_type );
 //     get_template_part( 'template-parts/header-elements/search-banner/breadcrumb' );
 // }
 ?>
-<section class="blog_area tip_doc_area" id="toc_stick" style="padding-top: 0px !important; padding-bottom: 24px !important;">
+<section class="blog_area tip_doc_area" id="toc_stick" style="padding-top: 0px !important; padding-bottom: 0px !important;">
 
     <div class="container">
         <div class="row align-items-start">
@@ -59,7 +59,7 @@ get_template_part( 'template-parts/single-post/banner', $banner_type );
             <?php 
             $main_col_extra_class = $has_toc ? 'has-toc-sidebar' : '';
             ?>
-            <div class="col-lg-<?php echo esc_attr( $blog_column ) ?> blog_single_info category-main-col <?php echo esc_attr($main_col_extra_class); ?> pe-lg-3" style="">
+            <div class="col-lg-<?php echo esc_attr( $blog_column ) ?> blog_single_info category-main-col <?php echo esc_attr($main_col_extra_class); ?>" style="">
                 <div class="main-post <?php echo $has_toc ? 'anchor-enabled' : ''; ?>">
                     <div class="blog_single_item editor-content">
                         <?php
