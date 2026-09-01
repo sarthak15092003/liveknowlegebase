@@ -34,20 +34,32 @@ section:first-of-type {
     margin-bottom: 0 !important;
 }
 
-/* Category Page Container Width & Layout Styles */
+/* Container Width & Layout Styles Across All Pages */
 @media (min-width: 992px) {
+    body.archive .container,
     body.archive.category .container,
-    body.archive.category .container-lg,
-    body.archive.category .container-md,
-    body.archive.category .container-sm,
-    body.archive.category .container-xl,
-    body.archive.category .container-xxl,
+    body.category .container,
     body.home .container,
-    body.home .container-lg,
-    body.home .container-md,
-    body.home .container-sm,
-    body.home .container-xl,
-    body.home .container-xxl {
+    body.front-page .container,
+    body.single .container,
+    body.single-post .container,
+    body.page .container,
+    .single .tip_doc_area .container,
+    .single-post .tip_doc_area .container,
+    body.archive .container-xxl,
+    body.archive.category .container-xxl,
+    body.category .container-xxl,
+    body.home .container-xxl,
+    body.front-page .container-xxl,
+    body.single .container-xxl,
+    body.single-post .container-xxl,
+    body.page .container-xxl,
+    footer .container,
+    footer .container-lg,
+    footer .container-md,
+    footer .container-sm,
+    footer .container-xl,
+    footer .container-xxl {
         max-width: 100% !important;
         padding-left: 30px !important;
         padding-right: 30px !important;
@@ -379,7 +391,14 @@ html { scroll-padding-top: 85px !important; }
 .no-posts { display: block; padding: 12px 15px 12px 35px; color: #9ca3af; font-size: 13px; font-style: italic; }
 
 /* CMGalaxy Footer Styles */
-footer { background-color: #041543 !important; color: rgba(250, 250, 250, 0.5) !important; padding: 40px 0px !important; font-family: Arial, sans-serif !important; }
+footer { background-color: #041543 !important; color: rgba(250, 250, 250, 0.5) !important; padding: 40px 0px !important; font-family: Arial, sans-serif !important; width: 100% !important; }
+footer .container,
+footer .container-fluid {
+    max-width: 100% !important;
+    padding-left: 30px !important;
+    padding-right: 30px !important;
+    box-sizing: border-box !important;
+}
 .footer-content { width: 100% !important; }
 .footer-row { display: flex !important; justify-content: space-between !important; align-items: top !important; flex-wrap: wrap !important; margin-bottom: 20px !important; }
 .footer-logo img { max-height: 50px !important; }
