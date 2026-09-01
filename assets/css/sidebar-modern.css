@@ -1472,6 +1472,7 @@ nav#sticky[style] {
     body:not(.admin-bar).single-post .tip_doc_area,
     body:not(.admin-bar) section.blog_area.tip_doc_area {
         padding-top: 20px !important;
+        padding-bottom: 24px !important;
         margin-top: 0 !important;
     }
 
@@ -1766,6 +1767,7 @@ body.archive:not(.admin-bar) .blog_area {
 .single-post .tip_doc_area,
 section.blog_area.tip_doc_area {
     padding-top: 0px !important; 
+    padding-bottom: 24px !important;
     margin-top: -20px !important; /* Reduce gap on blog detail (single post) */
 }
 
@@ -1776,6 +1778,7 @@ body:not(.admin-bar).single-post .blog_area,
 body:not(.admin-bar).single-post .tip_doc_area,
 body:not(.admin-bar) section.blog_area.tip_doc_area {
     padding-top: 0px !important;
+    padding-bottom: 24px !important;
     margin-top: 12px !important; /* Compensate for missing admin bar */
 }
 
@@ -1940,6 +1943,7 @@ body.archive:not(.admin-bar) .blog_area {
 .single-post .tip_doc_area,
 section.blog_area.tip_doc_area {
     padding-top: 0px !important; 
+    padding-bottom: 24px !important;
     margin-top: -20px !important; /* Reduce gap on blog detail (single post) */
 }
 
@@ -1950,6 +1954,7 @@ body:not(.admin-bar).single-post .blog_area,
 body:not(.admin-bar).single-post .tip_doc_area,
 body:not(.admin-bar) section.blog_area.tip_doc_area {
     padding-top: 0px !important;
+    padding-bottom: 24px !important;
     margin-top: 12px !important; /* Compensate for missing admin bar */
 }
 
