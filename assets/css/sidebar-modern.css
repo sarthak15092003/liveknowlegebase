@@ -1472,7 +1472,7 @@ nav#sticky[style] {
     body:not(.admin-bar).single-post .tip_doc_area,
     body:not(.admin-bar) section.blog_area.tip_doc_area {
         padding-top: 20px !important;
-        padding-bottom: 3rem !important;
+        padding-bottom: 24px !important;
         margin-top: 0 !important;
     }
 
@@ -1761,20 +1761,13 @@ body.archive:not(.admin-bar) .blog_area {
     padding-top: 112px !important; /* 80px + 32px to compensate for missing admin bar */
 }
 
-.category .doc_blog_grid_area,
-.archive .doc_blog_grid_area,
-body.category .doc_blog_grid_area,
-body.archive .doc_blog_grid_area {
-    padding-bottom: 3rem !important;
-}
-
 .single .blog_area,
 .single .tip_doc_area,
 .single-post .blog_area,
 .single-post .tip_doc_area,
 section.blog_area.tip_doc_area {
     padding-top: 0px !important; 
-    padding-bottom: 3rem !important;
+    padding-bottom: 24px !important;
     margin-top: -20px !important; /* Reduce gap on blog detail (single post) */
 }
 
@@ -1785,7 +1778,7 @@ body:not(.admin-bar).single-post .blog_area,
 body:not(.admin-bar).single-post .tip_doc_area,
 body:not(.admin-bar) section.blog_area.tip_doc_area {
     padding-top: 0px !important;
-    padding-bottom: 3rem !important;
+    padding-bottom: 24px !important;
     margin-top: 12px !important; /* Compensate for missing admin bar */
 }
 
@@ -1944,20 +1937,13 @@ body.archive:not(.admin-bar) .blog_area {
     padding-top: 112px !important; /* 80px + 32px to compensate for missing admin bar */
 }
 
-.category .doc_blog_grid_area,
-.archive .doc_blog_grid_area,
-body.category .doc_blog_grid_area,
-body.archive .doc_blog_grid_area {
-    padding-bottom: 3rem !important;
-}
-
 .single .blog_area,
 .single .tip_doc_area,
 .single-post .blog_area,
 .single-post .tip_doc_area,
 section.blog_area.tip_doc_area {
     padding-top: 0px !important; 
-    padding-bottom: 3rem !important;
+    padding-bottom: 24px !important;
     margin-top: -20px !important; /* Reduce gap on blog detail (single post) */
 }
 
@@ -1968,7 +1954,7 @@ body:not(.admin-bar).single-post .blog_area,
 body:not(.admin-bar).single-post .tip_doc_area,
 body:not(.admin-bar) section.blog_area.tip_doc_area {
     padding-top: 0px !important;
-    padding-bottom: 3rem !important;
+    padding-bottom: 24px !important;
     margin-top: 12px !important; /* Compensate for missing admin bar */
 }
 
