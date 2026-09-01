@@ -475,6 +475,15 @@ article h1, article h2, article h3,
     scroll-margin-top: 140px !important;
 }
 
+/* Remove margin-bottom from main-post anchor-enabled */
+.main-post,
+.main-post.anchor-enabled,
+.single-post .main-post,
+.single .main-post,
+.blog_single_info .main-post {
+    margin-bottom: 0 !important;
+    padding-bottom: 0 !important;
+}
 
 /* Layout CMGalaxy Header Styles */
 
