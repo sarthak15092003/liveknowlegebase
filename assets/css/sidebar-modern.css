@@ -1475,7 +1475,7 @@ nav#sticky[style] {
     body.single-post,
     body.category,
     body.archive {
-        padding-top: 90px !important; /* Clear mobile header */
+        padding-top: 60px !important; /* Clear mobile header */
     }
     body.admin-bar,
     body.admin-bar.home,
