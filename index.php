@@ -346,7 +346,7 @@ if ($blog_layout == 'blog_category' && !$is_category_page) {
 			<?php
 		}
 		?>
-		<section class="home-cta-banner" style="padding: 80px 0 80px !important;">
+		<section class="home-cta-banner" style="padding: 80px 0 0px !important;">
 			<style>
 				.home-cta-banner__primary,
 				.home-cta-banner__secondary {

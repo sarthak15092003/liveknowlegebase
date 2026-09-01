@@ -515,6 +515,10 @@ article h1, article h2, article h3,
     padding-top: 0 !important;
 }
 
+.home-cta-banner {
+    padding-bottom: 0 !important;
+}
+
 /* Layout CMGalaxy Header Styles */
 
 .cmgalaxy-search-backdrop {
